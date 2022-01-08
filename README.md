@@ -70,15 +70,14 @@ hugo serve -b http://127.0.0.1:5445 -p 5445 --bind 127.0.0.1 -w
 * Release :
 
 ```bash
-export RELEASE_VERSION=0.0.0
-export DEPLOYMENT_DOMAIN=radiojaune.com
-export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
-
 git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.release.work
 cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
+export RELEASE_VERSION=0.0.1
+export DEPLOYMENT_DOMAIN=radiojaune.com
+export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
 git flow release start ${RELEASE_VERSION}
 
