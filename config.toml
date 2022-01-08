@@ -1,17 +1,17 @@
-baseURL = "https://radiojaune.github.io/documentation/"
+baseURL = "https://radiojaune.com"
 languageCode = "en-us"
-title = "Hugo Grayscale Theme"
+title = "Radio Jaune"
 theme = "grayscale"
 #googleAnalytics = ""
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
     # Provide some metadata for search and indexing services
-    description = "A port of the Grayscale theme to Hugo"
+    description = "The hugo project fot https://radiojaune.com"
 
 [Author]
     name = "RunningStream"
-    email = "dco@runningstream.net"
+    email = "devopsradiojaune@gmail.com"
 
 [Social]
     twitter = "stream_running"
@@ -21,7 +21,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 targetPath = "assets/custom-theme.css"
 enableSourceMap = true
 
-# --- # --- 
+# --- # ---
 # Addon to us Bulma as integrated SCSS Processor
 
 [[module.imports]]
