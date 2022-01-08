@@ -1,0 +1,35 @@
+baseURL = "https://radiojaune.github.io/documentation/"
+languageCode = "en-us"
+title = "Hugo Grayscale Theme"
+theme = "grayscale"
+#googleAnalytics = ""
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[params]
+    # Provide some metadata for search and indexing services
+    description = "A port of the Grayscale theme to Hugo"
+
+[Author]
+    name = "RunningStream"
+    email = "dco@runningstream.net"
+
+[Social]
+    twitter = "stream_running"
+
+
+[reveal_hugo.custom_theme_options]
+targetPath = "assets/custom-theme.css"
+enableSourceMap = true
+
+# --- # --- 
+# Addon to us Bulma as integrated SCSS Processor
+
+[[module.imports]]
+  path = "github.com/jgthms/bulma"
+  disable = false
+  # [[module.imports.mounts]]
+    # source = "."
+    # target = "assets/sass"
+  [[module.imports.mounts]]
+    source = "."
+    target = "assets/bulma"

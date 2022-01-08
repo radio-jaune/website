@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  hugo_dev:
+    # we need extended, and nodejs for sass!
+    image: quay.io/radio-jaune/website:${QUAY_OCI_IMAGE_TAG}
+    container_name: hugo_heroku
+    build:
+       context: .
+       dockerfile: heroku.Dockerfile
+       args:
+         - HTTPD_OCI_IMAGE_TAG=${HTTPD_OCI_IMAGE_TAG}
+         - GOLANG_VERSION=${GOLANG_VERSION}
+         - HUGO_VERSION=${HUGO_VERSION}
+         - HUGO_BASE_URL=${HUGO_BASE_URL}
+         - GIT_COMMIT_ID=${GIT_COMMIT_ID}
+         # - HUGO_BASE_URL=https://radiojaune.herokuapp.com/
+    # command: server
+    environment:
+      - PORT=80
+    env_file:
+      - ./.env
+    # volumes:
+      # - .:/src
+    ports:
+      # - 0.0.0.0:1313:1313
+      - 0.0.0.0:8080:80
+  hugo_heroku:
+    # we need extended, and nodejs for sass!
+    image: quay.io/radio-jaune/website:${QUAY_OCI_IMAGE_TAG}
+    container_name: hugo_heroku
+    build:
+       context: .s
+       dockerfile: heroku.Dockerfile
+       args:
+         - HTTPD_OCI_IMAGE_TAG=${HTTPD_OCI_IMAGE_TAG}
+         - GOLANG_VERSION=${GOLANG_VERSION}
+         - HUGO_VERSION=${HUGO_VERSION}
+         - HUGO_BASE_URL=${HUGO_BASE_URL}
+         - GIT_COMMIT_ID=${GIT_COMMIT_ID}
+    env_file:
+      - ./.heroku.env

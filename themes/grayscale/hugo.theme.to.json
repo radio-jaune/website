@@ -1,0 +1,32 @@
+
+> radiojaune-website@1.0.0 parse-hugo-them-toml
+> node .npm.scripts/toml-parser.js
+
+ value of TOML_FILE_PATH = /tmp/TEMP_SPAWN_HOME-Dq42MOZ0VH/theme.toml
+[Object: null prototype] {
+  name: 'Grayscale',
+  license: 'MIT',
+  licenselink: 'https://github.com/runningstream/hugograyscale/blob/master/LICENSE',
+  description: 'Grayscale is a multi-section single page theme intended as a landing page.',
+  homepage: 'https://github.com/runningstream/hugograyscale/',
+  tags: [
+    'minimal',
+    'simple',
+    'landing-page',
+    'one-page',
+    'responsive',
+    'accessible',
+    'company'
+  ],
+  features: [],
+  min_version: '0.40.1',
+  author: [Object: null prototype] {
+    name: 'RunningStream',
+    homepage: 'https://runningstream.net/'
+  },
+  original: [Object: null prototype] {
+    name: 'startbootstrap-grayscale',
+    homepage: 'https://blackrockdigital.github.io/startbootstrap-grayscale/',
+    repo: 'https://github.com/BlackrockDigital/startbootstrap-grayscale.git'
+  }
+}

@@ -1,0 +1,12 @@
+build:
+  docker:
+    web: heroku.Dockerfile
+  config:
+    HTTPD_OCI_IMAGE_TAG: 2.4
+    HUGO_VERSION: 0.78.2
+    GOLANG_VERSION: 1.15.6
+    HUGO_BASE_URL: https://radiojaune.herokuapp.com/
+# run:
+  # web:
+    # command:
+      # - /somefolder/start.sh
