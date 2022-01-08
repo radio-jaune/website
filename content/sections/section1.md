@@ -1,12 +1,17 @@
 ---
-title: "About"
+title: "LE LIVE"
 weight: 2
 ---
 
-## About Grayscale
+## LE LIVE 100% JAUNE
 
-Grayscale is a free Hugo theme, originally created for Bootstrap by Start Bootstrap. It can be yours right now, simply download the template from [the Github page](https://github.com/runningstream/hugograyscale/). The theme is open source, and you can use it for any purpose, personal or commercial.
+Aucun live n'est pour l'instant en  cours. Le Live commence tous les Dimanches à 21h00. Le Prochain Live sera Dimanche 15 AVril 2022, à 21h
 
-This theme was adapted from a Jekyll version, brought to you by [Jerome Lachaud](https://github.com/jeromelachaud)
-
-This theme features stock photos by [Gratisography](http://gratisography.com/) along with a custom Google Maps skin courtesy of [Snazzy Maps](http://snazzymaps.com/).
+{{< socialhandles >}}
+    {{< twitch user="radiojaune" >}}
+    {{< youtube user="radiojaune" >}}
+    {{< vk user="radiojaune" >}}
+    {{< steam user="radiojaune" >}}
+    {{< facebook user="radiojaune" >}}
+    {{< twitter user="radiojaune" >}}
+{{< /socialhandles >}}

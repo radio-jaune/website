@@ -1,13 +1,15 @@
 ---
-title: "Contact"
+title: "GITHUB"
 weight: 4
+improvecontrast: true
 ---
 
-## Contact Start Bootstrap
-
-Feel free to leave us a comment on the [Grayscale template Github page](https://github.com/runningstream/hugograyscale/) to give some feedback about this theme!
+## Find Us on Github!
 
 {{< socialhandles >}}
-    {{< twitter user="stream_running" >}}
-    {{< github user="runningstream" >}}
+    {{< github_org org_name="radio-jaune" >}}
+{{< /socialhandles >}}
+
+{{< socialhandles >}}
+    {{< github_repo org_name="radio-jaune" repo_name="website" >}}
 {{< /socialhandles >}}

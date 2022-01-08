@@ -2,7 +2,7 @@
 
 ## What's in this release
 
-* Release Version number : `0.0.0`
+* Release Version number : `0.0.2`
 * Build Datetime : `DATE - TIME`
 * **CI/CD** System : `Circle CI`
 <!-- * **CI/CD** System : `Drone CI` -->
@@ -10,7 +10,9 @@
 
 ### Features
 
-* background image for first section of one pager
+* social buttons
+* menu rearragement
+* added more slides
 
 ### Bugfix
 
