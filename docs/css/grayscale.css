@@ -118,7 +118,8 @@ header {
   padding: 200px 0;
   text-align: center;
   color: white;
-  background: url("../img/section0-bg.jpg") no-repeat bottom center scroll;
+  /* background: url("../img/section0-bg.jpg") no-repeat bottom center scroll; */
+  background: url("../images/radiojaune/radio_show_mike.jpg") no-repeat bottom center scroll;
   background-color: black;
   background-size: cover;
 }
