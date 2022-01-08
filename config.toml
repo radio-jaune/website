@@ -10,7 +10,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     description = "The hugo project fot https://radiojaune.com"
 
 [Author]
-    name = "RunningStream"
+    name = "The Yellow Radio Devops Team"
     email = "devopsradiojaune@gmail.com"
 
 [Social]

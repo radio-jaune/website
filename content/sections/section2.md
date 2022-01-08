@@ -1,11 +1,22 @@
 ---
-title: "Links"
+title: "Social"
 weight: 3
 improvecontrast: true
 ---
 
-## Download Grayscale
+## Find Us on Socials!
 
-You can download Grayscale for free from the Github page.
+{{< socialhandles >}}
+    {{< instagram user="radiojaune" >}}
+    {{< pinterest user="radiojaune" >}}
+    {{< tiktok user="radiojaune" >}}
+{{< /socialhandles >}}
 
-{{< big-button text="Visit Download Page" href="https://github.com/runningstream/hugograyscale/" >}}
+---
+
+{{< socialhandles >}}
+    {{< vk user="radiojaune" >}}
+    {{< twitter user="radiojaune" >}}
+{{< /socialhandles >}}
+
+---
