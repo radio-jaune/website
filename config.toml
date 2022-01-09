@@ -8,7 +8,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 [params]
     # Provide some metadata for search and indexing services
     description = "The hugo project fot https://radiojaune.com"
-
+    discord_server_id = "299881420891881473"
+    discord_channel_id = "355719584830980096"
 [Author]
     name = "The Yellow Radio Devops Team"
     email = "devopsradiojaune@gmail.com"
