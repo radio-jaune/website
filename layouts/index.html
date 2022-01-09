@@ -42,7 +42,20 @@
 
   {{- if $elem.Params.improvecontrast }}<div class="improve-contrast-box">{{ end }}
   {{ default "" $elem.Content }}
-  {{- if $elem.Params.discord }}<div class="discord widget">{{ partial "discord-widget.html" }}</div>{{ end }}
+  {{- if $elem.Params.discord }}
+  <div class="discord widget">
+    <!-- {{ partial "discord-widget.html" }}
+
+    <h3> ds index.html / valeur discord_channel_id : {{ $.Site.Params.discord_channel_id }} <h3>
+      <h3> ds index.html / valeur discord_server_id : {{ $.Site.Params.discord_server_id }} <h3>
+
+   -->
+
+
+        <iframe src="https://e.widgetbot.io/channels/{{ $.Site.Params.discord_server_id }}/{{ $.Site.Params.discord_channel_id }}" height="600" width="100%"></iframe>
+
+  </div>
+  {{ end }}
   {{- if $elem.Params.improvecontrast }}</div>{{ end }}
   {{ if eq $ind 0 }}<a href="#sec-ind-1" class="btn btn-circle js-scroll-trigger" aria-label="Scroll to Next Section"><i class="fa fa-angle-double-down animated"></i></a>{{ end -}}
  </div></div></div>
