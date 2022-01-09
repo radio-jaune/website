@@ -10,7 +10,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     description = "The hugo project for https://radiojaune.com"
     # Radio jaune Discord Super Admin added the WidgetBot.io to the Discord server using https://add.widgetbot.io/
     discord_server_id = "928030296241225758"
-    discord_channel_id = "929850300410523708"
+    discord_channel_id = "929832574434562048"
+
     # discord_server_id = "299881420891881473"
     # discord_channel_id = "355719584830980096"
 [Author]
