@@ -1,15 +1,22 @@
 ---
-title: "GITHUB"
+title: "Social"
 weight: 4
 improvecontrast: true
 ---
 
-## Find Us on Github!
+## Find Us on Socials!
 
 {{< socialhandles >}}
-    {{< github_org org_name="radio-jaune" >}}
+    {{< instagram user="radiojaune" >}}
+    {{< pinterest user="radiojaune" >}}
+    {{< tiktok user="radiojaune" >}}
 {{< /socialhandles >}}
 
+---
+
 {{< socialhandles >}}
-    {{< github_repo org_name="radio-jaune" repo_name="website" >}}
+    {{< vk user="radiojaune" >}}
+    {{< twitter user="radiojaune" >}}
 {{< /socialhandles >}}
+
+---

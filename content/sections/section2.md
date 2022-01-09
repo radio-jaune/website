@@ -1,22 +1,13 @@
 ---
-title: "Social"
+title: "Chat"
 weight: 3
 improvecontrast: true
+type: discord
+discord: true
 ---
 
-## Find Us on Socials!
+## Chat with the live team!
 
-{{< socialhandles >}}
-    {{< instagram user="radiojaune" >}}
-    {{< pinterest user="radiojaune" >}}
-    {{< tiktok user="radiojaune" >}}
-{{< /socialhandles >}}
-
----
-
-{{< socialhandles >}}
-    {{< vk user="radiojaune" >}}
-    {{< twitter user="radiojaune" >}}
-{{< /socialhandles >}}
+{{< big-button text="Join the discord chat" href="https://discord.gg/KwCAUvwvc4" >}}
 
 ---

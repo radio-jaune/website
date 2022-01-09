@@ -7,6 +7,10 @@ weight: 2
 
 Aucun live n'est pour l'instant en  cours. Le Live commence tous les Dimanches à 21h00. Le Prochain Live sera Dimanche 15 AVril 2022, à 21h
 
+{{< youtubelive id="D1CpWYU3DvA" >}}
+
+---
+
 {{< socialhandles >}}
     {{< twitch user="radiojaune" >}}
     {{< youtube user="radiojaune" >}}
