@@ -1,2 +1,8 @@
 <h4>Iframe de salon de tchat : </h4>
-<iframe src="https://discordapp.com/widget?id={{ .Site.Params.discord_server_id }}&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+<widgetbot
+  server="{{ .Site.Params.discord_server_id }}"
+  channel="{{ .Site.Params.discord_channel_id }}"
+  width="800"
+  height="600"
+></widgetbot>
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
