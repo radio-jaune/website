@@ -9,7 +9,7 @@ discord: true
 
 ---
 
-## Chat with the live team !
+## `Chat with the live team !`
 
 
 ---
