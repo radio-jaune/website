@@ -11,7 +11,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     # Radio jaune Discord Super Admin added the WidgetBot.io to the Discord server using https://add.widgetbot.io/
     discord_server_id = "928030296241225758"
     discord_channel_id = "929832574434562048"
-    
+    thats_yellow = "#f7ff0b"
+
 
     # discord_server_id = "299881420891881473"
     # discord_channel_id = "355719584830980096"
