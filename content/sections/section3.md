@@ -6,6 +6,28 @@ improvecontrast: true
 
 ## Find Us on Socials!
 
+
+<!--  
+
+{{< big-button-awe dashidashi="0" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#f7ff0b" >}}
+
+{{< big-button-awe dashidashi="1" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#ff0bd9" >}}
+
+{{< big-button-awe dashidashi="2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}
+
+{{< big-button-awe dashidashi="3" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#ff330b" >}}
+
+|                                              |                                              |
+|----------------------------------------------|----------------------------------------------|
+|||
+|||
+|{{< big-button-awe dashidashi="2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}|{{< big-button-awe dashidashi="-2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}|
+
+-->
+
+
+---
+
 {{< socialhandles >}}
     {{< instagram user="radiojaune" >}}
     {{< pinterest user="radiojaune" >}}
