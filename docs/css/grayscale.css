@@ -378,8 +378,24 @@ a.awesome.flashy.bouton span {
     letter-spacing: 4px;
     transition: 0.5s;
 }
+a.awesome.flashy.bouton span {
+    opacity: 1;
+    color: #42DCA3!important;
+    /* color: #0e1538; */
+}
+
+a.awesome.flashy.bouton span i {
+    color: #42DCA3!important;
+    /* color: #0e1538; */
+}
 
 a.awesome.flashy.bouton:hover span {
     opacity: 1;
-    color: #0e1538;
+    color: #42DCA3!important;
+    /* color: #0e1538; */
+}
+
+a.awesome.flashy.bouton:hover span i {
+    color: #42DCA3!important;
+    /* color: #0e1538; */
 }
