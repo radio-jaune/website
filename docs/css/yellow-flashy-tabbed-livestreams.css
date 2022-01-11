@@ -1,8 +1,7 @@
 /* yellow-flashy-tabbed-livestreams.css */
 
-
 label.yellow.tabbed.livestreams.tab {
-  font-size: 1em;
+  font-size: 1.5em;
   color: #fff;
   color: #42DCA3!important;
   border: 1px dotted rgba(36, 142, 147, 0.3);
@@ -13,16 +12,43 @@ label.yellow.tabbed.livestreams.tab {
   transition : 500ms ease-out;
 }
 label.yellow.tabbed.livestreams.tab:hover {
-  font-size: 2em;
+  font-size: 3em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
   color: white!important;
 }
 label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-  font-size: 1em;
+  font-size: 1.5em;
   -webkit-transition : 500ms ease-out;
   -moz-transition : 500ms ease-out;
   -o-transition : 500ms ease-out;
   transition : 500ms ease-out;
+}
+
+@media only screen and (max-width: 600px) {
+
+  label.yellow.tabbed.livestreams.tab {
+    font-size: 1em;
+    color: #fff;
+    color: #42DCA3!important;
+    border: 1px dotted rgba(36, 142, 147, 0.3);
+    background: black;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+  }
+  label.yellow.tabbed.livestreams.tab:hover {
+    font-size: 2em;
+    border: 1px dotted rgba(100, 65, 165, 0.3);
+    color: white!important;
+  }
+  label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+    font-size: 1em;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+  }
 }
 label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton:hover {
   /* color: rgba(36, 142, 147, 0.6)!important; */
