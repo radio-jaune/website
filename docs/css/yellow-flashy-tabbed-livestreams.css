@@ -2,7 +2,7 @@
 
 
 label.yellow.tabbed.livestreams.tab {
-  font-size: 2.5em;
+  font-size: 1em;
   color: #fff;
   color: #42DCA3!important;
   border: 1px dotted rgba(36, 142, 147, 0.3);
@@ -13,7 +13,7 @@ label.yellow.tabbed.livestreams.tab {
   transition : 500ms ease-out;
 }
 label.yellow.tabbed.livestreams.tab:hover {
-  font-size: 3em;
+  font-size: 2em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
   color: white!important;
 }
