@@ -31,6 +31,10 @@
 <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
 <link href="https://radiojaune.com/css/grayscale.css" rel="stylesheet">
+<link href="https://radiojaune.com/css/yellow-radio.css" rel="stylesheet">
+<link href="https://radiojaune.com/css/yellow-discord.css" rel="stylesheet">
+<link href="https://radiojaune.com/css/yellow-flashy-livestream-buttons.css" rel="stylesheet">
+<link href="https://radiojaune.com/css/yellow-flashy-tabbed-livestreams.css" rel="stylesheet">
 
 
 
@@ -80,71 +84,219 @@
   <div class="col-lg-8 mx-auto">
 
   <h2 id="le-live-100-jaune">LE LIVE 100% JAUNE</h2>
-<p>Aucun live n&rsquo;est pour l&rsquo;instant en  cours. Le Live commence tous les Dimanches à 21h00. Le Prochain Live sera Dimanche 15 AVril 2022, à 21h</p>
+<p><code>Aucun live n'est pour l'instant en  cours</code>. Le Live commence tous les Dimanches à 21h00. Le Prochain Live sera <code>future date à préciser ici</code>.</p>
+<div class='tabs yellow tabbed livestreams'>
+  
 
-<li class="list-inline-item radio jaune livestream button">
-<a href="#"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
+  
+  <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab1" role="tab" checked>
 
-<span class="network-name">
-  <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
-  Twitch Live
-</span>
-</a>
-</li>
-
+  <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab'>
+    <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
+  </label>
 
 
-
-<li class="list-inline-item radio jaune livestream button">
-<a href="#"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
-  Steam Live
-</span>
-</a>
-</li>
+  <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
 
 
+        
+        <li class="list-inline-item radio jaune livestream button">
+          <a href="#"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
+            <span class="network-name">
+              <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
+              Go to Twitch Live
+            </span>
+          </a>
+        </li>
 
-<li class="list-inline-item radio jaune livestream button">
-<a href="#"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+    
+    
 
-<span class="network-name">
-  <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
-  VK.com Live
-</span>
-</a>
-</li>
+    
+    
+    
+    
+    
+    
+    
+    
+
+      
+      <div id="twitch-embed"></div>
+
+      
+      <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+      
+      <script type="text/javascript">
+
+        new Twitch.Embed("twitch-embed", {
+          width: 854,
+          height: 480,
+          channel: "monstercat", 
+          autoplay: false,
+          
+          parent: ["embed.example.com", "othersite.example.com"]
+        });
+      </script>
+  </section>
+
+  
+  <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
+  <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab'>
+    <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
+  </label>
+  <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
 
 
-<li class="list-inline-item radio jaune livestream button">
-<a href="#"  style="--clr:#ff330b; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+        
 
-<span class="network-name">
-  <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
-  YouTube Live
-</span>
-</a>
-</li>
+        <li class="list-inline-item radio jaune livestream button">
+        <a href="#"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
+
+        <span class="network-name">
+          <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
+          Go to Steam Live
+        </span>
+        </a>
+        </li>
+        <hr/>
+        <h4>Steam @ steampowered.com does not provide website integration support</h4>
+
+  </section>
+
+  
+  <input type="radio" name="tab" id="tab3" role="tab" class='yellow tabbed livestreams'>
+  <label for="tab3" id="tab3-label" class='yellow tabbed livestreams tab'>
+
+    <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
+
+  </label>
+  <section aria-labelledby="tab3-label" class='yellow tabbed livestreams'>
+    
+
+    <li class="list-inline-item radio jaune livestream button">
+    <a href="#"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+
+    <span class="network-name">
+      <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
+      VK.com Live
+    </span>
+    </a>
+    </li>
+
+    
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe src="https://vk.com/video_ext.php?oid=-160980904&id=456239153&hash=e758939f674d2592&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  
+  <input type="radio" name="tab" id="tab4" role="tab" class='yellow tabbed livestreams'>
+  <label for="tab4" class='yellow tabbed livestreams tab'>
+    <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
+  </label>
+  <section class='yellow tabbed livestreams'>
+    
+    <li class="list-inline-item radio jaune livestream button">
+      <a href=""  style="--clr:#ff330b; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+        <span class="network-name">
+          <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
+          Go to YouTube Live
+        </span>
+      </a>
+    </li>
+      
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/9Lp7xmdIoDM?enablejsapi=1" allowfullscreen></iframe>
+      </div>
+  </section>
+
+
+  
+
+  <input type="radio" name="tab" id="tab5" role="tab" class='yellow tabbed livestreams'>
+    <label for="tab5" class='yellow tabbed livestreams tab'>
+
+      <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+
+    </label>
+    <section class='yellow tabbed livestreams'>
+
+      
+
+      <li class="list-inline-item radio jaune livestream button">
+      <a href="#"  style="--clr:#0033ff; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+
+      <span class="network-name">
+        <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+        Go to Facebook Live
+      </span>
+      </a>
+      </li>
+
+      
+
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FNovitalsAU%2Fvideos%2F3093626230959105%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+      </div>
+
+      
+      <p>
+        Seems like every time we launch a new facebooklive, facebook Web UI will give us the HTML code to embed :
+        <ol>
+          <li><a href="https://www.google.com/search?q=embed+facebook+live+video+in+your+website+widget&hl=en&ei=jnzdYYGjDLGIlwTWjzE&ved=0ahUKEwiBosPu3an1AhUxxIUKHdZHDAAQ4dUDCA0&uact=5&oq=embed+facebook+live+video+in+your+website+widget&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsANKBAhBGABKBAhGGABQ48kLWN_wC2Cj8gtoB3ACeAKAAbICiAH5KZIBCDAuMTkuOS4ymAEAoAEByAEIwAEB&sclient=gws-wiz">Google search keywords</li>
+          <li>https://www.facebook.com/help/1570724596499071</li>
+          <li>https://www.facebook.com/help/1570724596499071</li>
+
+        </ol>
+      </p>
+    </section>
 
 
 
-<li class="list-inline-item radio jaune livestream button">
-<a href="#"  style="--clr:#0033ff; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
 
-<span class="network-name">
-  <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
-  Facebook Live
-</span>
-</a>
-</li>
 
-<hr>
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe src="https://www.youtube.com/embed/D1CpWYU3DvA?enablejsapi=1" allowfullscreen></iframe>
+
+
+
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<!-- raw HTML omitted -->
 
   </div></div></div>
 
