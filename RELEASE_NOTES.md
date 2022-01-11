@@ -10,8 +10,10 @@
 
 ### Features
 
-* social buttons
-* menu rearragement
+* bootstrap tour :
+  * based on : http://bootstraptour.com/
+  * helps the users to understand how to use special components (click here and this will happen)
+* menu rearrangement
 * added more slides
 
 ### Bugfix
