@@ -37,6 +37,7 @@ improvecontrast: true
 ---
 
 {{< socialhandles >}}
+    {{< discord-inivte-short >}}
     {{< vk user="radiojaune" >}}
     {{< twitter user="radiojaune" >}}
 {{< /socialhandles >}}
