@@ -9,7 +9,9 @@ discord: true
 
 ---
 
-## `Chat with the live team !`
+{{< socialhandles >}}
+    {{< discord-inivte >}}
+{{< /socialhandles >}}
 
 
 ---
