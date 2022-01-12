@@ -94,83 +94,6 @@
   
 
   
-  <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab1" role="tab" checked>
-
-  <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab'>
-    <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
-  </label>
-
-
-  <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
-
-
-        
-        <li class="list-inline-item radio jaune livestream button">
-          <a href="#"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
-            <span class="network-name">
-              <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
-              Twitch Live
-            </span>
-          </a>
-        </li>
-
-          <hr/>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-      
-      <div id="twitch-embed"></div>
-
-      
-      <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
-      
-      <script type="text/javascript">
-
-        new Twitch.Embed("twitch-embed", {
-          width: '100%',
-          height: 480,
-          channel: "monstercat", 
-          autoplay: false,
-          
-          parent: ["embed.example.com", "othersite.example.com"]
-        });
-      </script>
-  </section>
-
-  
-  <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
-  <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab'>
-    <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
-  </label>
-  <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
-
-
-        
-
-        <li class="list-inline-item radio jaune livestream button">
-        <a href="#"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-
-        <span class="network-name">
-          <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
-          Steam Live
-        </span>
-        </a>
-        </li>
-        <hr/>
-        <h4>Steam @ steampowered.com does not provide website integration support</h4>
-
-  </section>
-  
   <input type="radio" name="tab" id="tab3" role="tab" class='yellow tabbed livestreams'>
   <label for="tab3" id="tab3-label" class='yellow tabbed livestreams tab'>
 
@@ -219,6 +142,63 @@
         <iframe src="https://www.youtube.com/embed/9Lp7xmdIoDM?enablejsapi=1" allowfullscreen></iframe>
       </div>
   </section>
+
+
+
+    
+    <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab1" role="tab" checked>
+
+    <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab'>
+      <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
+    </label>
+
+
+    <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
+
+
+          
+          <li class="list-inline-item radio jaune livestream button">
+            <a href="#"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
+              <span class="network-name">
+                <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
+                Twitch Live
+              </span>
+            </a>
+          </li>
+
+            <hr/>
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+
+        
+        <div id="twitch-embed"></div>
+
+        
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        
+        <script type="text/javascript">
+
+          new Twitch.Embed("twitch-embed", {
+            width: '100%',
+            height: 480,
+            channel: "monstercat", 
+            autoplay: false,
+            
+            parent: ["embed.example.com", "othersite.example.com"]
+          });
+        </script>
+    </section>
+
 
 
   
@@ -315,7 +295,7 @@
 <i class="fa fa-discord"></i>
 
 <span class="network-name">
-  Venez parler à la Team du Live!
+  Particpier à la discussion
 </span>
 </a>
 </li>
