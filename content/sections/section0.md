@@ -8,6 +8,6 @@ improvecontrast: true
 
 ### [radiojaune.com](https://radiojaune.com),
 
-### **LA** Radio 100% Jaune
+### **LA** Radio Libre 100% Jaune
 
 ---
