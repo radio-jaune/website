@@ -3,11 +3,15 @@ title: "Header"
 weight: 1
 improvecontrast: true
 ---
+<!--
 
 # RADIO JAUNE
+-->
 
-### [radiojaune.com](https://radiojaune.com),
+---
 
-### **LA** Radio Libre 100% Jaune
+## {{< radiojaunetitre text="radiojaune.com" >}}
+
+## {{< radiojaunetitre text="LA Radio Libre" >}} {{< centjaune text="100%Jaune" >}}
 
 ---
