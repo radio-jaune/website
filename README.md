@@ -104,6 +104,7 @@ echo "${DEPLOYMENT_DOMAIN}" > ./docs/CNAME
 
 git add -A && git commit -m "[${RELEASE_VERSION}] - release and deployment" && git push -u origin HEAD
 
-git flow release finish -s ${RELEASE_VERSION}
+# git flow release finish ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
+git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
 
 ```
