@@ -16,7 +16,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     join_live_url = "https://studio.restream.io/guest/blFvUjVHYYNX5y4Ezk9Yiy51GbXLp08?default-camera-mirror=false"
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
     vk_channel_link = "https://vk.com/id698593797"
-    vk_live_url = "https://vk.com/id698593797?z=video698593797_456239017%2F75a332b1a64b76ca61%2Fpl_wall_698593797"
+    vk_live_url = "https://vk.com/video_ext.php?oid=698593797&id=456239017&hash=4f8bd321b291b5e4&hd=2"
     # discord_server_id = "299881420891881473"
     # discord_channel_id = "355719584830980096"
 [Author]
