@@ -13,7 +13,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     discord_channel_id = "929832574434562048"
     discord_server_invitation = "https://discord.gg/KwCAUvwvc4"
     thats_yellow = "#f7ff0b"
-    join_live_url = "https://restream.io/lien/pour/parler/en/direct/sur/restream.io"
+    join_live_url = "https://studio.restream.io/guest/blFvUjVHYYNX5y4Ezk9Yiy51GbXLp08?default-camera-mirror=true"
+    twitch_channel_link = "https://www.twitch.tv/radiojaune"
+    vk_channel_link = "https://vk.com/id698593797"
 
     # discord_server_id = "299881420891881473"
     # discord_channel_id = "355719584830980096"
