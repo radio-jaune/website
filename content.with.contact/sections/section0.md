@@ -9,10 +9,9 @@ improvecontrast: true
 -->
 
 ---
----
 
 ## {{< radiojaunetitre text="radiojaune.com" >}}
 
-#### {{< radiojaunesoustitre text="La Radio Libre" marque="100%Jaune" >}}
+## {{< radiojaunetitre text="LA Radio Libre" >}} {{< centjaune text="100%Jaune" >}}
 
 ---
