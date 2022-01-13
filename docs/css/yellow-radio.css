@@ -10,11 +10,14 @@ section#sec-ind-2 {
  ********************************************/
 span.cent.jaune.gros.titre {
   color: white;
+  font-size: 2em;
+}
+span.cent.jaune.sous.titre {
+  color: white;
   font-size: 1em;
 }
 span.cent.jaune.marque {
   color: yellow;
-  font-size: 1em;
 }
 
 @media (max-width: 600px) {
@@ -22,12 +25,21 @@ span.cent.jaune.marque {
   /********************************************
    *  TITRES CUSTOM
    ********************************************/
-  span.cent.jaune.gros.titre {
-    color: white;
-    font-size: 1em;
-  }
-  span.cent.jaune.marque {
-    color: yellow;
-    font-size: 1em;
-  }
+   span.cent.jaune.gros.titre {
+     color: white;
+     font-size: 1em;
+   }
+   span.cent.jaune.sous.titre {
+     color: white;
+     font-size: .5em;
+   }
+
+
+   /********************************************
+    *  DISCORD CHAT INVITE smaller font when small screens
+    ********************************************/
+   span.network-name.radio.jaune.discord.invite {
+     font-size: 1rem!important;
+   }
+
 }
