@@ -8,8 +8,8 @@ This repository version controls the code source the Radio Jaune Website : https
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
 cd ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
 

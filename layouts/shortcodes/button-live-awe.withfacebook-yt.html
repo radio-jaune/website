@@ -271,6 +271,79 @@
 
     </section>
 
+  <!-- Tab 5 & Content -->
+
+  <input type="radio" name="tab" id="tab5" role="tab" class='yellow tabbed livestreams'>
+    <label for="tab5" class='yellow tabbed livestreams tab last'>
+
+      <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+
+    </label>
+    <section class='yellow tabbed livestreams'>
+        <div class="conteneur jaune lives horizontal">
+              <!-- GO TO FACEBOOK LIVE BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "facebook_live_url" }}"  style="--clr:#0033ff; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+                    Facebook Live
+                  </span>
+                </a>
+              </li>
+              <!-- Talk live BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                    {{ .Get "join_live_text" }}
+                  </span>
+                </a>
+              </li>
+        </div>
+        <div class="row conteneur jaune lives vertical">
+          <div class="col-12 haut">
+              <!-- GO TO FACEBOOK LIVE BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "facebook_live_url" }}"  style="--clr:#0033ff; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+                    Facebook Live
+                  </span>
+                </a>
+              </li>
+          </div>
+          <div class="col-12 bas">
+              <!-- Talk live BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                    {{ .Get "join_live_text" }}
+                  </span>
+                </a>
+              </li>
+          </div>
+        </div>
+
+        <hr/>
+      <!-- FACEBOOK LIVE PLAYER -->
+
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FNovitalsAU%2Fvideos%2F3093626230959105%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+      </div>
+      <div class="embed-responsive embed-responsive-16by9">
+        <!-- Dev stuff to remove -->
+        <p>
+          Seems like every time we launch a new facebooklive, facebook Web UI will give us the HTML code to embed :
+          <ol>
+            <li><a href="https://www.google.com/search?q=embed+facebook+live+video+in+your+website+widget&hl=en&ei=jnzdYYGjDLGIlwTWjzE&ved=0ahUKEwiBosPu3an1AhUxxIUKHdZHDAAQ4dUDCA0&uact=5&oq=embed+facebook+live+video+in+your+website+widget&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsANKBAhBGABKBAhGGABQ48kLWN_wC2Cj8gtoB3ACeAKAAbICiAH5KZIBCDAuMTkuOS4ymAEAoAEByAEIwAEB&sclient=gws-wiz">Google search keywords</a></li>
+            <li>https://www.facebook.com/help/1570724596499071</li>
+            <li>https://www.facebook.com/help/1570724596499071</li>
+
+          </ol>
+        </p>
+      </dv>
+    </section>
 
 </div>
 
