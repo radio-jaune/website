@@ -115,7 +115,7 @@
     <hr/>
     <!-- YOUTUBE PLAYER -->
     <div class="embed-responsive embed-responsive-16by9">
-      <iframe src="https://www.youtube.com/embed/{{ .Get "embed_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/{{ .Get "channel_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
     </div>
   </section>
 

@@ -55,11 +55,12 @@
       </div>
       <hr/>
       <!-- VK LIVE - PLAYER -->
+      <!--
       <div class="embed-responsive embed-responsive-16by9">
-        <!-- VENOM -->
         <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
         </iframe>
       </div>
+      -->
   </section>
 
   <!-- Tab 4 & Content -->
@@ -115,7 +116,15 @@
     <hr/>
     <!-- YOUTUBE PLAYER -->
     <div class="embed-responsive embed-responsive-16by9">
-      <iframe src="https://www.youtube.com/embed/{{ .Get "embed_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
+      <!-- esyY47dmxoI -->
+      <!--
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/esyY47dmxoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+         https://www.youtube.com/embed/live_stream?channel={{ .Get "channel_yt_live_id" }}
+
+
+      -->
+      <iframe src="https://www.youtube.com/embed/{{ .Get "channel_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
     </div>
   </section>
 
@@ -207,71 +216,6 @@
           });
         </script>
     </section>
-
-
-    <!-- Tab 2 & Content -->
-    <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
-    <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab'>
-      <i class="fa fa-telegram fa-fw awesome flashy bouton"></i>
-    </label>
-    <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
-          <div class="conteneur jaune lives horizontal">
-
-                <!-- GO TO TELEGRAM LIVE BUTTON -->
-                <li class="list-inline-item radio jaune livestream button">
-                  <a href="{{ .Get "telegram_live_url" }}"  style="--clr:#0088cc; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-                    <span class="network-name">
-                      <i class="fa fa-telegram fa-fw awesome flashy bouton"></i>
-                      Telegram Live
-                    </span>
-                  </a>
-                </li>
-
-                <!-- Talk live BUTTON -->
-
-                <li class="list-inline-item radio jaune livestream button">
-                <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
-
-                <span class="network-name">
-                  <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
-                  {{ .Get "join_live_text" }}
-                </span>
-                </a>
-                </li>
-
-          </div>
-          <div class="row conteneur jaune lives vertical">
-            <div class="col-12 haut">
-                <!-- GO TO TELEGRAM LIVE BUTTON -->
-                <li class="list-inline-item radio jaune livestream button">
-                  <a href="{{ .Get "telegram_live_url" }}"  style="--clr:#0088cc; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-                    <span class="network-name">
-                      <i class="fa fa-telegram fa-fw awesome flashy bouton"></i>
-                      Telegram Live
-                    </span>
-                  </a>
-                </li>
-            </div>
-            <div class="col-12 bas">
-              <!-- Talk live BUTTON -->
-
-              <li class="list-inline-item radio jaune livestream button">
-              <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
-
-              <span class="network-name">
-                <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
-                {{ .Get "join_live_text" }}
-              </span>
-              </a>
-              </li>
-
-            </div>
-          </div>
-          <hr/>
-
-    </section>
-
-
 </div>
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
