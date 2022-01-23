@@ -17,7 +17,7 @@ vk_channel_link = "https://vk.com/id698593797"
 
 -->
 
-{{< button-live-awe join_live_text="INTERVENIR EN DIRECT" join_live_url="https://studio.restream.io/guest/ejY4bEUwYiSWUY2FYkKssbY1GCFcs4c?event=&default-camera-mirror=true" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797" vk_live_url="https://vk.com/id698593797" youtube_live_url="https://www.youtube.com/embed/esyY47dmxoI" channel_yt_live_id="esyY47dmxoI" facebook_live_url="#" color="#f7ff0b" color="#ff330b" >}}
+{{< button-live-awe join_live_text="INTERVENIR EN DIRECT" join_live_url="https://studio.restream.io/guest/ejY4bEUwYiSWUY2FYkKssbY1GCFcs4c?event=&default-camera-mirror=true" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797" vk_live_url="https://vk.com/video698593797_456239018" youtube_live_url="https://www.youtube.com/embed/esyY47dmxoI" channel_yt_live_id="esyY47dmxoI" facebook_live_url="#" color="#f7ff0b" color="#ff330b" >}}
 
 ---
 <!-- {{< youtubelive id="D1CpWYU3DvA" >}} -->
