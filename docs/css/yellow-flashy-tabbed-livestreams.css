@@ -1,0 +1,463 @@
+/* yellow-flashy-tabbed-livestreams.css */
+.tabs.yellow.tabbed.livestreams {
+  margin: .5em!important;
+}
+
+div.improve-contrast-box {
+  padding: 1em!important;
+  width: 100%!important;
+  margin-top: 4em!important;
+}
+
+label.yellow.tabbed.livestreams.tab {
+  /* font-size: 1.5em; */
+  color: #42DCA3!important;
+  /* margin-left: unset!important;
+  margin-left: 0px!important;
+  margin-left: 7% !important;
+  margin-right: auto !important;
+  margin-left: 0px!important; */
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+  padding: 1rem!important;
+  border: 1px dotted rgba(36, 142, 147, 0.3);
+  background: #ffff000f!important;
+  -webkit-transition : 500ms ease-out;
+  -moz-transition : 500ms ease-out;
+  -o-transition : 500ms ease-out;
+  transition : 500ms ease-out;
+  margin-left: auto !important;
+}
+label.yellow.tabbed.livestreams.tab:hover {
+  font-size: 3em;
+  border: 1px dotted rgba(100, 65, 165, 0.3);
+  border-radius: 3px;
+  background: #ffff0054!important;
+  color: white!important;
+}
+
+
+div.container div.row div.col-lg-8.mx-auto {
+  padding-top: 3em;
+}
+
+/* ********************************************************************** */
+
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+@media (max-width: 303px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 0em!important;
+  }
+}
+
+@media (max-width: 358px) and (min-width: 303px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 0em!important;
+  }
+}
+
+@media (max-width: 450px) and (min-width: 358px) {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 2em!important;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 450px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 3em!important;
+  }
+}
+
+#hahahugoshortcode-s1-hbhb {
+  margin-top: -35px !important;
+}
+
+
+#mainNav .nav-link:hover {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 0, 0.3); */
+}
+
+/* ********************************************************************** */
+
+
+label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+  /* font-size: 1.5em; */
+  -webkit-transition : 500ms ease-out;
+  -moz-transition : 500ms ease-out;
+  -o-transition : 500ms ease-out;
+  transition : 500ms ease-out;
+}
+label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton:hover {
+  /* color: rgba(36, 142, 147, 0.6)!important; */
+  color: white!important;
+}
+
+
+
+/**************************
+ **************************
+ **************************
+ * Tabbed panels
+ **************************
+ **************************
+ **************************/
+/***>> many thanks to @makzan "Thomas Seng Hin Mak" https://codepen.io/makzan */
+/***>> https://codepen.io/makzan/pen/MWYMVoM */
+/* For debug only */
+/* {
+   border: 1px solid black !important;
+   padding: 1em;
+ }
+ */
+
+
+.tabs {
+  /* Step 1: Enable Flex on the container */
+  display: flex;
+
+  /* Step 2: Enable flex-wrap to put content section below tab label */
+  flex-wrap: wrap;
+}
+.tabs > section {
+  /* Step 3: Move content <section> to the end, after the tab labels */
+  order: 999;
+
+  /* Step 4: Make sure the content <section> is 100% width */
+  width: 100%;
+
+  /* Step 5: Hide all content <section> by default */
+  display: none;
+}
+.tabs > input {
+  /* display: none; Don’t use display:none. Bad for accessibility */
+
+  /* Step 6: Hide the radio inputs */
+  opacity: 0;
+
+  /* Step 7: Make sure the radio inputs don’t take up space in layout */
+  position: absolute;
+}
+/* Step 8: Select the label right next to the selected input */
+.tabs > input[type=radio]:checked + label {
+  /* Step 9: Highlight the selected label */
+  /* background: yellow; */
+}
+/* Step 10: Select the section right next to the label which is next to the selected input */
+.tabs > input[type=radio]:checked + label + section {
+  /* Step 11: Unset the 'display:none' we did in step 5 */
+  display: unset;
+}
+
+/* Done. Make sure to disable the debug code at the beginning of CSS. And now it is time to make the tabs look good */
+
+/* Make the tabs look good */
+/* Final Step: Make the tabs pretty with padding and colors */
+
+.tabs > label {
+  padding: .5em 1em;
+  /* background: #b4d5e4; */
+  cursor: pointer;
+  /* border-right: 1px solid #798f99; */
+}
+.tabs > label:last-of-type {
+  /* border-right: none; */
+}
+.tabs > input[type=radio]:checked + label {
+  /* background: #798f99;; */
+}
+
+.tabs section {
+  /* border: 1px #798f99 solid; */
+  /* border-top: 5px #798f99 solid; */
+  padding: 1em;
+}
+
+/*
+body {
+  padding: 2em;
+}
+*/
+
+
+/********************************************
+********************************************
+********************************************
+ * Livestream Component responsiveness
+ ********************************************
+ ********************************************
+ ********************************************/
+
+/********************************************
+* Below, that's for the social
+* networks icons :
+* => their sizes change when screen smaller
+********************************************/
+/*************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+ @media only screen (max-width: 303px)  {
+
+      /********************************************
+       * size of font for
+       * i.awesome.flashy.bouton
+       ********************************************/
+       label.yellow.tabbed.livestreams.tab {
+         font-size: .75rem;
+         color: #42DCA3!important;
+         /* margin-left: 4%!important;
+         margin-left: 0px!important; */
+         margin-right: auto !important;
+         margin-left: auto !important;
+         padding: 0px!important;
+         border: 1px dotted rgba(36, 142, 147, 0.3);
+         background: black;
+         -webkit-transition : 500ms ease-out;
+         -moz-transition : 500ms ease-out;
+         -o-transition : 500ms ease-out;
+         transition : 500ms ease-out;
+       }
+       label.yellow.tabbed.livestreams.tab:hover {
+         font-size: 2rem;
+         border: 1px dotted rgba(100, 65, 165, 0.3);
+         color: white!important;
+         -webkit-transition : 500ms ease-in-out;
+         -moz-transition : 500ms ease-in-out;
+         -o-transition : 500ms ease-in-out;
+         transition : 500ms ease-in-out;
+       }
+       label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+         font-size: .75em!important;
+         -webkit-transition : 500ms ease-out;
+         -moz-transition : 500ms ease-out;
+         -o-transition : 500ms ease-out;
+         transition : 500ms ease-out;
+       }
+ }
+
+ @media only screen and (max-width: 358px) and (min-width: 303px)  {
+
+      /********************************************
+       * size of font for
+       * i.awesome.flashy.bouton
+       ********************************************/
+       label.yellow.tabbed.livestreams.tab {
+         font-size: .75rem;
+         color: #42DCA3!important;
+         /* margin-left: 4%!important;
+         margin-left: 0px!important; */
+         margin-right: auto !important;
+         margin-left: auto !important;
+         padding: 1px!important;
+         border: 1px dotted rgba(36, 142, 147, 0.3);
+         background: black;
+         -webkit-transition : 500ms ease-out;
+         -moz-transition : 500ms ease-out;
+         -o-transition : 500ms ease-out;
+         transition : 500ms ease-out;
+         margin-right: auto !important;
+         margin-left: auto !important;
+       }
+       label.yellow.tabbed.livestreams.tab:hover {
+         font-size: 2rem;
+         border: 1px dotted rgba(100, 65, 165, 0.3);
+         color: white!important;
+         -webkit-transition : 500ms ease-in-out;
+         -moz-transition : 500ms ease-in-out;
+         -o-transition : 500ms ease-in-out;
+         transition : 500ms ease-in-out;
+       }
+       label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+         font-size: .75em!important;
+         -webkit-transition : 500ms ease-out;
+         -moz-transition : 500ms ease-out;
+         -o-transition : 500ms ease-out;
+         transition : 500ms ease-out;
+       }
+ }
+
+@media only screen and (max-width: 411px) and (min-width: 358px)  {
+
+  label.yellow.tabbed.livestreams.tab {
+    font-size: 1em;
+    color: #42DCA3!important;
+    /* margin-left: 4%!important;
+    margin-left: 0px!important; */
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 3px!important;
+    border: 1px dotted rgba(36, 142, 147, 0.3);
+    background: black;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  label.yellow.tabbed.livestreams.tab:hover {
+    font-size: 2em;
+    border: 1px dotted rgba(100, 65, 165, 0.3);
+    color: white!important;
+  }
+  label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+    font-size: 1.25em;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 412px)  {
+
+  label.yellow.tabbed.livestreams.tab {
+    font-size: 1em;
+    color: #42DCA3!important;
+    /* margin-left: 1rem!important;
+    margin-left: 0px!important; */
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: .5rem!important;
+    border: 1px dotted rgba(36, 142, 147, 0.3);
+    background: black;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  label.yellow.tabbed.livestreams.tab:hover {
+    font-size: 2em;
+    border: 1px dotted rgba(100, 65, 165, 0.3);
+    color: white!important;
+  }
+  label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+    font-size: 1.75em;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+  }
+}
+
+@media only screen and (min-width: 600px)  {
+  label.yellow.tabbed.livestreams.tab {
+    font-size: 1.5em!important;
+    color: #fff;
+    /* margin-left: 0px!important; */
+    /* padding: .5rem!important; */
+    /* margin-left: 0px!important; */
+    color: #42DCA3!important;
+    border: 1px dotted rgba(36, 142, 147, 0.3);
+    background: black;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  label.yellow.tabbed.livestreams.tab:hover {
+    font-size: 3em!important;
+    border: 1px dotted rgba(100, 65, 165, 0.3);
+    color: white!important;
+  }
+  label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
+    font-size: 2.5em!important;
+    -webkit-transition : 500ms ease-out;
+    -moz-transition : 500ms ease-out;
+    -o-transition : 500ms ease-out;
+    transition : 500ms ease-out;
+  }
+}
+
+/********************************************
+ * Below, that's for the live
+ * buttons :
+ * => when screen gets smaller, layout changes from horizontal to vertical : buttons are on top of eah other, instead of aside each other sharing half the screen
+ * => when screen gets smaller, and switching fom horizontal to vertical is not enough, the font size is decreased as well to fit to screen size
+ ********************************************/
+ /* div.row.conteneur.jaune.lives.horizontal { */
+ div.conteneur.jaune.lives.horizontal {
+   display: block;
+ }
+ div.row.conteneur.jaune.lives.vertical {
+   display: none;
+ }
+
+ @media only screen (min-width: 768px)  {
+   /* div.row.conteneur.jaune.lives.horizontal { */
+   div.conteneur.jaune.lives.horizontal {
+     display: block;
+   }
+   div.row.conteneur.jaune.lives.vertical {
+     display: none;
+   }
+
+ }
+@media only screen and (max-width: 767px) and (min-width: 303px)  {
+  /* div.row.conteneur.jaune.lives.horizontal { */
+  div.conteneur.jaune.lives.horizontal {
+    display: none;
+  }
+  div.row.conteneur.jaune.lives.vertical {
+    display: block;
+  }
+
+}
+@media only screen and (max-width: 303px) and (min-width: 0px)  {
+  /* div.row.conteneur.jaune.lives.horizontal { */
+  div.conteneur.jaune.lives.horizontal {
+    display: none;
+  }
+  div.row.conteneur.jaune.lives.vertical {
+    display: block;
+  }
+
+}
+/*
+a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
+  font-size: 1.25rem!important;
+}
+*/
+/* a.awesome.flashy.bouton span */
+@media only screen and (max-width: 411px) and (min-width: 303px)  {
+
+  a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
+    font-size: .85rem!important;
+  }
+}
+@media only screen and (max-width: 303px) and (min-width: 0px)  {
+  a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
+    font-size: .85rem!important;
+  }
+}
+
+/***********
+ * the last icon from left to right, raises an issue :
+ *  => when you hover it, it will get bigger,
+ *  => and therefore flow below the other icons
+ *  => so that the mouse does not hover anyore,
+ *  => and hence the icon shrinks back to initial size,
+ *  => and gets back under the mouse pointer
+ *  => this brings up a bad loop in the UI : just bad, it does not crash the page
+ */
+label.yellow.tabbed.livestreams.tab.last {
+  margin-right: 5px;
+}
