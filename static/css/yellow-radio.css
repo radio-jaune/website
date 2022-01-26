@@ -20,6 +20,30 @@ span.cent.jaune.marque {
   color: yellow;
 }
 
+
+@media (max-width: 771px) and (min-width: 600px) {
+
+  /********************************************
+   *  TITRES CUSTOM
+   ********************************************/
+   span.cent.jaune.gros.titre {
+     color: white;
+     font-size: 1em;
+   }
+   span.cent.jaune.sous.titre {
+     color: white;
+     font-size: .5em;
+   }
+
+
+   /********************************************
+    *  DISCORD CHAT INVITE smaller font when small screens
+    ********************************************/
+   span.network-name.radio.jaune.discord.invite {
+     font-size: 1rem!important;
+   }
+
+}
 @media (max-width: 600px) {
 
   /********************************************

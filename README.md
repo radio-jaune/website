@@ -108,3 +108,34 @@ git add -A && git commit -m "[${RELEASE_VERSION}] - release and deployment" && g
 git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
 
 ```
+
+
+
+
+## surge
+
+
+```bash
+
+export DEPLOYMENT_DOMAIN=radio-jone.surge.sh
+export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
+
+if [ -d ./docs ]; then
+  rm -fr ./docs
+fi;
+
+if [ -d ./public ]; then
+  rm -fr ./public
+fi;
+
+mkdir -p  ./docs
+mkdir -p  ./public
+
+export PATH=$PATH:/usr/local/go/bin
+hugo -b ${DEPLOYMENT_BASE_URL}
+
+cp -fr ./public/* ./docs/
+
+surge ./public "${DEPLOYMENT_DOMAIN}"
+
+```

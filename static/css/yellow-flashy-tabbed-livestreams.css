@@ -1,21 +1,87 @@
 /* yellow-flashy-tabbed-livestreams.css */
+.tabs.yellow.tabbed.livestreams {
+  margin: .5em!important;
+}
+
+div.improve-contrast-box {
+  padding: 1em!important;
+  width: 100%!important;
+  margin-top: 4em!important;
+}
 
 label.yellow.tabbed.livestreams.tab {
   /* font-size: 1.5em; */
   color: #fff;
   color: #42DCA3!important;
   border: 1px dotted rgba(36, 142, 147, 0.3);
-  background: black;
+  background: #ffff000f!important;
   -webkit-transition : 500ms ease-out;
   -moz-transition : 500ms ease-out;
   -o-transition : 500ms ease-out;
   transition : 500ms ease-out;
+  margin-left: 12% !important;
 }
+
 label.yellow.tabbed.livestreams.tab:hover {
   font-size: 3em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
+  border-radius: 3px;
+  background: #ffff0054!important;
   color: white!important;
 }
+
+
+div.container div.row div.col-lg-8.mx-auto {
+  padding-top: 3em;
+}
+
+/* ********************************************************************** */
+
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+@media (max-width: 303px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 0em!important;
+  }
+}
+
+@media (max-width: 358px) and (min-width: 303px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 0em!important;
+  }
+}
+
+@media (max-width: 450px) and (min-width: 358px) {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 2em!important;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 450px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 3em!important;
+  }
+}
+
+#hahahugoshortcode-s1-hbhb {
+  margin-top: -35px !important;
+}
+
+
+#mainNav .nav-link:hover {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 0, 0.3); */
+}
+
+/* ********************************************************************** */
+
 
 label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
   /* font-size: 1.5em; */
