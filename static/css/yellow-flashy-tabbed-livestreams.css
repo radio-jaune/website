@@ -11,17 +11,24 @@ div.improve-contrast-box {
 
 label.yellow.tabbed.livestreams.tab {
   /* font-size: 1.5em; */
-  color: #fff;
   color: #42DCA3!important;
+  /* margin-left: unset!important;
+  margin-left: 0px!important;
+  margin-left: 7% !important;
+  margin-right: auto !important;
+  margin-left: 0px!important; */
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+  padding: 1rem!important;
   border: 1px dotted rgba(36, 142, 147, 0.3);
   background: #ffff000f!important;
   -webkit-transition : 500ms ease-out;
   -moz-transition : 500ms ease-out;
   -o-transition : 500ms ease-out;
   transition : 500ms ease-out;
-  margin-left: 12% !important;
+  margin-left: auto !important;
 }
-
 label.yellow.tabbed.livestreams.tab:hover {
   font-size: 3em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
@@ -212,6 +219,11 @@ body {
        label.yellow.tabbed.livestreams.tab {
          font-size: .75rem;
          color: #42DCA3!important;
+         /* margin-left: 4%!important;
+         margin-left: 0px!important; */
+         margin-right: auto !important;
+         margin-left: auto !important;
+         padding: 0px!important;
          border: 1px dotted rgba(36, 142, 147, 0.3);
          background: black;
          -webkit-transition : 500ms ease-out;
@@ -246,12 +258,19 @@ body {
        label.yellow.tabbed.livestreams.tab {
          font-size: .75rem;
          color: #42DCA3!important;
+         /* margin-left: 4%!important;
+         margin-left: 0px!important; */
+         margin-right: auto !important;
+         margin-left: auto !important;
+         padding: 1px!important;
          border: 1px dotted rgba(36, 142, 147, 0.3);
          background: black;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
          transition : 500ms ease-out;
+         margin-right: auto !important;
+         margin-left: auto !important;
        }
        label.yellow.tabbed.livestreams.tab:hover {
          font-size: 2rem;
@@ -275,14 +294,20 @@ body {
 
   label.yellow.tabbed.livestreams.tab {
     font-size: 1em;
-    color: #fff;
     color: #42DCA3!important;
+    /* margin-left: 4%!important;
+    margin-left: 0px!important; */
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 3px!important;
     border: 1px dotted rgba(36, 142, 147, 0.3);
     background: black;
     -webkit-transition : 500ms ease-out;
     -moz-transition : 500ms ease-out;
     -o-transition : 500ms ease-out;
     transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 2em;
@@ -302,14 +327,20 @@ body {
 
   label.yellow.tabbed.livestreams.tab {
     font-size: 1em;
-    color: #fff;
     color: #42DCA3!important;
+    /* margin-left: 1rem!important;
+    margin-left: 0px!important; */
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: .5rem!important;
     border: 1px dotted rgba(36, 142, 147, 0.3);
     background: black;
     -webkit-transition : 500ms ease-out;
     -moz-transition : 500ms ease-out;
     -o-transition : 500ms ease-out;
     transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 2em;
@@ -329,6 +360,9 @@ body {
   label.yellow.tabbed.livestreams.tab {
     font-size: 1.5em!important;
     color: #fff;
+    /* margin-left: 0px!important; */
+    /* padding: .5rem!important; */
+    /* margin-left: 0px!important; */
     color: #42DCA3!important;
     border: 1px dotted rgba(36, 142, 147, 0.3);
     background: black;
@@ -336,6 +370,8 @@ body {
     -moz-transition : 500ms ease-out;
     -o-transition : 500ms ease-out;
     transition : 500ms ease-out;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 3em!important;
@@ -343,7 +379,7 @@ body {
     color: white!important;
   }
   label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-    font-size: 1.5em!important;
+    font-size: 2.5em!important;
     -webkit-transition : 500ms ease-out;
     -moz-transition : 500ms ease-out;
     -o-transition : 500ms ease-out;

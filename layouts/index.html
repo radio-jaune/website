@@ -20,47 +20,7 @@
     </li>
     {{- end -}}
    {{- end -}}
-   <li class="nav-item">
-    <a class="nav-link js-scroll-trigger improve-contrast-box" href="{{ .Site.Params.rumble_channel_link }}"><i class="fas fa fa-ruble-sign fa-fw"></i></a>
-   </li>
-
-   <li class="nav-item">
-     <a href="{{ .Site.Params.telegram_group_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-telegram fa-fw"></i>
-     </a>
-   </li>
-
-   <li class="nav-item">
-     <a href="{{ .Site.Params.discord_server_invitation }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-discord"></i>
-     </a>
-   </li>
-
-   <li class="nav-item">
-     <a href="{{ .Site.Params.vk_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-vk fa-fw"></i>
-     </a>
-   </li>
-
-   <li class="nav-item">
-     <a href="{{ .Site.Params.twitch_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-twitch fa-fw"></i>
-     </a>
-   </li>
-
-   <li class="nav-item">
-     <a href="https://www.youtube.com/channel/{{ .Site.Params.youtube_channel_id }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-youtube fa-fw"></i>
-     </a>
-   </li>
-
-   <li class="nav-item">
-     <a href="{{ .Site.Params.github_pages }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-github fa-fw"></i>
-     <span class="network-name">Dev</span>
-     </a>
-   </li>
-
+   {{ partial "social.top.menus.html" . }}
    </ul>
   </div>
  </div>
@@ -69,39 +29,55 @@
 {{ range $ind, $elem := (sort $sections.Resources ".Params.weight") }}
  {{- if eq $ind 0 -}}<header><div id="intro-body">
  {{- else }}<section id="sec-ind-{{ $ind }}" class="section-{{ $ind }} content-section text-center">{{ end }}
- <div class="container"><div class="row">
+ <div class="container">
+   <div class="ecran voile statut live off air"></div>
+   <div class="row">
 
 
-{{- if $elem.Params.discord }}
-  <div class="col-lg-12 mx-auto discord chat">
-{{ else }}
-  <div class="col-lg-8 mx-auto">
-{{ end }}
+        {{- if $elem.Params.discord }}
+        <div class="col-lg-12 mx-auto discord chat">
+          {{ else }}
+          <div class="col-lg-8 mx-auto">
+          {{ end }}
 
 
 
 
-  {{- if $elem.Params.improvecontrast }}<div class="improve-contrast-box">{{ end }}
-  {{ default "" $elem.Content }}
-  {{- if $elem.Params.discord }}
-  <div class="discord widget">
-  <!--
-    {{ partial "discord-widget.html" }}
+            {{- if $elem.Params.improvecontrast }}
+            <div class="improve-contrast-box">
+            {{ end }}
+              {{ default "" $elem.Content }}
+              {{- if $elem.Params.discord }}
+              <div class="discord widget">
+              <!--
+                {{ partial "discord-widget.html" }}
 
-    <h3> ds index.html / valeur discord_channel_id : {{ $.Site.Params.discord_channel_id }} <h3>
-    <h3> ds index.html / valeur discord_server_id : {{ $.Site.Params.discord_server_id }} <h3>
+                <h3> ds index.html / valeur discord_channel_id : {{ $.Site.Params.discord_channel_id }} <h3>
+                <h3> ds index.html / valeur discord_server_id : {{ $.Site.Params.discord_server_id }} <h3>
 
-    <iframe src="https://e.widgetbot.io/channels/{{ $.Site.Params.discord_server_id }}/{{ $.Site.Params.discord_channel_id }}" height="600" width="100%"></iframe>
-    <hr/>
-   -->
-   {{ partial "discord-widget.html" . }}
-  </div>
-  {{ end }}
-  {{- if $elem.Params.improvecontrast }}</div>{{ end }}
-  {{ if eq $ind 0 }}<a href="#sec-ind-1" class="btn btn-circle js-scroll-trigger" aria-label="Scroll to Next Section"><i class="fa fa-angle-double-down animated"></i></a>{{ end -}}
- </div></div></div>
+                <iframe src="https://e.widgetbot.io/channels/{{ $.Site.Params.discord_server_id }}/{{ $.Site.Params.discord_channel_id }}" height="600" width="100%"></iframe>
+                <hr/>
+               -->
+               {{ partial "discord-widget.html" . }}
+              </div>
+              {{ end }}
+            {{- if $elem.Params.improvecontrast }}
+            </div>
+            {{ end }}
 
- {{ if eq $ind 0 }}</div></header>
+            {{ if eq $ind 0 }}
+              <a href="#sec-ind-1" class="btn btn-circle js-scroll-trigger" aria-label="Scroll to Next Section">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            {{ end -}}
+          </div>
+        </div>
+    </div>
+
+ {{ if eq $ind 0 }}
+</div>
+
+</header>
  {{- else -}}</section>{{- end }}
 {{ end }}
 

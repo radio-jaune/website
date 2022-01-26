@@ -1,5 +1,6 @@
 ---
-title: "Réseaux Sociaux"
+# title: "Réseaux Sociaux"
+title: "Rés. Sociaux"
 weight: 4
 improvecontrast: true
 ---
@@ -9,7 +10,7 @@ improvecontrast: true
 
 <!--
 
-Faire un compteur + le titre 
+Faire un compteur + le titre
 
 ## Radio Jaune est partout!
 
