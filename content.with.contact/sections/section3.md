@@ -30,8 +30,9 @@ improvecontrast: true
 
 {{< socialhandles >}}
     {{< discord-inivte-short >}}
-    {{< vk user="radiojaune" >}}
-    {{< telegram user="radiojaune" >}}
+    {{< vk user="id698593797" >}}
+    <!-- {{< telegram user="radiojaune" >}} -->
+    {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}}
 
 {{< /socialhandles >}}
 
@@ -40,8 +41,10 @@ improvecontrast: true
 
 {{< socialhandles >}}
     {{< twitch user="radiojaune" >}}
-    {{< facebook user="radiojaune" >}}
-    {{< youtube user="radiojaune" >}}
+    <!-- {{< facebook user="radiojaune" >}} -->
+    {{< youtube-channel channel_id="UCIUGDzUjNIfQC9YjUIu84vQ" >}}
+    {{< twitter user="radiojaune" >}}
+    {{< rumble channel_id="radiojaune" >}}
 {{< /socialhandles >}}
 
 <!--
