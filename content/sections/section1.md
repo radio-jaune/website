@@ -1,23 +1,73 @@
 ---
-title: "LE DIRECT"
-weight: 2
+# title: "Réseaux Sociaux"
+title: "Rés. Sociaux"
+weight: 4
+improvecontrast: true
 ---
 
-## LA RADIO LIBRE
+## La sixième vague sera jaune!
 
-`Aucun direct n'est pour l'instant en  cours`. En direct tous les Dimanches à 21h00.
 
 <!--
 
-{{< join-live-button join_live_text="INTERVENIR EN DIRECT" join_live_url="https://restream.io/lien/pour/parler/en/direct/sur/restream.io" >}}
+Faire un compteur + le titre
 
-join_live_url = "https://studio.restream.io/guest/blFvUjVHYYNX5y4Ezk9Yiy51GbXLp08?default-camera-mirror=true"
-twitch_channel_link = "https://www.twitch.tv/radiojaune"
-vk_channel_link = "https://vk.com/id698593797"
+## Radio Jaune est partout!
+
+{{< big-button-awe dashidashi="0" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#f7ff0b" >}}
+
+{{< big-button-awe dashidashi="1" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#ff0bd9" >}}
+
+{{< big-button-awe dashidashi="2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}
+
+{{< big-button-awe dashidashi="3" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#ff330b" >}}
+
+|                                              |                                              |
+|----------------------------------------------|----------------------------------------------|
+|||
+|||
+|{{< big-button-awe dashidashi="2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}|{{< big-button-awe dashidashi="-2" text="Visit Download Page" href="https://github.com/radio-jaune/" color="#07aa0b" >}}|
 
 -->
 
-{{< button-live-awe join_live_text="INTERVENIR EN DIRECT" join_live_url="https://studio.restream.io/guest/ejY4bEUwYiSWUY2FYkKssbY1GCFcs4c?event=&default-camera-mirror=true" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797" vk_live_url="https://vk.com/video698593797_456239018" youtube_live_url="https://www.youtube.com/embed/esyY47dmxoI" channel_yt_live_id="esyY47dmxoI" facebook_live_url="#" color="#f7ff0b" color="#ff330b" >}}
 
 ---
-<!-- {{< youtubelive id="D1CpWYU3DvA" >}} -->
+
+{{< socialhandles >}}
+    {{< discord-inivte-short >}}
+    {{< vk user="id698593797" >}}
+    <!-- {{< telegram user="radiojaune" >}} -->
+    {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}}
+
+{{< /socialhandles >}}
+
+
+---
+
+{{< socialhandles >}}
+    {{< twitch user="radiojaune" >}}
+    <!-- {{< facebook user="radiojaune" >}} -->
+    {{< youtube-channel channel_id="UCIUGDzUjNIfQC9YjUIu84vQ" >}}
+    {{< twitter user="radiojaune" >}}
+    {{< rumble channel_id="radiojaune" >}}
+{{< /socialhandles >}}
+
+<!--
+---
+
+{{< socialhandles >}}
+    {{< instagram user="radiojaune" >}}
+    {{< pinterest user="radiojaune" >}}
+    {{< tiktok user="radiojaune" >}}
+{{< /socialhandles >}}
+
+---
+
+{{< socialhandles >}}
+    {{< discord-inivte-short >}}
+    {{< vk user="radiojaune" >}}
+    {{< twitter user="radiojaune" >}}
+{{< /socialhandles >}}
+
+---
+-->

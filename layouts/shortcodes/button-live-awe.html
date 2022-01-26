@@ -3,6 +3,8 @@
 
   <!-- Tab 1 & Content -->
   <input type="radio" name="tab" id="tab3" role="tab" class='yellow tabbed livestreams'>
+  <!-- <input type="radio" name="tab" id="tab44" role="tab" class='yellow tabbed livestreams'> Tab 4 & Content jblici -->
+
   <label for="tab3" id="tab3-label" class='yellow tabbed livestreams tab'>
 
     <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
@@ -11,6 +13,7 @@
   <section aria-labelledby="tab3-label" class='yellow tabbed livestreams'>
       <div class="conteneur jaune lives horizontal">
             <!-- GO TO VK.com live BUTTON -->
+            <!--
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "vk_live_url" }}"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
                 <span class="network-name">
@@ -19,6 +22,8 @@
                 </span>
               </a>
             </li>
+            -->
+
             <!-- Talk live BUTTON -->
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
@@ -32,6 +37,7 @@
       <div class="row conteneur jaune lives vertical">
         <div class="col-12 haut">
             <!-- GO TO VK.com live BUTTON -->
+            <!--
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "vk_live_url" }}"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
                 <span class="network-name">
@@ -40,6 +46,8 @@
                 </span>
               </a>
             </li>
+            -->
+
         </div>
         <div class="col-12 bas">
             <!-- Talk live BUTTON -->
@@ -50,6 +58,7 @@
                   {{ .Get "join_live_text" }}
                 </span>
               </a>
+
             </li>
         </div>
       </div>
@@ -59,18 +68,27 @@
       <div class="embed-responsive embed-responsive-16by9">
         <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
         </iframe>
+        <!--
+
+          == Re-exported RAW
+
+          <iframe src="https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+
+         -->
+
       </div>
 
   </section>
 
-  <!-- Tab 4 & Content -->
-  <input type="radio" name="tab" id="tab4" role="tab" class='yellow tabbed livestreams'>
+  <!-- Tab 4 & Content jblici -->
+  <input type="radio" name="tab" id="tab4" role="tab" class='yellow tabbed livestreams'><!-- Tab 4 & Content jblici -->
   <label for="tab4" class='yellow tabbed livestreams tab'>
     <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
   </label>
   <section class='yellow tabbed livestreams'>
     <div class="conteneur jaune lives horizontal">
           <!-- YOUTUBE LIVE BTN -->
+          <!--
           <li class="list-inline-item radio jaune livestream button">
             <a href="{{ .Get "youtube_live_url" }}"  style="--clr:{{ .Get "color" }}; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
               <span class="network-name">
@@ -79,6 +97,7 @@
               </span>
             </a>
           </li>
+           -->
           <!-- Talk live BUTTON -->
           <li class="list-inline-item radio jaune livestream button">
             <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
@@ -92,6 +111,7 @@
     <div class="row conteneur jaune lives vertical">
       <div class="col-12 haut">
           <!-- YOUTUBE LIVE BTN -->
+          <!--
           <li class="list-inline-item radio jaune livestream button">
             <a href="{{ .Get "youtube_live_url" }}"  style="--clr:{{ .Get "color" }}; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
               <span class="network-name">
@@ -100,6 +120,7 @@
               </span>
             </a>
           </li>
+        -->
       </div>
       <div class="col-12 bas">
           <!-- Talk live BUTTON -->
@@ -141,6 +162,7 @@
     <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
       <div class="conteneur jaune lives horizontal">
             <!-- TWITCH LIVE BTN -->
+            <!--
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "twitch_live_url" }}"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
                 <span class="network-name">
@@ -149,6 +171,7 @@
                 </span>
               </a>
             </li>
+             -->
             <!-- Talk live BUTTON -->
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
@@ -162,6 +185,8 @@
       <div class="row conteneur jaune lives vertical">
         <div class="col-12 haut">
             <!-- TWITCH LIVE BTN -->
+
+            <!--
             <li class="list-inline-item radio jaune livestream button">
               <a href="{{ .Get "twitch_live_url" }}"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
                 <span class="network-name">
@@ -170,6 +195,7 @@
                 </span>
               </a>
             </li>
+             -->
         </div>
         <div class="col-12 bas">
             <!-- Talk live BUTTON -->
@@ -209,13 +235,117 @@
           new Twitch.Embed("twitch-embed", {
             width: '100%',
             height: 480,
+            /* height: '100%', */
+            /* height: 300, */
             channel: "{{ .Get "twitch_channel_name" }}", // oua super facile, juste à mettre le nom dela chaîne twitch :  "monstercat" est une chaîne twitch existante
             autoplay: false,
             // Only needed if this page is going to be embedded on other websites
-            parent: ["embed.example.com", "othersite.example.com"]
+            parent: ["radiojaune.com"]
           });
         </script>
     </section>
+
+
+
+
+
+
+
+        <!-- Tab 4 & Content : RUMBLE -->
+        <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab1" role="tab" checked>
+
+        <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab'>
+          <i class="fas fa fa-ruble-sign fa-fw awesome flashy bouton"></i>
+        </label>
+
+
+        <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
+          <div class="conteneur jaune lives horizontal">
+                <!-- TWITCH LIVE BTN -->
+                <!--
+                <li class="list-inline-item radio jaune livestream button">
+                  <a href="{{ .Get "twitch_live_url" }}"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
+                    <span class="network-name">
+                      <i class="fas fa fa-ruble-sign fa-fw awesome flashy bouton"></i>
+                      Twitch Live
+                    </span>
+                  </a>
+                </li>
+                 -->
+                <!-- Talk live BUTTON -->
+                <li class="list-inline-item radio jaune livestream button">
+                  <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                    <span class="network-name">
+                      <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                      {{ .Get "join_live_text" }}
+                    </span>
+                  </a>
+                </li>
+          </div>
+          <div class="row conteneur jaune lives vertical">
+            <div class="col-12 haut">
+                <!-- RUMBLE LIVE BTN -->
+
+                <!-- -->
+                <li class="list-inline-item radio jaune livestream button">
+                  <a href="{{ .Get "rumble_live_url" }}"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
+                    <span class="network-name">
+                      <i class="fas fa fa-ruble-sign fa-fw awesome flashy bouton"></i>
+                      Twitch Live
+                    </span>
+                  </a>
+                </li>
+
+            </div>
+            <div class="col-12 bas">
+                <!-- Talk live BUTTON -->
+                <li class="list-inline-item radio jaune livestream button">
+                  <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                    <span class="network-name">
+                      <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                      {{ .Get "join_live_text" }}
+                    </span>
+                  </a>
+                </li>
+            </div>
+          </div>
+          <hr/>
+
+          <!-- RUMBLE LIVE PLAYER AND TCHAT -->
+
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+          <!-- ------------------------------------------------ -->
+
+            <!-- Add a placeholder for the Rumble embed -->
+            <div id="rumble-embed"></div>
+
+            <!-- Load the Rumble embed JavaScript file -->
+            <script src="https://embed.rumble.com/embed/v1.js"></script>
+
+            <!-- Create a Rumble. Embed object that will render within the "rumble-embed" element -->
+            <script type="text/javascript">
+
+              new Rumble.Embed("rumble-embed", {
+                width: '100%',
+                height: 480,
+                /* height: '100%', */
+                /* height: 300, */
+                channel: "{{ .Get "rumble_channel_name" }}", // oua super facile, juste à mettre le nom dela chaîne twitch :  "monstercat" est une chaîne twitch existante
+                autoplay: false,
+                // Only needed if this page is going to be embedded on other websites
+                parent: ["radiojaune.com"]
+              });
+            </script>
+        </section>
+
+
+
 </div>
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->

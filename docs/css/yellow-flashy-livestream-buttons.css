@@ -130,3 +130,42 @@ a.awesome.flashy.bouton:hover span i {
     color: #42DCA3!important;
     /* color: #0e1538; */
 }
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+@media (max-width: 303px)  {
+  a.awesome.flashy.bouton span {
+    font-size: .5rem!important;
+  }
+}
+
+
+@media (max-width: 358px) and (min-width: 303px)  {
+  a.awesome.flashy.bouton span {
+    font-size: 7px!important;
+  }
+}
+
+@media (max-width: 450px) and (min-width: 358px) {
+  a.awesome.flashy.bouton span {
+    font-size: 1rem!important;
+  }
+}
+
+
+@media (max-width: 600px) and (min-width: 450px)  {
+  a.awesome.flashy.bouton span {
+    font-size: 1rem!important;
+  }
+}
+
+@media (min-width: 600px)  {
+  a.awesome.flashy.bouton span {
+    font-size: 1.5rem!important;
+  }
+}
