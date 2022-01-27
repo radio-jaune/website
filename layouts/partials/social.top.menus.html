@@ -1,3 +1,15 @@
+    <li class="nav-item statut du live twitch">
+      <a href="{{ .Site.Params.github_pages }}" class="nav-link js-scroll-trigger improve-contrast-box">
+          <span class=" statut du live twitch">
+              <img src="https://img.shields.io/twitch/status/{{ .Site.Params.twitch_channel_name }}?style=social&left_color=rgba(0, 255, 0, 0.52)&right_color=rgba(244, 244, 31, 0.52)" alt="Views"/>
+          </span>
+          <!--
+             https://ravichaganti.com/blog/adding-visitor-counter-to-statically-generated-web-pages/
+             https://visitor-badge.glitch.me/#
+          -->
+      </a>
+    </li>
+
 
    <!-- Additional menus -->
    <li class="nav-item">
@@ -53,7 +65,7 @@
    <li class="nav-item compteur de visites">
      <a href="{{ .Site.Params.github_pages }}" class="nav-link js-scroll-trigger improve-contrast-box">
          <span class="compteur de visites">
-             <img src="https://visitor-badge.glitch.me/badge?page_id={{ .Permalink }}" alt="Views"/>
+             <img src="https://visitor-badge.glitch.me/badge?page_id={{ .Permalink }}&left_color=rgba(255, 255, 0, .7)&right_color=rgba(0, 130, 0, 0.32)" alt="Nombre de visites"/>
          </span>
          <!--
             https://ravichaganti.com/blog/adding-visitor-counter-to-statically-generated-web-pages/

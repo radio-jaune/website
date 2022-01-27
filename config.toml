@@ -15,6 +15,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     thats_yellow = "#f7ff0b"
     join_live_url = "https://studio.restream.io/guest/ejY4bEUwYtPXzBjDtEaYlc2NEgHA0iw?event=&default-camera-mirror=false"
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
+    twitch_channel_name = "radiojaune"
     vk_channel_link = "https://vk.com/id698593797"
     vk_live_url = "https://vk.com/video_ext.php?oid=698593797&id=456239017&hash=4f8bd321b291b5e4&hd=2"
     rumble_channel_link = "https://rumble.com/radiojaune"
