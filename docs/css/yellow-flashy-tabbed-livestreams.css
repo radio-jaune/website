@@ -28,13 +28,23 @@ label.yellow.tabbed.livestreams.tab {
   -o-transition : 500ms ease-out;
   transition : 500ms ease-out;
   margin-left: auto !important;
+  /***************************************************/
+  /*      AWESOME TAB BUTTONS */
+  /***************************************************/
+  background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+  border-radius: 12px !important;
+  border: 3px solid rgba(0, 0, 0, .35) !important;
+  box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+  background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+  transition: all;
 }
 label.yellow.tabbed.livestreams.tab:hover {
-  font-size: 3em;
+  font-size: 2.5em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
   border-radius: 3px;
   background: #ffff0054!important;
   color: white!important;
+  transition: background-color 500ms ease-in-out!important;
 }
 
 
@@ -60,7 +70,7 @@ div.container div.row div.col-lg-8.mx-auto {
 
 @media (max-width: 358px) and (min-width: 303px)  {
   div.container div.row div.col-lg-8.mx-auto {
-    padding-top: 0em!important;
+    padding-top: 0rem!important;
   }
 }
 
@@ -217,31 +227,40 @@ body {
        * i.awesome.flashy.bouton
        ********************************************/
        label.yellow.tabbed.livestreams.tab {
-         font-size: .75rem;
+         font-size: .85rem;
          color: #42DCA3!important;
          /* margin-left: 4%!important;
          margin-left: 0px!important; */
          margin-right: auto !important;
          margin-left: auto !important;
-         padding: 0px!important;
          border: 1px dotted rgba(36, 142, 147, 0.3);
          background: black;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
          transition : 500ms ease-out;
+         /***************************************************/
+         /*      AWESOME TAB BUTTONS */
+         /***************************************************/
+         background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+         border-radius: 12px !important;
+         border: 3px solid rgba(0, 0, 0, .35) !important;
+         box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+         background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+         transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 2rem;
+         font-size: 2.25rem!important;
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
          -moz-transition : 500ms ease-in-out;
          -o-transition : 500ms ease-in-out;
          transition : 500ms ease-in-out;
+         transition: background-color 500ms ease-in-out!important;
        }
        label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-         font-size: .75em!important;
+         font-size: 1.25em!important;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
@@ -256,7 +275,7 @@ body {
        * i.awesome.flashy.bouton
        ********************************************/
        label.yellow.tabbed.livestreams.tab {
-         font-size: .75rem;
+         font-size: .85rem;
          color: #42DCA3!important;
          /* margin-left: 4%!important;
          margin-left: 0px!important; */
@@ -271,18 +290,28 @@ body {
          transition : 500ms ease-out;
          margin-right: auto !important;
          margin-left: auto !important;
+         /***************************************************/
+         /*      AWESOME TAB BUTTONS */
+         /***************************************************/
+         background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+         border-radius: 12px !important;
+         border: 3px solid rgba(0, 0, 0, .35) !important;
+         box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+         background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+         transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 2rem;
+         font-size: 2.25rem!important;
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
          -moz-transition : 500ms ease-in-out;
          -o-transition : 500ms ease-in-out;
          transition : 500ms ease-in-out;
+         transition: background-color 500ms ease-in-out!important;
        }
        label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-         font-size: .75em!important;
+         font-size: 1.25rem!important;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
@@ -308,11 +337,21 @@ body {
     transition : 500ms ease-out;
     margin-right: auto !important;
     margin-left: auto !important;
+    /***************************************************/
+    /*      AWESOME TAB BUTTONS */
+    /***************************************************/
+    background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+    border-radius: 12px !important;
+    border: 3px solid rgba(0, 0, 0, .35) !important;
+    box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+    background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+    transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 2em;
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
+    transition: background-color 500ms ease-in-out!important;
   }
   label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
     font-size: 1.25em;
@@ -341,11 +380,21 @@ body {
     transition : 500ms ease-out;
     margin-right: auto !important;
     margin-left: auto !important;
+    /***************************************************/
+    /*      AWESOME TAB BUTTONS */
+    /***************************************************/
+    background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+    border-radius: 12px !important;
+    border: 3px solid rgba(0, 0, 0, .35) !important;
+    box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+    background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+    transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 2em;
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
+    transition: background-color 500ms ease-in-out!important;
   }
   label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
     font-size: 1.75em;
@@ -358,7 +407,7 @@ body {
 
 @media only screen and (min-width: 600px)  {
   label.yellow.tabbed.livestreams.tab {
-    font-size: 1.5em!important;
+    font-size: 1em!important;
     color: #fff;
     /* margin-left: 0px!important; */
     /* padding: .5rem!important; */
@@ -372,11 +421,21 @@ body {
     transition : 500ms ease-out;
     margin-right: auto !important;
     margin-left: auto !important;
+    /***************************************************/
+    /*      AWESOME TAB BUTTONS */
+    /***************************************************/
+    background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%) !important;
+    border-radius: 12px !important;
+    border: 3px solid rgba(0, 0, 0, .35) !important;
+    box-shadow: 0px -1px 24px 4px #76FF03 !important, 4px 4px 24px 0px #111 !important, 1px 2px 2px 2px #5BCC00 inset !important, -1px -1px 4px 2px #5BCC00 inset !important;
+    background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+    transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
     font-size: 3em!important;
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
+    transition: background-color 500ms ease-in-out!important;
   }
   label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
     font-size: 2.5em!important;

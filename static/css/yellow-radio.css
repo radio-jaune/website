@@ -144,3 +144,74 @@ div.ecran.voile.statut.live.off.air::before {
     transition: 5s ease-in-out;
     z-index: 33;
 }
+
+
+
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** **       CCC       ** **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+
+
+li.disabled.bientot.pas.encore, label.disabled.bientot.pas.encore {
+  cursor: not-allowed;
+}
+li.disabled.bientot.pas.encore::before, label.disabled.bientot.pas.encore::before  {
+  content: '';
+  cursor: not-allowed;
+  position: absolute;
+  top: 0px!important;
+  left: 0px!important;
+  /* background: 100% 100% url('/images/radiojaune/favicon/vicon.ico') no-repeat center center fixed; */*/
+  background: 100% 100% rgba(0, 0, 0, 0.5); no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 44;
+}
+li.disabled.bientot.pas.encore a, label.disabled.bientot.pas.encore i, i.disabled.bientot.pas.encore {
+  pointer-events: none;
+}
+
+
+
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** **  DISCORD INVITE ** **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+/******************** ********************* **************************/
+
+
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+@media (max-width: 303px)  {
+  div.container div.row div.col-lg-8.mx-auto {
+    padding-top: 0em!important;
+  }
+  section.yellow.tabbed.livestreams {
+    padding: 0px!important;
+
+  }/**********************************/
+  a.invitation.radio.jaune.btn {
+    font-size: .85rem!important;
+  }
+}
+
+@media (max-width: 358px) and (min-width: 303px)  {
+  /**********************************/
+  a.invitation.radio.jaune.btn {
+    font-size: .85rem!important;
+  }
+}
