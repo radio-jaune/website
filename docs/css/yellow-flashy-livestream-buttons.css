@@ -169,3 +169,154 @@ a.awesome.flashy.bouton:hover span i {
     font-size: 1.5rem!important;
   }
 }
+
+
+/**************************
+ **************************
+ **************************
+ *      CUSTOM
+ **************************
+ **************************
+ **************************/
+ /* https://codepen.io/sdhp/pen/ZbWgNM */
+
+  /*
+  body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  */
+
+ .wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+   /* I LOVE this background */
+
+   background: radial-gradient(ellipse at center, #37474F 6%, #0e0e0e 100%);
+ }
+
+ .line {
+   text-decoration: none;
+   outline: none;
+   outline: 0;
+   text-align: center;
+   border-radius: 4px;
+ }
+ /* when clicked */
+
+ .big:active {
+   letter-spacing: -1px;
+   font-size: 2.2em;
+   line-height: 2.2em;
+   border: transparent;
+ }
+
+ .big {
+   font-size: 2.4em;
+   line-height: 2.4em;
+   font-weight: bold;
+   letter-spacing: -1px;
+   padding: 1.3em 1.2em;
+   /* round corners: */
+
+   border-radius: 12px;
+   /* or round: */
+   /* border-radius: 50%; */
+
+   border: 3px solid rgba(0, 0, 0, .35);
+   box-shadow: 0px -1px 24px 4px #76FF03, 4px 4px 24px 0px #111, 1px 2px 2px 2px #5BCC00 inset, -1px -1px 4px 2px #5BCC00 inset;
+   background: radial-gradient(farthest-corner at 45px 45px, #37474F 6%, #263238 100%);
+   transition: all;
+ }
+
+ .online {
+   box-shadow: 0px -1px 12px 4px #263238, 4px 4px 12px 0px #111, 1px 2px 2px 2px #263238 inset, -1px -1px 4px 2px #263238 inset;
+   color: #CCFF90;
+   //text-shadow: 2px 0px 2px #5BCC00, 0px 2px 2px #5BCC00, -2px 0px 1px #5BCC00, 0px -2px 2px #5BCC00;
+ }
+ .offline {
+   background-color: #37474F;
+   color: #263238;
+   text-shadow: 0 1px 1px hsla(0, 0%, 100%, .25), 0 -1px 1px hsla(0, 0%, 0%, .75);
+   border: 4px solid rgba(0, 0, 0, .45);
+   letter-spacing: -2px;
+   box-shadow: 0px -1px 12px 4px #263238, 4px 4px 12px 0px #111, 1px 2px 2px 2px #263238 inset, -1px -1px 4px 2px #263238 inset;
+ }
+ .online.livestreams {
+   box-shadow: 0px -1px 12px 4px #263238, 4px 4px 12px 0px #111, 1px 2px 2px 2px #263238 inset, -1px -1px 4px 2px #263238 inset;
+   color: #CCFF90;
+   text-shadow: none!important;
+ }
+ .offline.livestreams {
+   background-color: #37474F;
+   color: #263238;
+   text-shadow: none!important;
+   border: 4px solid rgba(0, 0, 0, .45);
+   letter-spacing: -2px;
+   box-shadow: 0px -1px 12px 4px #263238, 4px 4px 12px 0px #111, 1px 2px 2px 2px #263238 inset, -1px -1px 4px 2px #263238 inset;
+ }
+
+
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ *********************************************/
+@media (max-width: 303px)  {
+ .big {
+   /* round corners: */
+
+   border-radius: 1px;
+   /* or round: */
+   /* border-radius: 50%; */
+ }
+}
+
+
+@media (max-width: 358px) and (min-width: 303px)  {
+ .big {
+   /* round corners: */
+
+   border-radius: 3px;
+   /* or round: */
+   /* border-radius: 50%; */
+ }
+}
+
+@media (max-width: 450px) and (min-width: 358px) {
+ .big {
+   /* round corners: */
+
+   border-radius: 4px;
+   /* or round: */
+   /* border-radius: 50%; */
+ }
+}
+
+
+@media (max-width: 600px) and (min-width: 450px)  {
+ .big {
+   /* round corners: */
+
+   border-radius: 9px;
+   /* or round: */
+   /* border-radius: 50%; */
+ }
+}
+
+@media (min-width: 600px)  {
+ .big {
+   /* round corners: */
+
+   border-radius: 12px;
+   /* or round: */
+   /* border-radius: 50%; */
+ }
+}

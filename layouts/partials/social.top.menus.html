@@ -1,8 +1,31 @@
 
    <!-- Additional menus -->
    <li class="nav-item">
+     <a href="{{ .Site.Params.vk_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
+     <i class="fa fa-vk fa-fw"></i>
+     </a>
+   </li>
+
+   <li class="nav-item">
+     <a href="https://www.youtube.com/channel/{{ .Site.Params.youtube_channel_id }}" class="nav-link js-scroll-trigger improve-contrast-box">
+     <i class="fa fa-youtube fa-fw"></i>
+     </a>
+   </li>
+
+   <!-- <li class="nav-item disabled bientot pas encore" -->
+   <li class="nav-item disabled bientot pas encore"
+       data-toggle="popover"
+       data-content="Radio Jaune sera bientôt sur Rumble"
+       >
     <a href="{{ .Site.Params.rumble_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box"><i class="fas fa fa-ruble-sign fa-fw"></i></a>
    </li>
+
+
+    <li class="nav-item">
+      <a href="{{ .Site.Params.twitch_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
+      <i class="fa fa-twitch fa-fw"></i>
+      </a>
+    </li>
 
    <li class="nav-item">
      <a href="{{ .Site.Params.telegram_group_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
@@ -16,23 +39,8 @@
      </a>
    </li>
 
-   <li class="nav-item">
-     <a href="{{ .Site.Params.vk_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-vk fa-fw"></i>
-     </a>
-   </li>
 
-   <li class="nav-item">
-     <a href="{{ .Site.Params.twitch_channel_link }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-twitch fa-fw"></i>
-     </a>
-   </li>
 
-   <li class="nav-item">
-     <a href="https://www.youtube.com/channel/{{ .Site.Params.youtube_channel_id }}" class="nav-link js-scroll-trigger improve-contrast-box">
-     <i class="fa fa-youtube fa-fw"></i>
-     </a>
-   </li>
 
    <li class="nav-item">
      <a href="{{ .Site.Params.github_pages }}" class="nav-link js-scroll-trigger improve-contrast-box">

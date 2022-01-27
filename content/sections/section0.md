@@ -6,7 +6,7 @@ improvecontrast: true
 
 ## {{< radiojaunetitre text="radiojaune.com" >}}
 
-#### {{< radiojaunesoustitre text="Les réseaux sociaux " marque="qui ne nous censurent pas:" >}}
+#### {{< radiojaunesoustitre text="La radio libre " marque="100%Jaune" >}}
 
 <!--
 
