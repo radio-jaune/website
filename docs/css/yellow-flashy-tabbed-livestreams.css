@@ -39,7 +39,7 @@ label.yellow.tabbed.livestreams.tab {
   transition: all;
 }
 label.yellow.tabbed.livestreams.tab:hover {
-  font-size: 2.5em;
+  font-size: 3em;
   border: 1px dotted rgba(100, 65, 165, 0.3);
   border-radius: 3px;
   background: #ffff0054!important;
@@ -66,11 +66,19 @@ div.container div.row div.col-lg-8.mx-auto {
   div.container div.row div.col-lg-8.mx-auto {
     padding-top: 0em!important;
   }
+  section.yellow.tabbed.livestreams {
+    padding: 0px!important;
+
+  }
 }
 
 @media (max-width: 358px) and (min-width: 303px)  {
   div.container div.row div.col-lg-8.mx-auto {
-    padding-top: 0rem!important;
+    padding-top: 0em!important;
+  }
+  section.yellow.tabbed.livestreams {
+    padding: 0px!important;
+
   }
 }
 
@@ -221,18 +229,22 @@ body {
  *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
  */
  @media only screen (max-width: 303px)  {
+      .network-name.radio.jaune.discord.invite {
+          font-size: .75rem!important;
+      }
 
       /********************************************
        * size of font for
        * i.awesome.flashy.bouton
        ********************************************/
        label.yellow.tabbed.livestreams.tab {
-         font-size: .85rem;
+         font-size: .75rem;
          color: #42DCA3!important;
          /* margin-left: 4%!important;
          margin-left: 0px!important; */
          margin-right: auto !important;
          margin-left: auto !important;
+         padding: 0px!important;
          border: 1px dotted rgba(36, 142, 147, 0.3);
          background: black;
          -webkit-transition : 500ms ease-out;
@@ -250,7 +262,7 @@ body {
          transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 2.25rem!important;
+         font-size: 2rem;
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
@@ -260,7 +272,7 @@ body {
          transition: background-color 500ms ease-in-out!important;
        }
        label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-         font-size: 1.25em!important;
+         font-size: .75em!important;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
@@ -269,13 +281,15 @@ body {
  }
 
  @media only screen and (max-width: 358px) and (min-width: 303px)  {
-
+      .network-name.radio.jaune.discord.invite {
+          font-size: .75rem;
+      }
       /********************************************
        * size of font for
        * i.awesome.flashy.bouton
        ********************************************/
        label.yellow.tabbed.livestreams.tab {
-         font-size: .85rem;
+         font-size: 1rem;
          color: #42DCA3!important;
          /* margin-left: 4%!important;
          margin-left: 0px!important; */
@@ -301,7 +315,7 @@ body {
          transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 2.25rem!important;
+         font-size: 3rem;
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
@@ -311,7 +325,7 @@ body {
          transition: background-color 500ms ease-in-out!important;
        }
        label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-         font-size: 1.25rem!important;
+         font-size: 1em!important;
          -webkit-transition : 500ms ease-out;
          -moz-transition : 500ms ease-out;
          -o-transition : 500ms ease-out;
@@ -354,7 +368,7 @@ body {
     transition: background-color 500ms ease-in-out!important;
   }
   label.yellow.tabbed.livestreams.tab i.awesome.flashy.bouton {
-    font-size: 1.25em;
+    /* font-size: 1.25em; */
     -webkit-transition : 500ms ease-out;
     -moz-transition : 500ms ease-out;
     -o-transition : 500ms ease-out;
@@ -362,7 +376,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 600px) and (min-width: 412px)  {
+@media only screen and (max-width: 600px) and (min-width: 411px)  {
 
   label.yellow.tabbed.livestreams.tab {
     font-size: 1em;
@@ -497,14 +511,18 @@ a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
 */
 /* a.awesome.flashy.bouton span */
 @media only screen and (max-width: 411px) and (min-width: 303px)  {
-
   a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
-    font-size: .85rem!important;
+    font-size: .65rem!important;
   }
 }
-@media only screen and (max-width: 303px) and (min-width: 0px)  {
+@media only screen and (max-width: 303px) and (min-width: 290px)  {
   a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
-    font-size: .85rem!important;
+    font-size: .65rem!important;
+  }
+}
+@media only screen and (max-width: 290px) and (min-width: 200px)  {
+  a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
+    font-size: .45rem !important;
   }
 }
 
@@ -519,4 +537,26 @@ a.awesome.flashy.bouton.btn.btn-default.btn-lg span {
  */
 label.yellow.tabbed.livestreams.tab.last {
   margin-right: 5px;
+}
+
+
+
+
+/***                                             ***/
+/***                                             ***/
+/***        [style="--clr:#ffff00; --i:3;"]      ***/
+/***                                             ***/
+/*** ******************************************* ***/
+div.improve-contrast-box.awesome.flashy.button.accueil:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 400%;
+  height: 2000%;
+  background: var(--clr);
+  background: var(--clr, transparent);
+  transition: 1s;
+  animation: animate 3s linear infinite;
+  animation-delay: 0s;
+  animation-delay: calc(0.33s * var(--i));
 }
