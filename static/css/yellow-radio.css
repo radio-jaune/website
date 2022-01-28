@@ -228,7 +228,20 @@ li.disabled.bientot.pas.encore a, label.disabled.bientot.pas.encore i, i.disable
  *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
  */
 
- span.compteur.de.visites img, span.statut.du.live.twitch img {
-   width: :auto!important;
-   height: 2em!important;
- }
+span.compteur.de.visites img, span.statut.du.live.twitch img {
+ width: :auto!important;
+ height: 2em!important;
+}
+
+
+div.row.bandeau.social  {
+ display: inline!important;
+}
+ul.liste.bandeau.social {
+  display: inline!important;
+  list-style: none!important;
+  list-style: none!important;
+}
+ul.liste.bandeau.social li {
+ list-style: none!important;
+}
