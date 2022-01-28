@@ -215,3 +215,20 @@ li.disabled.bientot.pas.encore a, label.disabled.bientot.pas.encore i, i.disable
     font-size: .85rem!important;
   }
 }
+
+
+
+
+/********************************************
+ * GRID :
+ * (max-width: 600px) and (min-width: 450px)
+ * (max-width: 450px) and (min-width: 358px)
+ * (max-width: 358px) and (min-width: 304px)
+ * (max-width: 303px)
+ *  BUT , AFTER SOME TESTS, SCREENS WITH WIDTH LESS THAN '311px' are not supported yet.
+ */
+
+ span.compteur.de.visites img, span.statut.du.live.twitch img {
+   width: :auto!important;
+   height: 2em!important;
+ }
