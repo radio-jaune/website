@@ -116,7 +116,8 @@ header {
   display: table;
   width: 100%;
   height: auto;
-  padding: 200px 0;
+  /* padding: 200px 0; */
+  padding: 0px 0;
   text-align: center;
   color: white;
   /* background: url("../img/section0-bg.jpg") no-repeat bottom center scroll; */
@@ -131,7 +132,7 @@ header {
 
 #intro-body {
   display: table-cell;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 header h1 {
   font-size: 50px;
