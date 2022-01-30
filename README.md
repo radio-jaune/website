@@ -178,6 +178,27 @@ git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && gi
 
 ```bash
 
+export DEPLOYMENT_DOMAIN=ridio-jaune.surge.sh
+export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
+
+if [ -d ./docs ]; then
+  rm -fr ./docs
+fi;
+
+if [ -d ./public ]; then
+  rm -fr ./public
+fi;
+
+mkdir -p  ./docs
+mkdir -p  ./public
+
+export PATH=$PATH:/usr/local/go/bin
+hugo -b ${DEPLOYMENT_BASE_URL}
+
+cp -fr ./public/* ./docs/
+
+surge ./public "${DEPLOYMENT_DOMAIN}"
+
 export DEPLOYMENT_DOMAIN=radio-jaune.surge.sh
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 

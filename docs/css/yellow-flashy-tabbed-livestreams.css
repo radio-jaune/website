@@ -39,7 +39,7 @@ label.yellow.tabbed.livestreams.tab {
   transition: all;
 }
 label.yellow.tabbed.livestreams.tab:hover {
-  font-size: 3em;
+  /* font-size: 3em; */
   border: 1px dotted rgba(100, 65, 165, 0.3);
   border-radius: 3px;
   background: #ffff0054!important;
@@ -262,7 +262,7 @@ body {
          transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 2rem;
+         /* font-size: 2rem; */
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
@@ -315,7 +315,7 @@ body {
          transition: all;
        }
        label.yellow.tabbed.livestreams.tab:hover {
-         font-size: 3rem;
+         /* font-size: 3rem; */
          border: 1px dotted rgba(100, 65, 165, 0.3);
          color: white!important;
          -webkit-transition : 500ms ease-in-out;
@@ -362,7 +362,7 @@ body {
     transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
-    font-size: 2em;
+    /* font-size: 2em; */
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
     transition: background-color 500ms ease-in-out!important;
@@ -405,7 +405,7 @@ body {
     transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
-    font-size: 2em;
+    /* font-size: 2em; */
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
     transition: background-color 500ms ease-in-out!important;
@@ -446,7 +446,7 @@ body {
     transition: all;
   }
   label.yellow.tabbed.livestreams.tab:hover {
-    font-size: 3em!important;
+    /* font-size: 3em!important; */
     border: 1px dotted rgba(100, 65, 165, 0.3);
     color: white!important;
     transition: background-color 500ms ease-in-out!important;

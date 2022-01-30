@@ -26,31 +26,6 @@ vk_channel_link = "https://vk.com/id698593797"
 
 -->
 
-
-{{< carousel
-      video1_url = "https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2"
-
-      video2_url = "https://www.youtube.com/embed/Fqso_bl9WPg"
-
-      video3_url = "https://www.youtube.com/embed/8wU9s_mua8M"
-
-      video4_url = "https://www.youtube.com/embed/LBzZLzu2GKo"
-
-
-
-      video5_url = "https://www.youtube.com/embed/Fqso_bl9WPg "
-
-      video6_url = "https://www.youtube.com/embed/MeU5_k9ssrs "
-
-      video7_url = "https://www.youtube.com/embed/8wU9s_mua8M"
-
-      video8_url = "https://www.youtube.com/embed/b6k6K3eAxdo"
-
->}}
-
-
----
-
 {{< button-live-awe join_live_text="MONTER EN DIRECT" join_live_url="https://studio.restream.io/guest/ejY4bEUwYiSWUY2FYkKssbY1GCFcs4c?event=&default-camera-mirror=true" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797" vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2" youtube_live_url="https://www.youtube.com/watch?v=WRO6wo999tI" channel_yt_live_id="WRO6wo999tI" facebook_live_url="#" color="#f7ff0b" color="#ff330b" rumble_channel_name="" >}}
 
 ---

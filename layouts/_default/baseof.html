@@ -4,6 +4,10 @@
         {{ partial "head.html" . }}
     </head>
     <body id="page-top">
+
+
+      {{- partial "splash.html" . -}}
+
         {{- partial "header.html" . -}}
         {{- block "main" . }}{{- end }}
         {{- partial "footer.html" . -}}

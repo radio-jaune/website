@@ -9,7 +9,6 @@ improvecontrast: true
 
 <!--
 
-
 {{< carousel
       video1_url = "https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2"
 
@@ -31,14 +30,7 @@ improvecontrast: true
 
 >}}
 
-
-
- -->
-
-
-
-
----
+-->
 
 Vous êtes `développeur` ? `devops` ? `expert IT` dans un quelconque domaine ?
 
@@ -48,13 +40,13 @@ Vous êtes `développeur` ? `devops` ? `expert IT` dans un quelconque domaine ?
     {{< discord-inivte >}}
 {{< /socialhandles >}}
 
-* Jetez un coup d'oeil au **repo du code source de ce site web** :  parler avec **Équipe IT** `Radio Jaune` sur **Discord** :
+* Jetez un coup d'oeil à l'**Organisation Github** `Radio Jaune` :
 
 {{< socialhandles >}}
     {{< github_org org_name="radio-jaune" >}}
 {{< /socialhandles >}}
 
-* Jetez un coup d'oeil à l'**Organisation Github** `Radio Jaune` :
+* Jetez un coup d'oeil au **repo du code source de ce site web** :
 
 {{< socialhandles >}}
     {{< github_repo org_name="radio-jaune" repo_name="website" >}}
