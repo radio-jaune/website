@@ -17,11 +17,18 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
     twitch_channel_name = "radiojaune"
     vk_channel_link = "https://vk.com/id698593797"
-    vk_live_url = "https://vk.com/video_ext.php?oid=698593797&id=456239017&hash=4f8bd321b291b5e4&hd=2"
+    vk_live_url="https://vk.com/id698593797?z=video698593797_456239023%2F7e1e0fb2c79f35ddf4%2Fpl_wall_698593797"
+
+    twitter_live_url="https://twitter.com/i/broadcasts/1eaKbNLklmYKX"
+
+
+
+
     rumble_channel_link = "https://rumble.com/radiojaune"
     rumble_channel_name = "radiojaune"
     telegram_group_link = "https://t.me/+MryZE0pY8N01ZGRk"
     youtube_channel_id = "UCIUGDzUjNIfQC9YjUIu84vQ"
+    youtube_live_url = "https://www.youtube.com/watch?v=uQ5DjNpbu3k"
     github_org = "https://github.com/radio-jaune"
     github_repo = "https://github.com/radio-jaune/website"
     github_pages = "https://github.com/radio-jaune/developers-portal"
