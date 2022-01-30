@@ -65,8 +65,37 @@
       <!-- VK LIVE - PLAYER -->
       <!-- -->
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
+
+        <!-- <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
+
         </iframe>
+       -->
+
+
+
+       <div id="vk_post_{{ .Get "vk_live_id" }}"></div>
+       <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+       <script type="text/javascript">
+         (function() {
+           VK.Widgets.Post("vk_post_{{ .Get "vk_live_id" }}", 698593797, 31, 'HXrOomG5h40I5FsKTMy5TrP1gmbn');
+         }());
+       </script>
+
+
+        <!-- That's what i got from VK.com Web UI :
+
+        <div id="vk_post_698593797_31"></div>
+        <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+        <script type="text/javascript">
+          (function() {
+            VK.Widgets.Post("vk_post_698593797_31", 698593797, 31, 'HXrOomG5h40I5FsKTMy5TrP1gmbn');
+          }());
+        </script>
+
+        https://vk.com/wall698593797_31
+
+        -->
+
         <!--
 
           == Re-exported RAW
@@ -145,7 +174,15 @@
 
 
       -->
-      <iframe src="https://www.youtube.com/embed/{{ .Get "channel_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/{{ .Get "yt_livestream_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
+
+
+      <!--
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/uQ5DjNpbu3k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+
+       -->
     </div>
   </section>
 
