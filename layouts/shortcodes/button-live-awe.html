@@ -71,15 +71,13 @@
         </iframe>
        -->
 
-
-
        <div id="vk_post_{{ .Get "vk_live_id" }}"></div>
        <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
-       <script type="text/javascript">
-         (function() {
-           VK.Widgets.Post("vk_post_{{ .Get "vk_live_id" }}", 698593797, 31, 'HXrOomG5h40I5FsKTMy5TrP1gmbn');
-         }());
-       </script>
+       <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       <!--
+       <iframe src="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       <iframe src="https://vk.com/video_ext.php?oid={{ .Get "vk_live_oid" }}&id={{ .Get "vk_live_id" }}&hash=9b1685449f4da747&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       -->
 
 
         <!-- That's what i got from VK.com Web UI :
@@ -281,7 +279,8 @@
 
             <div class="embed-responsive embed-responsive-16by9">
 
-              <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #3 <a href="https://t.co/VYrLZ5txB1">https://t.co/VYrLZ5txB1</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1487878499893334018?ref_src=twsrc%5Etfw">January 30, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} : CE SOIR EN DIRECT DÈS 21H À SUIVRE SUR<br>»»»»» <a href="https://t.co/MIxRngNP9I">https://t.co/MIxRngNP9I</a> ««««« <a href="https://t.co/1cNIdQjtBa">pic.twitter.com/1cNIdQjtBa</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}">February 6, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <!-- <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #3 <a href="https://t.co/VYrLZ5txB1">https://t.co/VYrLZ5txB1</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1487878499893334018?ref_src=twsrc%5Etfw">January 30, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  -->
 
             </div>
 
