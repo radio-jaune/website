@@ -178,7 +178,7 @@ git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && gi
 
 ```bash
 
-export DEPLOYMENT_DOMAIN=ridio-jaune.surge.sh
+export DEPLOYMENT_DOMAIN=roidio-jaune.surge.sh
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
 if [ -d ./docs ]; then
