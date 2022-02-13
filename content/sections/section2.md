@@ -4,11 +4,11 @@ weight: 3
 improvecontrast: true
 ---
 
-## ERadio Jaune dans le Convoi de la Liberté!
+## Radio Jaune dans le Convoi de la Liberté!
 
 
 {{< carousel
-      video1_url = "https://www.youtube.com/watch?v=UMXmcajy6RE"
+      video1_url = "https://www.youtube.com/embed/UMXmcajy6RE"
 
       video2_url = "https://www.youtube.com/embed/C64PGUeTSFI"
 
