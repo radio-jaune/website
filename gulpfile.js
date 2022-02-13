@@ -23,27 +23,25 @@ const gutil = require("gulp-util"); // to access environment variables
 
 const del = require('del');
 process.env.S3_REGION
-const hugoBaseURL = process.env.HUGO_BASE_URL;
+const hugoBaseURL = `${process.env.HUGO_BASE_URL}`;
 /// export PATH=$PATH:/usr/local/go/bin
 /// export HUGO_HOST=127.0.0.1
-const hugoHost = (process.env.HUGO_HOST ? 'si non' : `${process.env.HUGO_BASE_URL}`);
+const hugoHost = `${process.env.HUGO_HOST}`;
 /// export HUGO_PORT=4545
-const hugoPort = (process.env.HUGO_PORT  ? 'si non' : `${process.env.HUGO_BASE_URL}`);
+const hugoPort = `${process.env.HUGO_PORT}`
 /// export HUGO_BASE_URL=http://127.0.0.1:4545
 /// export HUGO_BASE_URL=http://${HUGO_HOST}:4${HUGO_HOST}
 /// export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
-const ptiTestEnv = (process.env.HUGO_BLABLA == 'prod' ? 'si oui' : 'si non');
 
 // Run Hugo to copy finished files over to public folder
 gulp.task('testEnvDisplay', () => {
-  console.warn(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
-  console.warn(` >>>>>>>>>>>> testEnvDisplay() >> {ptiTestEnv|HUGO_BLABLA}=[${ptiTestEnv}]`)
-  console.warn(` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`)
-  console.warn(` >>>>>>>>>>>> testEnvDisplay() >> {hugoHost|HUGO_HOST}=[${hugoBaseURL}]`)
-  console.warn(` >>>>>>>>>>>> testEnvDisplay() >> {hugoPort|HUGO_PORT}=[${hugoBaseURL}]`)
-  console.warn(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
-  console.warn(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
+  gutil.log(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
+  gutil.log(` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`)
+  gutil.log(` >>>>>>>>>>>> testEnvDisplay() >> {hugoHost|HUGO_HOST}=[${hugoBaseURL}]`)
+  gutil.log(` >>>>>>>>>>>> testEnvDisplay() >> {hugoPort|HUGO_PORT}=[${hugoBaseURL}]`)
+  gutil.log(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
+  gutil.log(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
   return gulp.pipe(browserSync.stream());
 })
 
@@ -234,8 +232,13 @@ gulp.task('dev', gulp.series('gulpSass', 'hugo', 'seo', 'beautifyHugoPublic'));
 gulp.task('prod', gulp.series('gulpSass', 'hugo', 'seo', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo'));
 
 gulp.task('serve', function() {
-    browserSync.init({
-        server: "./public"
+    gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
+    gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
+
+    browserSync.init({ // https://browsersync.io/docs/api
+        server: "./public",
+        host: `${hugoHost}`,
+        port: `${hugoPort}`
     });
 
     // watch all hugo project files for change, rebuild all if changes
@@ -249,7 +252,7 @@ gulp.task('serve', function() {
     gulp.watch('./content/**/*.*', gulp.series('dev'));
     gulp.watch('./data/**/*.*', gulp.series('dev'));
     gulp.watch('./layouts/**/*.*', gulp.series('dev'));
-    gulp.watch("src/*.html").on('change', browserSync.reload);
+    gulp.watch("layouts/**/*.html", gulp.series('dev')).on('change', browserSync.reload);
 });
 
 // gulp.task('serve', gulp.series('gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist', 'server'));

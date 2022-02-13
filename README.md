@@ -83,9 +83,9 @@ hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
 
 # try also :
 export PATH=$PATH:/usr/local/go/bin
-export HUGO_HOST=localhost
-export HUGO_PORT=3000
-export HUGO_BASE_URL=http://127.0.0.1:4545
+export HUGO_HOST=127.0.0.1
+export HUGO_PORT=4547
+export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
@@ -157,7 +157,7 @@ cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
-export RELEASE_VERSION=0.0.50
+export RELEASE_VERSION=0.0.52
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
