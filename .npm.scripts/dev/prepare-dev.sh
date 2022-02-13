@@ -1,10 +1,4 @@
 #!/bin/bash
-export GULP_CLI_VERSION=${GULP_CLI_VERSION:-"2.3.0"}
-export SASS_VERSION=${SASS_VERSION:-"latest"}
-chmod +x ./.**/*.sh ./.**/**/*.sh
-# npm install -g sass@${SASS_VERSION}
-sudo npm install --global gulp-cli@${GULP_CLI_VERSION}
-
 
 chmod +x ./.**/*.sh ./.**/**/*.sh
 ## - ### ## - ### ## - ### ## - ### ## - ###
@@ -30,8 +24,17 @@ export GULP_UTIL_VERSION=${GULP_UTIL_VERSION:-"^3.0.8"}
 export GULP_DEST_CLEAN_VERSION=${GULP_DEST_CLEAN_VERSION:-"^0.5.0"}
 export GULP_BROWSER_SYNC_VERSION=${GULP_BROWSER_SYNC_VERSION:-"^2.27.7"}
 export GULP_DEBUG_VERSION=${GULP_DEBUG_VERSION:-"^4.0.0"}
-export GULP_NEWER_VERSION=${GULP_NEWER_VERSION:-"^8.0.0"}
-export GULP_IMAGEMIN_VERSION=${GULP_IMAGEMIN_VERSION:-"^1.4.0"}
+export GULP_NEWER_VERSION=${GULP_NEWER_VERSION:-"^1.4.0"}
+export GULP_IMAGEMIN_VERSION=${GULP_IMAGEMIN_VERSION:-"^8.0.0"}
+export GULP_MINIFY_VERSION=${GULP_MINIFY_VERSION:-"^3.1.0"}
+export GULP_UGLIFY_VERSION=${GULP_UGLIFY_VERSION:-"^3.0.2"}
+export GULP_READABLE_STREAM_VERSION=${GULP_READABLE_STREAM_VERSION:-"^3.6.0"}
+export GULP_SOURCEMAPS_VERSION=${GULP_SOURCEMAPS_VERSION:-"^3.0.0"}
+export GULP_AUTOPREFIXER_VERSION=${GULP_AUTOPREFIXER_VERSION:-"^8.0.0"}
+export GULP_RENAME_VERSION=${GULP_RENAME_VERSION:-"^2.0.0"}
+export GULP_DOTENV_VERSION=${GULP_DOTENV_VERSION:-"^16.0.0"}
+
+
 # ${GULP_NODE_SASS_VERSION}
 
 # ${GULP_VERSION}
@@ -71,7 +74,17 @@ npm uninstall --save-dev \
     gulp-util \
     gulp-dest-clean \
     gulp-debug \
-    browser-sync
+    browser-sync \
+    gulp-debug \
+    gulp-newer \
+    gulp-imagemin \
+    gulp-minify \
+    gulp-uglify \
+    readable-stream \
+    gulp-sourcemaps \
+    gulp-autoprefixer \
+    gulp-rename \
+    dotenv
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -85,6 +98,11 @@ npm i --save-dev \
     browser-sync@${GULP_BROWSER_SYNC_VERSION} \
     gulp-debug@${GULP_DEBUG_VERSION} \
     gulp-newer@${GULP_NEWER_VERSION} \
-    gulp-imagemin@${GULP_IMAGEMIN_VERSION}
-
-# gulp-debug@${GULP_DEBUG_VERSION}
+    gulp-imagemin@${GULP_IMAGEMIN_VERSION} \
+    gulp-minify@${GULP_MINIFY_VERSION} \
+    gulp-uglify@${GULP_UGLIFY_VERSION} \
+    readable-stream@${GULP_READABLE_STREAM_VERSION} \
+    gulp-sourcemaps@${GULP_SOURCEMAPS_VERSION} \
+    gulp-autoprefixer@${GULP_AUTOPREFIXER_VERSION} \
+    gulp-rename@${GULP_RENAME_VERSION} \
+    dotenv@${GULP_DOTENV_VERSION}

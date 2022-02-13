@@ -81,6 +81,17 @@ npm i
 export PATH=$PATH:/usr/local/go/bin && go version
 hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
 
+# try also :
+export PATH=$PATH:/usr/local/go/bin
+export HUGO_HOST=localhost
+export HUGO_PORT=3000
+export HUGO_BASE_URL=http://127.0.0.1:4545
+export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+gulp hugo
+gulp serve
+
 ```
 
 
@@ -99,6 +110,16 @@ npm i
 
 export PATH=$PATH:/usr/local/go/bin && go version
 hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
+
+##
+export PATH=$PATH:/usr/local/go/bin
+export HUGO_HOST=127.0.0.1
+export HUGO_PORT=4545
+export HUGO_BASE_URL=http://127.0.0.1:4545
+export HUGO_BASE_URL=http://${HUGO_HOST}:4${HUGO_HOST}
+export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+gulp serve
 
 ```
 
@@ -222,9 +243,18 @@ surge ./public "${DEPLOYMENT_DOMAIN}"
 
 ```
 
+## Env
+
+
+```bash
+export HUGO_BASE_URL=https://127.0.0.1:5447
+export HUGO_BLABLA=https://127.0.0.1:5447
+gulp hugo
+
+```
 
 ## Refs
 
 * https://www.npmjs.com/package/gulp-beautify
 * https://www.npmjs.com/package/gulp-seo
-*
+* https://www.npmjs.com/package/gulp-newer
