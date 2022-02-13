@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev-preps": ".npm.scripts/dev/prepare.sh",
+    "sass": "gulp build",
     "spawn": "echo \"spawn up new hugo project from Hugo theme\" && ./.npm.scripts/spawn.sh",
     "clean": "echo \"cleaning hugo project\" && ./.npm.scripts/clean.sh",
     "parse-hugo-them-toml": "node .npm.scripts/toml-parser.js"

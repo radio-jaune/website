@@ -36,7 +36,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     # github_pages = "https://developers.radio-jaune.com"
     # discord_channel_id = "355719584830980096"
 [Author]
-    name = "The Yellow Radio Devops Team"
+    name = "La radio libre 100%Jaune"
     email = "devopsradiojaune@gmail.com"
 
 [Social]

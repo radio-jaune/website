@@ -1,13 +1,11 @@
 ---
-title: "GITHUB"
+title: "CONVOI DE LA LIBERTÉ"
 weight: 5
 improvecontrast: true
 ---
 
-## Radio Jaune sur Github!
+## ERadio Jaune dans le Convoi de la Liberté!
 
-
-<!--
 
 {{< carousel
       video1_url = "https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2"
@@ -29,25 +27,3 @@ improvecontrast: true
       video8_url = "https://www.youtube.com/embed/b6k6K3eAxdo"
 
 >}}
-
--->
-
-Vous êtes `développeur` ? `devops` ? `expert IT` dans un quelconque domaine ?
-
-* Venez parler avec l'**Équipe IT** `Radio Jaune` sur **discord** :
-
-{{< socialhandles >}}
-    {{< discord-inivte >}}
-{{< /socialhandles >}}
-
-* Jetez un coup d'oeil à l'**Organisation Github** `Radio Jaune` :
-
-{{< socialhandles >}}
-    {{< github_org org_name="radio-jaune" >}}
-{{< /socialhandles >}}
-
-* Jetez un coup d'oeil au **repo du code source de ce site web** :
-
-{{< socialhandles >}}
-    {{< github_repo org_name="radio-jaune" repo_name="website" >}}
-{{< /socialhandles >}}

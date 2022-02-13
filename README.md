@@ -221,3 +221,10 @@ cp -fr ./public/* ./docs/
 surge ./public "${DEPLOYMENT_DOMAIN}"
 
 ```
+
+
+## Refs
+
+* https://www.npmjs.com/package/gulp-beautify
+* https://www.npmjs.com/package/gulp-seo
+*
