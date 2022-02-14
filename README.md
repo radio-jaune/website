@@ -183,7 +183,7 @@ cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
-export RELEASE_VERSION=0.0.53
+export RELEASE_VERSION=0.0.54
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
