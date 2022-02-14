@@ -134,6 +134,32 @@ gulp.task('seo', function() {
 
 import child_process from 'child_process';
 // Run Hugo to copy finished files over to public folder
+
+
+gulp.task("hugoProd", (done) => {
+ let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
+             .on("close", () => {
+                 done(); // let gulp know the task has completed
+             });
+ let hugoLogger = function (buffer) {
+     buffer.toString()
+     .split(/\n/)
+     .forEach(function (message) {
+         if (message) {
+
+
+             gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`);
+             gutil.log("GoHugo.io: " + message);
+             gutil.log("GoHugo.io: " + message);
+         }
+     });
+ };
+
+ hugo.stdout.on("data", hugoLogger);
+ hugo.stderr.on("data", hugoLogger)
+});
+
+
 gulp.task("hugo", (done) => {
  let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
              .on("close", () => {
@@ -270,7 +296,7 @@ gulp.task(jsDev);
 
 
 gulp.task('dev', gulp.series('gulpSass', 'hugo', 'seo', 'beautifyHugoPublic'));
-gulp.task('prod', gulp.series('gulpSass', 'hugo', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
+gulp.task('prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
 
 gulp.task('serve', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)

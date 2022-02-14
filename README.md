@@ -213,7 +213,7 @@ gulpBuild (){
   export HUGO_PORT=4547
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-  export HUGO_BASE_URL=http://${DEPLOYMENT_BASE_URL}
+  export HUGO_BASE_URL=https://radiojaune.com
   export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
   gulp hugo
