@@ -65,25 +65,26 @@ import newer from 'gulp-newer';
 
 
 
-import { imagemin } from 'gulp-imagemin';
+//import { imagemin } from 'gulp-imagemin';
+// import imagemin from 'gulp-imagemin';
 
-import pngquant from 'imagemin-pngquant';
+// import pngquant from 'imagemin-pngquant';
 
-export default () => (
-	gulp.src('src/images/*')
-		.pipe(imagemin())
-		.pipe(gulp.dest('dist/images'))
-);
+/// export default () => (
+/// 	gulp.src('src/images/*')
+/// 		.pipe(imagemin())
+/// 		.pipe(gulp.dest('dist/images'))
+/// );
 
-gulp.task('default', () => {
-	return gulp.src('src/images/*')
-		.pipe(imagemin({
-			progressive: true,
-			svgoPlugins: [{removeViewBox: false}],
-			use: [pngquant()]
-		}))
-		.pipe(gulp.dest('dist/images'));
-});
+/// gulp.task('default', () => {
+/// 	return gulp.src('src/images/*')
+/// 		.pipe(imagemin({
+/// 			progressive: true,
+/// 			svgoPlugins: [{removeViewBox: false}],
+/// 			use: [pngquant()]
+/// 		}))
+/// 		.pipe(gulp.dest('dist/images'));
+/// });
 
 var hugoPrjFolder = './';
 var hugoPublicFolder = 'public';
@@ -92,7 +93,7 @@ gulp.task('hugoClean', function () {
   return gulp.src(hugoPublicFolder)
     .pipe(clean(hugoPublicFolder, 'public/**'))
     .pipe(newer(hugoPublicFolder))
-    .pipe(imagemin())
+    // .pipe(imagemin()) // i have az classic issue with imagemoin solve that later
     .pipe(gulp.dest(hugoPublicFolder))
     .pipe(browserSync.stream());
 });
