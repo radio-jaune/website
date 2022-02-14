@@ -89,9 +89,7 @@ export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
-gulp hugo
-gulp serve
-
+gulp dev
 ```
 
 
@@ -114,14 +112,31 @@ hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
 ##
 export PATH=$PATH:/usr/local/go/bin
 export HUGO_HOST=127.0.0.1
-export HUGO_PORT=4545
-export HUGO_BASE_URL=http://127.0.0.1:4545
-export HUGO_BASE_URL=http://${HUGO_HOST}:4${HUGO_HOST}
+export HUGO_PORT=4547
+export HUGO_BASE_URL=http://127.0.0.1:5445
+export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
+gulp hugo
 gulp serve
 
 ```
+
+* production build :
+
+```bash
+##
+export PATH=$PATH:/usr/local/go/bin
+export HUGO_HOST=127.0.0.1
+export HUGO_PORT=4547
+export HUGO_BASE_URL=http://127.0.0.1:5445
+export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+gulp prod
+
+```
+
 
 ## How to re-generate this project
 
@@ -136,7 +151,7 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm i
-npm run clean && npm run spawn
+npm run clean-prj && npm run spawn
 ```
 
 * Then run locally your new website :
@@ -144,6 +159,17 @@ npm run clean && npm run spawn
 ```bash
 export PATH=$PATH:/usr/local/go/bin
 hugo serve -b http://127.0.0.1:5445 -p 5445 --bind 127.0.0.1 -w
+
+# or try :
+export PATH=$PATH:/usr/local/go/bin
+export HUGO_HOST=127.0.0.1
+export HUGO_PORT=4547
+export HUGO_BASE_URL=http://127.0.0.1:5445
+export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+gulp hugo
+gulp serve
 ```
 
 
@@ -157,7 +183,7 @@ cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
-export RELEASE_VERSION=0.0.52
+export RELEASE_VERSION=0.0.53
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -176,8 +202,25 @@ fi;
 mkdir -p  ./docs
 mkdir -p  ./public
 
-export PATH=$PATH:/usr/local/go/bin
-hugo -b ${DEPLOYMENT_BASE_URL}
+oldHugoBuild () {
+  export PATH=$PATH:/usr/local/go/bin
+  hugo -b ${DEPLOYMENT_BASE_URL}
+
+  cp -fr ./public/* ./docs/
+}
+gulpBuild (){
+  export PATH=$PATH:/usr/local/go/bin
+  export HUGO_HOST=${DEPLOYMENT_DOMAIN}
+  export HUGO_PORT=4547
+  export HUGO_BASE_URL=http://127.0.0.1:5445
+  export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+  export HUGO_BASE_URL=http://${DEPLOYMENT_BASE_URL}
+  export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+  gulp hugo
+}
+
+gulpBuild
 
 cp -fr ./public/* ./docs/
 
@@ -213,10 +256,24 @@ fi;
 mkdir -p  ./docs
 mkdir -p  ./public
 
-export PATH=$PATH:/usr/local/go/bin
-hugo -b ${DEPLOYMENT_BASE_URL}
+oldHugoBuild () {
+  export PATH=$PATH:/usr/local/go/bin
+  hugo -b ${DEPLOYMENT_BASE_URL}
 
-cp -fr ./public/* ./docs/
+  cp -fr ./public/* ./docs/
+}
+gulpBuild (){
+  export PATH=$PATH:/usr/local/go/bin
+  export HUGO_HOST=127.0.0.1
+  export HUGO_PORT=4547
+  export HUGO_BASE_URL=http://127.0.0.1:5445
+  export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+  export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+
+  gulp hugo
+}
+
+gulpBuild
 
 surge ./public "${DEPLOYMENT_DOMAIN}"
 

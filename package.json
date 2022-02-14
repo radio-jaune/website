@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-preps": ".npm.scripts/dev/prepare-dev.sh",
-    "preps": ".npm.scripts/dev/prepare.sh",
-    "sass": "gulp build",
+    "preps:dev": ".npm.scripts/dev/prepare-dev.sh",
+    "preps:all": ".npm.scripts/dev/prepare.sh",
+    "hugo": "gulp hugo",
+    "dev": "npm run clean && source ./.npm.scripts/dev/env.sh && gulp serve",
+    "prod": "npm run clean && source ./.npm.scripts/dev/env.sh && gulp prod",
+    "sprod": "npm run clean && source ./.npm.scripts/dev/env.sh && gulp serve-prod",
     "spawn": "echo \"spawn up new hugo project from Hugo theme\" && ./.npm.scripts/spawn.sh",
-    "clean": "echo \"cleaning hugo project\" && ./.npm.scripts/clean.sh",
+    "clean-prj": "echo \"cleaning hugo project\" && ./.npm.scripts/clean.sh",
+    "clean": "echo \"cleaning hugo public\" && gulp hugoClean",
     "parse-hugo-them-toml": "node .npm.scripts/toml-parser.js"
   },
   "keywords": [],
@@ -20,6 +24,9 @@
     "toml": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/register": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
     "browser-sync": "^2.27.7",
     "dotenv": "^16.0.0",
     "gulp": "^4.0.2",
@@ -37,6 +44,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
+    "imagemin-pngquant": "^9.0.2",
     "node-sass": "^7.0.1",
     "readable-stream": "^3.6.0"
   }

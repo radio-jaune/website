@@ -76,7 +76,7 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm i
-npm run clean && npm run spawn
+npm run clean-prj && npm run spawn
 ```
 
 * Then run locally your new website :
@@ -166,7 +166,7 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm i
-npm run clean && npm run spawn
+npm run clean-prj && npm run spawn
 ```
 
 * Then run locally your new website :

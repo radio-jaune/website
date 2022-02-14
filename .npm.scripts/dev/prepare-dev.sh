@@ -33,8 +33,10 @@ export GULP_SOURCEMAPS_VERSION=${GULP_SOURCEMAPS_VERSION:-"^3.0.0"}
 export GULP_AUTOPREFIXER_VERSION=${GULP_AUTOPREFIXER_VERSION:-"^8.0.0"}
 export GULP_RENAME_VERSION=${GULP_RENAME_VERSION:-"^2.0.0"}
 export GULP_DOTENV_VERSION=${GULP_DOTENV_VERSION:-"^16.0.0"}
-
-
+export GULP_IMAGEMIN_PNGQUANT_VERSION=${GULP_IMAGEMIN_PNGQUANT_VERSION:-"9.0.2"}
+export GULP_BABEL_CORE_VERSION=${GULP_BABEL_CORE_VERSION:-"^7.17.2"}
+export GULP_BABEL_REGISTER_VERSION=${GULP_BABEL_REGISTER_VERSION:-"^7.17.0"}
+export GULP_BABEL_PRESET_ENV_VERSION=${GULP_BABEL_PRESET_ENV_VERSION:-"^7.16.11"}
 # ${GULP_NODE_SASS_VERSION}
 
 # ${GULP_VERSION}
@@ -78,6 +80,7 @@ npm uninstall --save-dev \
     gulp-debug \
     gulp-newer \
     gulp-imagemin \
+    imagemin-pngquant \
     gulp-minify \
     gulp-uglify \
     readable-stream \
@@ -105,4 +108,8 @@ npm i --save-dev \
     gulp-sourcemaps@${GULP_SOURCEMAPS_VERSION} \
     gulp-autoprefixer@${GULP_AUTOPREFIXER_VERSION} \
     gulp-rename@${GULP_RENAME_VERSION} \
-    dotenv@${GULP_DOTENV_VERSION}
+    dotenv@${GULP_DOTENV_VERSION} \
+    imagemin-pngquant@${GULP_IMAGEMIN_PNGQUANT_VERSION} \
+    @babel/core${GULP_BABEL_CORE_VERSION} \
+    @babel/register${GULP_BABEL_REGISTER_VERSION} \
+    @babel/preset-env${GULP_BABEL_PRESET_ENV_VERSION}
