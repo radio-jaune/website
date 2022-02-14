@@ -151,7 +151,7 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm i
-npm run clean-prj && npm run spawn
+npm run clean:project && npm run spawn
 ```
 
 * Then run locally your new website :
@@ -315,3 +315,5 @@ gulp hugo
 * https://www.npmjs.com/package/gulp-beautify
 * https://www.npmjs.com/package/gulp-seo
 * https://www.npmjs.com/package/gulp-newer
+* You are my hero :
+  * https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package

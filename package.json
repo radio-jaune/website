@@ -11,8 +11,8 @@
     "prod": "npm run clean && source ./.npm.scripts/dev/env.sh && gulp prod",
     "sprod": "npm run clean && source ./.npm.scripts/dev/env.sh && gulp serve-prod",
     "spawn": "echo \"spawn up new hugo project from Hugo theme\" && ./.npm.scripts/spawn.sh",
-    "clean-prj": "echo \"cleaning hugo project\" && ./.npm.scripts/clean.sh",
-    "clean": "echo \"cleaning hugo public\" && gulp hugoClean",
+    "clean:project": "echo \"cleaning hugo project\" && ./.npm.scripts/clean.sh",
+    "clean:hugo": "echo \"cleaning hugo public\" && gulp hugoClean",
     "parse-hugo-them-toml": "node .npm.scripts/toml-parser.js"
   },
   "keywords": [],
@@ -21,12 +21,13 @@
   "dependencies": {
     "bulma": "^0.9.3",
     "concat-stream": "^2.0.0",
+    "node-fetch": "^2.6.1",
     "toml": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
-    "@babel/register": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.0",
     "browser-sync": "^2.27.7",
     "dotenv": "^16.0.0",
     "gulp": "^4.0.2",
