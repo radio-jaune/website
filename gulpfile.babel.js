@@ -9,19 +9,29 @@
  **********************************************************************************
  **********************************************************************************
  */
-const dotenv        = require('dotenv').config();
-const gulp        = require('gulp');
-const browserSync = require('browser-sync').create();
+// const dotenv        = require('dotenv').config();
+import dotenvModule from 'dotenv';
+const dotenv = dotenvModule.config();
+// const gulp        = require('gulp');
+import gulp from 'gulp';
+// ,const browserSync = require('browser-sync').create();
+import browserSyncModule from 'browser-sync';
+const browserSync = browserSyncModule.create();
 // var sass        = require('gulp-sass');
 // const sass = require('gulp-sass')(require('sass'));
-const sass = require('gulp-sass')(require('node-sass'));
+// const sass = require('gulp-sass')(require('node-sass'));
+import nodeSassModule from 'node-sass';
+import sassModule from 'gulp-sass';
+const sass = sassModule(nodeSassModule);
 // require('node-sass')
-const pug = require('gulp-pug');
-const purgecss = require('gulp-purgecss');
-
-const gutil = require("gulp-util"); // to access environment variables
-
-const del = require('del');
+// const pug = require('gulp-pug');
+import pug from 'gulp-pug';
+/// const purgecss = require('gulp-purgecss');
+import purgecss from 'gulp-purgecss';
+// const gutil = require("gulp-util"); // to access environment variables
+import gutil from 'gulp-util';
+// const del = require('del');
+import del from 'del';
 process.env.S3_REGION
 const hugoBaseURL = `${process.env.HUGO_BASE_URL}`;
 /// export PATH=$PATH:/usr/local/go/bin
@@ -49,10 +59,37 @@ gulp.task('testEnvDisplay', () => {
 /***************************************************************
  *  ==>>>   | Clean (public folder)
  **/
-var clean = require('gulp-dest-clean');
-var newer = require('gulp-newer');
+// var clean = require('gulp-dest-clean');
+// var newer = require('gulp-newer');
+
+import clean from 'gulp-dest-clean';
+import newer from 'gulp-newer';
+
 //  import imagemin from 'gulp-imagemin';
-var imagemin = import("gulp-imagemin");
+/// var imagemin = import("gulp-imagemin");
+
+
+// const imagemin = require('gulp-imagemin');
+import { imagemin } from 'gulp-imagemin';
+/// const pngquant = require('imagemin-pngquant');
+import pngquant from 'imagemin-pngquant';
+
+export default () => (
+	gulp.src('src/images/*')
+		.pipe(imagemin())
+		.pipe(gulp.dest('dist/images'))
+);
+
+gulp.task('default', () => {
+	return gulp.src('src/images/*')
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		}))
+		.pipe(gulp.dest('dist/images'));
+});
+
 var hugoPrjFolder = './';
 var hugoPublicFolder = 'public';
 
@@ -67,7 +104,8 @@ gulp.task('hugoClean', function () {
 /***************************************************************
  *  ==>>>   | Excute SEO tasks (in the website in public)
  **/
-var gulpSeo = require('gulp-seo');
+// var gulpSeo = require('gulp-seo');
+import gulpSeo from 'gulp-seo';
 
 gulp.task('seo', function() {
   const radioJauneConfiguration = {
@@ -97,7 +135,8 @@ gulp.task('seo', function() {
 /***************************************************************
  *  ==>>>   | Excute hugo build (will egenrae the website in public)
  **/
-const child_process = require("child_process");
+// const child_process = require("child_process");
+import child_process from 'child_process';
 // Run Hugo to copy finished files over to public folder
 gulp.task("hugo", (done) => {
  let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
@@ -123,7 +162,8 @@ gulp.task("hugo", (done) => {
 });
 
 
-var gulpBeautify = require('gulp-beautify');
+// var gulpBeautify = require('gulp-beautify');
+import gulpBeautify from 'gulp-beautify';
 /***************************************************************
  *  ==>>>   | beautify the HTML/JS/CSS produced by hugo in public
  **/
@@ -165,9 +205,12 @@ gulp.task('beautifyHugoPublic', gulp.series('beautifyHugoPublicHtml', 'beautifyH
  *  ==>>>   | Compile Sass / SCSS
  **/
 
-const rename = require("gulp-rename");
-const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
+// const rename = require("gulp-rename");
+// const autoprefixer = require('gulp-autoprefixer');
+// const sourcemaps = require('gulp-sourcemaps');
+import rename from 'gulp-rename';
+import autoprefixer from 'gulp-autoprefixer';
+import sourcemaps from 'gulp-sourcemaps';
 // Compile sass into CSS : to be used BEFORE hugo build
 gulp.task('gulpSass', function () {
   return gulp.src('static/sass/**/*.s?ss')
@@ -184,15 +227,16 @@ gulp.task('gulpSass', function () {
 });
 
 gulp.task('purgecss', () => {
-    return gulp.src('static/css/**/*.css')
+    return gulp.src('public/css/**/*.css')
         .pipe(purgecss({
-            content: ['layouts/**/*.html'] // the hugo project folder 'layouts' always contains any html of the project. Content and layout clearly separated
+            content: ['public/**/*.html'] // the hugo project folder 'layouts' always contains any html of the project. Content and layout clearly separated
         }))
-        .pipe(gulp.dest('static/css'))
+        .pipe(gulp.dest('public/css'))
         .pipe(browserSync.stream());
 })
 
-const minify = require('gulp-minify');
+// const minify = require('gulp-minify');
+import minify from 'gulp-minify';
 gulp.task('minifyJSHugo', () => {
     return   gulp.src(['public/**/*.js'])
         .pipe(minify())
@@ -201,8 +245,11 @@ gulp.task('minifyJSHugo', () => {
 })
 
 
-var uglify = require('gulp-uglify');
-var pipeline = require('readable-stream').pipeline;
+/// var uglify = require('gulp-uglify');
+/// var pipeline = require('readable-stream').pipeline;
+import uglify from 'gulp-uglify';
+import pipelineModule from 'readable-stream';
+const pipeline = pipelineModule.pipeline;
 
 gulp.task('uglifyJSHugo', function () {
   return pipeline(
@@ -229,7 +276,7 @@ gulp.task(jsDev);
 
 
 gulp.task('dev', gulp.series('gulpSass', 'hugo', 'seo', 'beautifyHugoPublic'));
-gulp.task('prod', gulp.series('gulpSass', 'hugo', 'seo', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo'));
+gulp.task('prod', gulp.series('gulpSass', 'hugo', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
 
 gulp.task('serve', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
@@ -253,6 +300,29 @@ gulp.task('serve', function() {
     gulp.watch('./data/**/*.*', gulp.series('dev'));
     gulp.watch('./layouts/**/*.*', gulp.series('dev'));
     gulp.watch("layouts/**/*.html", gulp.series('dev')).on('change', browserSync.reload);
+});
+gulp.task('serve-prod', function() {
+    gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
+    gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
+
+    browserSync.init({ // https://browsersync.io/docs/api
+        server: "./public",
+        host: `${hugoHost}`,
+        port: `${hugoPort}`
+    });
+
+    // watch all hugo project files for change, rebuild all if changes
+    gulp.watch('./config.toml', gulp.series('prod'));
+    gulp.watch('./config.yaml', gulp.series('prod'));
+    gulp.watch('./config.json', gulp.series('prod'));
+    gulp.watch('./static/**/*.*', gulp.series('gulpSass'));
+    gulp.watch('./assets/**/*.*', gulp.series('gulpSass'));
+    gulp.watch('./themes/**/*.*', gulp.series('prod'));
+    gulp.watch('./archetypes/**/*.*', gulp.series('prod'));
+    gulp.watch('./content/**/*.*', gulp.series('prod'));
+    gulp.watch('./data/**/*.*', gulp.series('prod'));
+    gulp.watch('./layouts/**/*.*', gulp.series('prod'));
+    gulp.watch("layouts/**/*.html", gulp.series('prod')).on('change', browserSync.reload);
 });
 
 // gulp.task('serve', gulp.series('gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist', 'server'));

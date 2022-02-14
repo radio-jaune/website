@@ -15,8 +15,11 @@
 {{- with .Site.Params.msvalidate }}
 <meta name="msvalidate.01" content="{{ . }}">{{ end }}
 {{ hugo.Generator }}
+
+<!--
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
+-->
 
 <link href="{{ "vendor/bootstrap/css/bootstrap.min.css" | absURL }}" rel="stylesheet">
 <!-- <link href="{{ "vendor/font-awesome/css/font-awesome.min.css" | absURL }}" rel="stylesheet" type="text/css"> -->
