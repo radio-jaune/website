@@ -151,7 +151,7 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm i
-npm run clean-prj && npm run spawn
+npm run clean:project && npm run spawn
 ```
 
 * Then run locally your new website :
@@ -183,7 +183,7 @@ cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
-export RELEASE_VERSION=0.0.53
+export RELEASE_VERSION=0.0.54
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -205,7 +205,6 @@ mkdir -p  ./public
 oldHugoBuild () {
   export PATH=$PATH:/usr/local/go/bin
   hugo -b ${DEPLOYMENT_BASE_URL}
-
   cp -fr ./public/* ./docs/
 }
 gulpBuild (){
@@ -218,6 +217,7 @@ gulpBuild (){
   export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
   gulp hugo
+  cp -fr ./public/* ./docs/
 }
 
 gulpBuild
@@ -315,3 +315,5 @@ gulp hugo
 * https://www.npmjs.com/package/gulp-beautify
 * https://www.npmjs.com/package/gulp-seo
 * https://www.npmjs.com/package/gulp-newer
+* You are my hero :
+  * https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package
