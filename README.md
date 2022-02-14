@@ -205,7 +205,6 @@ mkdir -p  ./public
 oldHugoBuild () {
   export PATH=$PATH:/usr/local/go/bin
   hugo -b ${DEPLOYMENT_BASE_URL}
-
   cp -fr ./public/* ./docs/
 }
 gulpBuild (){
@@ -218,6 +217,7 @@ gulpBuild (){
   export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
   gulp hugo
+  cp -fr ./public/* ./docs/
 }
 
 gulpBuild
