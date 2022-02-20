@@ -52,7 +52,7 @@ let radioJauneConfiguration = {
           author: 'RADIOJAUNE.COM',
           keywords: ['radio', 'libre', 'libre antenne', 'live', 'gilets jaunes', 'convoi des libertés', 'freedom convoy', 'free speech', 'liberté d\'expression', 'émission', 'censure', 'censure facebook', 'citoyen', 'débats', 'scandale', 'polémiques', 'covid', 'vaccin', 'pass sanitaire', 'pass vaccinal', 'green pass', 'vaccin', 'démocratie', 'convergence'],
           robots: {
-              index: ttrue, // true
+              index: true, // true
               follow: true // true
           },
           revisitAfter: '5 month', // 3 month
@@ -182,53 +182,107 @@ function jsDev(){
 }
 gulp.task(jsDev);
 /******************************************************
- * SRC TO DIST
+ * PUBLIC TO DIST
  */
 
-// Move the javascript files into our /dist/js folder
+// Move the javascript files from ./public into our ./dist folder
 function jsDist(){
     return gulp
-        .src(['src/js/*.js'])
+        .pipe(clean('dist/js', '/**'))
+        .pipe(newer('dist/js'))
+        .src([
+          'js/*.js',
+          'js/**/*.js',
+          'js/**/**/*.js',
+          'js/**/**/**/*.js'
+        ],{
+        "base" : "./public"
+        })
         .pipe(gulp.dest("dist/js")).pipe(browserSync.stream());
 }
-// Move the CSS files into our /dist/css folder
+
+
+// Move the CSS files from ./public into our ./dist folder
 function cssDist(){
     return gulp
-        .src(['src/css/*.css'])
+        .pipe(clean('dist/css', '/**'))
+        .pipe(newer('dist/css'))
+        .src([
+          'css/*.css',
+          'css/**/*.css',
+          'css/**/**/*.css',
+          'css/**/**/**/*.css'
+        ],{
+        "base" : "./public"
+        })
         .pipe(gulp.dest("dist/css")).pipe(browserSync.stream());
 }
-// Move the HTML files into our /dist/ folder
+// Move the HTML files from ./public into our ./dist folder
 function htmlDist(){
     return gulp
-        .src(['src/*.html'])
+        .pipe(clean('dist/', '*.html'))
+        .pipe(clean('dist/', '**/*.html'))
+        .pipe(clean('dist/', '**/**/*.html'))
+        .pipe(clean('dist/', '**/**/**/*.html'))
+        .src([
+          '*.html',
+          '**/*.html',
+          '**/**/*.html',
+          '**/**/**/*.html'
+        ],{
+        "base" : "./public"
+        })
         .pipe(gulp.dest("dist/")).pipe(browserSync.stream());
+}
+// Moves all the vendor files from ./public into our ./dist folder
+function vendorDist(){
+    return gulp
+        .src(['public/vendor/*'])
+        .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
 }
 
 gulp.task(jsDist);
 gulp.task(cssDist);
 gulp.task(htmlDist);
+gulp.task(vendorDist);
 
-gulp.task('gulpBuild', gulp.series('testEnvDisplay', 'gulpSass', 'hugo'));
 
-gulp.task('gulpWBuild', gulp.series('gulpWatchBuild', function() {
+gulp.task('watch', gulp.series('gulpWatchBuild', function() {
     browserSync.init({
-        server: "./public"
+        server: "./dist"
     });
 
     // watch all hugo project files for change, rebuild all if changes
-    gulp.watch('./config.toml', gulp.series('jsDist'));
-    gulp.watch('./config.yaml', gulp.series('jsDist'));
-    gulp.watch('./config.json', gulp.series('jsDist'));
-    gulp.watch('./static/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./assets/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./themes/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./archetypes/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./content/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./data/**/*.*', gulp.series('jsDist'));
-    gulp.watch('./layouts/**/*.*', gulp.series('jsDist'));
+    gulp.watch('./config.toml', gulp.series('hugo', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./config.yaml', gulp.series('hugo', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./config.json', gulp.series('hugo', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./static/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./assets/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./themes/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./archetypes/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./content/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./data/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./layouts/**/*.*', gulp.series('hugo', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
     gulp.watch("src/*.html").on('change', browserSync.reload);
 }));
 
-gulp.task('serve', gulp.series('gulpPug', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist', 'server'));
-// allDist after gulpPug: any html fiole in the src folder, overrides the rendered pug template in dist
-gulp.task('dev', gulp.series('gulpSass', 'gulpPug', 'jsDist', 'cssDist', 'htmlDist', 'server'));
+// - 'gulpSass' : compiles the sass from static/sass/ to static/css
+// - 'hugo' : builds the hugo website to the public folder, catching all the sass-compiled static/css/ css files
+// - 'hugo' : builds the hugo website to the public folder, catching all the sass-compiled static/css/ css files
+// - 'jsDist' : copy all 'js' files from public/ to dist/
+// - 'cssDist' : copy all 'css' files from public/ to dist/
+// - 'htmlDist' : copy all 'html' files from public/ to dist/
+
+// Copy recursive folder and all files from ./src to ./build DIR
+// if you have copy all subcategories - use /
+
+
+
+//
+//          the sass from static/sass/
+// ++
+
+gulp.task('buildDev', gulp.series('gulpSass', 'hugo', 'jsDist', 'cssDist', 'htmlDist'));
+gulp.task('dev', gulp.series('gulpSass', 'purgecss', 'hugo', 'jsDist', 'cssDist', 'htmlDist', 'server', 'hugo'));
+gulp.task('serve', gulp.series('gulpSass', 'purgecss', 'hugo', 'jsDist', 'cssDist', 'htmlDist', 'server', 'hugo', 'watch'));
+// allDist after hugo: any html fiole in the src folder, overrides the rendered pug template in dist

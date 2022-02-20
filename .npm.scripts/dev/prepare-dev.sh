@@ -1,6 +1,34 @@
 #!/bin/bash
 
-chmod +x ./.**/*.sh ./.**/**/*.sh
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ -- [$0]"
+echo "# ------ --  (All npm) project local installations"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+ls -alh ./.npm.scripts/dev/env.sh
+source ./.npm.scripts/dev/env.sh
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ -  PATH=[${PATH}]"
+# ----
+#
+export SOME_ENV_VAR_YOU_WANT=${SOME_ENV_VAR_YOU_WANT:-"its default value if not set"}
+
+echo "# --- # ---   SOME_ENV_VAR_YOU_WANT=[${SOME_ENV_VAR_YOU_WANT}]"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+echo "# ------ ------ ------ ------ ------ ------ ------ #"
+
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ --  (All npm) project local installations
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+# ------ ------ ------ ------ ------ ------ ------ #
+
 ## - ### ## - ### ## - ### ## - ### ## - ###
 ## - ### // "devDependencies": {
 ## - ### //   "browser-sync": "^2.27.7",
@@ -38,6 +66,8 @@ export GULP_BABEL_CORE_VERSION=${GULP_BABEL_CORE_VERSION:-"^7.17.2"}
 export GULP_BABEL_REGISTER_VERSION=${GULP_BABEL_REGISTER_VERSION:-"^7.17.0"}
 export GULP_BABEL_PRESET_ENV_VERSION=${GULP_BABEL_PRESET_ENV_VERSION:-"^7.16.11"}
 export GULP_NODE_FETCH_VERSION=${GULP_NODE_FETCH_VERSION:-"^2.6.1"}
+export GULP_CLEAN_CSS_VERSION=${GULP_CLEAN_CSS_VERSION:-"^4.3.0"}
+
 # ${GULP_NODE_SASS_VERSION}
 
 # ${GULP_VERSION}
@@ -92,7 +122,8 @@ npm uninstall --save-dev \
     @babel/core \
     @babel/register \
     @babel/preset-env \
-    node-fetch
+    node-fetch \
+    gulp-clean-css
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -118,4 +149,5 @@ npm i --save-dev \
     @babel/core@${GULP_BABEL_CORE_VERSION} \
     @babel/register@${GULP_BABEL_REGISTER_VERSION} \
     @babel/preset-env@${GULP_BABEL_PRESET_ENV_VERSION} \
-    node-fetch@${GULP_NODE_FETCH_VERSION}
+    node-fetch@${GULP_NODE_FETCH_VERSION} \
+    gulp-clean-css@${GULP_CLEAN_CSS_VERSION}
