@@ -30,7 +30,7 @@ echo "# -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- #"
 echo "# -- 1./ run the npm dev build,"
 echo "# -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- #"
 
-echo "nothing in the dev build for the moment"
+gulp dev
 
 # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- # -- #
 # -- 2./ then copy to 'dist/', and finally will

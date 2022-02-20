@@ -1,34 +1,13 @@
 #!/bin/bash
+export GULP_CLI_VERSION=${GULP_CLI_VERSION:-"2.3.0"}
+export SASS_VERSION=${SASS_VERSION:-"latest"}
+chmod +x ./.**/*.sh ./.**/**/*.sh
+# npm install -g sass@${SASS_VERSION}
+sudo npm install --global gulp-cli@${GULP_CLI_VERSION}
 
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ -- [$0]"
-echo "# ------ --  (All npm) project local installations"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-ls -alh ./.npm.scripts/dev/env.sh
-source ./.npm.scripts/dev/env.sh
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ -  PATH=[${PATH}]"
-# ----
-#
-export SOME_ENV_VAR_YOU_WANT=${SOME_ENV_VAR_YOU_WANT:-"its default value if not set"}
 
-echo "# --- # ---   SOME_ENV_VAR_YOU_WANT=[${SOME_ENV_VAR_YOU_WANT}]"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-echo "# ------ ------ ------ ------ ------ ------ ------ #"
-
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ --  (All npm) project local installations
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-# ------ ------ ------ ------ ------ ------ ------ #
-
+chmod +x ./.**/*.sh ./.**/**/*.sh
+chmod +x ./.**/*.sh ./.**/**/*.sh
 ## - ### ## - ### ## - ### ## - ### ## - ###
 ## - ### // "devDependencies": {
 ## - ### //   "browser-sync": "^2.27.7",
@@ -61,12 +40,7 @@ export GULP_SOURCEMAPS_VERSION=${GULP_SOURCEMAPS_VERSION:-"^3.0.0"}
 export GULP_AUTOPREFIXER_VERSION=${GULP_AUTOPREFIXER_VERSION:-"^8.0.0"}
 export GULP_RENAME_VERSION=${GULP_RENAME_VERSION:-"^2.0.0"}
 export GULP_DOTENV_VERSION=${GULP_DOTENV_VERSION:-"^16.0.0"}
-export GULP_IMAGEMIN_PNGQUANT_VERSION=${GULP_IMAGEMIN_PNGQUANT_VERSION:-"9.0.2"}
-export GULP_BABEL_CORE_VERSION=${GULP_BABEL_CORE_VERSION:-"^7.17.2"}
-export GULP_BABEL_REGISTER_VERSION=${GULP_BABEL_REGISTER_VERSION:-"^7.17.0"}
-export GULP_BABEL_PRESET_ENV_VERSION=${GULP_BABEL_PRESET_ENV_VERSION:-"^7.16.11"}
-export GULP_NODE_FETCH_VERSION=${GULP_NODE_FETCH_VERSION:-"^2.6.1"}
-export GULP_CLEAN_CSS_VERSION=${GULP_CLEAN_CSS_VERSION:-"^4.3.0"}
+
 
 # ${GULP_NODE_SASS_VERSION}
 
@@ -111,19 +85,13 @@ npm uninstall --save-dev \
     gulp-debug \
     gulp-newer \
     gulp-imagemin \
-    imagemin-pngquant \
     gulp-minify \
     gulp-uglify \
     readable-stream \
     gulp-sourcemaps \
     gulp-autoprefixer \
     gulp-rename \
-    dotenv \
-    @babel/core \
-    @babel/register \
-    @babel/preset-env \
-    node-fetch \
-    gulp-clean-css
+    dotenv
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -144,10 +112,4 @@ npm i --save-dev \
     gulp-sourcemaps@${GULP_SOURCEMAPS_VERSION} \
     gulp-autoprefixer@${GULP_AUTOPREFIXER_VERSION} \
     gulp-rename@${GULP_RENAME_VERSION} \
-    dotenv@${GULP_DOTENV_VERSION} \
-    imagemin-pngquant@${GULP_IMAGEMIN_PNGQUANT_VERSION} \
-    @babel/core@${GULP_BABEL_CORE_VERSION} \
-    @babel/register@${GULP_BABEL_REGISTER_VERSION} \
-    @babel/preset-env@${GULP_BABEL_PRESET_ENV_VERSION} \
-    node-fetch@${GULP_NODE_FETCH_VERSION} \
-    gulp-clean-css@${GULP_CLEAN_CSS_VERSION}
+    dotenv@${GULP_DOTENV_VERSION}

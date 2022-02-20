@@ -65,7 +65,7 @@ bash-3.2$ git flow version
 
 ### Build n Run Locally
 
-* Now start the hugo server in watch mode :
+* Now buld the hugo website in dev mode :
 
 ```bash
 export DESIRED_VERSION=0.0.0
@@ -102,7 +102,7 @@ cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
 
-npm i
+npm run preps:all
 # npm run spawn
 # and then run :
 
@@ -117,7 +117,8 @@ export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
-gulp hugo
+# gulp hugo will only buiild the hugo website, it won't compile sass scss
+gulp dev
 gulp serve
 
 ```
@@ -150,8 +151,11 @@ git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
 cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
-npm i
-npm run clean:project && npm run spawn
+npm preps:all
+npm run spawn:clean:project && npm run spawn:gen:project
+
+spawn:clean:project
+spawn:gen:project
 ```
 
 * Then run locally your new website :
@@ -220,7 +224,7 @@ gulpBuild (){
   cp -fr ./public/* ./docs/
 }
 
-gulpBuild
+oldHugoBuild
 
 cp -fr ./public/* ./docs/
 
@@ -273,7 +277,7 @@ gulpBuild (){
   gulp hugo
 }
 
-gulpBuild
+oldHugoBuild
 
 surge ./public "${DEPLOYMENT_DOMAIN}"
 

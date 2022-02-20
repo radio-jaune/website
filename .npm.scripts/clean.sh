@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# ---
-#
-
-if [ -d dist/ ]; then
-  rm -fr dist/
+if [ -d public/ ]; then
+  rm -fr public/
 fi;
-
-mkdir -p dist/
-# ---
-#
 
 if [ -d docs/ ]; then
   rm -fr docs/
 fi;
 
-mkdir -p docs/
+if [ -d dist/ ]; then
+  rm -fr dist/
+fi;
