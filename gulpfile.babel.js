@@ -160,8 +160,8 @@ gulp.task("hugoProd", (done) => {
 });
 
 
-gulp.task("hugo", (done) => {
- let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
+gulp.task("hugoDev", (done) => {
+ let hugoProcess = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
              .on("close", () => {
                  done(); // let gulp know the task has completed
              });
@@ -179,18 +179,21 @@ gulp.task("hugo", (done) => {
      });
  };
 
- hugo.stdout.on("data", hugoLogger);
- hugo.stderr.on("data", hugoLogger)
+ hugoProcess.stdout.on("data", hugoLogger);
+ hugoProcess.stderr.on("data", hugoLogger)
 });
 
 
 
-import gulpBeautify from 'gulp-beautify';
-/***************************************************************
- *  ==>>>   | beautify the HTML/JS/CSS produced by hugo in public
- **/
 
- gulp.task('beautifyHugoPublicHtml', function() {
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | beautify the HTML/JS/CSS produced by hugo in public/ folder
+ ***************************************************************
+ ***************************************************************
+ **/
+import gulpBeautify from 'gulp-beautify';
+gulp.task('beautifyHugoPublicHtml', function() {
   return gulp
     .src('./public/**/*.html')
     .pipe(gulpBeautify.html({ indent_size: 2 }))
@@ -211,11 +214,6 @@ gulp.task('beautifyHugoPublicJs', function() {
     .pipe(gulpBeautify({ indent_size: 2 }))
     .pipe(gulp.dest('./public/'));
 });
-
-
-
-
-
 
 
 gulp.task('beautifyHugoPublic', gulp.series('beautifyHugoPublicHtml', 'beautifyHugoPublicCss', 'beautifyHugoPublicJs'));
@@ -246,6 +244,13 @@ gulp.task('gulpSass', function () {
         .pipe(browserSync.stream());
 });
 
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | purge CSS produced by gulp in dist/ folder
+ ***************************************************************
+ ***************************************************************
+ **/
 gulp.task('purgecss', () => {
     return gulp.src('public/css/**/*.css')
         .pipe(purgecss({
@@ -255,50 +260,159 @@ gulp.task('purgecss', () => {
         .pipe(browserSync.stream());
 })
 
-
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | minify the HTML/JS/CSS produced by gulp in dist/ folder
+ ***************************************************************
+ ***************************************************************
+ **/
 import minify from 'gulp-minify';
 gulp.task('minifyJSHugo', () => {
-    return   gulp.src(['public/**/*.js'])
+    return   gulp.src(['dist/**/*.js'])
         .pipe(minify())
-        .pipe(gulp.dest('public'))
+        .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 })
 
 
+import cleanCSS from 'gulp-clean-css';
+
+gulp.task('minifyCSSHugo',() => {
+  return gulp.src('./dist/css/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/css'));
+});
 
 
+gulp.task('minifyHugoDist', gulp.series('minifyJSHugo', 'minifyCSSHugo'));
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | uglify the HTML/JS/CSS produced by gulp in dist/ folder
+ ***************************************************************
+ ***************************************************************
+ **/
 import uglify from 'gulp-uglify';
 import pipelineModule from 'readable-stream';
 const pipeline = pipelineModule.pipeline;
 
 gulp.task('uglifyJSHugo', function () {
   return pipeline(
-        gulp.src('lib/*.js'),
+        gulp.src([
+          'dist/*.js',
+          'dist/**/*.js',
+          'dist/**/**/*.js',
+          'dist/**/**/**/*.js'
+        ]),
         uglify(),
         gulp.dest('dist')
   );
 });
 
+gulp.task('uglifyHugoDist', gulp.series('minifyJSHugo'));
 
 
 
-function jsDev(){
-    return gulp
-        .src(['src/js/*.js'])
-        .pipe(gulp.dest("dist/js"))
-        .pipe(browserSync.stream());
-}
-gulp.task(jsDev);
 /******************************************************
- * SRC TO DIST
+ * PUBLIC TO DIST
  */
 
+// Move the javascript files from ./public into our ./dist folder
+function jsDist(){
+    return gulp
+        .pipe(clean('dist/js', '/**'))
+        .pipe(newer('dist/js'))
+        .src([
+          'js/*.js',
+          'js/**/*.js',
+          'js/**/**/*.js',
+          'js/**/**/**/*.js'
+        ],{
+        "base" : "./public"
+        })
+        .pipe(gulp.dest("dist/js")).pipe(browserSync.stream());
+}
 
 
-gulp.task('dev', gulp.series('gulpSass', 'hugo', 'seo', 'beautifyHugoPublic'));
-gulp.task('prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
+// Move the CSS files from ./public into our ./dist folder
+function cssDist(){
+    return gulp
+        .pipe(clean('dist/css', '/**'))
+        .pipe(newer('dist/css'))
+        .src([
+          'css/*.css',
+          'css/**/*.css',
+          'css/**/**/*.css',
+          'css/**/**/**/*.css'
+        ],{
+        "base" : "./public"
+        })
+        .pipe(gulp.dest("dist/css")).pipe(browserSync.stream());
+}
+// Move the HTML files from ./public into our ./dist folder
+function htmlDist(){
+    return gulp
+        .pipe(clean('dist/', '*.html'))
+        .pipe(clean('dist/', '**/*.html'))
+        .pipe(clean('dist/', '**/**/*.html'))
+        .pipe(clean('dist/', '**/**/**/*.html'))
+        .src([
+          '*.html',
+          '**/*.html',
+          '**/**/*.html',
+          '**/**/**/*.html'
+        ],{
+        "base" : "./public"
+        })
+        .pipe(gulp.dest("dist/")).pipe(browserSync.stream());
+}
+// Moves all the vendor files from ./public into our ./dist folder
+function vendorDist(){
+    return gulp
+        .src(['public/vendor/*'])
+        .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
+}
 
-gulp.task('serve', function() {
+gulp.task(jsDist);
+gulp.task(cssDist);
+gulp.task(htmlDist);
+gulp.task(vendorDist);
+
+
+gulp.task('watch', gulp.series('gulpWatchBuild', function() {
+    browserSync.init({
+        server: "./dist",
+        host: `${hugoHost}`,
+        port: `${hugoPort}`
+    });
+
+    // watch all hugo project files for change, rebuild all if changes
+    gulp.watch('./config.toml', gulp.series('hugoDev', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./config.yaml', gulp.series('hugoDev', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./config.json', gulp.series('hugoDev', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./static/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./assets/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./themes/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./archetypes/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./content/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./data/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch('./layouts/**/*.*', gulp.series('hugoDev', 'gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist'));
+    gulp.watch("src/*.html").on('change', browserSync.reload);
+}));
+
+
+
+// ---------------
+// all prod env related tasks are done in the dist folder itself
+// all dev env rerleated ops are done inside the public folder
+// the docs/ folder is only used by github pages deployment
+//
+gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'jsDist', 'cssDist', 'htmlDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
+gulp.task('build:prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
+
+gulp.task('watchDev', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
     gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
 
@@ -321,7 +435,7 @@ gulp.task('serve', function() {
     gulp.watch('./layouts/**/*.*', gulp.series('dev'));
     gulp.watch("layouts/**/*.html", gulp.series('dev')).on('change', browserSync.reload);
 });
-gulp.task('serve-prod', function() {
+gulp.task('watchProd', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
     gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
 
@@ -344,7 +458,7 @@ gulp.task('serve-prod', function() {
     gulp.watch('./layouts/**/*.*', gulp.series('prod'));
     gulp.watch("layouts/**/*.html", gulp.series('prod')).on('change', browserSync.reload);
 });
-
+// --------------- older...
 // gulp.task('serve', gulp.series('gulpSass', 'purgecss', 'jsDist', 'cssDist', 'htmlDist', 'server'));
 // allDist after gulpPug: any html fiole in the src folder, overrides the rendered pug template in dist
 // gulp.task('dev', gulp.series('gulpSass', 'jsDist', 'cssDist', 'htmlDist'));
