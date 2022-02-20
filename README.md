@@ -187,13 +187,15 @@ cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
 
-export RELEASE_VERSION=0.0.54
+npm run preps
+
+export RELEASE_VERSION=0.0.56
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
 git flow release start ${RELEASE_VERSION}
 
-npm i
+
 
 if [ -d ./docs ]; then
   rm -fr ./docs
