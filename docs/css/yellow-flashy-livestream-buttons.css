@@ -1,6 +1,8 @@
 /* yellow-flashy-livestream-buttons.css */
 
 
+
+
 /**************************
  **************************
  **************************
@@ -320,3 +322,28 @@ a.awesome.flashy.bouton:hover span i {
    /* border-radius: 50%; */
  }
 }
+
+
+/**************************
+ **************************
+ **************************
+ * NOUS SOMMES SSOMMES CENSURES SUR
+ **************************
+ **************************
+ **************************/
+/********************************************************
+ *              Donc là il s'agit de faire le tampon
+ *              "censurés" au dessus des boutons réseaux
+ *              sociaux pour lesquels radio jaune est censurée 
+ /*
+.jaune.social.bouton.list-inline.banner-social-buttons li a::after {
+  content: "CENSURÉS"; // ::before and ::after both require content
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(120deg, #eaee44, #33d0ff);
+  opacity: .7;
+}
+*/
