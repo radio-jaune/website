@@ -22,6 +22,8 @@ bash-3.2$ npm --version
 6.14.8
 bash-3.2$ export PATH=$PATH:/usr/local/go/bin
 bash-3.2$ go version
+ https://vk.com/video_ext.php?oid=698175626&id=456239019&hash=162c1c4e1e027ead
+
 go version go1.16.3 darwin/amd64
 bash-3.2$ hugo version
 Hugo Static Site Generator v0.78.2-959724F0 darwin/amd64 BuildDate: 2020-11-13T10:07:09Z
@@ -74,7 +76,7 @@ git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
 
-npm i
+npm run preps:all
 # npm run spawn
 # and then run :
 
@@ -91,7 +93,6 @@ export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
 gulp dev
 ```
-
 
 * Then start the hugo server in watch mode :
 
@@ -189,7 +190,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.56
+export RELEASE_VERSION=0.0.57
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 

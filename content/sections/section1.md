@@ -1,7 +1,7 @@
 ---
 # title: "Réseaux Sociaux"
 # title: "Rés. Sociaux"
-title: "Résaux"
+title: "Réseaux"
 weight: 4
 improvecontrast: true
 ---
