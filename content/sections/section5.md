@@ -51,3 +51,14 @@ Vous êtes `développeur` ? `devops` ? `expert IT` dans un quelconque domaine ?
 {{< socialhandles >}}
     {{< github_repo org_name="radio-jaune" repo_name="website" >}}
 {{< /socialhandles >}}
+
+
+
+---
+
+<!--
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yrooR3CjESY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+-->
+<!--
+{{< youtubevideo id="yrooR3CjESY" color="" class="testjaune" >}}
+-->

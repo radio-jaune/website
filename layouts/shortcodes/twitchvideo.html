@@ -1,0 +1,23 @@
+<!-- TWITCH Player for just one specific video : -->
+
+<!--
+
+id="1304665201"
+html_element_id="twitch-embed2"
+html_element_id="twitch_embed_unique_video"
+html_element_id="twitch_embed_channel_autoplay"
+
+ -->
+
+<!-- Add a placeholder for the Twitch embed -->
+<div id="{{ .Get "id" }}"></div>
+
+<!-- Load the Twitch embed script -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+<!-- Create a Twitch.Player object. This will render within the placeholder div -->
+<script type="text/javascript">
+  new Twitch.Player("{{ .Get "id" }}", {
+    video: "{{ .Get "id" }}"
+  });
+</script>

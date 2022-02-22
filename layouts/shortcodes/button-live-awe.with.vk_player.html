@@ -1,4 +1,126 @@
 <div class='tabs yellow tabbed livestreams'>
+  <!-- Flattern structure for adjacent sibling combinator -->
+
+  <!-- Tab 1 & Content -->
+  <input type="radio" name="tab" id="tab1" role="tab" class='yellow tabbed livestreams'>
+
+  <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab line big online'>
+
+    <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
+
+  </label>
+  <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
+      <div class="conteneur jaune lives horizontal">
+            <!-- GO TO VK.com live BUTTON -->
+            <!--
+            <li class="list-inline-item radio jaune livestream button">
+              <a href="{{ .Get "vk_live_url" }}"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                <span class="network-name">
+                  <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
+                  VK.com Live
+                </span>
+              </a>
+            </li>
+            -->
+
+            <!-- Talk live BUTTON -->
+            <li class="list-inline-item radio jaune livestream button">
+              <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
+                <span class="network-name">
+                  <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                  {{ .Get "join_live_text" }}
+                </span>
+              </a>
+            </li>
+      </div>
+      <div class="row conteneur jaune lives vertical">
+        <div class="col-12 haut">
+            <!-- GO TO VK.com live BUTTON -->
+            <!--
+            <li class="list-inline-item radio jaune livestream button">
+              <a href="{{ .Get "vk_live_url" }}"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                <span class="network-name">
+                  <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
+                  VK.com Live
+                </span>
+              </a>
+            </li>
+            -->
+
+        </div>
+        <div class="col-12 bas">
+            <!-- Talk live BUTTON -->
+            <li class="list-inline-item radio jaune livestream button">
+              <a href="{{ .Get "vk_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                <span class="network-name">
+                  <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                  {{ .Get "join_live_text" }}
+                </span>
+              </a>
+
+            </li>
+        </div>
+      </div>
+      <hr/>
+      
+      <!-- VK LIVE - PLAYER -->
+
+      <!--
+
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/yrooR3CjESY?enablejsapi=1" class="testjaune" allowfullscreen=""></iframe>
+      </div>
+      <h4>Deuxième vidéo</h4>
+      -->
+
+      <div class="embed-responsive embed-responsive-16by9">
+
+        <!-- <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
+
+        </iframe>
+       -->
+
+       <iframe src="https://vk.com/video_ext.php?oid={{ .Get "vk_live_oid" }}&id={{ .Get "vk_live_id" }}&hash={{ .Get "vk_live_hash" }}" width="426" height="240" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       <!--
+       -->
+
+
+       <!--
+       <div id="vk_post_{{ .Get "vk_live_id" }}"></div>
+       <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+       <iframe src="{{ .Get "vk_live_url" }}" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       <iframe src="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       <iframe src="https://vk.com/video_ext.php?oid={{ .Get "vk_live_oid" }}&id={{ .Get "vk_live_id" }}&hash=9b1685449f4da747&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+       -->
+
+
+        <!-- That's what i got from VK.com Web UI :
+
+        <div id="vk_post_698593797_31"></div>
+        <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+        <script type="text/javascript">
+          (function() {
+            VK.Widgets.Post("vk_post_698593797_31", 698593797, 31, 'HXrOomG5h40I5FsKTMy5TrP1gmbn');
+          }());
+        </script>
+
+        https://vk.com/wall698593797_31
+
+        -->
+
+        <!--
+
+          == Re-exported RAW
+
+          <iframe src="https://vk.com/video_ext.php?oid=698593797&id=456239019&hash=61732c28e7f24365&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+
+         -->
+
+      </div>
+
+  </section>
+
 
 
   <!-- ------------------------------------------------ -->
@@ -151,18 +273,7 @@
       <!-- ------------------------------------------------ -->
       <!-- ------------------------------------------------ -->
       <!-- ------------------------------------------------ -->
-      <!-- Add a placeholder for the Twitch embed -->
-      <div id="twitch-embed"></div>
 
-      <!-- Load the Twitch embed script -->
-      <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-      <!-- Create a Twitch.Player object. This will render within the placeholder div -->
-      <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-          video: "1304665201"
-        });
-      </script>
         <!-- Add a placeholder for the Twitch embed -->
         <div id="twitch-embed"></div>
 
@@ -178,14 +289,12 @@
               /* height: '100%', */
               /* height: 300, */
               channel: "{{ .Get "twitch_channel_name" }}", // oua super facile, juste à mettre le nom dela chaîne twitch :  "monstercat" est une chaîne twitch existante
-              autoplay: true,
+              autoplay: false,
               // Only needed if this page is going to be embedded on other websites
               parent: ["radiojaune.com"]
             });
 
         </script>
-
-
     </section>
 
 
