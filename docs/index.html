@@ -199,72 +199,6 @@
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <div class='tabs yellow tabbed livestreams'>
-  
-
-  
-  <input type="radio" name="tab" id="tab1" role="tab" class='yellow tabbed livestreams'>
-
-  <label for="tab1" id="tab1-label" class='yellow tabbed livestreams tab line big online'>
-
-    <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
-
-  </label>
-  <section aria-labelledby="tab1-label" class='yellow tabbed livestreams'>
-      <div class="conteneur jaune lives horizontal">
-            
-            
-
-            
-            <li class="list-inline-item radio jaune livestream button">
-              <a href="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&amp;default-camera-mirror=false"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-                <span class="network-name">
-                  <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
-                  MONTER EN DIRECT
-                </span>
-              </a>
-            </li>
-      </div>
-      <div class="row conteneur jaune lives vertical">
-        <div class="col-12 haut">
-            
-            
-
-        </div>
-        <div class="col-12 bas">
-            
-            <li class="list-inline-item radio jaune livestream button">
-              <a href="https://vk.com/video_ext.php?oid=698593797&amp;id=456239026&amp;hash=9b1685449f4da747&amp;hd=2"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
-                <span class="network-name">
-                  <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
-                  MONTER EN DIRECT
-                </span>
-              </a>
-
-            </li>
-        </div>
-      </div>
-      <hr/>
-      
-      
-      <div class="embed-responsive embed-responsive-16by9">
-
-        
-
-
-
-       <iframe src="https://vk.com/video_ext.php?oid=698175626&id=456239019&hash=162c1c4e1e027ead" width="426" height="240" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
-
-       
-
-
-        
-
-        
-
-      </div>
-
-  </section>
-
 
 
   
@@ -399,6 +333,20 @@
       
       
       
+      
+      
+
+      <div id="twitch_embed_unique_video"></div>
+
+      
+      <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+      
+      <script type="text/javascript">
+        new Twitch.Player("twitch_embed_unique_video", {
+          video: "1304665201"
+        });
+      </script>
 
         
         <div id="twitch-embed"></div>
@@ -415,12 +363,14 @@
                
                
               channel: "radiojaune", 
-              autoplay: false,
+              autoplay: true,
               
               parent: ["radiojaune.com"]
             });
 
         </script>
+
+
     </section>
 
 
@@ -619,6 +569,7 @@
 
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -682,6 +633,11 @@
 
 </ul>
 
+<hr>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             </div>
             

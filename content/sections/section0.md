@@ -48,13 +48,19 @@ date_heure_du_live="(20/02 21H)"
 date_du_live_en="February 20, 2022"
 twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw"
 twitter_post_id="Q9xzacKIlK"
+
+
+twitch_video_id="1304665201"
+twitch_channel_html_element_id="twitch-embed"
+twitch_video_html_element_id="twitch_embed_unique_video"
+
  -->
 
 
 
 
 
-{{< button-live-awe join_live_text="MONTER EN DIRECT" numero_du_live="4" join_live_url="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797"  vk_live_hash="162c1c4e1e027ead" vk_live_oid="698175626" vk_live_id="456239019" vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" youtube_live_url="https://www.youtube.com/watch?v=wb1Y2N2L65Y" yt_livestream_id="wb1Y2N2L65Y" channel_yt_live_id="WRO6wo999tI" facebook_live_url="#" color="#f7ff0b" color="#ff330b"  date_heure_du_live="(20/02 21H)" date_du_live_en="February 20, 2022" twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw" twitter_post_id="Q9xzacKIlK" >}}
+{{< button-live-awe join_live_text="MONTER EN DIRECT" numero_du_live="4" join_live_url="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" twitch_video_id="1304665201" twitch_channel_html_element_id="twitch-embed" twitch_video_html_element_id="twitch_embed_unique_video" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797"  vk_live_hash="162c1c4e1e027ead" vk_live_oid="698175626" vk_live_id="456239019" vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" youtube_live_url="https://www.youtube.com/watch?v=wb1Y2N2L65Y" yt_livestream_id="wb1Y2N2L65Y" channel_yt_live_id="WRO6wo999tI" facebook_live_url="#" color="#f7ff0b" color="#ff330b"  date_heure_du_live="(20/02 21H)" date_du_live_en="February 20, 2022" twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw" twitter_post_id="Q9xzacKIlK" >}}
 
 
 
