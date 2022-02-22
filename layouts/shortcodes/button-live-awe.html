@@ -152,20 +152,27 @@
       <!-- ------------------------------------------------ -->
       <!-- ------------------------------------------------ -->
       <!-- Add a placeholder for the Twitch embed -->
-      <div id="twitch-embed"></div>
+      <!--
+
+      twitch_video_id="1304665201"
+      twitch_channel_html_element_id="twitch-embed"
+      twitch_video_html_element_id="twitch_embed_unique_video"
+       -->
+
+      <div id="{{ .Get "twitch_video_html_element_id" }}"></div>
 
       <!-- Load the Twitch embed script -->
       <script src="https://player.twitch.tv/js/embed/v1.js"></script>
 
       <!-- Create a Twitch.Player object. This will render within the placeholder div -->
       <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-          video: "1304665201"
+        new Twitch.Player("{{ .Get "twitch_video_html_element_id" }}", {
+          video: "{{ .Get "twitch_video_id" }}"
         });
       </script>
-      
+
         <!-- Add a placeholder for the Twitch embed -->
-        <div id="twitch-embed"></div>
+        <div id="{{ .Get "twitch_channel_html_element_id" }}"></div>
 
         <!-- Load the Twitch embed JavaScript file -->
         <script src="https://embed.twitch.tv/embed/v1.js"></script>
@@ -173,12 +180,12 @@
         <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
         <script type="text/javascript">
 
-            new Twitch.Embed("twitch-embed", {
+            new Twitch.Embed("{{ .Get "twitch_channel_html_element_id" }}", {
               width: '100%',
               height: 480,
               /* height: '100%', */
               /* height: 300, */
-              channel: "{{ .Get "twitch_channel_name" }}", // oua super facile, juste à mettre le nom dela chaîne twitch :  "monstercat" est une chaîne twitch existante
+              channel: "{{ .Get "twitch_channel_name" }}", // oua super facile, juste à mettre le nom dela chaîne twitch
               autoplay: true,
               // Only needed if this page is going to be embedded on other websites
               parent: ["radiojaune.com"]
