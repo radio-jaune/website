@@ -167,7 +167,12 @@
       <!-- Create a Twitch.Player object. This will render within the placeholder div -->
       <script type="text/javascript">
         new Twitch.Player("{{ .Get "twitch_video_html_element_id" }}", {
-          video: "{{ .Get "twitch_video_id" }}"
+          width: '100%',
+          height: 480,
+          video: "{{ .Get "twitch_video_id" }}",
+          autoplay: true,
+          // Only needed if this page is going to be embedded on other websites
+          parent: ["radiojaune.com"]
         });
       </script>
 
