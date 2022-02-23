@@ -316,14 +316,15 @@ gulp.task('uglifyHugoDist', gulp.series('minifyJSHugo'));
  ***************************************************************
  **/
 gulp.task('purgecss', () => {
-    return gulp.src('public/css/**/*.css')
+    return gulp.src('src/**/*.css')
         .pipe(purgecss({
-            content: ['public/**/*.html'] // the hugo project folder 'layouts' always contains any html of the project. Content and layout clearly separated
+            content: [
+              'src/*.html',
+              'src/**/*.html'
+            ]
         }))
-        .pipe(gulp.dest('public/css'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('build/css'))
 })
-
 
 /***************************************************************
  ***************************************************************
@@ -333,7 +334,7 @@ gulp.task('purgecss', () => {
  **/
  gulp.task('cleanDist', function() {
 
-    let pipe_to_return = del(['dist'])
+    let to_return = del(['dist'])
     const folders = [
         'dist',
         'dist/js',
@@ -354,7 +355,7 @@ gulp.task('purgecss', () => {
             console.log('📁  folder created:', dir);
         }
     });
-   return pipe_to_return;
+   return to_return;
  });
 
 // Move the javascript files from ./public into our ./dist folder
@@ -402,10 +403,6 @@ function cssDist(){
 // Move the HTML files from ./public into our ./dist folder
 function htmlDist(){
     return gulp
-        .pipe(clean('dist/', '*.html'))
-        .pipe(clean('dist/', '**/*.html'))
-        .pipe(clean('dist/', '**/**/*.html'))
-        .pipe(clean('dist/', '**/**/**/*.html'))
         .src([
           '*.html',
           '**/*.html',
@@ -434,7 +431,7 @@ gulp.task(vendorDist);
 // the docs/ folder is only used by github pages deployment
 //
 
-gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'jsDist', 'cssDist', 'htmlDist', 'vendorDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
+gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'cleanDist', 'jsDist', 'cssDist', 'htmlDist', 'vendorDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
 gulp.task('build:prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
 
 
