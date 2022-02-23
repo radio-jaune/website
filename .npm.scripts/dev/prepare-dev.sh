@@ -67,6 +67,7 @@ export GULP_BABEL_REGISTER_VERSION=${GULP_BABEL_REGISTER_VERSION:-"^7.17.0"}
 export GULP_BABEL_PRESET_ENV_VERSION=${GULP_BABEL_PRESET_ENV_VERSION:-"^7.16.11"}
 export GULP_NODE_FETCH_VERSION=${GULP_NODE_FETCH_VERSION:-"^2.6.1"}
 export GULP_CLEAN_CSS_VERSION=${GULP_CLEAN_CSS_VERSION:-"^4.3.0"}
+export GULP_DEL_VERSION=${GULP_DEL_VERSION:-"^6.0.0"}
 
 # ${GULP_NODE_SASS_VERSION}
 
@@ -123,7 +124,8 @@ npm uninstall --save-dev \
     @babel/register \
     @babel/preset-env \
     node-fetch \
-    gulp-clean-css
+    gulp-clean-css \
+    del
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -150,4 +152,5 @@ npm i --save-dev \
     @babel/register@${GULP_BABEL_REGISTER_VERSION} \
     @babel/preset-env@${GULP_BABEL_PRESET_ENV_VERSION} \
     node-fetch@${GULP_NODE_FETCH_VERSION} \
-    gulp-clean-css@${GULP_CLEAN_CSS_VERSION}
+    gulp-clean-css@${GULP_CLEAN_CSS_VERSION} \
+    del@${GULP_DEL_VERSION}
