@@ -42,8 +42,12 @@ echo "# ------ ------ ------ ------ ------ ------ ------ #"
 ## - ### //   "node-sass": "^7.0.1"
 ## - ### // }
 ## - ### ## - ### ## - ### ## - ### ## - ###
+
+export BABEL_REGISTER_VERSION=${BABEL_REGISTER_VERSION:-"^7.17.0"}
 export GULP_NODE_SASS_VERSION=${GULP_NODE_SASS_VERSION:-"^7.0.1"}
 export GULP_VERSION=${GULP_VERSION:-"^4.0.2"}
+# export GULP_VERSION=${GULP_VERSION:-"^3.9.1"}
+
 export GULP_PURGECSS_VERSION=${GULP_PURGECSS_VERSION:-"^4.1.3"}
 export GULP_SASS_VERSION=${GULP_SASS_VERSION:-"^5.1.0"}
 export GULP_BEAUTIFY_VERSION=${GULP_BEAUTIFY_VERSION:-"^3.0.0"}
@@ -68,6 +72,19 @@ export GULP_BABEL_PRESET_ENV_VERSION=${GULP_BABEL_PRESET_ENV_VERSION:-"^7.16.11"
 export GULP_NODE_FETCH_VERSION=${GULP_NODE_FETCH_VERSION:-"^2.6.1"}
 export GULP_CLEAN_CSS_VERSION=${GULP_CLEAN_CSS_VERSION:-"^4.3.0"}
 export GULP_DEL_VERSION=${GULP_DEL_VERSION:-"^6.0.0"}
+export GULP_HTML_REPLACE_VERSION=${GULP_HTML_REPLACE_VERSION:-"^1.6.2"}
+
+export GULP_FIND_VERSION=${GULP_FIND_VERSION:-"^0.0.10"}
+export GULP_REPLACE_VERSION=${GULP_REPLACE_VERSION:-"^1.1.3"}
+
+
+export GULP_IF_VERSION=${GULP_IF_VERSION:-"^3.0.0"}
+export GULP_USEREF_VERSION=${GULP_USEREF_VERSION:-"^5.0.0"}
+
+
+
+
+
 
 # ${GULP_NODE_SASS_VERSION}
 
@@ -125,7 +142,13 @@ npm uninstall --save-dev \
     @babel/preset-env \
     node-fetch \
     gulp-clean-css \
-    del
+    del \
+    gulp-html-replace \
+    gulp-find \
+    gulp-replace \
+    gulp-if \
+    gulp-useref \
+    @babel/register
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -153,4 +176,10 @@ npm i --save-dev \
     @babel/preset-env@${GULP_BABEL_PRESET_ENV_VERSION} \
     node-fetch@${GULP_NODE_FETCH_VERSION} \
     gulp-clean-css@${GULP_CLEAN_CSS_VERSION} \
-    del@${GULP_DEL_VERSION}
+    del@${GULP_DEL_VERSION} \
+    gulp-html-replace@${GULP_HTML_REPLACE_VERSION} \
+    gulp-find@${GULP_FIND_VERSION} \
+    gulp-replace@${GULP_REPLACE_VERSION} \
+    gulp-if@${GULP_IF_VERSION} \
+    gulp-useref@${GULP_USEREF_VERSION} \
+    @babel/register@${BABEL_REGISTER_VERSION}

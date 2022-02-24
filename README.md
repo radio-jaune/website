@@ -317,6 +317,23 @@ gulp hugo
 
 ```
 
+## Gitpod
+
+I used Gitpod to use its IDE-integrated nodejs inspector client, with intention to debug the gulp build. The original issue was about having "glob errors" invoking 'gulp.src' (those errors seem to be very classic).
+
+* https://radiojaune-website-2uvlb4xiykz.ws-eu33.gitpod.io/
+
+* `.gitpod.yml` :
+  * use it to
+  * use it to
+  * content :
+
+```Yaml
+# - .gitpod.yml
+
+```
+
+
 ## Refs
 
 * https://www.npmjs.com/package/gulp-beautify
