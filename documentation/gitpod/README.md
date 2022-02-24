@@ -86,9 +86,18 @@ git add -A && git commit -m "gulp config + gitpod gulp debug" && git push -u ori
 
 # https://www.gitpod.io/docs/config-docker#manually-rebuild-a-workspace-image
 export HTTP_URI_OF_GITHUB_REPO="git@github.com:radio-jaune/website.git"
-export HTTP_URI_OF_GITHUB_REPO="https://github.com/radio-jaune/website.git"
+export HTTP_URI_OF_GITHUB_REPO="https://github.com/radio-jaune/website"
+export GIT_BRANCH_NAME="develop"
 
 curl -ivvv -X GET "https://gitpod.io/#imagebuild/${HTTP_URI_OF_GITHUB_REPO}"
+curl -ivvv -X GET "https://gitpod.io/#imagebuild/${HTTP_URI_OF_GITHUB_REPO}/tree/${GIT_BRANCH_NAME}"
+
+echo "To force rebuild docker image on default git branch : https://gitpod.io/#imagebuild/${HTTP_URI_OF_GITHUB_REPO}"
+echo "To force rebuild docker image on specified [${GIT_BRANCH_NAME}] git branch : https://gitpod.io/#imagebuild/${HTTP_URI_OF_GITHUB_REPO}/tree/${GIT_BRANCH_NAME}"
+
+
+
+
 ```
 
 * https://www.gitpod.io/docs/config-docker#manually-rebuild-a-workspace-image :

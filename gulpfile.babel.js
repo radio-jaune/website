@@ -361,7 +361,7 @@ gulp.task('inject:html:prod3', function () {
               "base" : "./public/"
               })
             .pipe(useref())
-            .pipe(gulp.dest('dist'));
+            .pipe(gulp.dest('dist'))
             .pipe(browserSync.stream());
 });
 
