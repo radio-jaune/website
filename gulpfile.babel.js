@@ -285,7 +285,10 @@ gulp.task('inject:html:prod', function (done) {
 /// //    }
 /// //  })
 
-
+  let htmlTemplateToInject = ''
+  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
   // done()
   return gulp.src('public/**/*.html')
         .pipe(htmlreplace({
@@ -293,11 +296,11 @@ gulp.task('inject:html:prod', function (done) {
             // src: [['data-main.js', 'require-src.js']],
             // src: ['static/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
             // src: ['public/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
-            src: [['public/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css', 'data-main.js', 'require-src.js']],
-            tpl: '<link href="%s" rel="stylesheet">'
+            src: [ ['dist/css/a.min.pokus', 'b.min.pokus.js', 'c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css', 'data-main.js', 'require-src.js']],
+            tpl: htmlTemplateToInject
           }
         }))
-        .pipe(gulp.dest('public'))
+        .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
 });
 
@@ -578,7 +581,8 @@ gulp.task(vendorDist);
 // gulp.task('build:debug', gulp.series('hugoDev', 'inject:html:prod'));
 // gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod'));
 //gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod2'));
-gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod3'));
+// gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod3'));
+gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod'));
 
 
 gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'cleanDist', 'jsDist', 'cssDist', 'htmlDist', 'vendorDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
