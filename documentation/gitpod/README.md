@@ -80,6 +80,7 @@ cat <<EOF >./.theia/launch.json
 EOF
 
 
+cat ./.theia/launch.json > ./launch.json
 
 git add -A && git commit -m "gulp config + gitpod gulp debug" && git push -u origin HEAD
 
