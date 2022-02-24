@@ -83,7 +83,7 @@ EOF
 cat ./.theia/launch.json > ./launch.json
 mkdir -p ./.vscode
 cat ./.theia/launch.json > ./.vscode/launch.json
-
+echo "Ok, the 'launch.json' that is picked up automatically by [Gitpod.io], when you 'Ctrl/Cmd + Maj + D',  is the one in the './.vscode/' folder"
 git add -A && git commit -m "gulp config + gitpod gulp debug" && git push -u origin HEAD
 
 
@@ -102,16 +102,26 @@ echo "To force rebuild docker image on specified [${GIT_BRANCH_NAME}] git branch
 
 
 ```
+* Only Problem is that for the moment, I get the following error when executing the `./.vscode/launch.json` :
+
+```bash
+/home/gitpod/.nvm/versions/node/v16.13.2/bin/node  --inspect --inspect-brk /home/gitpod/.nvm/versions/node/v16.13.2/bin/gulp build:debug
+Process exited with code 1
+Uncaught Error: Cannot find module '/workspace/website/ --inspect --inspect-brk /home/gitpod/.nvm/versions/node/v16.13.2/bin/gulp build:debug'
+
+```
+* RTefrences i found with similar errors :
+  * https://github.com/gitpod-io/gitpod/issues/2630
+  * https://community.gitpod.io/t/node-not-working-in-existing-workspace/4994 : there it seems like the cause is an auto-attach option
+### About custom gitpod images
+
+>
+> When you launch a Gitpod workspace, the local console will use the gitpod user, so all local settings, config file, etc. should apply to /home/gitpod or be run using USER gitpod (we no longer recommend using USER root).
+>
+
 
 * https://www.gitpod.io/docs/config-docker#manually-rebuild-a-workspace-image :
 
 >
 > You can trigger a workspace image rebuild with the following URL pattern: https://gitpod.io/#imagebuild/<your-repo-url>
->
-
-
-### About custom gitpod images
-
->
-> When you launch a Gitpod workspace, the local console will use the gitpod user, so all local settings, config file, etc. should apply to /home/gitpod or be run using USER gitpod (we no longer recommend using USER root).
 >
