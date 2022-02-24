@@ -81,6 +81,8 @@ EOF
 
 
 cat ./.theia/launch.json > ./launch.json
+mkdir -p ./.vscode
+cat ./.theia/launch.json > ./.vscode/launch.json
 
 git add -A && git commit -m "gulp config + gitpod gulp debug" && git push -u origin HEAD
 
