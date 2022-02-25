@@ -80,6 +80,9 @@ export GULP_REPLACE_VERSION=${GULP_REPLACE_VERSION:-"^1.1.3"}
 
 export GULP_IF_VERSION=${GULP_IF_VERSION:-"^3.0.0"}
 export GULP_USEREF_VERSION=${GULP_USEREF_VERSION:-"^5.0.0"}
+export GULP_TAP_VERSION=${GULP_TAP_VERSION:-"^2.0.0"}
+export GULP_MERGE_VERSION=${GULP_MERGE_VERSION:-"^0.1.1"}
+
 
 
 
@@ -148,7 +151,9 @@ npm uninstall --save-dev \
     gulp-replace \
     gulp-if \
     gulp-useref \
-    @babel/register
+    @babel/register \
+    gulp-tap \
+    gulp-merge
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -182,4 +187,6 @@ npm i --save-dev \
     gulp-replace@${GULP_REPLACE_VERSION} \
     gulp-if@${GULP_IF_VERSION} \
     gulp-useref@${GULP_USEREF_VERSION} \
-    @babel/register@${BABEL_REGISTER_VERSION}
+    @babel/register@${BABEL_REGISTER_VERSION} \
+    gulp-tap@${GULP_TAP_VERSION} \
+    gulp-merge@${GULP_MERGE_VERSION}

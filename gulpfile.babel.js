@@ -273,6 +273,8 @@ gulp.task('gulpSass', function () {
 /// Everything here will be replaced
 /// <!-- endbuild -->
 import htmlreplace from 'gulp-html-replace';
+import gulpTap from 'gulp-tap';
+import merge from 'gulp-merge';
 // Compile sassCompiler into CSS : to be used BEFORE hugo build
 gulp.task('inject:html:prod', function (done) {
 /// //  htmlreplace({
@@ -285,22 +287,36 @@ gulp.task('inject:html:prod', function (done) {
 /// //    }
 /// //  })
 
-  let htmlTemplateToInject = ''
-  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
-  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
-  htmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
-  // done()
-  return gulp.src('public/**/*.html')
-        .pipe(htmlreplace({
-          radiojaune_compiled_sass: {// Multiple tag replacement one for each sass scss compiled source file
-            // src: [['data-main.js', 'require-src.js']],
-            // src: ['static/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
-            // src: ['public/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
-            src: [ ['dist/css/a.min.pokus', 'b.min.pokus.js', 'c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css', 'data-main.js', 'require-src.js']],
-            tpl: htmlTemplateToInject
-          }
-        }))
-        .pipe(gulp.dest('dist'))
+  let multiPlaceHolderhtmlTemplateToInject = ''
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  /// -- // -
+  let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
+  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
+  compiledSassFiles.push([ `petit test ajouté à la volée` ])
+
+
+
+
+  var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
+                            .pipe(gulpTap(function(file, t) {
+                                gutil.log(`POKUS-gulp[inject:html:prod] : file.path=[${file.path}]`)
+                                compiledSassFiles.push([ `${file.path}` ])
+                            }))
+
+  var htmlReplaceWork = gulp.src('public/**/*.html')
+                            .pipe(htmlreplace({
+                                radiojaune_compiled_sass: {// Multiple tag replacement one for each sass scss compiled source file
+                                  // src: [ ['dist/css/a.min.pokus', 'b.min.pokus.js', 'c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css', 'data-main.js', 'require-src.js']],
+                                  // tpl: multiPlaceHolderhtmlTemplateToInject
+                                  src: compiledSassFiles,
+                                  tpl: htmlTemplateToInject
+                                }
+                              }))
+                            .pipe(gulp.dest('dist'))
+
+  return merge(compiledSassFilesLinksResolition, htmlReplaceWork)
         .pipe(browserSync.stream());
 });
 
