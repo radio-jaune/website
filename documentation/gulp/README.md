@@ -8,3 +8,9 @@ When in one Gulp task, i need to work with multiple file sets `gulp.src`, I use 
 
   * https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-multiple-sources-in-one-task.md
   * and what is important here, is that the two merged pipelines execute in parallel (not sequencially)
+
+
+
+## Patterns to organize for Multiple environments
+
+* https://www.freshconsulting.com/insights/blog/how-to-organize-your-gulp-js-development-builds-for-multiple-environments/
