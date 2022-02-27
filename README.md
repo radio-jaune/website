@@ -153,10 +153,10 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm preps:all
-npm run spawn:clean:project && npm run spawn:gen:project
+npm run spawn:project:clean && npm run spawn:project:gen
 
-spawn:clean:project
-spawn:gen:project
+spawn:project:clean
+spawn:project:gen
 ```
 
 * Then run locally your new website :

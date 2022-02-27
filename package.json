@@ -31,8 +31,8 @@
     "dev": "npm run clean && gulp dev && gulp serve",
     "prod": "npm run clean && gulp prod",
     "sprod": "npm run clean && gulp serve-prod",
-    "spawn:clean:project": "echo \"cleaning hugo project\" && ./.npm.scripts/clean-hugo.sh",
-    "spawn:gen:project": "echo \"spawn up new hugo project from Hugo theme\" && ./.npm.scripts/spawn.sh",
+    "spawn:project:clean": "echo \"cleaning hugo project\" && ./.npm.scripts/clean-hugo.sh",
+    "spawn:project:gen": "echo \"spawn up new hugo project from Hugo theme\" && ./.npm.scripts/spawn.sh",
     "clean:hugo": "echo \"cleaning hugo public\" && gulp hugoClean",
     "parse-hugo-them-toml": "node .npm.scripts/toml-parser.js"
   },
