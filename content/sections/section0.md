@@ -56,7 +56,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
 {{< button-live-awe
   join_live_text="MONTER EN DIRECT"
   numero_du_live="7"
-  join_live_url="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
+  join_live_url="https://studio.restream.io/guest/ejY4bEUwYjpdeAdS-Us3tHBOkC3Y008?event=&default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
   twitch_video_id="1304665201"
@@ -78,6 +78,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   date_heure_du_live="(20/02 21H)"
   date_du_live_fr="20 Février 2022"
   date_du_live_en="February 20, 2022"
+  date_du_dernier_live_fr="20 Février 2022"
   twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw"
   twitter_post_id="Q9xzacKIlK"
  >}}

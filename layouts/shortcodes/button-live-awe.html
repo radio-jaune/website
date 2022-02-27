@@ -185,8 +185,9 @@
 
 
         <div class="player twitch replay titre">
+
           <hr/>
-          <h4><span class="cent jaune marque">Radio Libre</span> de Dimanche Dernier <span class="cent jaune marque">{{ .Get "date_du_live_fr" }} </span></h4>
+          <h4><span class="cent jaune marque">Radio Libre</span> de Dimanche Dernier <span class="cent jaune marque">{{ .Get "date_du_dernier_live_fr" }}</span></h4>
         </div>
         <div class="player twitch replay jaune embed-responsive embed-responsive-16by9">
 
@@ -201,7 +202,7 @@
               width: '100%',
               height: 480,
               video: "{{ .Get "twitch_video_id" }}",
-              autoplay: true,
+              autoplay: false,
               // Only needed if this page is going to be embedded on other websites
               parent: ["radiojaune.com"]
             });
