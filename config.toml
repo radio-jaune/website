@@ -1,5 +1,4 @@
 baseURL = "https://radiojaune.com"
-languageCode = "en-us"
 title = "Radio Jaune"
 theme = "grayscale"
 #googleAnalytics = ""
@@ -59,3 +58,9 @@ enableSourceMap = true
   [[module.imports.mounts]]
     source = "."
     target = "assets/bulma"
+
+    # https://phrase.com/blog/posts/i18n-tutorial-how-to-go-multilingual-with-hugo/
+
+# languageCode = "en-us"
+languageCode = "fr-fr"
+defaultContentLanguage = 'fr'
