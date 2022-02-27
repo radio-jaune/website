@@ -153,10 +153,10 @@ cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
 npm preps:all
-npm run spawn:clean:project && npm run spawn:gen:project
+npm run spawn:project:clean && npm run spawn:project:gen
 
-spawn:clean:project
-spawn:gen:project
+spawn:project:clean
+spawn:project:gen
 ```
 
 * Then run locally your new website :
@@ -190,7 +190,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.60
+export RELEASE_VERSION=0.0.61
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
