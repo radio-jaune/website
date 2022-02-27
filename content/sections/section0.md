@@ -58,7 +58,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   join_live_url="https://studio.restream.io/guest/ejY4bEUwYjpdeAdS-Us3tHBOkC3Y008?event=&default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
-  twitch_video_id="1304665201"
+  twitch_video_id="1410121662"
   twitch_channel_html_element_id="twitch-embed"
   twitch_video_html_element_id="twitch_embed_unique_video"
   telegram_live_url="#"
