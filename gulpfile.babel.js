@@ -20,9 +20,10 @@
  * - [gulp build:debug:dev] : dev build gulp tasks debugging. Idea simply is it is a gulp.series, to defaine a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
  * - [gulp build:debug:prod] : production build gulp tasks debugging. Idea simply is it is a gulp.series, to defaine a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
  * - [gulp build:debug] : alias for [gulp build:debug:dev].
-
  * - [gulp hugo:prod] : executes the hugo build for production environment : the result of the build is in the "./public/" folder, whereas the result of the gulp build is in the "dist/" folder.
  * - [gulp hugo:dev] : executes the hugo build for dev environment : the result of the build is in the "./public/" folder, whereas the result of the gulp build is in the "dist/" folder.
+ * - [gulp hugo:clean] : deletes the './public/' fodler and re-creates it fresh and empty
+ * - [gulp clean] : executes [gulp hugo:clean], and then deletes the './dist/' fodler and re-creates it fresh and empty.
  * - [gulp sass:prod] : executes the sass compilation for production environment : the files are fprocessed from 'public/sass' folder, and the result is put in the "./dist/css" folder.
  * - [gulp sass:dev] : executes the sass compilation for dev environment : the files are fprocessed from 'public/sass' folder, and the result is put in the "./dist/css" folder.
  * - [gulp build:prod] : builds for production : the source code is minified, obfuscated, optimized and not human readable (not fit for debug) (purge, minifications etc..)
@@ -126,8 +127,9 @@ import newer from 'gulp-newer';
 
 var hugoPrjFolder = './';
 var hugoPublicFolder = 'public';
+var hugoDistFolder= './dist/';
 
-gulp.task('hugoClean', function () {
+gulp.task('hugo:clean', function () {
   return gulp.src(hugoPublicFolder)
     .pipe(clean(hugoPublicFolder, 'public/**'))
     .pipe(newer(hugoPublicFolder))
@@ -135,6 +137,18 @@ gulp.task('hugoClean', function () {
     .pipe(gulp.dest(hugoPublicFolder))
     .pipe(browserSync.stream());
 });
+
+// ---------------
+/// gulp.task('clean', gulp.series('hugo:clean', 'sass:clean', 'interpolate:html:clean'));
+gulp.task('clean', gulp.series('hugo:clean' , function () {
+  return gulp.src(hugoDistFolder)
+    .pipe(clean(hugoDistFolder, 'dist/**'))
+    .pipe(newer(hugoDistFolder))
+    // .pipe(imagemin()) // i have az classic issue with imagemoin solve that later
+    .pipe(gulp.dest(hugoDistFolder))
+    .pipe(browserSync.stream());
+}));
+
 /***************************************************************
  *  ==>>>   | Excute SEO tasks (in the website in public)
  **/
