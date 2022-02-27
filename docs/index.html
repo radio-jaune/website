@@ -16,32 +16,67 @@
 
 
 
-<link href="https://radiojaune.com/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
 
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
-<link href="https://radiojaune.com/css/grayscale.css" rel="stylesheet">
-<link href="https://radiojaune.com/css/yellow-radio.css" rel="stylesheet">
-<link href="https://radiojaune.com/css/yellow-discord.css" rel="stylesheet">
-<link href="https://radiojaune.com/css/statut.du.live.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/grayscale.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/yellow-radio.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/yellow-discord.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/statut.du.live.css" rel="stylesheet">
 
 
-<link href="https://radiojaune.com/css/on-air.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/on-air.css" rel="stylesheet">
 
-<link href="https://radiojaune.com/css/yellow-flashy-livestream-buttons.css" rel="stylesheet">
-<link href="https://radiojaune.com/css/yellow-flashy-tabbed-livestreams.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/yellow-flashy-livestream-buttons.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/yellow-flashy-tabbed-livestreams.css" rel="stylesheet">
 
-<link href="https://radiojaune.com/css/yellow-carousel.css" rel="stylesheet">
-<link href="https://radiojaune.com/css/adapt-twitter-layoput.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/adapt-twitter-layoput.css" rel="stylesheet">
+<link href="https://raadio-jaune.surge.sh/css/annonce.css" rel="stylesheet">
+
+
+<!-- This is a hugo trick to force hugo to keep HTML comments (for my gulp-replace procesing) -->
+
+
+<!-- build:radiojaune_compiled_sass -->
+    <!-- part 1 : Everything (the compiled sass link tags) here will be replaced -->
+<!-- endbuild -->
+
+
+
+    
+
+
+    
+
+
+
+
+<link href="gulp_base_css_dir/yellow-carouselgulp_pokus.css" rel="stylesheet">
+
+
+
+    
+    
+    <link href="whatever/yellow-imagination.css" rel="stylesheet">
+
+
+
+<!-- build:css css/yellow-carousel.min.pokus.css -->
+    <link href="https://raadio-jaune.surge.sh/css/yellow-carousel.css" rel="stylesheet">
+<!-- endbuild -->
+
 
 
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
 
 
 
@@ -169,7 +204,7 @@
    <li class="nav-item compteur de visites">
      <a href="#" class="nav-link js-scroll-trigger improve-contrast-box">
          <span class="compteur de visites">
-             <img src="https://visitor-badge.glitch.me/badge?page_id=https%3a%2f%2fradiojaune.com%2f&left_color=rgba(255, 255, 0, .7)&right_color=rgba(0, 130, 0, 0.32)" alt="Nombre de visites"/>
+             <img src="https://visitor-badge.glitch.me/badge?page_id=https%3a%2f%2fraadio-jaune.surge.sh%2f&left_color=rgba(255, 255, 0, .7)&right_color=rgba(0, 130, 0, 0.32)" alt="Nombre de visites"/>
          </span>
          
      </a>
@@ -190,7 +225,9 @@
             
               <h2 id="hahahugoshortcode-s0-hbhb"><span class="cent jaune gros titre">radiojaune.com<span> <span class="cent jaune marque"><span>
 </h2>
-<h4 id="hahahugoshortcode-s1-hbhb"><span class="cent jaune sous titre">La radio libre <span> <span class="cent jaune marque">100%Jaune<span>
+<h4 id="hahahugoshortcode-s1-hbhb"><span class="cent jaune sous titre ">La radio libre <span> <span class="cent jaune marque">100%Jaune<span>
+</h4>
+<h4 id="hahahugoshortcode-s2-hbhb"><span class="cent jaune sous titre annnonce">En direct tous les <span> <span class="cent jaune marque">Dimanches à 21h00<span>
 </h4>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -272,15 +309,15 @@
 
         </section>
 
-          
-          
-          
-          
-          
-          
-          
-          
-          
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
@@ -336,22 +373,6 @@
       
       
 
-      <div id="twitch_embed_unique_video"></div>
-
-      
-      <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-      
-      <script type="text/javascript">
-        new Twitch.Player("twitch_embed_unique_video", {
-          width: '100%',
-          height: 480,
-          video: "1304665201",
-          autoplay: true,
-          
-          parent: ["radiojaune.com"]
-        });
-      </script>
 
         
         <div id="twitch-embed"></div>
@@ -375,6 +396,33 @@
 
         </script>
 
+
+
+        <div class="player twitch replay titre">
+          <hr/>
+          <h4><span class="cent jaune marque">Radio Libre</span> de Dimanche Dernier <span class="cent jaune marque">20 Février 2022 </span></h4>
+        </div>
+        <div class="player twitch replay jaune embed-responsive embed-responsive-16by9">
+
+          <div id="twitch_embed_unique_video"></div>
+
+          
+          <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+          
+          <script type="text/javascript">
+            new Twitch.Player("twitch_embed_unique_video", {
+              width: '100%',
+              height: 480,
+              video: "1304665201",
+              autoplay: true,
+              
+              parent: ["radiojaune.com"]
+            });
+          </script>
+
+
+        </div>
 
     </section>
 
@@ -660,12 +708,12 @@
     </footer>
 
     
-    <script src="https://radiojaune.com/vendor/jquery/jquery.min.js"></script>
-    <script src="https://radiojaune.com/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://raadio-jaune.surge.sh/vendor/jquery/jquery.min.js"></script>
+    <script src="https://raadio-jaune.surge.sh/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     
-    <script src="https://radiojaune.com/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="https://radiojaune.com/js/grayscale.min.js"></script>
+    <script src="https://raadio-jaune.surge.sh/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://raadio-jaune.surge.sh/js/grayscale.min.js"></script>
 
     
     <script type="text/javascript" src="css/yellow-flashy-livestream-buttons.js"></script>
