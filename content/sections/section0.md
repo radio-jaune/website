@@ -80,7 +80,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   date_du_live_en="February 20, 2022"
   twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw"
   twitter_post_id="Q9xzacKIlK"
-   >}}
+ >}}
 
 
 
