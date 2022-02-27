@@ -190,7 +190,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.59
+export RELEASE_VERSION=0.0.60
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -316,6 +316,23 @@ export HUGO_BLABLA=https://127.0.0.1:5447
 gulp hugo
 
 ```
+
+## Gitpod
+
+I used Gitpod to use its IDE-integrated nodejs inspector client, with intention to debug the gulp build. The original issue was about having "glob errors" invoking 'gulp.src' (those errors seem to be very classic).
+
+* https://radiojaune-website-2uvlb4xiykz.ws-eu33.gitpod.io/
+
+* `.gitpod.yml` :
+  * use it to
+  * use it to
+  * content :
+
+```Yaml
+# - .gitpod.yml
+
+```
+
 
 ## Refs
 

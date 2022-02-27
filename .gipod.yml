@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+  # Commands to start on workspace startup
+  tasks:
+    - init: npm run preps && node --version
+    - command: gulp build:debug
+    # - command: node --inspect --inspect-brk /usr/local/bin/gulp build:debug
+  # Ports to expose on workspace startup
+  ports:
+    - port: 9229
+      onOpen: open-preview

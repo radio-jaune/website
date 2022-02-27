@@ -10,8 +10,15 @@
  **********************************************************************************
  */
 
+ /***************************************************************
+  ***************************************************************
+  *  ==>>>   | beautify the HTML/JS/CSS produced by hugo in public/ folder
+  ***************************************************************
+  ***************************************************************
+  **/
 import dotenvModule from 'dotenv';
 const dotenv = dotenvModule.config();
+
 
 import gulp from 'gulp';
 
@@ -20,7 +27,7 @@ const browserSync = browserSyncModule.create();
 
 import nodeSassModule from 'node-sass';
 import sassModule from 'gulp-sass';
-const sass = sassModule(nodeSassModule);
+const sassCompiler = sassModule(nodeSassModule);
 
 import pug from 'gulp-pug';
 
@@ -29,7 +36,11 @@ import purgecss from 'gulp-purgecss';
 import gutil from 'gulp-util';
 
 import del from 'del';
-process.env.S3_REGION
+import fs from 'fs';
+
+import shell from 'shelljs';
+// const fs   = require('fs');
+
 const hugoBaseURL = `${process.env.HUGO_BASE_URL}`;
 /// export PATH=$PATH:/usr/local/go/bin
 /// export HUGO_HOST=127.0.0.1
@@ -161,6 +172,21 @@ gulp.task("hugoProd", (done) => {
 
 
 gulp.task("hugoDev", (done) => {
+
+  // Run hugo cli synchronously
+  /*
+  shell.echo(`===========================================================`)
+  shell.echo(`Wil execute hugo build command : [hugo -b ${hugoBaseURL}]`)
+  let hugoBuildCmd = shell.exec(`hugo -b ${hugoBaseURL}`);
+  shell.echo (hugoBuildCmd.stdout)
+  if (hugoBuildCmd.code !== 0) {
+    shell.echo (hugoBuildCmd.stderr)
+    shell.echo('Error: hugo Build failed');
+    shell.exit(1);
+  } else {
+    done()
+  }
+  */
  let hugoProcess = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
              .on("close", () => {
                  done(); // let gulp know the task has completed
@@ -181,9 +207,182 @@ gulp.task("hugoDev", (done) => {
 
  hugoProcess.stdout.on("data", hugoLogger);
  hugoProcess.stderr.on("data", hugoLogger)
+
+
 });
 
 
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | Compile Sass / SCSS
+ ***************************************************************
+ ***************************************************************
+ **/
+
+import rename from 'gulp-rename';
+import autoprefixer from 'gulp-autoprefixer';
+import sourcemaps from 'gulp-sourcemaps';
+// Compile sassCompiler into CSS : to be used BEFORE hugo build
+gulp.task('gulpSass', function () {
+  /// return gulp.src('static/sass/**/*.s?ss')
+  ///    return gulp.src([
+  ///      'sass/*.s?ss',
+  ///      'sass/**/*.s?ss',
+  ///      'sass/**/**/*.s?ss',
+  ///      'sass/**/**/**/*.s?ss'
+  ///    ],{
+  ///    "base" : "./static"
+  ///    })
+  /// --
+  return gulp.src('public/sass/**/*.s?ss')
+      .pipe(sourcemaps.init())
+      .pipe(sassCompiler().on('error', sassCompiler.logError))
+      .pipe(rename({ suffix: '.min.pokus' }))
+      .pipe(sourcemaps.write('/'))
+      .pipe(gulp.dest('./public/css'))
+      .pipe(browserSync.stream());
+});
+
+///
+/// [16:46:27] Requiring external module @babel/register
+/// [16:46:37] Using gulpfile ~/radio_jaune_generation4/gulpfile.babel.js
+/// [16:46:37] Starting 'gulpSass'...
+///
+///   Replace Autoprefixer browsers option to Browserslist config.
+///   Use browserslist key in package.json or .browserslistrc file.
+///
+///   Using browsers option can cause errors. Browserslist config can
+///   be used for Babel, Autoprefixer, postcss-normalize and other tools.
+///
+///   If you really need to use option, rename it to overrideBrowserslist.
+///
+///   Learn more at:
+///   https://github.com/browserslist/browserslist#readme
+///   https://twitter.com/browserslist
+///
+///
+/// [16:46:37] Finished 'gulpSass' after 200 ms
+///
+
+
+/// <!-- build:<name> -->
+/// Everything here will be replaced
+/// <!-- endbuild -->
+/// <!-- build:radiojaune_compiled_sass -->
+/// Everything here will be replaced
+/// <!-- endbuild -->
+import htmlreplace from 'gulp-html-replace';
+import gulpTap from 'gulp-tap';
+import merge from 'gulp-merge';
+// Compile sassCompiler into CSS : to be used BEFORE hugo build
+gulp.task('inject:html:prod', function (done) {
+/// //  htmlreplace({
+/// //    radiojaune_compiled_sass3: {// Multiple tag replacement one for each sass scss compiled source file
+/// //      // src: [['data-main.js', 'require-src.js']],
+/// //      // src: ['static/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
+/// //      // src: ['public/sass/**/*.s?ss', ['data-main.js', 'require-src.js']],
+/// //      src: [['data-main.js', 'require-src.js']],
+/// //      tpl: '<link href="%s" rel="stylesheet">'
+/// //    }
+/// //  })
+
+  let multiPlaceHolderhtmlTemplateToInject = ''
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
+  /// -- // -
+  let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
+  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
+  compiledSassFiles.push([ `petit test ajouté à la volée` ])
+
+
+
+
+  var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
+                            .pipe(gulpTap(function(file, t) {
+                                gutil.log(`POKUS-gulp[inject:html:prod] : file.path=[${file.path}]`)
+                                compiledSassFiles.push([ `${file.path}` ])
+                            }))
+
+  var htmlReplaceWork = gulp.src('public/**/*.html')
+                            .pipe(htmlreplace({
+                                radiojaune_compiled_sass: {// Multiple tag replacement one for each sass scss compiled source file
+                                  // src: [ ['dist/css/a.min.pokus', 'b.min.pokus.js', 'c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css', 'data-main.js', 'require-src.js']],
+                                  // tpl: multiPlaceHolderhtmlTemplateToInject
+                                  src: compiledSassFiles,
+                                  tpl: htmlTemplateToInject
+                                }
+                              }))
+                            .pipe(gulp.dest('dist'))
+
+  return merge(compiledSassFilesLinksResolition, htmlReplaceWork)
+        .pipe(browserSync.stream());
+});
+
+import find from 'gulp-find';
+import replace from 'gulp-replace';
+import path from 'path';
+
+// injects css link tags into html files : uinforunaltely, that method is not efficient to interpolate complex templates
+gulp.task('inject:html:prod2', function (done) {
+  return  gulp.src(path.join('./public/', 'index.html'))
+              // .pipe(replace(/app\/style\/themes\/([^"]*)/g, function(cssPath) {
+              .pipe(replace(/gulp_base_css_dir/g, function(cssPath) {
+                return "my-new-pokus-path/" + cssPath;
+              }))
+              .pipe(gulp.dest('public'))
+              .pipe(browserSync.stream());
+});
+
+
+
+///  // - // useref = require('gulp-useref'),
+///  // - // gulpif = require('gulp-if'),
+///  // - // // uglify = require('gulp-uglify'),
+///  // - // minifyCss = require('gulp-clean-css');
+import useref from 'gulp-useref';
+import gulpif from 'gulp-if';
+import minifyCss from 'gulp-clean-css';
+// injects css link tags into html files :
+gulp.task('inject:html:prod3', function () {
+  // return  gulp.src(path.join('./public/', 'index.html'))
+  /*
+  return gulp.src('public/*.html')
+      .pipe(useref())
+      .pipe(gulpif('public/js/*.js', uglify()))
+      .pipe(gulpif('public/css/*.css', minifyCss()))
+      .pipe(gulp.dest('dist'));
+  */
+  // return gulp.src('public/*.html')
+  // return gulp.src(path.join('./public/', 'index.html'), {allowEmpty: true})
+  // return gulp.src('public/index.html', {allowEmpty: true})
+  // return gulp.src('.\/public\/*.html', {allowEmpty: true})
+  // return gulp.src('./public\/*.html', {allowEmpty: true})
+  // return gulp.src('./public/*.html', {allowEmpty: true})
+  // return gulp.src('./*.html', {allowEmpty: true}) // => the only one which i managed to execute without errors
+  // return gulp.src('public/**/*.html', {allowEmpty: true})
+  ///    return gulp.src([
+  ///      'sass/*.s?ss',
+  ///      'sass/**/*.s?ss',
+  ///      'sass/**/**/*.s?ss',
+  ///      'sass/**/**/**/*.s?ss'
+  ///    ],{
+  ///    "base" : "./static"
+  ///    })
+  /// return gulp.src(['public/index.html'], {allowEmpty: true})
+  return gulp.src([
+                '*.html',
+                '**/*.html',
+                '**/**/*.html',
+                '**/**/**/*.html'
+              ],{
+              "base" : "./public/"
+              })
+            .pipe(useref())
+            .pipe(gulp.dest('dist'))
+            .pipe(browserSync.stream());
+});
 
 
 /***************************************************************
@@ -215,50 +414,7 @@ gulp.task('beautifyHugoPublicJs', function() {
     .pipe(gulp.dest('./public/'));
 });
 
-
 gulp.task('beautifyHugoPublic', gulp.series('beautifyHugoPublicHtml', 'beautifyHugoPublicCss', 'beautifyHugoPublicJs'));
-
-
-
-
-/***************************************************************
- *  ==>>>   | Compile Sass / SCSS
- **/
-
-
-import rename from 'gulp-rename';
-import autoprefixer from 'gulp-autoprefixer';
-import sourcemaps from 'gulp-sourcemaps';
-// Compile sass into CSS : to be used BEFORE hugo build
-gulp.task('gulpSass', function () {
-  return gulp.src('static/sass/**/*.s?ss')
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('./static/css'))
-        .pipe(browserSync.stream());
-});
-
-
-/***************************************************************
- ***************************************************************
- *  ==>>>   | purge CSS produced by gulp in dist/ folder
- ***************************************************************
- ***************************************************************
- **/
-gulp.task('purgecss', () => {
-    return gulp.src('public/css/**/*.css')
-        .pipe(purgecss({
-            content: ['public/**/*.html'] // the hugo project folder 'layouts' always contains any html of the project. Content and layout clearly separated
-        }))
-        .pipe(gulp.dest('public/css'))
-        .pipe(browserSync.stream());
-})
 
 /***************************************************************
  ***************************************************************
@@ -288,6 +444,7 @@ gulp.task('minifyCSSHugo',() => {
 
 gulp.task('minifyHugoDist', gulp.series('minifyJSHugo', 'minifyCSSHugo'));
 
+
 /***************************************************************
  ***************************************************************
  *  ==>>>   | uglify the HTML/JS/CSS produced by gulp in dist/ folder
@@ -315,15 +472,59 @@ gulp.task('uglifyHugoDist', gulp.series('minifyJSHugo'));
 
 
 
-/******************************************************
- * PUBLIC TO DIST
- */
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | purge CSS produced by gulp in dist/ folder
+ ***************************************************************
+ ***************************************************************
+ **/
+gulp.task('purgecss', () => {
+    return gulp.src('src/**/*.css')
+        .pipe(purgecss({
+            content: [
+              'src/*.html',
+              'src/**/*.html'
+            ]
+        }))
+        .pipe(gulp.dest('build/css'))
+})
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | PUBLIC TO DIST : all copy taaks from public to dist folder
+ ***************************************************************
+ ***************************************************************
+ **/
+ gulp.task('cleanDist', function() {
+
+    let to_return = del(['dist'])
+    const folders = [
+        'dist',
+        'dist/js',
+        'dist/css'
+    ];
+///    const folders = [
+///        'css',
+///        'img',
+///        'img/content',
+///        'img/icons',
+///        'fonts',
+///        'js'
+///    ];
+
+    folders.forEach(dir => {
+        if(!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+            console.log('📁  folder created:', dir);
+        }
+    });
+   return to_return;
+ });
 
 // Move the javascript files from ./public into our ./dist folder
 function jsDist(){
     return gulp
-        .pipe(clean('dist/js', '/**'))
-        .pipe(newer('dist/js'))
         .src([
           'js/*.js',
           'js/**/*.js',
@@ -338,9 +539,21 @@ function jsDist(){
 
 // Move the CSS files from ./public into our ./dist folder
 function cssDist(){
+///    return gulp
+///        .pipe(clean('dist/css', '/**'))
+///        .pipe(newer('dist/css'))
+///        .src([
+///          'css/*.css',
+///          'css/**/*.css',
+///          'css/**/**/*.css',
+///          'css/**/**/**/*.css'
+///        ],{
+///        "base" : "./public"
+///        })
+///        .pipe(gulp.dest("dist/css")).pipe(browserSync.stream());
+
+
     return gulp
-        .pipe(clean('dist/css', '/**'))
-        .pipe(newer('dist/css'))
         .src([
           'css/*.css',
           'css/**/*.css',
@@ -349,15 +562,11 @@ function cssDist(){
         ],{
         "base" : "./public"
         })
-        .pipe(gulp.dest("dist/css")).pipe(browserSync.stream());
+///        .pipe(gulp.dest("dist/css")).pipe(browserSync.stream());
 }
 // Move the HTML files from ./public into our ./dist folder
 function htmlDist(){
     return gulp
-        .pipe(clean('dist/', '*.html'))
-        .pipe(clean('dist/', '**/*.html'))
-        .pipe(clean('dist/', '**/**/*.html'))
-        .pipe(clean('dist/', '**/**/**/*.html'))
         .src([
           '*.html',
           '**/*.html',
@@ -380,8 +589,23 @@ gulp.task(cssDist);
 gulp.task(htmlDist);
 gulp.task(vendorDist);
 
+// ---------------
+// all prod env related tasks are done in the dist folder itself
+// all dev env rerleated ops are done inside the public folder
+// the docs/ folder is only used by github pages deployment
+//
+// gulp.task('build:debug', gulp.series('hugoDev', 'inject:html:prod'));
+// gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod'));
+//gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod2'));
+// gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod3'));
+gulp.task('build:debug', gulp.series('hugoDev', 'gulpSass', 'inject:html:prod'));
 
-gulp.task('watch', gulp.series('gulpWatchBuild', function() {
+
+gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'cleanDist', 'jsDist', 'cssDist', 'htmlDist', 'vendorDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
+gulp.task('build:prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
+
+
+gulp.task('watch:prod', gulp.series('build:prod', function() {
     browserSync.init({
         server: "./dist",
         host: `${hugoHost}`,
@@ -404,15 +628,8 @@ gulp.task('watch', gulp.series('gulpWatchBuild', function() {
 
 
 
-// ---------------
-// all prod env related tasks are done in the dist folder itself
-// all dev env rerleated ops are done inside the public folder
-// the docs/ folder is only used by github pages deployment
-//
-gulp.task('build:dev', gulp.series('gulpSass', 'hugoDev', 'seo', 'beautifyHugoPublic', 'jsDist', 'cssDist', 'htmlDist', 'purgecss', 'minifyJSHugo', 'uglifyJSHugo',));
-gulp.task('build:prod', gulp.series('gulpSass', 'hugoProd', 'seo', 'minifyJSHugo', 'uglifyJSHugo'));
 
-gulp.task('watchDev', function() {
+gulp.task('watch:dev', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
     gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
 

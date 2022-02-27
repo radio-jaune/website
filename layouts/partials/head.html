@@ -41,9 +41,45 @@
 <link href="{{ "css/yellow-flashy-livestream-buttons.css" | absURL }}" rel="stylesheet">
 <link href="{{ "css/yellow-flashy-tabbed-livestreams.css" | absURL }}" rel="stylesheet">
 
-<link href="{{ "css/yellow-carousel.css" | absURL }}" rel="stylesheet">
 <link href="{{ "css/adapt-twitter-layoput.css" | absURL }}" rel="stylesheet">
+<link href="{{ "css/annonce.css" | absURL }}" rel="stylesheet">
 
+
+{{ printf "<!-- This is a hugo trick to force hugo to keep HTML comments (for my gulp-replace procesing) -->" | safeHTML }}
+
+
+{{ printf "<!-- build:radiojaune_compiled_sass -->" | safeHTML }}
+{{ printf "    <!-- part 1 : Everything (the compiled sass link tags) here will be replaced -->" | safeHTML }}
+{{ printf "<!-- endbuild -->" | safeHTML }}
+
+
+<!-- build:radiojaune_compiled_sass2 -->
+    <!-- part 2 : Everything (the compiled sass link tags) here will be replaced -->
+<!-- endbuild:radiojaune_compiled_sass2 -->
+<!-- build:radiojaune_compiled_sass3 -->
+    <!-- part 3 : Everything (the compiled sass link tags) here will be replaced -->
+<!-- endbuild -->
+
+<!-- -->
+<!--
+    - Interpolation done during Gulp build, by 'gulp-replace' in the 'public/' folder, where
+      hugo generates files.
+    - Everything (the compiled sass link tags) here will be replaced -->
+<link href="gulp_base_css_dir/yellow-carouselgulp_pokus.css" rel="stylesheet">
+<!-- endbuild -->
+
+<!-- build:css /css/yellow-imagination.min.pokus.css -->
+    <!--  GULP / USEFREF TEST -->
+    <!--  ... HTML Markup, list of script / link tags. -->
+    <link href="whatever/yellow-imagination.css" rel="stylesheet">
+<!-- endbuild -->
+
+
+{{ printf "<!-- build:css css/yellow-carousel.min.pokus.css -->" | safeHTML }}
+    <link href="{{ "css/yellow-carousel.css" | absURL }}" rel="stylesheet">
+{{ printf "<!-- endbuild -->" | safeHTML }}
+
+<!-- <link href="{{ "css/yellow-carousel.css" | absURL }}" rel="stylesheet"> -->
 
 
 
@@ -53,6 +89,8 @@
 <!--
 
 -->
+
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
 <!-- This one font awesome fixesthe discord icon issue, but breaks all of the other icons
