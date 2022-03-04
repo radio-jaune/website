@@ -133,7 +133,8 @@ if [ -f ./package.json ]; then
   cd  ../..
 fi;
 
-sudo npm i -g sass
+# sudo npm i -g sass
+npm i -g sass
 
 export BULMA_VERSION=0.9.3
 npm i bulma@${BULMA_VERSION}

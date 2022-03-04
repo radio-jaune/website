@@ -84,6 +84,10 @@ export GULP_TAP_VERSION=${GULP_TAP_VERSION:-"^2.0.0"}
 export GULP_MERGE_VERSION=${GULP_MERGE_VERSION:-"^0.1.1"}
 
 
+# npm install --save-dev --save-exact prettier
+export PRETTIER_IO_VERSION=${PRETTIER_IO_VERSION:-"^0.1.1"}
+export GULP_PRETTIER_VERSION=${GULP_PRETTIER_VERSION:-"^0.1.1"}
+
 
 
 
@@ -153,7 +157,9 @@ npm uninstall --save-dev \
     gulp-useref \
     @babel/register \
     gulp-tap \
-    gulp-merge
+    gulp-merge \
+    prettier \
+    gulp-prettier
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -189,4 +195,6 @@ npm i --save-dev \
     gulp-useref@${GULP_USEREF_VERSION} \
     @babel/register@${BABEL_REGISTER_VERSION} \
     gulp-tap@${GULP_TAP_VERSION} \
-    gulp-merge@${GULP_MERGE_VERSION}
+    gulp-merge@${GULP_MERGE_VERSION} \
+    prettier@${PRETTIER_IO_VERSION} \
+    gulp-prettier@${GULP_PRETTIER_VERSION}

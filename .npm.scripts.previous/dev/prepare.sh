@@ -3,7 +3,8 @@ export GULP_CLI_VERSION=${GULP_CLI_VERSION:-"2.3.0"}
 export SASS_VERSION=${SASS_VERSION:-"latest"}
 chmod +x ./.**/*.sh ./.**/**/*.sh
 # npm install -g sass@${SASS_VERSION}
-sudo npm install --global gulp-cli@${GULP_CLI_VERSION}
+# sudo npm install --global gulp-cli@${GULP_CLI_VERSION}
+npm install --global gulp-cli@${GULP_CLI_VERSION}
 
 
 chmod +x ./.**/*.sh ./.**/**/*.sh
