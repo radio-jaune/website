@@ -7,12 +7,29 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 [params]
     # Provide some metadata for search and indexing services
     description = "The hugo project for https://radiojaune.com"
+    # # # Telegram integration
+    telegram_chat_id = "5236069846" # le bot de l'équipe devops
+    # telegram_chat_id = "1695080080" # le bot de dom sur telegram
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
+    # - - - - Telegram basic comments bot :
+    # https://comments.app/manage
+    # - - - - tokens i am sure can be issued/revoked etc... via Telegram API
+    # - - to use only for localhost dev server
+    telegram_dev_site_id = "oqsgm23L"
+    # - - to use only for deployments to raadio-jaune.surge.sh
+    telegram_uat_site_id = "xegwDV3V"
+    # - - to use only for deployments to  radiojaune.com
+    telegram_prod_site_id = "_EO6CmP4"
+
+
+
     # Radio jaune Discord Super Admin added the WidgetBot.io to the Discord server using https://add.widgetbot.io/
     discord_server_id = "928030296241225758"
     discord_channel_id = "929832574434562048"
     discord_server_invitation = "https://discord.gg/KwCAUvwvc4"
     thats_yellow = "#f7ff0b"
-    join_live_url = "https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
+    # join_live_url = "https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
+    join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
     twitch_channel_name = "radiojaune"
     vk_channel_link = "https://vk.com/id698593797"
