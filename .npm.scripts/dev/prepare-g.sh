@@ -37,9 +37,9 @@ export SERVE_VERSION=${SERVE_VERSION:-"13.0.2"}
 export SURGE_VERSION=${SURGE_VERSION:-"0.23.0"}
 
 # npm install -g sass@${SASS_VERSION}
-sudo npm uninstall --global gulp-cli
-sudo npm uninstall --global serve
-sudo npm uninstall --global surge
+npm uninstall --global gulp-cli
+npm uninstall --global serve
+npm uninstall --global surge
 
-sudo npm install --global gulp-cli@${GULP_CLI_VERSION}
-sudo npm install --global serve@${SURGE_VERSION}
+npm install --global gulp-cli@${GULP_CLI_VERSION}
+npm install --global serve@${SURGE_VERSION}
