@@ -8,8 +8,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     # Provide some metadata for search and indexing services
     description = "The hugo project for https://radiojaune.com"
     # # # Telegram integration
-    telegram_chat_id = "5236069846" # le bot de l'équipe devops
-    # telegram_chat_id = "1695080080" # le bot de dom sur telegram
+    # telegram_chat_id = "5236069846" # le bot de l'équipe devops
+    telegram_chat_id = "1695080080" # le bot de dom sur telegram
     # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
     # - - - - Telegram basic comments bot :
     # https://comments.app/manage
