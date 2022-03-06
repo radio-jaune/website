@@ -55,7 +55,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
 {{< button-live-awe
   join_live_text="MONTER EN DIRECT"
   numero_du_live="7"
-  join_live_url="https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
+  join_live_url="https://studio.restream.io/guest/ejY4bEUwYo_lT41--kL1vdfGlGJ4itY?event=&default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
   twitch_video_id="1410121662"
