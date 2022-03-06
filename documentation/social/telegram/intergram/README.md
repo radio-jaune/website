@@ -26,3 +26,25 @@ export CCC=
 # pnpm start
 pnpm run start
 ```
+
+
+## Ok je vais devoir changer le code source
+
+Modifs souhaitées :
+* que le chat soit associé à une discussion sur un post
+* scenar :
+  * On a un groupe de discussion `Telegram` appelé "le live"
+  * Dans ce groupe de discussion, un membre équipe RadioJaune.com envoie un message, qu ipeut être un poll. Ou alors l'annonce du live
+  * Alors le fil de discussion des commentaires est le flux géré par le robot.
+  * mais enfin quand même, si c'était possible...
+  * après, si j'obitens le comportement par rapport à un post :
+    * il suffit de lancer un tel truc à chaque fouis qu'on fait un live
+    * et les mesages des utilsiateurs osont bien envoyés sur le telegram de radiojaune.com,
+    * et au final tosu les messages restent dans le groupe de discussion
+    * Question : l'idéal serait d'automatiser la création du groupe de discussions. Et on pourrait faire un nouveau groupe de discussion pour cahque live. MAis alors cela fera beauvoup de groupes de discussion crées 'maxAGe'
+
+  * Reste à faire quelques
+
+
+* c'est uen appli preact
+https://www.youtube.com/watch?v=K4ZPliFfScw
