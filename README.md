@@ -72,7 +72,7 @@ bash-3.2$ git flow version
 ```bash
 export DESIRED_VERSION=0.0.0
 cd ~/yellowradio.work
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
 
@@ -89,8 +89,6 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
-
 gulp dev
 ```
 
@@ -98,7 +96,7 @@ gulp dev
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
@@ -116,7 +114,6 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
 # gulp hugo will only buiild the hugo website, it won't compile sass scss
 gulp dev
@@ -133,7 +130,6 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
 gulp prod
 
@@ -148,7 +144,7 @@ To see how this website looked when it started, and was automatically generated 
 
 ```bash
 export DESIRED_VERSION=master
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
@@ -171,7 +167,6 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
 gulp hugo
 gulp serve
@@ -183,7 +178,7 @@ gulp serve
 * Release :
 
 ```bash
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.release.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.release.work
 cd ~/yellowradio.release.work
 git checkout master
 git flow init --defaults
@@ -221,7 +216,6 @@ gulpBuild (){
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
   export HUGO_BASE_URL=https://radiojaune.com
-  export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
   gulp hugo
   cp -fr ./public/* ./docs/
@@ -241,10 +235,39 @@ git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && gi
 
 ```
 
+## Contributors guide
 
+#### Debug the build
 
+* Now build the hugo website in dev mode :
 
-## surge
+```bash
+export DESIRED_VERSION=0.0.0
+export DESIRED_VERSION=feature/superbeau-bouton
+
+cd ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
+
+git checkout ${DESIRED_VERSION}
+
+npm run preps:all
+# npm run spawn
+# and then run :
+
+# export PATH=$PATH:/usr/local/go/bin && go version
+# hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
+
+# try also :
+export PATH=$PATH:/usr/local/go/bin
+export HUGO_HOST=127.0.0.1
+export HUGO_PORT=4547
+export HUGO_BASE_URL=http://127.0.0.1:5445
+export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
+
+gulp build:debug
+```
+
+#### How to deploy PR branches with surge
 
 
 ```bash
@@ -275,7 +298,6 @@ gulpBuild (){
   export HUGO_PORT=4547
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-  export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
 
   gulp hugo
 }
@@ -284,42 +306,12 @@ oldHugoBuild
 
 surge ./public "${DEPLOYMENT_DOMAIN}"
 
-export DEPLOYMENT_DOMAIN=radio-jaune.surge.sh
-export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
-
-if [ -d ./docs ]; then
-  rm -fr ./docs
-fi;
-
-if [ -d ./public ]; then
-  rm -fr ./public
-fi;
-
-mkdir -p  ./docs
-mkdir -p  ./public
-
-export PATH=$PATH:/usr/local/go/bin
-hugo -b ${DEPLOYMENT_BASE_URL}
-
-cp -fr ./public/* ./docs/
-
-surge ./public "${DEPLOYMENT_DOMAIN}"
-
 ```
 
-## Env
 
+#### Gitpod
 
-```bash
-export HUGO_BASE_URL=https://127.0.0.1:5447
-export HUGO_BLABLA=https://127.0.0.1:5447
-gulp hugo
-
-```
-
-## Gitpod
-
-I used Gitpod to use its IDE-integrated nodejs inspector client, with intention to debug the gulp build. The original issue was about having "glob errors" invoking 'gulp.src' (those errors seem to be very classic).
+We recommend to use Gitpod with IDE-integrated `nodejs` inspector client, with intention to debug the `gulp` build. The original issue was about having "glob errors" invoking 'gulp.src' (those errors seem to be very classic).
 
 * https://radiojaune-website-2uvlb4xiykz.ws-eu33.gitpod.io/
 
@@ -333,6 +325,16 @@ I used Gitpod to use its IDE-integrated nodejs inspector client, with intention 
 
 ```
 
+
+
+## Env
+
+
+```bash
+export HUGO_BASE_URL=https://127.0.0.1:5447
+gulp hugo
+
+```
 
 ## Refs
 

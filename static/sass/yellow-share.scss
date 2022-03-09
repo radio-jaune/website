@@ -1,14 +1,395 @@
-$('.share-alt').on('click', function(e){
-	$(".branch").removeClass("no-animation");
-	$('.branch').toggleClass("open");
-});
+/* Variables */
+$background-grey: #292929;
+$dropbox: #007ee5;
+$facebook: #3b5998;
+$flickr: #ff0084;
+$google-plus: #dd4b39;
+$linkedin: #007bb5;
+$instagram: #e95950;
+$pinterest: #cb2027;
+$snapchat: #fffc00;
+$twitter: #55acee;
+$vine: #00bf8f;
+$whatsapp: #4dc247;
+$youtube: #bb0000;
 
-$('.social').on('click', function(e){
-	$(".container").removeClass("no-animation");
-	$(".container").toggleClass("open");
-});
+/* Mixins */
+@mixin flex-container($display, $direction, $wrap, $justify, $items, $content) {
+	display: $display;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-items: $items;
+	align-content: $content;
+	-webkit-display: "-webkit-#{$display}";
+	-webkit-flex-direction: $direction;
+	-webkit-flex-wrap: $wrap;
+	-webkit-justify-content: $justify;
+	-webkit-align-items: $items;
+	-webkit-align-content: $content;
+}
 
-$('.share').on('click', function(e){
-	$(".float-circle").removeClass("no-animation");
-	$(".float-circle").toggleClass("open");
-});
+@mixin flex-item($align-self: auto, $basis: auto, $grow: 0, $order: 0) {
+	flex-basis: $basis;
+	flex-grow: $grow;
+	order: $order;
+	align-self: $align-self;
+	-webkit-flex-basis: $basis;
+	-webkit-flex-grow: $grow;
+	-webkit-order: $order;
+	-webkit-align-self: $align-self;
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin absolute($args...) {
+	@include position(absolute, $args...);
+}
+
+@mixin relative($args...) {
+	@include position(relative, $args...);
+}
+
+@mixin fixed($args...) {
+	@include position(fixed, $args...);
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin animation ($delay, $duration, $animation, $direction: forwards, $fillmode: forwards) {
+	-webkit-animation-delay: $delay;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-name: $animation;
+	-webkit-animation-fill-mode: $fillmode;
+	-webkit-animation-direction: $direction;
+	-moz-animation-delay: $delay;
+	-moz-animation-duration: $duration;
+	-moz-animation-name: $animation;
+	-moz-animation-fill-mode: $fillmode;
+	-moz-animation-direction: $direction;
+	animation-delay: $delay;
+	animation-duration: $duration;
+	animation-name: $animation;
+	animation-fill-mode: $fillmode;
+	animation-direction: $direction;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin transition-delay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay: $delay;
+	-ms-transition-delay: $delay;
+	-o-transition-delay: $delay;
+	transition-delay: $delay;
+}
+
+// generic transform
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+
+//transform origin
+@mixin transform-origin ($origin) {
+	moz-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+/* Typical elements */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background: $background-grey;
+	border: 0;
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+/* Classes by name A-Z */
+.branch {
+	@include flex-container(flex, column, nowrap, flex-end, center, stretch);
+	@include absolute($top: calc(50% - 100px), $left: calc(25% - 25px));
+	@include size(50px, 100px);
+	@include transform(rotate(0deg));
+	@include transform-origin(center bottom);
+	@include transition(all .5s);
+	.node{
+		@include transition(height .5s, width .5s);
+		@include transition-delay(.5s);
+	}
+	.stem {
+		@include transition(height .5s);
+		@include transition-delay(.5s);
+	}
+	&.open {
+		@include transition-delay(.5s);
+			&:nth-child(1) {
+				@include transform(rotate(-90deg));
+			}
+			&:nth-child(2) {
+				@include transform(rotate(90deg));
+			}
+			&:nth-child(3) {
+				@include transform(rotate(-45deg));
+			}
+			&:nth-child(4) {
+				@include transform(rotate(45deg));
+			}
+		.stem {
+			@include transition-delay(0s);
+			height: 50px;
+		}
+		.node {
+			@include transition-delay(0s);
+			height: 50px;
+			width: 50px;
+			&:hover{
+				border-width: 6px;
+			}
+			&:active{
+				@include transform(scale(1.03));
+			}
+		}
+	}
+	&.no-animation {
+		animation: none;
+	}
+}
+
+.container {
+	@include flex-container(flex, column, nowrap, flex-end, center, stretch);
+	@include absolute($top: 50%, $left: 50%);
+	@include size(210px, 110px);
+	@include transform(translate3d(-50%, -100%, 0) rotate(0deg));
+	overflow: hidden;
+	&.no-animation {
+		animation: none;
+	}
+	&.open {
+		.segment{
+			cursor: pointer;
+			&:nth-child(1) {
+				@include transform(rotate(0deg) scale(1) translate3d(0,0,0));
+			}
+			&:nth-child(2) {
+				@include transform(rotate(45deg) scale(1) translate3d(0,0,0));
+			}
+			&:nth-child(3) {
+				@include transform(rotate(90deg) scale(1) translate3d(0,0,0));
+			}
+			&:nth-child(4) {
+				@include transform(rotate(135deg) scale(1) translate3d(0,0,0));
+			}
+		}
+	}
+}
+
+.fa {
+	@include relative($top: 50%, $left: 50%);
+	@include transform(translate3d(-50%, -50%, 0) rotate(0deg));
+	// Share-alt Icons
+	&.fa-facebook{
+		@include transform(translate3d(-50%, -50%, 0) rotate(90deg));
+	}
+	&.fa-google-plus{
+		@include transform(translate3d(-50%, -50%, 0) rotate(45deg));
+	}
+	&.fa-pinterest{
+		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
+	}
+	&.fa-linkedin{
+		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
+	}
+	// Social Icons
+	&.fa-vine {
+		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
+	}
+	&.fa-instagram {
+		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
+	}
+	&.fa-whatsapp{
+		@include transform(translate3d(-50%, -50%, 0) rotate(-135deg));
+	}
+}
+
+.float-circle {
+	@include absolute($top: 50%, $left: 75%);
+	@include transform(translateX(-50%) translateY(-50%));
+	@include size(50px, 50px);
+	@include transition(transform .5s, background-color .5s, opacity .2s);
+	background-color: #FFF;
+	border-radius: 50%;
+	&.open {
+		cursor: pointer;
+		&#flickr {
+			background-color: $flickr;
+			@include transform(translate3d(-175%, -150%, 0));
+		}
+		&#youtube {
+			background-color: $youtube;
+			@include transform(translate3d(-50%, -200%, 0));
+		}
+		&#dropbox {
+			background-color: $dropbox;
+			@include transform(translate3d(75%, -150%, 0));
+		}
+		&:hover {
+			@include opacity(.9);
+		}
+		&:active {
+			@include opacity(.75);
+		}
+	}
+	&.no-animation{
+		animation: none;
+	}
+}
+
+.main-button {
+	@include transition(all .5s);
+	@include size(75px, 75px);
+	background-color: #FFF;
+	border-radius: 50%;
+	color: #000;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.node {
+	@include flex-item(auto, auto, 0, 0);
+	@include size(10px);
+	background-color: $background-grey;
+	border-radius: 50%;
+	border: solid 5px;
+	&#facebook {
+		border-color: $facebook;
+	}
+	&#google-plus{
+		border-color: $google-plus;
+	}
+	&#twitter{
+		border-color: $twitter;
+	}
+	&#pinterest {
+		border-color: $pinterest;
+	}
+	&#linkedin{
+		border-color: $linkedin;
+	}
+}
+
+.segment {
+	@include absolute($top: calc(100% - 100px), $left: calc(50% - 100px));
+	@include transform(rotate(0deg) scale(0.1) translate3d(0,0,0));
+	@include transform-origin(50% 100%);
+	@include transition(transform .5s, color .2s);
+	@include opacity(1);
+	@include size(200px, 100px);
+	border-radius: 100px 100px 0px 0px;
+	color: #000;
+	overflow: hidden;
+	&:nth-child(1) {
+		background: $snapchat;
+	}
+	&:nth-child(2){
+		background: $vine;
+	}
+	&:nth-child(3){
+		background: $instagram;
+	}
+	&:nth-child(4){
+		background: $whatsapp;
+	}
+	&:hover {
+		color: #333;
+	}
+	&:active{
+		color: #666;
+	}
+}
+
+.share {
+	@include absolute($top: 50%, $left: 75%);
+	@include transform(translate3d(-50%, -50%, 0));
+}
+
+.share-icon{
+	color: #FFF;
+	font-size: 25px;
+}
+
+.share-alt {
+	@include absolute($top: 50%, $left: 25%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.share-alt-icon {
+	font-size: 25px;
+	color: #FFF;
+}
+
+.social {
+	@include absolute($top: 50%, $left: 50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.social-icon {
+	margin: 23px 0 0 -65px;
+	font-size: 45px;
+}
+
+.stem {
+	@include flex-item(auto, auto, 0, 1);
+	@include size(4px, 0px);
+	background-color: #FFF;
+}
