@@ -147,6 +147,8 @@ gulp.task('testEnvDisplay', () => {
 
 
 import clean from 'gulp-dest-clean';
+/// https://www.npmjs.com/package/gulp-clean
+import cclean from 'gulp-clean';
 import newer from 'gulp-newer';
 
 
@@ -178,24 +180,39 @@ var hugoPrjFolder = './';
 var hugoPublicFolder = 'public';
 var hugoDistFolder= './dist/';
 
-gulp.task('clean:hugo', function () {
+gulp.task('clean:hugo:dev', function () {
+  return gulp.src(hugoPublicFolder, {read: false, allowEmpty: true})
+        .pipe(cclean())
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
+        /*
   return gulp.src(hugoPublicFolder)
-    .pipe(clean(hugoPublicFolder, 'public/**'))
-    .pipe(newer(hugoPublicFolder))
-    // .pipe(imagemin()) // i have az classic issue with imagemoin solve that later
-    .pipe(gulp.dest(hugoPublicFolder))
+    .pipe(clean(hugoPublicFolder, '/**'))
+    .pipe(newer(hugoPublicFolder)) // this would create the ./public/public/ folder...
+    // .pipe(imagemin()) // i have a classic issue with imagemoin solve that later
     .pipe(browserSync.stream());
+    */
+});
+gulp.task('clean:hugo:prod', function () {
+  return gulp.src(hugoPublicFolder, {read: false, allowEmpty: true})
+        .pipe(cclean())
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
 });
 
 // ---------------
 /// gulp.task('clean', gulp.series('clean:hugo', 'sass:clean', 'interpolate:html:clean'));
-gulp.task('clean', gulp.series('clean:hugo' , function () {
-  return gulp.src(hugoDistFolder)
-    .pipe(clean(hugoDistFolder, 'dist/**'))
-    .pipe(newer(hugoDistFolder))
-    // .pipe(imagemin()) // i have az classic issue with imagemoin solve that later
-    .pipe(gulp.dest(hugoDistFolder))
-    .pipe(browserSync.stream());
+gulp.task('clean:dev', gulp.series('clean:hugo:dev' , function () {
+  return gulp.src(hugoDistFolder, {read: false, allowEmpty: true})
+        .pipe(cclean())
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
+}));
+gulp.task('clean:prod', gulp.series('clean:hugo:prod' , function () {
+  return gulp.src(hugoDistFolder, {read: false, allowEmpty: true})
+        .pipe(cclean())
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
 }));
 
 /***************************************************************
@@ -314,7 +331,7 @@ import rename from 'gulp-rename';
 import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 // Compile sassCompiler into CSS : to be used BEFORE hugo build
-gulp.task('sass:dev', function () {
+gulp.task('build:sass:dev', function () {
   /// return gulp.src('static/sass/**/*.s?ss')
   ///    return gulp.src([
   ///      'sass/*.s?ss',
@@ -430,8 +447,6 @@ gulp.task('interpolate:html:prod', function (done) {
         .pipe(browserSync.stream());
 });
 
-
-interpolate:html:dev
 gulp.task('interpolate:html:dev', function (done) {
 
 
