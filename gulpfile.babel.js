@@ -419,7 +419,7 @@ gulp.task('interpolate:html:prod', function (done) {
   multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
   /// -- // -
   let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
-  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
+  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js'], ['dist/css/yellow-share.min.pokus.css'], ['dist/css/yellow-share.min.pokus.css.map']]
   compiledSassFiles.push([ `petit test ajouté à la volée` ])
   compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css` ])
   compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css.map` ])
@@ -454,10 +454,16 @@ gulp.task('interpolate:html:dev', function (done) {
   multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
   /// -- // -
   let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
-  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
-  compiledSassFiles.push([ `petit test ajouté à la volée` ])
+  // let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
+  let compiledSassFiles = [ ]
+  compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css` ])
+  compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css.map` ])
 
+  compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css` ])
+  compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css.map` ])
 
+  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css` ])
+  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css.map` ])
 
 
   var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')

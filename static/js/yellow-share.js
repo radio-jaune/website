@@ -1,14 +1,14 @@
-$('.share-alt').on('click', function(e){
-	$(".branch").removeClass("no-animation");
-	$('.branch').toggleClass("open");
+$('.share-alt.yellow').on('click', function(e){
+	$(".branch.yellow").removeClass("no-animation");
+	$('.branch.yellow').toggleClass("open");
 });
 
-$('.social').on('click', function(e){
-	$(".container").removeClass("no-animation");
-	$(".container").toggleClass("open");
+$('.social.yellow').on('click', function(e){
+	$(".container.yellow").removeClass("no-animation");
+	$(".container.yellow").toggleClass("open");
 });
 
-$('.share').on('click', function(e){
-	$(".float-circle").removeClass("no-animation");
-	$(".float-circle").toggleClass("open");
+$('.share.yellow').on('click', function(e){
+	$(".float-circle.yellow").removeClass("no-animation");
+	$(".float-circle.yellow").toggleClass("open");
 });

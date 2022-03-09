@@ -142,10 +142,11 @@ $youtube: #bb0000;
 }
 
 /* Typical elements */
-* {
+.tabs.yellow.tabbed.livestreams.social.share * {
 	box-sizing: border-box;
 }
 
+/*
 html,
 body {
 	background: $background-grey;
@@ -154,6 +155,7 @@ body {
 	height: 100%;
 	width: 100%;
 }
+*/
 
 /* Classes by name A-Z */
 .branch {
@@ -163,15 +165,15 @@ body {
 	@include transform(rotate(0deg));
 	@include transform-origin(center bottom);
 	@include transition(all .5s);
-	.node{
+	.node.yellow{
 		@include transition(height .5s, width .5s);
 		@include transition-delay(.5s);
 	}
-	.stem {
+	.stem.yellow {
 		@include transition(height .5s);
 		@include transition-delay(.5s);
 	}
-	&.open {
+	&.open.yellow {
 		@include transition-delay(.5s);
 			&:nth-child(1) {
 				@include transform(rotate(-90deg));
@@ -185,11 +187,11 @@ body {
 			&:nth-child(4) {
 				@include transform(rotate(45deg));
 			}
-		.stem {
+		.stem.yellow {
 			@include transition-delay(0s);
 			height: 50px;
 		}
-		.node {
+		.node.yellow {
 			@include transition-delay(0s);
 			height: 50px;
 			width: 50px;
@@ -201,22 +203,22 @@ body {
 			}
 		}
 	}
-	&.no-animation {
+	&.no-animation.yellow {
 		animation: none;
 	}
 }
 
-.container {
+.container.yellow {
 	@include flex-container(flex, column, nowrap, flex-end, center, stretch);
 	@include absolute($top: 50%, $left: 50%);
 	@include size(210px, 110px);
 	@include transform(translate3d(-50%, -100%, 0) rotate(0deg));
 	overflow: hidden;
-	&.no-animation {
+	&.no-animation.yellow {
 		animation: none;
 	}
-	&.open {
-		.segment{
+	&.open.yellow {
+		.segment.yellow{
 			cursor: pointer;
 			&:nth-child(1) {
 				@include transform(rotate(0deg) scale(1) translate3d(0,0,0));
@@ -234,42 +236,42 @@ body {
 	}
 }
 
-.fa {
+.fa.yellow {
 	@include relative($top: 50%, $left: 50%);
 	@include transform(translate3d(-50%, -50%, 0) rotate(0deg));
 	// Share-alt Icons
-	&.fa-facebook{
+	&.fa-facebook.yellow{
 		@include transform(translate3d(-50%, -50%, 0) rotate(90deg));
 	}
-	&.fa-google-plus{
+	&.fa-google-plus.yellow{
 		@include transform(translate3d(-50%, -50%, 0) rotate(45deg));
 	}
-	&.fa-pinterest{
+	&.fa-pinterest.yellow{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
 	}
-	&.fa-linkedin{
+	&.fa-linkedin.yellow{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
 	}
 	// Social Icons
-	&.fa-vine {
+	&.fa-vine.yellow {
 		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
 	}
-	&.fa-instagram {
+	&.fa-instagram.yellow {
 		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
 	}
-	&.fa-whatsapp{
+	&.fa-whatsapp.yellow{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-135deg));
 	}
 }
 
-.float-circle {
+.float-circle.yellow {
 	@include absolute($top: 50%, $left: 75%);
 	@include transform(translateX(-50%) translateY(-50%));
 	@include size(50px, 50px);
 	@include transition(transform .5s, background-color .5s, opacity .2s);
 	background-color: #FFF;
 	border-radius: 50%;
-	&.open {
+	&.open.yellow {
 		cursor: pointer;
 		&#flickr {
 			background-color: $flickr;
@@ -290,12 +292,12 @@ body {
 			@include opacity(.75);
 		}
 	}
-	&.no-animation{
+	&.no-animation.yellow{
 		animation: none;
 	}
 }
 
-.main-button {
+.main-button.yellow {
 	@include transition(all .5s);
 	@include size(75px, 75px);
 	background-color: #FFF;
@@ -305,7 +307,7 @@ body {
 	overflow: hidden;
 }
 
-.node {
+.node.yellow {
 	@include flex-item(auto, auto, 0, 0);
 	@include size(10px);
 	background-color: $background-grey;
@@ -328,7 +330,7 @@ body {
 	}
 }
 
-.segment {
+.segment.yellow {
 	@include absolute($top: calc(100% - 100px), $left: calc(50% - 100px));
 	@include transform(rotate(0deg) scale(0.1) translate3d(0,0,0));
 	@include transform-origin(50% 100%);
@@ -358,37 +360,37 @@ body {
 	}
 }
 
-.share {
+.share.yellow {
 	@include absolute($top: 50%, $left: 75%);
 	@include transform(translate3d(-50%, -50%, 0));
 }
 
-.share-icon{
+.share-icon.yellow{
 	color: #FFF;
 	font-size: 25px;
 }
 
-.share-alt {
+.share-alt.yellow {
 	@include absolute($top: 50%, $left: 25%);
 	transform: translateX(-50%) translateY(-50%);
 }
 
-.share-alt-icon {
+.share-alt-icon.yellow {
 	font-size: 25px;
 	color: #FFF;
 }
 
-.social {
+.social.yellow {
 	@include absolute($top: 50%, $left: 50%);
 	transform: translateX(-50%) translateY(-50%);
 }
 
-.social-icon {
+.social-icon.yellow {
 	margin: 23px 0 0 -65px;
 	font-size: 45px;
 }
 
-.stem {
+.stem.yellow {
 	@include flex-item(auto, auto, 0, 1);
 	@include size(4px, 0px);
 	background-color: #FFF;
