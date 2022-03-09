@@ -486,65 +486,10 @@ import find from 'gulp-find';
 import replace from 'gulp-replace';
 import path from 'path';
 
-// injects css link tags into html files : uinforunaltely, that method is not efficient to interpolate complex templates
-gulp.task('interpolate:html:prod2', function (done) {
-  return  gulp.src(path.join('./public/', 'index.html'))
-              // .pipe(replace(/app\/style\/themes\/([^"]*)/g, function(cssPath) {
-              .pipe(replace(/gulp_base_css_dir/g, function(cssPath) {
-                return "my-new-pokus-path/" + cssPath;
-              }))
-              .pipe(gulp.dest('public'))
-              .pipe(browserSync.stream());
-});
-
-
-
-///  // - // useref = require('gulp-useref'),
-///  // - // gulpif = require('gulp-if'),
-///  // - // // uglify = require('gulp-uglify'),
-///  // - // minifyCss = require('gulp-clean-css');
 import useref from 'gulp-useref';
 import gulpif from 'gulp-if';
 import minifyCss from 'gulp-clean-css';
-// injects css link tags into html files :
-gulp.task('interpolate:html:prod3', function () {
-  // return  gulp.src(path.join('./public/', 'index.html'))
-  /*
-  return gulp.src('public/*.html')
-      .pipe(useref())
-      .pipe(gulpif('public/js/*.js', uglify()))
-      .pipe(gulpif('public/css/*.css', minifyCss()))
-      .pipe(gulp.dest('dist'));
-  */
-  // return gulp.src('public/*.html')
-  // return gulp.src(path.join('./public/', 'index.html'), {allowEmpty: true})
-  // return gulp.src('public/index.html', {allowEmpty: true})
-  // return gulp.src('.\/public\/*.html', {allowEmpty: true})
-  // return gulp.src('./public\/*.html', {allowEmpty: true})
-  // return gulp.src('./public/*.html', {allowEmpty: true})
-  // return gulp.src('./*.html', {allowEmpty: true}) // => the only one which i managed to execute without errors
-  // return gulp.src('public/**/*.html', {allowEmpty: true})
-  ///    return gulp.src([
-  ///      'sass/*.s?ss',
-  ///      'sass/**/*.s?ss',
-  ///      'sass/**/**/*.s?ss',
-  ///      'sass/**/**/**/*.s?ss'
-  ///    ],{
-  ///    "base" : "./static"
-  ///    })
-  /// return gulp.src(['public/index.html'], {allowEmpty: true})
-  return gulp.src([
-                '*.html',
-                '**/*.html',
-                '**/**/*.html',
-                '**/**/**/*.html'
-              ],{
-              "base" : "./public/"
-              })
-            .pipe(useref())
-            .pipe(gulp.dest('dist'))
-            .pipe(browserSync.stream());
-});
+
 
 
 /***************************************************************
@@ -768,9 +713,8 @@ gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:p
 //
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'interpolate:html:prod'));
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:prod'));
-//gulp.task('build:debug', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:prod2'));
-// gulp.task('build:debug', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:prod3'));
-gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'build:dist:dev'));
+
+gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'interpolate:html:dev'));
 gulp.task('build:debug', gulp.series('build:debug:dev'));
 /// gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:dev'));
 

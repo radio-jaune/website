@@ -263,8 +263,8 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-
 gulp build:debug
+serve dist/ -l tcp://${HUGO_HOST}:${HUGO_PORT}
 ```
 
 #### How to deploy PR branches with surge
