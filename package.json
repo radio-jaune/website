@@ -79,7 +79,7 @@
     "imagemin-pngquant": "^9.0.2",
     "node-fetch": "^2.6.7",
     "node-sass": "^7.0.1",
-    "prettier": "2.5.1",
+    "prettier": "^2.5.1",
     "readable-stream": "^3.6.0",
     "shelljs": "^0.8.5"
   }

@@ -60,9 +60,11 @@
  * Global Processes List.
  * ****
  * Process list :
- * - [gulp build:debug:dev] : dev build gulp tasks debugging. Idea simply is it is a gulp.series, to defaine a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
- * - [gulp build:debug:prod] : production build gulp tasks debugging. Idea simply is it is a gulp.series, to defaine a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
+ * - [gulp build:debug:dev] : dev build gulp tasks debugging. Idea simply is it is a gulp.series, to define a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
+ * - [gulp build:debug:prod] : production build gulp tasks debugging. Idea simply is it is a gulp.series, to define a sequence of tasks to execute the build process. Typically i would execute every single step of the build process, until the step I want to debug.
  * - [gulp build:debug] : alias for [gulp build:debug:dev].
+ * - [gulp watch:debug:dev] : watch dev build gulp tasks debugging. Uses the BrowserSync.
+ * - [gulp watch:debug:prod] : watch prod build gulp tasks debugging. Uses the BrowserSync.
  **********************************************************************************
  * - [gulp build:hugo:prod] : executes the hugo build for production environment : the result of the build is in the "./public/" folder, whereas the result of the gulp build is in the "dist/" folder.
  * - [gulp build:hugo:dev] : executes the hugo build for dev environment : the result of the build is in the "./public/" folder, whereas the result of the gulp build is in the "dist/" folder.
@@ -123,18 +125,11 @@ import fs from 'fs';
 import shell from 'shelljs';
 // const fs   = require('fs');
 
-const hugoBaseURL = `${process.env.HUGO_BASE_URL}`;
 /// export PATH=$PATH:/usr/local/go/bin
-/// export HUGO_HOST=127.0.0.1
-const hugoHost = `${process.env.HUGO_HOST}`;
-/// export HUGO_PORT=4545
-const hugoPort = `${process.env.HUGO_PORT}`
-/// export HUGO_BASE_URL=http://127.0.0.1:4545
-/// export HUGO_BASE_URL=http://${HUGO_HOST}:4${HUGO_HOST}
-/// export HUGO_BLABLA="i'm the best at Gulp, man, iam a devops"
+const hugoBaseURL = `${process.env.HUGO_BASE_URL}`; /// export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}/
+const hugoHost = `${process.env.HUGO_HOST}`; /// export HUGO_HOST=127.0.0.1
+const hugoPort = `${process.env.HUGO_PORT}`; /// export HUGO_PORT=4545
 
-
-// Run Hugo to copy finished files over to public folder
 gulp.task('testEnvDisplay', () => {
   gutil.log(`// >>>>>>>>>>>> >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> +  >>>>>>>>>> + //`)
   gutil.log(` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`)
@@ -149,16 +144,10 @@ gulp.task('testEnvDisplay', () => {
 /***************************************************************
  *  ==>>>   | Clean (public folder)
  **/
-
-
 import clean from 'gulp-dest-clean';
 /// https://www.npmjs.com/package/gulp-clean
 import cclean from 'gulp-clean';
 import newer from 'gulp-newer';
-
-
-
-
 
 //import { imagemin } from 'gulp-imagemin';
 // import imagemin from 'gulp-imagemin';
@@ -214,37 +203,6 @@ gulp.task('clean:dist:prod', function () {
 gulp.task('clean:dev', gulp.series('clean:hugo:dev', 'clean:dist:dev'));
 gulp.task('clean:prod', gulp.series('clean:hugo:prod', 'clean:dist:prod'));
 
-/***************************************************************
- *  ==>>>   | Excute SEO tasks (in the website in public)
- **/
-
-import gulpSeo from 'gulp-seo';
-
-gulp.task('seo', function() {
-  const radioJauneConfiguration = {
-        list: ['og', 'se', 'schema', 'twitter', 'facebook'],
-        meta: {
-            title: 'RADIOJAUNE.COM',
-            description: 'La radio libre 100%Jaune, Libre antenne tous les Dimanches 21h',
-            author: 'RADIOJAUNE.COM',
-            keywords: ['radio', 'libre', 'libre antenne', 'live', 'gilets jaunes', 'convoi des libertés', 'freedom convoy', 'free speech', 'liberté d\'expression', 'émission', 'censure', 'censure facebook', 'citoyen', 'débats', 'scandale', 'polémiques', 'covid', 'vaccin', 'pass sanitaire', 'pass vaccinal', 'green pass', 'vaccin', 'démocratie', 'convergence'],
-            robots: {
-                index: true, // true
-                follow: true // true
-            },
-            revisitAfter: '5 month', // 3 month
-            image: 'https://radiojaune.com/images/radiojaune/favicon.next/favicon.48x48.ico',
-            site_name: 'RADIOJAUNE.COM',
-            type: 'website'
-
-        }
-    }
-
-    return gulp.src('public/**/*.html')
-              .pipe(gulpSeo(radioJauneConfiguration))
-              .pipe(gulp.dest('./public'))
-              .pipe(browserSync.stream());
-});
 /***************************************************************
  *  ==>>>   | Excute hugo build (will egenrae the website in public)
  **/
@@ -331,16 +289,6 @@ import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 // Compile sassCompiler into CSS : to be used BEFORE hugo build
 gulp.task('build:sass:dev', function () {
-  /// return gulp.src('static/sass/**/*.s?ss')
-  ///    return gulp.src([
-  ///      'sass/*.s?ss',
-  ///      'sass/**/*.s?ss',
-  ///      'sass/**/**/*.s?ss',
-  ///      'sass/**/**/**/*.s?ss'
-  ///    ],{
-  ///    "base" : "./static"
-  ///    })
-  /// --
   return gulp.src('public/sass/**/*.s?ss')
       .pipe(sourcemaps.init())
       .pipe(sassCompiler().on('error', sassCompiler.logError))
@@ -350,16 +298,6 @@ gulp.task('build:sass:dev', function () {
       .pipe(browserSync.stream());
 });
 gulp.task('build:sass:prod', function () {
-  /// return gulp.src('static/sass/**/*.s?ss')
-  ///    return gulp.src([
-  ///      'sass/*.s?ss',
-  ///      'sass/**/*.s?ss',
-  ///      'sass/**/**/*.s?ss',
-  ///      'sass/**/**/**/*.s?ss'
-  ///    ],{
-  ///    "base" : "./static"
-  ///    })
-  /// --
   return gulp.src('public/sass/**/*.s?ss')
       .pipe(sourcemaps.init())
       .pipe(sassCompiler().on('error', sassCompiler.logError))
@@ -390,7 +328,125 @@ gulp.task('build:sass:prod', function () {
 /// [16:46:37] Finished 'build:sass:dev' after 200 ms
 ///
 
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | PUBLIC TO DIST : all copy tasks from public to dist folder
+ ***************************************************************
+ ***************************************************************
+ **/
 
+
+
+// ------- //
+// Moves the HTML files from ./public into our ./dist folder
+//
+gulp.task('build:dist:html:dev', function () {
+//  return gulp
+//      .src([
+//        '*.html',
+//        '**/*.html',
+//        '**/**/*.html',
+//        '**/**/**/*.html'
+//      ],{
+//      "base" : "./public"
+//      })
+  return gulp.src('public/**/*.html')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:html:prod', function () {
+  //  return gulp
+  //      .src([
+  //        '*.html',
+  //        '**/*.html',
+  //        '**/**/*.html',
+  //        '**/**/**/*.html'
+  //      ],{
+  //      "base" : "./public"
+  //      })
+    return gulp.src('public/**/*.html')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:js:dev', function () {
+///   return gulp
+///       .src([
+///         '*.js',
+///         '**/*.js',
+///         '**/**/*.js',
+///         '**/**/**/*.js'
+///       ],{
+///       "base" : "./public"
+///       })
+  return gulp.src('public/**/*.js')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:js:prod', function () {
+///  return gulp
+///      .src([
+///        '*.js',
+///        '**/*.js',
+///        '**/**/*.js',
+///        '**/**/**/*.js'
+///      ],{
+///      "base" : "./public"
+///      })
+  return gulp.src('public/**/*.js')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:css:dev', function () {
+///  return gulp
+///      .src([
+///        '*.css',
+///        '**/*.css',
+///        '**/**/*.css',
+///        '**/**/**/*.css'
+///      ],{
+///      "base" : "./public"
+///      })
+  return gulp.src('public/**/*.css')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:css:prod', function () {
+///  return gulp
+///      .src([
+///        '*.css',
+///        '**/*.css',
+///        '**/**/*.css',
+///        '**/**/**/*.css'
+///      ],{
+///      "base" : "./public"
+///      })
+  return gulp.src('public/**/*.css')
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:vendor:dev', function () {
+  return gulp
+      .src(['public/vendor/*'])
+      .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
+});
+gulp.task('build:dist:vendor:prod', function () {
+  return gulp
+      .src(['public/vendor/*'])
+      .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
+});
+
+
+
+gulp.task('build:dist:dev', gulp.series('build:dist:css:dev', 'build:dist:js:dev', 'build:dist:html:dev', 'build:dist:vendor:dev'));
+gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:prod', 'build:dist:html:prod', 'build:dist:vendor:prod'));
+
+
+
+
+
+
+/// ---------- -------------------------------- ///
+/// ---------- GULP HTML REPLACE
 /// <!-- build:<name> -->
 /// Everything here will be replaced
 /// <!-- endbuild -->
@@ -419,10 +475,18 @@ gulp.task('interpolate:html:prod', function (done) {
   multiPlaceHolderhtmlTemplateToInject += '<link href="%s" rel="stylesheet">\r\n'
   /// -- // -
   let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
-  let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js'], ['dist/css/yellow-share.min.pokus.css'], ['dist/css/yellow-share.min.pokus.css.map']]
-  compiledSassFiles.push([ `petit test ajouté à la volée` ])
-  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css` ])
-  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css.map` ])
+  // let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js'], ['dist/css/yellow-share.min.pokus.css'], ['dist/css/yellow-share.min.pokus.css.map']]
+  // compiledSassFiles.push([ `petit test ajouté à la volée` ])
+  let compiledSassFiles = []
+  /// compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css` ])
+  /// compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css.map` ])
+  /// compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css` ])
+  /// compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css.map` ])
+
+  compiledSassFiles.push([ `/css/yellow-share.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-share.min.pokus.css.map` ])
+  compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css.map` ])
 
   var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
                             .pipe(gulpTap(function(file, t) {
@@ -441,8 +505,11 @@ gulp.task('interpolate:html:prod', function (done) {
                               }))
                             .pipe(gulp.dest('dist'))
 
-  return merge(compiledSassFilesLinksResolition, htmlReplaceWork)
-        .pipe(browserSync.stream());
+  /// return merge(compiledSassFilesLinksResolition, htmlReplaceWork)
+  ///       .pipe(browserSync.stream()); // merge and watch do not work well together, see https://github.com/gulpjs/gulp/issues/593 (I had an error which i solved by skimming out the merge commands. Suggestion was made to replace a merge by a gulp-if , that's an idea to bear in mind). My Error was 'TypeError: this.__data__.get is not a function'
+  //
+
+  return htmlReplaceWork.pipe(browserSync.stream());
 });
 
 gulp.task('interpolate:html:dev', function (done) {
@@ -456,14 +523,17 @@ gulp.task('interpolate:html:dev', function (done) {
   let htmlTemplateToInject = '<link href="%s" rel="stylesheet">\r\n'
   // let compiledSassFiles = [ ['dist/css/a.min.pokus'], ['b.min.pokus.js'], ['c.min.pokus.js'], ['dist/css/pour.tests.gulp/encore.autre.pour.test.min.pokus.css'], ['data-main.js'], ['require-src.js']]
   let compiledSassFiles = [ ]
-  compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css` ])
-  compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css.map` ])
+  /// compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css` ])
+  /// compiledSassFiles.push([ `dist/css/autre.pour.test.min.pokus.css.map` ])
 
-  compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css` ])
-  compiledSassFiles.push([ `dist/css/yellow-carousel.min.pokus.css.map` ])
+  compiledSassFiles.push([ `/css/autre.pour.test.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/autre.pour.test.min.pokus.css.map` ])
 
-  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css` ])
-  compiledSassFiles.push([ `dist/css/yellow-share.min.pokus.css.map` ])
+  compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css.map` ])
+
+  compiledSassFiles.push([ `/css/yellow-share.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-share.min.pokus.css.map` ])
 
 
   var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
@@ -496,8 +566,39 @@ import useref from 'gulp-useref';
 import gulpif from 'gulp-if';
 import minifyCss from 'gulp-clean-css';
 
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | Excute SEO tasks (in the website in public)
+ ***************************************************************
+ ***************************************************************
+ **/
+import gulpSeo from 'gulp-seo';
 
+gulp.task('seo', function() {
+  const radioJauneConfiguration = {
+        list: ['og', 'se', 'schema', 'twitter', 'facebook'],
+        meta: {
+            title: 'RADIOJAUNE.COM',
+            description: 'La radio libre 100%Jaune, Libre antenne tous les Dimanches 21h',
+            author: 'RADIOJAUNE.COM',
+            keywords: ['radio', 'libre', 'libre antenne', 'live', 'gilets jaunes', 'convoi des libertés', 'freedom convoy', 'free speech', 'liberté d\'expression', 'émission', 'censure', 'censure facebook', 'citoyen', 'débats', 'scandale', 'polémiques', 'covid', 'vaccin', 'pass sanitaire', 'pass vaccinal', 'green pass', 'vaccin', 'démocratie', 'convergence'],
+            robots: {
+                index: true, // true
+                follow: true // true
+            },
+            revisitAfter: '5 month', // 3 month
+            image: 'https://radiojaune.com/images/radiojaune/favicon.next/favicon.48x48.ico',
+            site_name: 'RADIOJAUNE.COM',
+            type: 'website'
 
+        }
+    }
+
+    return gulp.src('public/**/*.html')
+              .pipe(gulpSeo(radioJauneConfiguration))
+              .pipe(gulp.dest('./public'))
+              .pipe(browserSync.stream());
+});
 /***************************************************************
  ***************************************************************
  *  ==>>>   | beautify the HTML/JS/CSS produced by hugo in public/ folder
@@ -603,111 +704,6 @@ gulp.task('purgecss', () => {
         .pipe(gulp.dest('build/css'))
 })
 
-/***************************************************************
- ***************************************************************
- *  ==>>>   | PUBLIC TO DIST : all copy taaks from public to dist folder
- ***************************************************************
- ***************************************************************
- **/
-
-
-
-// ------- //
-// Moves the HTML files from ./public into our ./dist folder
-//
-gulp.task('build:dist:html:dev', function () {
-  return gulp
-      .src([
-        '*.html',
-        '**/*.html',
-        '**/**/*.html',
-        '**/**/**/*.html'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:html:prod', function () {
-  return gulp
-      .src([
-        '*.html',
-        '**/*.html',
-        '**/**/*.html',
-        '**/**/**/*.html'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:js:dev', function () {
-  return gulp
-      .src([
-        '*.js',
-        '**/*.js',
-        '**/**/*.js',
-        '**/**/**/*.js'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:js:prod', function () {
-  return gulp
-      .src([
-        '*.js',
-        '**/*.js',
-        '**/**/*.js',
-        '**/**/**/*.js'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:css:dev', function () {
-  return gulp
-      .src([
-        '*.css',
-        '**/*.css',
-        '**/**/*.css',
-        '**/**/**/*.css'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:css:prod', function () {
-  return gulp
-      .src([
-        '*.css',
-        '**/*.css',
-        '**/**/*.css',
-        '**/**/**/*.css'
-      ],{
-      "base" : "./public"
-      })
-      .pipe(gulp.dest("dist/"))
-      .pipe(browserSync.stream());
-});
-gulp.task('build:dist:vendor:dev', function () {
-  return gulp
-      .src(['public/vendor/*'])
-      .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
-});
-gulp.task('build:dist:vendor:prod', function () {
-  return gulp
-      .src(['public/vendor/*'])
-      .pipe(gulp.dest("dist/vendor")).pipe(browserSync.stream());
-});
-
-
-
-gulp.task('build:dist:dev', gulp.series('build:dist:css:dev', 'build:dist:js:dev', 'build:dist:html:dev', 'build:dist:vendor:dev'));
-gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:prod', 'build:dist:html:prod', 'build:dist:vendor:prod'));
 
 
 
@@ -720,7 +716,7 @@ gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:p
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'interpolate:html:prod'));
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:prod'));
 
-gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'interpolate:html:dev'));
+gulp.task('build:debug:dev', gulp.series('clean:dev', 'build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'interpolate:html:dev'));
 gulp.task('build:debug', gulp.series('build:debug:dev'));
 /// gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:dev'));
 
@@ -756,53 +752,51 @@ gulp.task('watch:prod', gulp.series('build:prod', function() {
 
 
 
-gulp.task('watch:dev', function() {
+gulp.task('watch:debug:dev', gulp.series('build:debug:dev', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
     gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
 
     browserSync.init({ // https://browsersync.io/docs/api
-        server: "./public",
+        server: "./dist",
         host: `${hugoHost}`,
         port: `${hugoPort}`
     });
 
     // watch all hugo project files for change, rebuild all if changes
-    gulp.watch('./config.toml', gulp.series('dev'));
-    gulp.watch('./config.yaml', gulp.series('dev'));
-    gulp.watch('./config.json', gulp.series('dev'));
-    gulp.watch('./static/**/*.*', gulp.series('build:sass:dev'));
-    gulp.watch('./assets/**/*.*', gulp.series('build:sass:dev'));
-    gulp.watch('./themes/**/*.*', gulp.series('dev'));
-    gulp.watch('./archetypes/**/*.*', gulp.series('dev'));
-    gulp.watch('./content/**/*.*', gulp.series('dev'));
-    gulp.watch('./data/**/*.*', gulp.series('dev'));
-    gulp.watch('./layouts/**/*.*', gulp.series('dev'));
-    gulp.watch("layouts/**/*.html", gulp.series('dev')).on('change', browserSync.reload);
-});
-gulp.task('watchProd', function() {
+    gulp.watch('./config.toml', gulp.series('build:debug:dev'));
+    gulp.watch('./config.yaml', gulp.series('build:debug:dev'));
+    gulp.watch('./config.json', gulp.series('build:debug:dev'));
+    gulp.watch('./static/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./assets/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./themes/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./archetypes/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./content/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./data/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./layouts/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./layouts/**/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch('./layouts/**/**/**/*.*', gulp.series('build:debug:dev'));
+    gulp.watch("layouts/**/*.html", gulp.series('build:debug:dev')).on('change', browserSync.reload);
+}));
+gulp.task('watch:debug:prod', function() {
     gutil.log(`POKUS : hugoHost=[${hugoHost}]`)
     gutil.log(`POKUS : hugoPort=[${hugoPort}]`)
 
     browserSync.init({ // https://browsersync.io/docs/api
-        server: "./public",
+        server: "./dist",
         host: `${hugoHost}`,
         port: `${hugoPort}`
     });
 
     // watch all hugo project files for change, rebuild all if changes
-    gulp.watch('./config.toml', gulp.series('prod'));
-    gulp.watch('./config.yaml', gulp.series('prod'));
-    gulp.watch('./config.json', gulp.series('prod'));
-    gulp.watch('./static/**/*.*', gulp.series('build:sass:dev'));
-    gulp.watch('./assets/**/*.*', gulp.series('build:sass:dev'));
-    gulp.watch('./themes/**/*.*', gulp.series('prod'));
-    gulp.watch('./archetypes/**/*.*', gulp.series('prod'));
-    gulp.watch('./content/**/*.*', gulp.series('prod'));
-    gulp.watch('./data/**/*.*', gulp.series('prod'));
-    gulp.watch('./layouts/**/*.*', gulp.series('prod'));
-    gulp.watch("layouts/**/*.html", gulp.series('prod')).on('change', browserSync.reload);
+    gulp.watch('./config.toml', gulp.series('build:debug:prod'));
+    gulp.watch('./config.yaml', gulp.series('build:debug:prod'));
+    gulp.watch('./config.json', gulp.series('build:debug:prod'));
+    gulp.watch('./static/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./assets/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./themes/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./archetypes/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./content/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./data/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch('./layouts/**/*.*', gulp.series('build:debug:prod'));
+    gulp.watch("layouts/**/*.html", gulp.series('build:debug:prod')).on('change', browserSync.reload);
 });
-// --------------- older...
-// gulp.task('serve', gulp.series('build:sass:dev', 'purgecss', 'build:dist:dev', 'server'));
-// allDist after gulpPug: any html fiole in the src folder, overrides the rendered pug template in dist
-// gulp.task('dev', gulp.series('build:sass:dev', 'build:dist:dev'));

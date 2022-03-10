@@ -1,3 +1,5 @@
+/* Yellow team says many thanks to awesome work of https://codepen.io/mattjuggins/pen/MjeozP */
+
 /* Variables */
 $background-grey: #292929;
 $dropbox: #007ee5;
@@ -142,11 +144,11 @@ $youtube: #bb0000;
 }
 
 /* Typical elements */
-.tabs.yellow.tabbed.livestreams.social.share * {
+/*
+* {
 	box-sizing: border-box;
 }
 
-/*
 html,
 body {
 	background: $background-grey;
@@ -156,24 +158,23 @@ body {
 	width: 100%;
 }
 */
-
 /* Classes by name A-Z */
-.branch {
+.branch.yellow.social.share {
 	@include flex-container(flex, column, nowrap, flex-end, center, stretch);
 	@include absolute($top: calc(50% - 100px), $left: calc(25% - 25px));
 	@include size(50px, 100px);
 	@include transform(rotate(0deg));
 	@include transform-origin(center bottom);
 	@include transition(all .5s);
-	.node.yellow{
+	.node.yellow.social.share{
 		@include transition(height .5s, width .5s);
 		@include transition-delay(.5s);
 	}
-	.stem.yellow {
+	.stem.yellow.social.share {
 		@include transition(height .5s);
 		@include transition-delay(.5s);
 	}
-	&.open.yellow {
+	&.open.yellow.social.share {
 		@include transition-delay(.5s);
 			&:nth-child(1) {
 				@include transform(rotate(-90deg));
@@ -187,11 +188,11 @@ body {
 			&:nth-child(4) {
 				@include transform(rotate(45deg));
 			}
-		.stem.yellow {
+		.stem.yellow.social.share {
 			@include transition-delay(0s);
 			height: 50px;
 		}
-		.node.yellow {
+		.node.yellow.social.share {
 			@include transition-delay(0s);
 			height: 50px;
 			width: 50px;
@@ -203,22 +204,22 @@ body {
 			}
 		}
 	}
-	&.no-animation.yellow {
+	&.no-animation.yellow.social.share {
 		animation: none;
 	}
 }
 
-.container.yellow {
+.yellow.social.sharecontainer {
 	@include flex-container(flex, column, nowrap, flex-end, center, stretch);
 	@include absolute($top: 50%, $left: 50%);
 	@include size(210px, 110px);
 	@include transform(translate3d(-50%, -100%, 0) rotate(0deg));
 	overflow: hidden;
-	&.no-animation.yellow {
+	&.no-animation.yellow.social.share {
 		animation: none;
 	}
-	&.open.yellow {
-		.segment.yellow{
+	&.open.yellow.social.share {
+		.segment.yellow.social.share{
 			cursor: pointer;
 			&:nth-child(1) {
 				@include transform(rotate(0deg) scale(1) translate3d(0,0,0));
@@ -236,52 +237,52 @@ body {
 	}
 }
 
-.fa.yellow {
+.fa.yellow.social.share {
 	@include relative($top: 50%, $left: 50%);
 	@include transform(translate3d(-50%, -50%, 0) rotate(0deg));
 	// Share-alt Icons
-	&.fa-facebook.yellow{
+	&.fa-facebook.yellow.social.share{
 		@include transform(translate3d(-50%, -50%, 0) rotate(90deg));
 	}
-	&.fa-google-plus.yellow{
+	&.fa-google-plus.yellow.social.share{
 		@include transform(translate3d(-50%, -50%, 0) rotate(45deg));
 	}
-	&.fa-pinterest.yellow{
+	&.fa-pinterest.yellow.social.share{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
 	}
-	&.fa-linkedin.yellow{
+	&.fa-linkedin.yellow.social.share{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
 	}
 	// Social Icons
-	&.fa-vine.yellow {
+	&.fa-vine.yellow.social.share {
 		@include transform(translate3d(-50%, -50%, 0) rotate(-45deg));
 	}
-	&.fa-instagram.yellow {
+	&.fa-instagram.yellow.social.share {
 		@include transform(translate3d(-50%, -50%, 0) rotate(-90deg));
 	}
-	&.fa-whatsapp.yellow{
+	&.fa-whatsapp.yellow.social.share{
 		@include transform(translate3d(-50%, -50%, 0) rotate(-135deg));
 	}
 }
 
-.float-circle.yellow {
+.float-circle.yellow.social.share {
 	@include absolute($top: 50%, $left: 75%);
 	@include transform(translateX(-50%) translateY(-50%));
 	@include size(50px, 50px);
 	@include transition(transform .5s, background-color .5s, opacity .2s);
 	background-color: #FFF;
 	border-radius: 50%;
-	&.open.yellow {
+	&.open.yellow.social.share {
 		cursor: pointer;
-		&#flickr {
+		&#flickr.yellow.social.share {
 			background-color: $flickr;
 			@include transform(translate3d(-175%, -150%, 0));
 		}
-		&#youtube {
+		&#youtube.yellow.social.share {
 			background-color: $youtube;
 			@include transform(translate3d(-50%, -200%, 0));
 		}
-		&#dropbox {
+		&#dropbox.yellow.social.share {
 			background-color: $dropbox;
 			@include transform(translate3d(75%, -150%, 0));
 		}
@@ -292,12 +293,12 @@ body {
 			@include opacity(.75);
 		}
 	}
-	&.no-animation.yellow{
+	&.no-animation.yellow.social.share{
 		animation: none;
 	}
 }
 
-.main-button.yellow {
+.main-button.yellow.social.share {
 	@include transition(all .5s);
 	@include size(75px, 75px);
 	background-color: #FFF;
@@ -307,30 +308,30 @@ body {
 	overflow: hidden;
 }
 
-.node.yellow {
+.node.yellow.social.share {
 	@include flex-item(auto, auto, 0, 0);
 	@include size(10px);
 	background-color: $background-grey;
 	border-radius: 50%;
 	border: solid 5px;
-	&#facebook {
+	&#facebook.yellow.social.share {
 		border-color: $facebook;
 	}
-	&#google-plus{
+	&#google-plus.yellow.social.share{
 		border-color: $google-plus;
 	}
-	&#twitter{
+	&#twitter.yellow.social.share{
 		border-color: $twitter;
 	}
-	&#pinterest {
+	&#pinterest.yellow.social.share {
 		border-color: $pinterest;
 	}
-	&#linkedin{
+	&#linkedin.yellow.social.share{
 		border-color: $linkedin;
 	}
 }
 
-.segment.yellow {
+.segment.yellow.social.share {
 	@include absolute($top: calc(100% - 100px), $left: calc(50% - 100px));
 	@include transform(rotate(0deg) scale(0.1) translate3d(0,0,0));
 	@include transform-origin(50% 100%);
@@ -360,38 +361,120 @@ body {
 	}
 }
 
-.share.yellow {
+.share.yellow.social.share {
 	@include absolute($top: 50%, $left: 75%);
 	@include transform(translate3d(-50%, -50%, 0));
 }
 
-.share-icon.yellow{
+.share-icon.yellow.social.share{
 	color: #FFF;
 	font-size: 25px;
 }
 
-.share-alt.yellow {
+.share-alt.yellow.social.share {
 	@include absolute($top: 50%, $left: 25%);
 	transform: translateX(-50%) translateY(-50%);
 }
 
-.share-alt-icon.yellow {
+.share-alt-icon.yellow.social.share {
 	font-size: 25px;
 	color: #FFF;
 }
 
-.social.yellow {
+.social.yellow.social.share {
 	@include absolute($top: 50%, $left: 50%);
 	transform: translateX(-50%) translateY(-50%);
 }
 
-.social-icon.yellow {
+.social-icon.yellow.social.share {
 	margin: 23px 0 0 -65px;
 	font-size: 45px;
 }
 
-.stem.yellow {
+.stem.yellow.social.share {
 	@include flex-item(auto, auto, 0, 1);
 	@include size(4px, 0px);
 	background-color: #FFF;
+}
+
+/* Yellow Custom Classes */
+/* --------------------- */
+
+/* --> sets where in the page, the share control is placed */
+/*
+.yellowcontainer.tabs.yellow.tabbed.livestreams.yellow.social.share {
+
+	right: 1vw!important;
+	position: absolute;
+	left: unset!important;
+	top: 28%!important;
+	opacity: 0.3;
+	z-index:1000
+}
+ */
+.yellowcontainer.tabs.yellow.tabbed.livestreams.yellow.social.share {
+	/* margin-right: -32vh!important; */
+	/* right: 1vw !important; */
+	/* position: absolute; */
+	/* left: unset !important; */
+	/* top: 28% !important; */
+	opacity: 0.3;
+	z-index: 1000;
+}
+.main-button.share.yellow.social.share {
+	background-color: #42dca3;
+}
+
+
+/* -- FLASH EFFECT FOR SHARE BUTTON -- */
+
+.yellowflash {
+  -moz-animation: yellowflash 3s ease-out;
+  -moz-animation-iteration-count: 1;
+
+  -webkit-animation: yellowflash 3s ease-out;
+  -webkit-animation-iteration-count: 1;
+
+  -ms-animation: yellowflash 3s ease-out;
+  -ms-animation-iteration-count: 1;
+}
+
+@keyframes yellowflash {
+    0% { background-color: transparent;opacity: 0.3; }
+    20% { background-color: #42dca3;opacity: 1; }
+    40% { background-color: transparent;opacity: 0.3;  }
+    55% { background-color: #42dca3;opacity: 1;  }
+    70% { background-color: transparent;opacity: 0.3;  }
+    85% { background-color: #42dca3;opacity: 1;  }
+    100% { background-color: transparent; opacity: 0.3; }
+}
+
+@-webkit-keyframes yellowflash {
+	0% { background-color: transparent;opacity: 0.3; }
+	20% { background-color: #42dca3;opacity: 1; }
+	40% { background-color: transparent;opacity: 0.3;  }
+	55% { background-color: #42dca3;opacity: 1;  }
+	70% { background-color: transparent;opacity: 0.3;  }
+	85% { background-color: #42dca3;opacity: 1;  }
+	100% { background-color: transparent; opacity: 0.3; }
+}
+
+@-moz-keyframes yellowflash {
+	0% { background-color: transparent;opacity: 0.3; }
+	20% { background-color: #42dca3;opacity: 1; }
+	40% { background-color: transparent;opacity: 0.3;  }
+	55% { background-color: #42dca3;opacity: 1;  }
+	70% { background-color: transparent;opacity: 0.3;  }
+	85% { background-color: #42dca3;opacity: 1;  }
+	100% { background-color: transparent; opacity: 0.3; }
+}
+
+@-ms-keyframes yellowflash {
+	0% { background-color: transparent;opacity: 0.3; }
+	20% { background-color: #42dca3;opacity: 1; }
+	40% { background-color: transparent;opacity: 0.3;  }
+	55% { background-color: #42dca3;opacity: 1;  }
+	70% { background-color: transparent;opacity: 0.3;  }
+	85% { background-color: #42dca3;opacity: 1;  }
+	100% { background-color: transparent; opacity: 0.3; }
 }

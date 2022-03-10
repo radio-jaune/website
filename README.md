@@ -7,9 +7,9 @@ This repository version controls the code source the Radio Jaune Website : https
 
 ### B.O.M.
 
-* [https://gohugo.io](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
-* [https://npmjs.org/](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-* https://go.dev/doc/install
+* [`Hugo`](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
+* [`NodeJS`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* [`Golang`](https://go.dev/doc/install)
 *
 
 
@@ -67,7 +67,7 @@ bash-3.2$ git flow version
 
 ### Build n Run Locally
 
-* Now buld the hugo website in dev mode :
+* Now build the hugo website in dev mode :
 
 ```bash
 export DESIRED_VERSION=0.0.0
@@ -89,7 +89,7 @@ export HUGO_HOST=127.0.0.1
 export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-gulp dev
+gulp build:dev
 ```
 
 * Then start the hugo server in watch mode :
@@ -115,9 +115,8 @@ export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 
-# gulp hugo will only buiild the hugo website, it won't compile sass scss
-gulp dev
-gulp serve
+# gulp hugo will only build the hugo website, it won't compile sass scss
+gulp watch:dev
 
 ```
 
@@ -131,7 +130,7 @@ export HUGO_PORT=4547
 export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 
-gulp prod
+gulp build:prod
 
 ```
 
@@ -286,25 +285,26 @@ fi;
 mkdir -p  ./docs
 mkdir -p  ./public
 
-oldHugoBuild () {
+oldHugoBuildNdeploy () {
   export PATH=$PATH:/usr/local/go/bin
   hugo -b ${DEPLOYMENT_BASE_URL}
 
   cp -fr ./public/* ./docs/
+  surge ./public "${DEPLOYMENT_DOMAIN}"
 }
-gulpBuild (){
+gulpBuildNdeploy (){
   export PATH=$PATH:/usr/local/go/bin
   export HUGO_HOST=127.0.0.1
   export HUGO_PORT=4547
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
-
-  gulp hugo
+  export HUGO_BASE_URL=https://${DEPLOYMENT_DOMAIN}
+  gulp build:debug:dev
+  surge ./dist "${DEPLOYMENT_DOMAIN}"
 }
 
-oldHugoBuild
-
-surge ./public "${DEPLOYMENT_DOMAIN}"
+# oldHugoBuildNdeploy
+gulpBuildNdeploy
 
 ```
 
@@ -335,6 +335,21 @@ export HUGO_BASE_URL=https://127.0.0.1:5447
 gulp hugo
 
 ```
+
+## An idea about hot reloading
+
+You know, whether i use BrowserSync or NodeMon, here is the "watch" configuration is 90% of the time want :
+* I specify one folder like `./dist/`, and :
+  * all files out of that folder are watched
+  * all files within that folder are not watched,
+  * that folder is served statically,
+  * everytime any watched file is changed, the incremental build is relaunched from start, and server triggers page reload (jsut lke hugo dev server)
+* So Ok I will try gulp-nodemon instead of BrowserSync, to compare and see if i have better
+
+My first Gulp build has a design that satifies me, but not...
+
+
+
 
 ## Refs
 
