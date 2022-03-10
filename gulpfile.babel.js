@@ -124,6 +124,7 @@ import fs from 'fs';
 
 import shell from 'shelljs';
 // const fs   = require('fs');
+// const fs   = require('fs');
 
 /// export PATH=$PATH:/usr/local/go/bin
 const hugoBaseURL = `${process.env.HUGO_BASE_URL}`; /// export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}/
@@ -149,26 +150,7 @@ import clean from 'gulp-dest-clean';
 import cclean from 'gulp-clean';
 import newer from 'gulp-newer';
 
-//import { imagemin } from 'gulp-imagemin';
-// import imagemin from 'gulp-imagemin';
 
-// import pngquant from 'imagemin-pngquant';
-
-/// export default () => (
-/// 	gulp.src('src/images/*')
-/// 		.pipe(imagemin())
-/// 		.pipe(gulp.dest('dist/images'))
-/// );
-
-/// gulp.task('default', () => {
-/// 	return gulp.src('src/images/*')
-/// 		.pipe(imagemin({
-/// 			progressive: true,
-/// 			svgoPlugins: [{removeViewBox: false}],
-/// 			use: [pngquant()]
-/// 		}))
-/// 		.pipe(gulp.dest('dist/images'));
-/// });
 
 var hugoPrjFolder = './';
 var hugoPublicFolder = 'public';
@@ -341,33 +323,41 @@ gulp.task('build:sass:prod', function () {
 // Moves the HTML files from ./public into our ./dist folder
 //
 gulp.task('build:dist:html:dev', function () {
-//  return gulp
-//      .src([
-//        '*.html',
-//        '**/*.html',
-//        '**/**/*.html',
-//        '**/**/**/*.html'
-//      ],{
-//      "base" : "./public"
-//      })
   return gulp.src('public/**/*.html')
       .pipe(gulp.dest("dist/"))
       .pipe(browserSync.stream());
 });
 gulp.task('build:dist:html:prod', function () {
-  //  return gulp
-  //      .src([
-  //        '*.html',
-  //        '**/*.html',
-  //        '**/**/*.html',
-  //        '**/**/**/*.html'
-  //      ],{
-  //      "base" : "./public"
-  //      })
     return gulp.src('public/**/*.html')
       .pipe(gulp.dest("dist/"))
       .pipe(browserSync.stream());
 });
+
+
+gulp.task('build:dist:img:dev', function () {
+  return gulp
+      .src([
+        './**/*.png',
+        './**/*.jpg'
+      ],{
+      "base" : "./public"
+      })
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+gulp.task('build:dist:img:prod', function () {
+  return gulp
+      .src([
+        './**/*.png',
+        './**/*.jpg'
+      ],{
+      "base" : "./public"
+      })
+      .pipe(gulp.dest("dist/"))
+      .pipe(browserSync.stream());
+});
+
+
 gulp.task('build:dist:js:dev', function () {
 ///   return gulp
 ///       .src([
@@ -437,12 +427,8 @@ gulp.task('build:dist:vendor:prod', function () {
 
 
 
-gulp.task('build:dist:dev', gulp.series('build:dist:css:dev', 'build:dist:js:dev', 'build:dist:html:dev', 'build:dist:vendor:dev'));
-gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:prod', 'build:dist:html:prod', 'build:dist:vendor:prod'));
-
-
-
-
+gulp.task('build:dist:dev', gulp.series('build:dist:css:dev', 'build:dist:js:dev', 'build:dist:html:dev', 'build:dist:vendor:dev', 'build:dist:img:dev'));
+gulp.task('build:dist:prod', gulp.series('build:dist:css:prod', 'build:dist:js:prod', 'build:dist:html:prod', 'build:dist:vendor:prod', 'build:dist:img:prod'));
 
 
 /// ---------- -------------------------------- ///
@@ -557,6 +543,69 @@ gulp.task('interpolate:html:dev', function (done) {
         .pipe(browserSync.stream());
 });
 
+
+
+
+
+
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | Execute Image transformations tasks (in dist/)
+ ***************************************************************
+ ***************************************************************
+ **/
+// --- If I use gulp-imagemin [^8.0.0], I gt an error.
+//     This error is caused by the fact that gulp-imagemin [^8.0.0] and above are now ESM only. You can downgrade gulp-imagemin to 7.1.0 which is commonjs and it should work fine.
+import imagemin from 'gulp-imagemin';
+
+import pngquant from 'imagemin-pngquant';
+
+ /// export default () => (
+ /// 	gulp.src('src/images/*')
+ /// 		.pipe(imagemin())
+ /// 		.pipe(gulp.dest('dist/images'))
+ /// );
+
+gulp.task('build:img:dev', () => {
+  //return gulp.src('src/images/*')
+  return gulp
+      .src([
+        'img/**/*.svg',
+        'img/**/*.ico',
+        'img/**/*.png',
+        'img/**/*.jpg',
+        'images/**/*.svg',
+        'images/**/*.ico',
+        'images/**/*.jpg',
+        'images/**/*.png'
+      ],{
+      "base" : "./dist"
+      })
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		}))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build:img:prod', () => {
+  return gulp
+      .src([
+        'img/**/*.png',
+        'img/**/*.jpg',
+        'images/**/*.jpg',
+        'images/**/*.png'
+      ],{
+      "base" : "./dist"
+      })
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}],
+			use: [pngquant()]
+		}))
+		.pipe(gulp.dest('dist/'));
+});
 
 import find from 'gulp-find';
 import replace from 'gulp-replace';
@@ -716,7 +765,8 @@ gulp.task('purgecss', () => {
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'interpolate:html:prod'));
 // gulp.task('build:debug', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:prod'));
 
-gulp.task('build:debug:dev', gulp.series('clean:dev', 'build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'interpolate:html:dev'));
+gulp.task('build:debug:dev', gulp.series('clean:dev', 'build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'build:dist:dev', 'build:dist:dev', 'build:img:dev', 'interpolate:html:dev'));
+/// gulp.task('build:debug:dev', gulp.series('clean:dev', 'build:hugo:dev', 'build:sass:dev', 'build:dist:dev', 'interpolate:html:dev', 'build:dist:dev', 'build:img:dev'));
 gulp.task('build:debug', gulp.series('build:debug:dev'));
 /// gulp.task('build:debug:dev', gulp.series('build:hugo:dev', 'build:sass:dev', 'interpolate:html:dev'));
 

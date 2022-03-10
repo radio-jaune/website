@@ -413,11 +413,12 @@ body {
 }
  */
 .yellowcontainer.tabs.yellow.tabbed.livestreams.yellow.social.share {
-	/* margin-right: -32vh!important; */
+	margin-right: auto!important;
+	margin-left: auto!important;
 	/* right: 1vw !important; */
 	/* position: absolute; */
 	/* left: unset !important; */
-	/* top: 28% !important; */
+	top: 65vh !important;
 	opacity: 0.3;
 	z-index: 1000;
 }
