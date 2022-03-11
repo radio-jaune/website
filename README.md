@@ -398,3 +398,7 @@ In my gitops fluxcd work, i want to work on one business case i find here :
 * https://www.npmjs.com/package/gulp-newer
 * You are my hero :
   * https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package
+* CDN :
+  * https://www.npmjs.com/package/gulp-cloudinary-upload
+  * and im sure we have same for cloudflare, and other alternative CDNs.
+* images processing : https://www.npmjs.com/package/gulp-sharp
