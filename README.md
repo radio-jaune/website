@@ -402,3 +402,31 @@ In my gitops fluxcd work, i want to work on one business case i find here :
   * https://www.npmjs.com/package/gulp-cloudinary-upload
   * and im sure we have same for cloudflare, and other alternative CDNs.
 * images processing : https://www.npmjs.com/package/gulp-sharp
+* He speaks about Google Lighthouse too (about the image compression strategy) : https://dev.to/feldroy/til-strategies-for-compressing-jpg-files-with-imagemagick-5fn9
+* Very important reference from people at google :
+  * https://web.dev/use-imagemin-to-compress-images/
+  * https://web.dev/authors/katiehempenius/
+  * https://web.dev/lighthouse-ci/ : performance monitoring
+  *
+
+
+## funny little thing that happened with https://api.video
+
+Hello, thanlk you so much for your answer.
+
+I tried registering only once yesterday
+
+I claied the Gihub button, and then I granted authorization to api.video Github OAuth2 application.
+
+Then, the registration process forced me touse the email address associated with my Github Account, so I just closed the window exactly there.
+
+After that, I went to my github Account to revoke granted Github permissions to api.video
+
+And now, i does not matter hwhat I do, I jsut end up with the blank page with only one eror message :
+
+"We encountered an error trying to retrieve your workspaces "
+
+My guess is that there is a bug inside the https://api.video  website authentication moidules.
+
+What happens is that the  api.video   saas is trying to fetch my github repositories, using the Github token they got as I authorizd the Github Application.
+But it crashes, because i revoked the token to force resume the registration from start.

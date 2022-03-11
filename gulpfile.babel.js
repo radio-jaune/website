@@ -550,10 +550,101 @@ gulp.task('interpolate:html:dev', function (done) {
 
 /***************************************************************
  ***************************************************************
- *  ==>>>   | Execute Image transformations tasks (in dist/)
+ *  ==>>>   | Execute Image processing tasks (from 'dist/' to 'dist/')
  ***************************************************************
  ***************************************************************
  **/
+
+/// --- ------ --- ///
+/// --- Design --- ///
+/// * purpose 1 [gulp "build:img:effects:dev"] : add effects on images using ImageMagick :
+///   * There is no gulp-imagemagick plugin,
+///   * There are plugins using ImageMagick features to resize images for example,
+///   * but A./ I want to use ImageMagick special effects commands, not resizing commands
+///   * and B./ I want a plugin which allows me to run any ImageMagick commands, not only resizing  commands
+///   * so i will use child_process and shelljs to run imagemagick commands
+/// * purpose 2 [gulp "build:img:resize:dev"] : For each image file, generate 3 to 5 resized images, using sharp / `gulp-sharp`
+/// * purpose 3 [gulp "build:img:compress:dev"] : compress all images files, will be done using imagemin / `gulp-imagemin`
+/// --- ------ --- ///
+
+
+
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- Add effects on images  -- --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+
+/**
+ * The ImageMagick command-line tools exit with
+ * a status of 0 if the command line arguments have
+ * a proper syntax and no problems are encountered.
+ * ---
+ * Expect a descriptive message and an exit status of
+ * 1 if any exception occurs such as improper syntax, a
+ * problem reading or writing an image, or any other
+ * problem that prevents the command from
+ * completing successfully.
+ * ---
+ **/
+
+
+ gulp.task("build:img:effects:dev", (done) => {
+   // --- // --- //
+   // Run ImageMagick CLI synchronously
+   /*
+   shell.echo(`===========================================================`)
+   shell.echo(`Wil execute hugo build command : [hugo -b ${hugoBaseURL}]`)
+   let hugoBuildCmd = shell.exec(`hugo -b ${hugoBaseURL}`);
+   shell.echo (hugoBuildCmd.stdout)
+   if (hugoBuildCmd.code !== 0) {
+     shell.echo (hugoBuildCmd.stderr)
+     shell.echo('Error: hugo Build failed');
+     shell.exit(1);
+   } else {
+     done()
+   }
+   */
+  let imagemagickProcess = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
+              .on("close", () => {
+                  done(); // let gulp know the task has completed
+              });
+  let hugoLogger = function (buffer) {
+      buffer.toString()
+      .split(/\n/)
+      .forEach(function (message) {
+          if (message) {
+
+
+              gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`);
+              gutil.log("GoHugo.io: " + message);
+              gutil.log("GoHugo.io: " + message);
+          }
+      });
+  };
+
+  imagemagickProcess.stdout.on("data", hugoLogger);
+  imagemagickProcess.stderr.on("data", hugoLogger)
+
+
+ });
+
+
+
+
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- Generate resized images   --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- Compress all images files --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+/// --- ------ --- /// --- ------ --- /// --- ------ --- ///
+
+
 // --- If I use gulp-imagemin [^8.0.0], I gt an error.
 //     This error is caused by the fact that gulp-imagemin [^8.0.0] and above are now ESM only. You can downgrade gulp-imagemin to 7.1.0 which is commonjs and it should work fine.
 import imagemin from 'gulp-imagemin';
@@ -565,6 +656,9 @@ import pngquant from 'imagemin-pngquant';
  /// 		.pipe(imagemin())
  /// 		.pipe(gulp.dest('dist/images'))
  /// );
+
+
+
 
 gulp.task('build:img:dev', () => {
   //return gulp.src('src/images/*')
@@ -607,6 +701,13 @@ gulp.task('build:img:prod', () => {
 		.pipe(gulp.dest('dist/'));
 });
 
+/***************************************************************
+ ***************************************************************
+ *  ==>>>   | Excute SEO tasks (in the website in public)
+ ***************************************************************
+ ***************************************************************
+ **/
+
 import find from 'gulp-find';
 import replace from 'gulp-replace';
 import path from 'path';
@@ -615,12 +716,6 @@ import useref from 'gulp-useref';
 import gulpif from 'gulp-if';
 import minifyCss from 'gulp-clean-css';
 
-/***************************************************************
- ***************************************************************
- *  ==>>>   | Excute SEO tasks (in the website in public)
- ***************************************************************
- ***************************************************************
- **/
 import gulpSeo from 'gulp-seo';
 
 gulp.task('seo', function() {
