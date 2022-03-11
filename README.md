@@ -349,10 +349,50 @@ You know, whether i use BrowserSync or NodeMon, here is the "watch" configuratio
 My first Gulp build has a design that satifies me, but not...
 
 
+This task is about adding gulp tasks to :
+* keep the original image file
+* generate 3 to 5 resizing images file for responsiveness
+* and since when you do that kind of processing, you end up with a lot of images :
+  * you just keep the original image file in the source code, zero processed files should be in the git repo
+  * you publish the images to a CDN
+  * cloud service providers  :
+    * the production and staging environments will use a managed CDN for images
+    * and the development environment will use a CDN that is open source, provisioned in private infrastructure (with an open source private cloud provider like pokusbox), and broadcasted via noip ..?
+
+* [ ] add gulp tasks to process images :
+  * purpose 1 : add effects on images using ImageMagick :
+    * There is no gulp-imagemagick plugin,
+    * There are plugins using ImageMagick features to resize images for example,
+    * but  A./ I want to use ImageMagick special effects commands, not resizing commands
+    * and B./ I want a plugin which allows me to run any ImageMagick commands, not only resizing  commands
+    * so i will use child_process and shelljs to run imagemagick commands
+  * purpose 2 : For each image file, generate 3 to 5 resized images, using sharp / `gulp-sharp`
+  * purpose 3 : compress all images files, will be done using imagemin / `gulp-imagemin`
+* [ ] modify npm script to deploy images to CDN. The deployment process becomes :
+  * deploy all images to CDN
+  * if, and only if, all images were successfully deployed to CDN,
+  * then the deployment of the website wan happen (the deployment of the static site to the static web server)
+  * This new deployment makes it required that we use a staging environment, to deploy to a different CDN on staging and production envs : indeed, if the image deployement fails, it will then never impact in any way the production environment
+
+### Benchamrk CDN services
+
+Image services like  (open-source) and [Cloudinary](https://cloudinary.com/) are also worth checking out. Image services provide responsive images (and image manipulation) on-demand. Thumbor is setup by installing it on a server; Cloudinary takes care of these details for you and requires no server setup. Both are easy ways to create responsive images.
+We need a benchmark there, at least between :
+* [Thumbor](https://github.com/thumbor/thumbor)
+* [Cloudinary](https://cloudinary.com/)
+* cloudflare
 
 
-## Refs
+### `Gitops` Corner
 
+In my gitops fluxcd work, i want to work on one business case i find here :
+* I want to use FluxCD / Flagger and a monitoring stack, to deploy the same website we are talking about here
+* And the Monitoring Stack will especially detect an image error, pas it to Flagger to roll back the deployment, to previous version.
+
+### References
+
+* https://github.com/ImageMagick/ImageMagick
+* https://github.com/lovell/sharp
 * https://www.npmjs.com/package/gulp-beautify
 * https://www.npmjs.com/package/gulp-seo
 * https://www.npmjs.com/package/gulp-newer
