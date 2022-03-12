@@ -346,8 +346,11 @@ You know, whether i use BrowserSync or NodeMon, here is the "watch" configuratio
   * everytime any watched file is changed, the incremental build is relaunched from start, and server triggers page reload (jsut lke hugo dev server)
 * So Ok I will try gulp-nodemon instead of BrowserSync, to compare and see if i have better
 
-My first Gulp build has a design that satifies me, but not...
+My first Gulp build has a design that satifies me, but I want to enlighten that topic.
 
+I can also have a look a https://www.npmjs.com/package/chokidar
+
+## The Gulp build and Image Processing
 
 This task is about adding gulp tasks to :
 * keep the original image file
@@ -382,6 +385,128 @@ We need a benchmark there, at least between :
 * [Cloudinary](https://cloudinary.com/)
 * cloudflare
 
+Another important aspect about using CDNs for projects with zero or litle money :
+
+* In those projects, we will consume free plan until it's exceeded every month.
+* Let's not drop the idea of using CDNs, just because we haven't got any money.
+* So to still use CDN, here is an idea :
+  * We setup `upptime` https://github.com/upptime/upptime
+  * and we setup some tests on all images : when it is a 404,; we need a RED ALERT notification on chatops (discord clask rocket chat zulip, etc..)
+
+
+And last but not least, here is my main architectrure design:
+* defining the entire processing lifecycle of images, from git commit to production,
+* main goal is to use several CDN fgree plans :
+  * to maximize our CDN capacity, without paying
+  * to avoid dropping the CDN feature, just because people do not know yet how oor if they are going to have enough money to pay CDN when trtaffic increases.
+* i will use both cloudinary and optimole : cloudinary only for png (because it is the only thing its good at according a few reviews i read), and oinly les than 5 image files, like the most important ones taht are for unflold into SMS and things like Telegram channels, chats etc...
+
+Here is the architecture to use both CDNs :
+
+![cdn architecture](./documentation/cdn/architecture/pokus.cdn.architecture.drawio.png)
+
+![cdn architecture](./documentation/cdn/architecture/pokus.cdn.architecture.with.devops.drawio.png)
+
+
+
+* step 0. ccc
+* step 1. ccc
+* step 2. ccc
+* step 3. ccc
+* step 4. ccc
+* step 5. ccc
+* step 6. ccc
+
+
+##### Cloudinary
+
+One point in the benchmark i want to note : I had relations with cloudinary supprt team, and they are really great very fast, technically sharp.
+
+![support team at cloudinary, awesome](documentation/cloudinary/support_tickets/first/cloudinary_first_login_issue_7.png)
+
+
+ About the pricing of Cloudinary :
+
+![cloudinary CDN free plan n pricing](documentation/cloudinary/support_tickets/first/cloudinary.bumblebee.again.2.pricing.png)
+
+
+Ok, so basically, here are the limitations :
+
+* My biggest iamge file is `│   ├── [773K]  logo.png`, so I will say 800 Kilobytes (800 Ko)
+* Now, If I assume:
+  * that the website has only 100 vistors per day
+  * that the maximum number of users loading a page is 50.
+  * that each of those users :
+    * reloads the one and only page says 5/10 times, then its wroser etc... will use it cache
+    * forces reload of page twice on every visit
+  * that the website uses CDN for only 5 image files of that same 800Ko size
+  * Well, then in the end, here are the figures of consumption :
+    * `How much` : a 100 times a day, 5 images of each 800 Ko = 100 x 5 x 800 Ko = 400 000 Ko = 400 000 / 1024 Mo (Mb) = 390.625 Mo (Mb)
+
+    * So ok, this means that during one day, 400 mega bytes of images will be loaded
+    * fre pan is 25 credits, and one credit is : 1 GB either in banwidth or volume. SO I guess i have at least 25 this amount does not exceed free plan capacity
+    * Now, i can buy credits. So question is, if i buy 1000 credits, how muhch more image CDN can i use ?
+
+
+
+##### External Benchmarking sources
+
+https://themeisle.com/blog/cloudinary-vs-imgix-vs-imagekit-vs-optimole/
+
+If you’re short on time, here’s a quick summary of our results:
+
+* Optimole was the best at optimizing our test JPEG image.
+* Cloudinary was the best at optimizing our test PNG image (but also the worst at optimizing our test JPEG).
+* Optimole had the best overall optimization when looking at both the JPEG and PNG images.
+* Optimole and Cloudinary had the easiest setup process for WordPress users. You can be up and running on WordPress with just a few clicks and don’t need to deal with any technical steps.
+
+So i'll try Optimole, just to compare pricing at least, for a first try
+
+Also:
+* why not using several free plans on different CDN providers ?
+* eg I use Optimole for 5 images, and i use Cloudinary for 5 other images. I double my free plan that way
+* and can i use a gulp plugin for image CDN upload, that has the following features :
+  * the gulp task end by sending metrics to prometheus
+  * the gulp task is configured via a `JSon` file : that `JSon` file is like
+
+##### Optimole CDN
+
+* register process is extreemely easy
+* they do have a free plan
+*
+* https://docs.optimole.com/category/1011-cdn
+
+When  registration finished, i immediately get the API Key, (an,d that i liked, at cloudinary dashboard, i had to struggle a bit to find the menu to get my api key) get :
+
+![Optimole first dashboard](./documentation/optimole/optimole.cdn.register.4.png)
+
+What is funny about `Optimole` :
+* There is a lot of integration for Wordpress :
+  * i was afraid first, that no other support would be there,n at least a CLI to upload images
+  * but they did think about non-wordpress websites : https://docs.optimole.com/article/1307-custom-integration
+  * now, it is a very good omen that they are so focused on WordPress : this means they are very much into websites dev, while cloudinary seems big and solid, but has much broader features. I like do what you do best.
+
+
+Ok so here is what i found to integrate with gulp on https://docs.optimole.com/article/1307-custom-integration :
+
+In three sentences, how optimole integration works :
+* you add one css, and one js references into the HEAD html trag of your website
+* for each html tag which has an image as background, you add a tag data attribute like this :
+* by default, all images urls in my website are replaced by the optimole JS module referenced in HEAD
+* by default, all images urls referenced in CSS are not processsed :
+  * in the Optimole dashbard, i can set anq option to tell optimole to scan the CSS too
+  * Optimole will process a CSS referenced image, if and only if:
+    * in the Optimole dashboard settings, we activated that option, and we added the `.tintin.and.milou` css class
+    * and that image is loaded as background image for an HTML element which is marked with a css class we added to the settings, jsut like the `.tintin.and.milou` css class.
+*
+
+
+
+
+To give an idea of how our optimole CDN will geographjically deliver, here is a world map of the underlying Optimole CDN :
+
+![Optimole world map](./documentation/optimole/optimole_cdn_worldmap.png)
+
 
 ### `Gitops` Corner
 
@@ -399,7 +524,9 @@ In my gitops fluxcd work, i want to work on one business case i find here :
 * You are my hero :
   * https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package
 * CDN :
+  * https://www.npmjs.com/package/cloudinary
   * https://www.npmjs.com/package/gulp-cloudinary-upload
+  * https://cloudinary.com/documentation/node_integration#node_js_getting_started_guide
   * and im sure we have same for cloudflare, and other alternative CDNs.
 * images processing : https://www.npmjs.com/package/gulp-sharp
 * He speaks about Google Lighthouse too (about the image compression strategy) : https://dev.to/feldroy/til-strategies-for-compressing-jpg-files-with-imagemagick-5fn9
@@ -410,23 +537,23 @@ In my gitops fluxcd work, i want to work on one business case i find here :
   *
 
 
-## funny little thing that happened with https://api.video
+## Annex A. Funny little thing that happened with https://api.video
 
-Hello, thanlk you so much for your answer.
+Hello, thank you so much for your answer.
 
 I tried registering only once yesterday
 
-I claied the Gihub button, and then I granted authorization to api.video Github OAuth2 application.
+I clicked the Github button, and then I granted authorization to api.video Github OAuth2 application.
 
-Then, the registration process forced me touse the email address associated with my Github Account, so I just closed the window exactly there.
+Then, the registration process forced me to use the email address associated with my Github Account, so I just closed the window exactly there.
 
 After that, I went to my github Account to revoke granted Github permissions to api.video
 
-And now, i does not matter hwhat I do, I jsut end up with the blank page with only one eror message :
+And now, it does not matter what I do, I just end up with the blank page with only one eror message :
 
 "We encountered an error trying to retrieve your workspaces "
 
 My guess is that there is a bug inside the https://api.video  website authentication moidules.
 
-What happens is that the  api.video   saas is trying to fetch my github repositories, using the Github token they got as I authorizd the Github Application.
-But it crashes, because i revoked the token to force resume the registration from start.
+What happens is that the  https://api.video saas is trying to fetch my github repositories, using the Github token they got as I authorizd the Github Application.
+But it fails to, because i revoked the token to force resume the registration from start.
