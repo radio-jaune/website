@@ -414,9 +414,13 @@ Here is the architecture to use both CDNs :
 * step 2. ccc
 * step 3. ccc
 * step 4. ccc
-* step 5. ccc
-* step 6. ccc
 
+
+How to run Optimole tests :
+* https://optimole.com/test-drive?results=107102
+* idea : assess how worth it is to use Optimole CDN for your website.
+* For https://radiojaune.com , the test did not find any image : that' becasue all of images are nested in CSS? so wie will try the css classes configuration setup to re-assess the effect.
+* Also i would definitely like to have that test tool as open osurce... At least being able to run such tests inside Pipelines.
 
 ##### Cloudinary
 
