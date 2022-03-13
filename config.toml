@@ -7,6 +7,19 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 [params]
     # Provide some metadata for search and indexing services
     description = "The hugo project for https://radiojaune.com"
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
+    # - - - - # - - - - # - - - - # - - - - # SHARE ON SOCIALS COMPONENT
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
+    share_show_on_twitter = ""
+    share_show_on_twitch = ""
+    share_show_on_facebook = ""
+    share_show_on_vk = ""
+    share_show_on_discord = ""
+    share_show_on_telegram = ""
+
+    # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - # - - - - #
     # # # Telegram integration
     # telegram_chat_id = "5236069846" # le bot de l'équipe devops
     telegram_chat_id = "1695080080" # le bot de dom sur telegram
