@@ -1,65 +1,103 @@
-<div class='yellowcontainer tabs yellow tabbed livestreams yellow social share'>
-  <!--
-The Gulp Build must calculate integrity sha384-checksums of all javascripts files
- integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
 
-     /js/yellow-share.js   =>   works with 'yellow-share.html' partial
-     <script src="/js/yellow-share.js" crossorigin="anonymous"></script>
--->
-  <!--
-  <div class="float-circle yellow social share" id="flickr">
-    <div class="fa fa-flickr share-icon yellow social share"></div>
-  </div>
-  <div class="float-circle yellow social share" id="youtube">
-    <div class="fa fa-youtube-play share-icon yellow social share"></div>
-  </div>
-  <div class="float-circle yellow social share" id="dropbox">
-    <div class="fa fa-dropbox share-icon yellow social share"></div>
-  </div>
-  -->
-  <a href="{{ .Site.Params.share_show_on_telegram }}">
-    <div class="float-circle yellow social share" id="telegram">
-      <div class="fa fa-telegram share-icon yellow social share"></div>
-    </div>
-  </a>
-  <a href="{{ .Site.Params.share_show_on_twitter }}">
-    <div class="float-circle yellow social share" id="twitter">
-      <div class="fa fa-twitter share-icon yellow social share"></div>
-    </div>
-  </a>
-  <a href="{{ .Site.Params.share_show_on_twitch }}">
-    <div class="float-circle yellow social share" id="twitch">
-      <div class="fa fa-twitch share-icon yellow social share"></div>
-    </div>
-  </a>
-  <a href="{{ .Site.Params.share_show_on_facebook }}">
-    <div class="float-circle yellow social share" id="facebook">
-      <div class="fa fa-facebook share-icon yellow social share"></div>
-    </div>
-  </a>
-  <a href="{{ .Site.Params.share_show_on_vk }}">
-    <div class="float-circle yellow social share" id="vkontakte">
-      <div class="fa fa-vk share-icon yellow social share"></div>
-    </div>
-  </a>
-  <a href="{{ .Site.Params.share_show_on_discord }}">
-    <div class="float-circle yellow social share" id="discord">
-      <div class="fa fa-discord share-icon yellow social share"></div>
-    </div>
-  </a>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-<!--
-/*
-share_show_on_telegram = ""
-share_show_on_twitter = ""
-share_show_on_twitch = ""
-share_show_on_facebook = ""
-share_show_on_vk = ""
-share_show_on_discord = ""
-*/
--->
+          <!-- MODAL BODY --><!-- MODAL BODY -->
+          <!-- MODAL BODY --><!-- MODAL BODY --><!-- MODAL BODY -->
+          <!-- MODAL BODY --><!-- MODAL BODY --><!-- MODAL BODY --><!-- MODAL BODY -->
+          <!-- MODAL BODY --><!-- MODAL BODY --><!-- MODAL BODY -->
+          <!-- MODAL BODY --><!-- MODAL BODY -->
 
-  <div class="main-button share yellow social share">
-    <div class="fa fa-share fa-2x yellow social share"></div>
+
+          <!--  <div class='yellowcontainer tabs yellow tabbed livestreams yellow social share'> -->
+            <!--
+          The Gulp Build must calculate integrity sha384-checksums of all javascripts files
+           integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+
+               /js/yellow-share.js   =>   works with 'yellow-share.html' partial
+               <script src="/js/yellow-share.js" crossorigin="anonymous"></script>
+          -->
+            <!--
+            <div class="float-circle yellow social share" id="flickr">
+              <div class="fa fa-flickr share-icon yellow social share"></div>
+            </div>
+            <div class="float-circle yellow social share" id="youtube">
+              <div class="fa fa-youtube-play share-icon yellow social share"></div>
+            </div>
+            <div class="float-circle yellow social share" id="dropbox">
+              <div class="fa fa-dropbox share-icon yellow social share"></div>
+            </div>
+            -->
+            <a href="{{ .Site.Params.share_show_on_telegram }}">
+              <div class="float-circle yellow social share" id="telegram">
+                <div class="fa fa-telegram share-icon yellow social share"></div>
+              </div>
+            </a>
+            <a href="{{ .Site.Params.share_show_on_twitter }}">
+              <div class="float-circle yellow social share" id="twitter">
+                <div class="fa fa-twitter share-icon yellow social share"></div>
+              </div>
+            </a>
+            <a href="{{ .Site.Params.share_show_on_twitch }}">
+              <div class="float-circle yellow social share" id="twitch">
+                <div class="fa fa-twitch share-icon yellow social share"></div>
+              </div>
+            </a>
+            <a href="{{ .Site.Params.share_show_on_facebook }}">
+              <div class="float-circle yellow social share" id="facebook">
+                <div class="fa fa-facebook share-icon yellow social share"></div>
+              </div>
+            </a>
+            <a href="{{ .Site.Params.share_show_on_vk }}">
+              <div class="float-circle yellow social share" id="vkontakte">
+                <div class="fa fa-vk share-icon yellow social share"></div>
+              </div>
+            </a>
+            <a href="{{ .Site.Params.share_show_on_discord }}">
+              <div class="float-circle yellow social share" id="discord">
+                <div class="fa fa-discord share-icon yellow social share"></div>
+              </div>
+            </a>
+
+          <!--
+          /*
+          share_show_on_telegram = ""
+          share_show_on_twitter = ""
+          share_show_on_twitch = ""
+          share_show_on_facebook = ""
+          share_show_on_vk = ""
+          share_show_on_discord = ""
+          */
+          -->
+
+            <div class="main-button share yellow social share">
+              <div class="fa fa-share fa-2x yellow social share"></div>
+            </div>
+
+
+
+          <!-- </div> -->
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
