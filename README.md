@@ -184,12 +184,11 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.66
+export RELEASE_VERSION=0.0.67
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
 git flow release start ${RELEASE_VERSION}
-
 
 
 if [ -d ./docs ]; then
@@ -384,24 +383,25 @@ We need a benchmark there, at least between :
 * [Thumbor](https://github.com/thumbor/thumbor)
 * [Cloudinary](https://cloudinary.com/)
 * cloudflare
+* I found another `CDN` which gives a free plan, to assess : https://gcorelabs.com/cdn/free/
 
 Another important aspect about using CDNs for projects with zero or litle money :
 
 * In those projects, we will consume free plan until it's exceeded every month.
-* Let's not drop the idea of using CDNs, just because we haven't got any money.
-* So to still use CDN, here is an idea :
+* Let's not drop the idea of using `CDN`s, just because we haven't got any money.
+* So to still use `CDN`, here is an idea :
   * We setup `upptime` https://github.com/upptime/upptime
   * and we setup some tests on all images : when it is a 404,; we need a RED ALERT notification on chatops (discord clask rocket chat zulip, etc..)
 
 
 And last but not least, here is my main architectrure design:
 * defining the entire processing lifecycle of images, from git commit to production,
-* main goal is to use several CDN fgree plans :
-  * to maximize our CDN capacity, without paying
-  * to avoid dropping the CDN feature, just because people do not know yet how oor if they are going to have enough money to pay CDN when trtaffic increases.
+* main goal is to use several `CDN` free plans :
+  * to maximize our `CDN` capacity, without paying
+  * to avoid dropping the `CDN` feature, just because people do not know yet how oor if they are going to have enough money to pay CDN when trtaffic increases.
 * i will use both cloudinary and optimole : cloudinary only for png (because it is the only thing its good at according a few reviews i read), and oinly les than 5 image files, like the most important ones taht are for unflold into SMS and things like Telegram channels, chats etc...
 
-Here is the architecture to use both CDNs :
+Here is the architecture to use both `CDN` :
 
 ![cdn architecture](./documentation/cdn/architecture/pokus.cdn.architecture.drawio.png)
 
@@ -475,7 +475,7 @@ Also:
 
 ##### Optimole CDN
 
-* register process is extreemely easy
+* register process is extremely easy
 * they do have a free plan
 *
 * https://docs.optimole.com/category/1011-cdn
@@ -561,3 +561,25 @@ My guess is that there is a bug inside the https://api.video  website authentica
 
 What happens is that the  https://api.video saas is trying to fetch my github repositories, using the Github token they got as I authorizd the Github Application.
 But it fails to, because i revoked the token to force resume the registration from start.
+
+
+## The Rdog (wouaf wouaf)
+
+#### R language installation
+
+see:
+* https://cran.r-project.org/
+* https://support.rstudio.com/hc/en-us/articles/201141096-Getting-Started-with-R
+
+* `Debian` :
+
+```bash
+# ---
+sudo apt-get update -y
+sudo apt-get install -y r-base r-base-dev
+
+```
+
+#### Rdog first touch
+
+https://cran.r-project.org/
