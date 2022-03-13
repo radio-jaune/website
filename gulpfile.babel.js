@@ -338,7 +338,8 @@ gulp.task('build:dist:img:dev', function () {
   return gulp
       .src([
         './**/*.png',
-        './**/*.jpg'
+        './**/*.jpg',
+        './**/*.gif'
       ],{
       "base" : "./public"
       })
@@ -349,7 +350,8 @@ gulp.task('build:dist:img:prod', function () {
   return gulp
       .src([
         './**/*.png',
-        './**/*.jpg'
+        './**/*.jpg',
+        './**/*.gif'
       ],{
       "base" : "./public"
       })
