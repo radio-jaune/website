@@ -184,7 +184,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.67
+export RELEASE_VERSION=0.0.68
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -214,14 +214,13 @@ gulpBuild (){
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
   export HUGO_BASE_URL=https://radiojaune.com
-
-  gulp hugo
-  cp -fr ./public/* ./docs/
+  build:debug:dev
+  cp -fr ./dist/* ./docs/
 }
 
-oldHugoBuild
+# oldHugoBuild
 
-cp -fr ./public/* ./docs/
+gulpBuild
 
 echo "${DEPLOYMENT_DOMAIN}" > CNAME
 echo "${DEPLOYMENT_DOMAIN}" > ./docs/CNAME
