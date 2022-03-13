@@ -214,7 +214,7 @@ gulpBuild (){
   export HUGO_BASE_URL=http://127.0.0.1:5445
   export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
   export HUGO_BASE_URL=https://radiojaune.com
-  build:debug:dev
+  gulp build:debug:dev
   cp -fr ./dist/* ./docs/
 }
 
