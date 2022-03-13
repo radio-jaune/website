@@ -57,7 +57,10 @@ export GULP_DEST_CLEAN_VERSION=${GULP_DEST_CLEAN_VERSION:-"^0.5.0"}
 export GULP_BROWSER_SYNC_VERSION=${GULP_BROWSER_SYNC_VERSION:-"^2.27.7"}
 export GULP_DEBUG_VERSION=${GULP_DEBUG_VERSION:-"^4.0.0"}
 export GULP_NEWER_VERSION=${GULP_NEWER_VERSION:-"^1.4.0"}
-export GULP_IMAGEMIN_VERSION=${GULP_IMAGEMIN_VERSION:-"^8.0.0"}
+# ---
+#
+# export GULP_IMAGEMIN_VERSION=${GULP_IMAGEMIN_VERSION:-"^8.0.0"}
+export GULP_IMAGEMIN_VERSION=${GULP_IMAGEMIN_VERSION:-"^7.1.0"}
 export GULP_MINIFY_VERSION=${GULP_MINIFY_VERSION:-"^3.1.0"}
 export GULP_UGLIFY_VERSION=${GULP_UGLIFY_VERSION:-"^3.0.2"}
 export GULP_READABLE_STREAM_VERSION=${GULP_READABLE_STREAM_VERSION:-"^3.6.0"}
@@ -85,13 +88,9 @@ export GULP_MERGE_VERSION=${GULP_MERGE_VERSION:-"^0.1.1"}
 
 
 # npm install --save-dev --save-exact prettier
-export PRETTIER_IO_VERSION=${PRETTIER_IO_VERSION:-"^0.1.1"}
-export GULP_PRETTIER_VERSION=${GULP_PRETTIER_VERSION:-"^0.1.1"}
-
-
-
-
-
+export PRETTIER_IO_VERSION=${PRETTIER_IO_VERSION:-"^2.5.1"}
+export GULP_PRETTIER_VERSION=${GULP_PRETTIER_VERSION:-"^4.0.0"}
+export GULP_CLEAN_VERSION=${GULP_CLEAN_VERSION:-"^0.4.0"}
 
 # ${GULP_NODE_SASS_VERSION}
 
@@ -159,7 +158,8 @@ npm uninstall --save-dev \
     gulp-tap \
     gulp-merge \
     prettier \
-    gulp-prettier
+    gulp-prettier \
+    gulp-clean
 
 npm i --save-dev \
     node-sass@${GULP_NODE_SASS_VERSION} \
@@ -197,4 +197,5 @@ npm i --save-dev \
     gulp-tap@${GULP_TAP_VERSION} \
     gulp-merge@${GULP_MERGE_VERSION} \
     prettier@${PRETTIER_IO_VERSION} \
-    gulp-prettier@${GULP_PRETTIER_VERSION}
+    gulp-prettier@${GULP_PRETTIER_VERSION} \
+    gulp-clean@${GULP_CLEAN_VERSION}

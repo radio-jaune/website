@@ -30,7 +30,7 @@ none
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
@@ -49,7 +49,7 @@ hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
@@ -71,7 +71,7 @@ To see how this website looked when it started, and was automatically generated 
 
 ```bash
 export DESIRED_VERSION=master
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
@@ -120,7 +120,7 @@ hugo serve -b http://127.0.0.1:5445 -p 5445 --bind 127.0.0.1 -w
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
@@ -139,7 +139,7 @@ hugo serve -b http://127.0.0.1:4545 -p 4545 --bind 127.0.0.1 -w
 
 ```bash
 export DESIRED_VERSION=0.0.0
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 
 git checkout ${DESIRED_VERSION}
@@ -161,7 +161,7 @@ To see how this website looked when it started, and was automatically generated 
 
 ```bash
 export DESIRED_VERSION=master
-git clone git@github.com:radio-jaune/website.git.git ~/yellowradio.work
+git clone git@github.com:radio-jaune/website.git ~/yellowradio.work
 cd ~/yellowradio.work
 git checkout ${DESIRED_VERSION}
 
