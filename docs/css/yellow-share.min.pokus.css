@@ -1,4 +1,12 @@
 /* Yellow team says many thanks to awesome work of https://codepen.io/mattjuggins/pen/MjeozP */
+/*
+share_show_on_twitter = ""
+share_show_on_twitch = ""
+share_show_on_facebook = ""
+share_show_on_vk = ""
+share_show_on_discord = ""
+share_show_on_telegram = ""
+*/
 /* Variables */
 /* Mixins */
 /* Typical elements */
@@ -252,23 +260,72 @@ body {
   background-color: #FFF;
   border-radius: 50%; }
   .float-circle.yellow.social.share.open.yellow.social.share {
-    cursor: pointer; }
-    .float-circle.yellow.social.share.open.yellow.social.share#flickr.yellow.social.share {
-      background-color: #ff0084;
+    cursor: pointer;
+    /*  -- ----------------- --  */
+    /*  --  DEBUT ajout custom --  */
+    /*  -- ----------------- --  */
+    /*
+		share_show_on_telegram = ""
+		share_show_on_twitter = ""
+		share_show_on_twitch = ""
+		share_show_on_facebook = ""
+		share_show_on_vk = ""
+		share_show_on_discord = ""
+		*/
+    /*  -- ----------------- --  */
+    /*  --  FIN ajout custom --  */
+    /*  -- ----------------- --  */
+    /*
+		&#flickr.yellow.social.share {
+			background-color: $flickr;
+			@include transform(translate3d(-175%, -150%, 0));
+		}
+		&#youtube.yellow.social.share {
+			background-color: $youtube;
+			@include transform(translate3d(-50%, -200%, 0));
+		}
+		&#dropbox.yellow.social.share {
+			background-color: $dropbox;
+			@include transform(translate3d(75%, -150%, 0));
+		}
+		*/ }
+    .float-circle.yellow.social.share.open.yellow.social.share#discord.yellow.social.share {
+      background-color: #5865f2;
+      -moz-transform: translate3d(175%, 150%, 0);
+      -o-transform: translate3d(175%, 150%, 0);
+      -ms-transform: translate3d(175%, 150%, 0);
+      -webkit-transform: translate3d(175%, 150%, 0);
+      transform: translate3d(175%, 150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#vkontakte.yellow.social.share {
+      background-color: #3b5998;
+      -moz-transform: translate3d(50%, 200%, 0);
+      -o-transform: translate3d(50%, 200%, 0);
+      -ms-transform: translate3d(50%, 200%, 0);
+      -webkit-transform: translate3d(50%, 200%, 0);
+      transform: translate3d(50%, 200%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#facebook.yellow.social.share {
+      background-color: #3b5998;
+      -moz-transform: translate3d(-75%, 150%, 0);
+      -o-transform: translate3d(-75%, 150%, 0);
+      -ms-transform: translate3d(-75%, 150%, 0);
+      -webkit-transform: translate3d(-75%, 150%, 0);
+      transform: translate3d(-75%, 150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#twitch.yellow.social.share {
+      background-color: #9147ff;
       -moz-transform: translate3d(-175%, -150%, 0);
       -o-transform: translate3d(-175%, -150%, 0);
       -ms-transform: translate3d(-175%, -150%, 0);
       -webkit-transform: translate3d(-175%, -150%, 0);
       transform: translate3d(-175%, -150%, 0); }
-    .float-circle.yellow.social.share.open.yellow.social.share#youtube.yellow.social.share {
-      background-color: #bb0000;
+    .float-circle.yellow.social.share.open.yellow.social.share#twitter.yellow.social.share {
+      background-color: #55acee;
       -moz-transform: translate3d(-50%, -200%, 0);
       -o-transform: translate3d(-50%, -200%, 0);
       -ms-transform: translate3d(-50%, -200%, 0);
       -webkit-transform: translate3d(-50%, -200%, 0);
       transform: translate3d(-50%, -200%, 0); }
-    .float-circle.yellow.social.share.open.yellow.social.share#dropbox.yellow.social.share {
-      background-color: #007ee5;
+    .float-circle.yellow.social.share.open.yellow.social.share#telegram.yellow.social.share {
+      background-color: #0088cc;
       -moz-transform: translate3d(75%, -150%, 0);
       -o-transform: translate3d(75%, -150%, 0);
       -ms-transform: translate3d(75%, -150%, 0);
@@ -310,17 +367,50 @@ body {
   height: 10px;
   background-color: #292929;
   border-radius: 50%;
-  border: solid 5px; }
+  border: solid 5px;
+  /*  -- ----------------- --  */
+  /*  --  DEBUT ajout custom --  */
+  /*  -- ----------------- --  */
+  /*
+	share_show_on_telegram = ""
+	share_show_on_twitter = ""
+	share_show_on_twitch = ""
+	share_show_on_facebook = ""
+	share_show_on_vk = ""
+	share_show_on_discord = ""
+	*/
+  /*  -- ----------------- --  */
+  /*  --  FIN ajout custom --  */
+  /*  -- ----------------- --  */
+  /*
+	&#facebook.yellow.social.share {
+		border-color: $facebook;
+	}
+	&#google-plus.yellow.social.share{
+		border-color: $google-plus;
+	}
+	&#twitter.yellow.social.share{
+		border-color: $twitter;
+	}
+	&#pinterest.yellow.social.share {
+		border-color: $pinterest;
+	}
+	&#linkedin.yellow.social.share{
+		border-color: $linkedin;
+	}
+	*/ }
+  .node.yellow.social.share#discord.yellow.social.share {
+    background-color: #5865f2; }
+  .node.yellow.social.share#vkontakte.yellow.social.share {
+    background-color: #3b5998; }
   .node.yellow.social.share#facebook.yellow.social.share {
-    border-color: #3b5998; }
-  .node.yellow.social.share#google-plus.yellow.social.share {
-    border-color: #dd4b39; }
+    background-color: #3b5998; }
+  .node.yellow.social.share#twitch.yellow.social.share {
+    background-color: #9147ff; }
   .node.yellow.social.share#twitter.yellow.social.share {
-    border-color: #55acee; }
-  .node.yellow.social.share#pinterest.yellow.social.share {
-    border-color: #cb2027; }
-  .node.yellow.social.share#linkedin.yellow.social.share {
-    border-color: #007bb5; }
+    background-color: #55acee; }
+  .node.yellow.social.share#telegram.yellow.social.share {
+    background-color: #0088cc; }
 
 .segment.yellow.social.share {
   position: absolute;
