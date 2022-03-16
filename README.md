@@ -184,7 +184,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.71
+export RELEASE_VERSION=0.0.72
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
