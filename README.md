@@ -517,28 +517,6 @@ In my gitops fluxcd work, i want to work on one business case i find here :
 * I want to use FluxCD / Flagger and a monitoring stack, to deploy the same website we are talking about here
 * And the Monitoring Stack will especially detect an image error, pas it to Flagger to roll back the deployment, to previous version.
 
-### References
-
-* https://github.com/ImageMagick/ImageMagick
-* https://github.com/lovell/sharp
-* https://www.npmjs.com/package/gulp-beautify
-* https://www.npmjs.com/package/gulp-seo
-* https://www.npmjs.com/package/gulp-newer
-* You are my hero :
-  * https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package
-* CDN :
-  * https://www.npmjs.com/package/cloudinary
-  * https://www.npmjs.com/package/gulp-cloudinary-upload
-  * https://cloudinary.com/documentation/node_integration#node_js_getting_started_guide
-  * and im sure we have same for cloudflare, and other alternative CDNs.
-* images processing : https://www.npmjs.com/package/gulp-sharp
-* He speaks about Google Lighthouse too (about the image compression strategy) : https://dev.to/feldroy/til-strategies-for-compressing-jpg-files-with-imagemagick-5fn9
-* Very important reference from people at google :
-  * https://web.dev/use-imagemin-to-compress-images/
-  * https://web.dev/authors/katiehempenius/
-  * https://web.dev/lighthouse-ci/ : performance monitoring
-  *
-
 
 ## Annex A. Funny little thing that happened with https://api.video
 
@@ -582,3 +560,26 @@ sudo apt-get install -y r-base r-base-dev
 #### Rdog first touch
 
 https://cran.r-project.org/
+
+
+### References
+
+* https://github.com/ImageMagick/ImageMagick
+* https://github.com/lovell/sharp
+* https://www.npmjs.com/package/gulp-beautify
+* https://www.npmjs.com/package/gulp-seo
+* https://www.npmjs.com/package/gulp-newer
+* You are my hero :
+* https://tutorialmeta.com/question/instead-change-the-require-of-index-js-to-a-dynamic-import-which-is-available , for solving my gulp issue qith `gulp-imagemin` npm package
+* CDN :
+* https://www.npmjs.com/package/cloudinary
+* https://www.npmjs.com/package/gulp-cloudinary-upload
+* https://cloudinary.com/documentation/node_integration#node_js_getting_started_guide
+* and im sure we have same for cloudflare, and other alternative CDNs.
+* images processing : https://www.npmjs.com/package/gulp-sharp
+* He speaks about Google Lighthouse too (about the image compression strategy) : https://dev.to/feldroy/til-strategies-for-compressing-jpg-files-with-imagemagick-5fn9
+* Very important reference from people at google :
+* https://web.dev/use-imagemin-to-compress-images/
+* https://web.dev/authors/katiehempenius/
+* https://web.dev/lighthouse-ci/ : performance monitoring
+* https://cloudinary.com/documentation/node_integration#installation_and_setup
