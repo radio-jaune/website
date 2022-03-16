@@ -124,13 +124,23 @@ $(document).ready(function() {
   // geting canvas by Boujjou Achraf
   var matrix_canvas = document.getElementById("matrix_canvas");
   var ctx = matrix_canvas.getContext("2d");
-  /// var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-  // var matrix = `你在这里是因为锡安即将被毁灭。它的每一个活着的居民都被消灭了，它的整个存在都被消灭了。`
-  var matrix = `${matrix}หวังมันคือความหลงผิดที่เป็นแก่นสารของมนุษย์ที่มาของความแข็งแกร่งที่ยิ่งใหญ่ที่สุดของคุณและจุดอ่อนที่ยิ่งใหญ่ที่สุดของคุณไปพร้อมๆกัน`
+  var matrix = ``
+  matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+  // var matrix = `${matrix}หวังมันคือความหลงผิดที่เป็นแก่นสารของมนุษย์ที่มาของความแข็งแกร่งที่ยิ่งใหญ่ที่สุดของคุณและจุดอ่อนที่ยิ่งใหญ่ที่สุดของคุณไปพร้อมๆกัน`
   matrix = `${matrix}EverythingthathasabeginninghasanendIseetheendcomingIseethedarknessspreadingIseedeathAndyouareallthatstandsinhisway`
-  matrix = `${matrix}ฉันรู้ว่าเธอคิดอะไรอยู่เพราะตอนนี้ฉันก็คิดแบบเดียวกันอันที่จริงฉันคิดมาตลอดตั้งแต่มาที่นี่ทำไมฉันถึงไม่กินยาเม็ดสีฟ้าล่ะ?`
-  // matrix = `${matrix}你对权威有意见，安德森先生。你相信你是特别的，不知何故规则不适用于你。显然你错了`
-  // matrix = `${matrix}你在这里是因为锡安即将被毁灭。它的每一个活着的居民都被消灭了，它的整个存在都被消灭了。`
+  // matrix = `${matrix}ฉันรู้ว่าเธอคิดอะไรอยู่เพราะตอนนี้ฉันก็คิดแบบเดียวกันอันที่จริงฉันคิดมาตลอดตั้งแต่มาที่นี่ทำไมฉันถึงไม่กินยาเม็ดสีฟ้าล่ะ?`
+
+  // - chinese
+  //matrix = `${matrix}你在这里是因为锡安即将被毁灭。它的每一个活着的居民都被消灭了，它的整个存在都被消灭了。`
+  //matrix = `${matrix}你对权威有意见，安德森先生。你相信你是特别的，不知何故规则不适用于你。显然你错了`
+  // matrix = `${matrix}爱的模式与精神错乱的模式有多么相似，这是值得注意的。`
+  // matrix = `${matrix}看过去的肉体。透过这些暗淡的牛眼柔软的明胶，看看你的敌人！`
+  // - japanese
+  // matrix = `${matrix}肉を過ぎて見てください。これらの鈍い牛の目の柔らかいゼラチンを通して見て、あなたの敵を見てください！`
+  // matrix = `${matrix}私はこの瞬間を長い間想像してきました。それは本当ですか？`
+  // matrix = `${matrix}あなたがここにいる理由をお話ししましょう。あなたは何かを知っているのでここにいます。あなたが知っていること、あなたは説明することはできません。しかし、あなたはそれを感じます。`
+  // matrix = `${matrix}あなたは青いピルを飲みます-物語は終わります、あなたはあなたのベッドで目を覚まし、あなたが信じたいものは何でも信じます。`
+
 
 
   // matrix drawing the characters
@@ -170,6 +180,9 @@ $(document).ready(function() {
   matrix = matrix.split("");
 
   var font_size = 10;
+  // var font_size = 30;
+  // var font_size = 23;
+  // var font_size = 17;
   var columns = matrix_canvas.width/font_size; //number of columns for the rain
   //an array of drops - one per column
   var drops = [];
