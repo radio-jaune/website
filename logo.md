@@ -6,6 +6,8 @@ backgroun d: url("../gif/matrix.short.gif")
 backgro und: url("../gif/matrix.short.gif")
 
 <div id="intro-body">
-
+<!-- Initially, the background image of that HTML tag -->
+<!-- ccc -->
 </div>
+
 <canvas id="matrix_canvas"></canvas>

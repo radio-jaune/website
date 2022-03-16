@@ -181,7 +181,7 @@ header p {
 .section-2 {
   color: white;
   /* background: url("../img/section2-bg.jpg") no-repeat center center scroll; */
-  background: url("../gif/matrix.short.gif") no-repeat center center scroll;
+  /* background: url("../gif/matrix.short.gif") no-repeat center center scroll; */
   background-color: black;
   background-size: cover;
 }
