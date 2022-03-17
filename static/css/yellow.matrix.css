@@ -18,4 +18,5 @@ p {
 
 #matrix_canvas {
   position: fixed!important;
+  z-index: -200!important
 }

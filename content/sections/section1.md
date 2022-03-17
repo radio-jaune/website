@@ -37,8 +37,10 @@ Faire un compteur + le titre
 {{< socialhandles >}}
     {{< discord-inivte-short >}}
     {{< vk user="id698593797" >}}
-    <!-- {{< telegram user="radiojaune" >}} -->
-    {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}}
+    <!--  -->
+    <!-- {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}} -->
+    {{< telegram user="radiojaune" >}}
+
 
 {{< /socialhandles >}}
 

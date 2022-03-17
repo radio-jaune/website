@@ -55,7 +55,8 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
     rumble_channel_link = "https://rumble.com/radiojaune"
     rumble_channel_name = "radiojaune"
-    telegram_group_link = "https://t.me/+MryZE0pY8N01ZGRk"
+    # telegram_group_link = "https://t.me/+MryZE0pY8N01ZGRk"
+    telegram_group_link = "https://t.me/radiojaune"
     youtube_channel_id = "UCIUGDzUjNIfQC9YjUIu84vQ"
     youtube_live_url = "https://www.youtube.com/watch?v=uQ5DjNpbu3k"
     github_org = "https://github.com/radio-jaune"

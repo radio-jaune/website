@@ -32,7 +32,8 @@ improvecontrast: true
     {{< discord-inivte-short >}}
     {{< vk user="id698593797" >}}
     <!-- {{< telegram user="radiojaune" >}} -->
-    {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}}
+    <!-- {{< telegram-group group_id="+MryZE0pY8N01ZGRk" >}} -->
+    {{< telegram-group group_id="radiojaune" >}}
 
 {{< /socialhandles >}}
 
