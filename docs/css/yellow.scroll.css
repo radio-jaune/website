@@ -6,17 +6,9 @@
 /******************** ********************* **************************/
 /******************** ********************* **************************/
 /******************** ********************* **************************/
-
-p {
-    margin-top:10px;
-    padding:50px;
-    border: 1px solid lightgrey;
+* {
+  scroll-behavior: smooth;
 }
-#myDiv {
-    margin-top: 10px;
-}
-
-#matrix_canvas {
-  position: fixed!important;
-  z-index: -200!important
+header {
+  background-color: rgba(255,255,255, 0);
 }
