@@ -40,8 +40,6 @@
 
    <!-- <div class="ecran voile statut live off air"></div> -->
    <div class="row">
-
-
         {{- if $elem.Params.discord }}
         <div class="col-lg-12 mx-auto discord chat">
           {{ else }}
@@ -54,6 +52,44 @@
             {{- if $elem.Params.improvecontrast }}
             <div class="improve-contrast-box">
             {{ end }}
+
+                  {{ if eq $ind 0 }}
+                       <!--  -->
+                       <!-- <div class="glitch-bg glitch--style-1">  -->
+                         <!-- <div class="glitch__img"></div>  -->
+                         <!-- <div class="glitch__img"></div>  -->
+                         <!-- <div class="glitch__img"></div>  -->
+                         <!-- <div class="glitch__img"></div>  -->
+                         <!-- <div class="glitch__img"></div>  -->
+                       <!-- </div>  -->
+
+                       <!--  <h3 class="glitch"> -->
+                         <!-- <span aria-hidden="true">RADIOJAUNE.COM<br />RADIOJAUNE.COM</span> -->
+                         <!--  {{ .Site.Title }} -->
+                         <!-- RADIOJAUNE.COM<br />RADIOJAUNE.COM -->
+                         <!-- <span aria-hidden="true">RADIOJAUNE.COM<br />RADIOJAUNE.COM</span> -->
+                       <!--  </h3> -->
+                  {{ end -}}
+                  <!--
+                  {{ if eq $ind 0 }}
+                        <div class="ywrapper yellow glitchie">
+                          <p class="yellow glitchie">RADIOJAUNE.COM</p>
+                          <p class="yellow glitchie">RADIOJAUNE.COM</p>
+                          <p class="yellow glitchie">RADIOJAUNE.COM</p>
+                        </div>
+                  {{ end -}}
+                   -->
+
+
+                  {{ if eq $ind 0 }}
+                   <div class="stackie titre radio jaune" style="--stacks: 3;">
+                     <span style="--index: 0;">RADIOJAUNE.COM</span>
+                     <span style="--index: 1;">RADIOJAUNE.COM</span>
+                     <span style="--index: 2;">RADIOJAUNE.COM</span>
+                   </div>
+                  {{ end -}}
+
+
               {{ default "" $elem.Content }}
               {{- if $elem.Params.discord }}
               <div class="discord widget">

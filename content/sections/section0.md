@@ -5,7 +5,9 @@ improvecontrast: true
 livestream: true
 ---
 
-## {{< radiojaunetitre text="radiojaune.com" >}}
+
+
+<!-- ## {{< radiojaunetitre text="radiojaune.com" >}} -->
 
 #### {{< radiojaunesoustitre cssclass="" text="La radio libre " marque="100%Jaune" >}}
 #### {{< radiojaunesoustitre cssclass="annnonce" text="En direct tous les " marque="Dimanches à 21h00" >}}
@@ -33,6 +35,7 @@ vk_channel_link = "https://vk.com/id698593797"
 join_live_text="MONTER EN DIRECT"
 numero_du_live="7"
 join_live_url="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
+join_live_url="https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
 twitch_live_url="https://www.twitch.tv/radiojaune"
 twitch_channel_name="radiojaune"
 twitch_video_id="1424746455"
@@ -65,7 +68,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   join_live_url="https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
-  twitch_video_id="1410121662"
+  twitch_video_id="1424746455"
   twitch_channel_html_element_id="twitch-embed"
   twitch_video_html_element_id="twitch_embed_unique_video"
   telegram_live_url="#"

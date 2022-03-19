@@ -1,5 +1,6 @@
 baseURL = "https://radiojaune.com"
-title = "Radio Jaune"
+# title = "Radio Jaune"
+title = "RADIOJAUNE.COM"
 theme = "grayscale"
 #googleAnalytics = ""
 disableKinds = ["taxonomy", "taxonomyTerm"]
@@ -42,6 +43,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     discord_server_invitation = "https://discord.gg/KwCAUvwvc4"
     thats_yellow = "#f7ff0b"
     # join_live_url = "https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
+    # join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
     join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
     twitch_channel_name = "radiojaune"
