@@ -204,26 +204,12 @@
           <hr/>
           <h4>Revoir La dernière <span class="cent jaune marque">Radio Libre</span></h4>
         </div>
+        <div class="twitter replay jaune embed-responsive embed-responsive-16by9">
 
-        <!--       -->
-        <div class="player twitch replay jaune embed-responsive embed-responsive-16by9">
-
-          <div id="{{ .Get "twitch_video_html_element_id" }}"></div>
-
-          <!-- Load the Twitch embed script -->
-          <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-          <!-- Create a Twitch.Player object. This will render within the placeholder div -->
-          <script type="text/javascript">
-            new Twitch.Player("{{ .Get "twitch_video_html_element_id" }}", {
-              width: '100%',
-              height: 480,
-              video: "{{ .Get "twitch_video_id" }}",
-              autoplay: false,
-              // Only needed if this page is going to be embedded on other websites
-              parent: ["radiojaune.com"]
-            });
-          </script>
+          <!-- twitter pour le live de la semaine dernière -->
+          <!-- <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #9 (13/03/2022 En direct dès 21h) <a href="https://t.co/5tLlNBy2qd%22%3Ehttps://t.co/5tLlNBy2qd</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1503098621058682882?ref_src=twsrc%5Etfw%22%3EMarch 13, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  -->
+          <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">  -->
+          <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} {{ .Get "date_heure_du_live" }} <a href="https://t.co/{{ .Get "twitter_post_id" }}">https://t.co/{{ .Get "twitter_post_id" }}</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}"> {{ .Get "date_du_live_en" }} </a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
         </div>
 

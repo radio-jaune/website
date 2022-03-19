@@ -475,6 +475,8 @@ gulp.task('interpolate:html:prod', function (done) {
   compiledSassFiles.push([ `/css/yellow-share.min.pokus.css.map` ])
   compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css` ])
   compiledSassFiles.push([ `/css/yellow-carousel.min.pokus.css.map` ])
+  compiledSassFiles.push([ `/css/yellow-glitch.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-glitch.min.pokus.css.map` ])
 
   var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
                             .pipe(gulpTap(function(file, t) {
@@ -522,6 +524,9 @@ gulp.task('interpolate:html:dev', function (done) {
 
   compiledSassFiles.push([ `/css/yellow-share.min.pokus.css` ])
   compiledSassFiles.push([ `/css/yellow-share.min.pokus.css.map` ])
+
+  compiledSassFiles.push([ `/css/yellow-glitch.min.pokus.css` ])
+  compiledSassFiles.push([ `/css/yellow-glitch.min.pokus.css.map` ])
 
 
   var compiledSassFilesLinksResolition = gulp.src('public/sass/**/*.s?ss')
