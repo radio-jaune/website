@@ -43,7 +43,7 @@ twitch_channel_html_element_id="twitch-embed"
 twitch_video_html_element_id="twitch_embed_unique_video"
 telegram_live_url="#"
 vk_channel_link="https://vk.com/id698593797"
-vk_live_hash="162c1c4e1e027ead"
+vk_live_hash="f81d40b1e8726cb7"
 vk_live_oid="698175626"
 vk_live_id="456239019"
 vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" youtube_live_url="https://www.youtube.com/watch?v=wb1Y2N2L65Y" yt_livestream_id="wb1Y2N2L65Y" channel_yt_live_id="WRO6wo999tI" facebook_live_url="#" color="#f7ff0b" color="#ff330b"  date_heure_du_live="(20/02 21H)" date_du_live_fr="20 Février 2022" date_du_live_en="February 20, 2022" twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw" twitter_post_id="Q9xzacKIlK"
@@ -54,8 +54,8 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
 <!--
 
  {{< button-live-awe join_live_text="MONTER EN DIRECT" numero_du_live="7" join_live_url="https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false" twitch_live_url="https://www.twitch.tv/radiojaune" twitch_channel_name="radiojaune" twitch_video_id="1424746455" twitch_channel_html_element_id="twitch-embed" twitch_video_html_element_id="twitch_embed_unique_video" telegram_live_url="#" steam_live_url="#" vk_channel_link="https://vk.com/id698593797"  vk_live_hash="162c1c4e1e027ead" vk_live_oid="698175626" vk_live_id="456239019" vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2" youtube_live_url="https://www.youtube.com/watch?v=wb1Y2N2L65Y" yt_livestream_id="wb1Y2N2L65Y" channel_yt_live_id="WRO6wo999tI" facebook_live_url="#" color="#f7ff0b" color="#ff330b"  date_heure_du_live="(20/02 21H)" date_du_live_fr="20 Février 2022" date_du_live_en="February 20, 2022" twitter_live_url="https://twitter.com/radiojaune/status/1495488542201376771?ref_src=twsrc%5Etfw" twitter_post_id="Q9xzacKIlK" >}}
--->
 
+-->
 
 <!-- {{< yellow-share >}} -->
 <!-- {{< yellow-share-branches >}} --> <!-- This one does not work: could be repaired ? -->
@@ -68,30 +68,28 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   join_live_url="https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
-  twitch_video_id="1424746455"
+  twitch_video_id="1431743087"
   twitch_channel_html_element_id="twitch-embed"
   twitch_video_html_element_id="twitch_embed_unique_video"
   telegram_live_url="#"
   steam_live_url="#"
   vk_channel_link="https://vk.com/id698593797"
-  vk_live_hash="162c1c4e1e027ead"
-  vk_live_oid="698175626"
-  vk_live_id="456239019"
-  vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685449f4da747&hd=2"
+  vk_live_hash="f81d40b1e8726cb7"
+  vk_live_oid="698593797"
+  vk_live_id="456239045"
+  vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239045&hash=f81d40b1e8726cb7&hd=2"
   youtube_live_url="https://www.youtube.com/watch?v=wb1Y2N2L65Y"
   yt_livestream_id="wb1Y2N2L65Y"
   channel_yt_live_id="WRO6wo999tI"
-  facebook_live_url="#"
+  facebook_live_url="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076758847296%2Fvideos%2F338554104906076%2F&show_text=false&width=560&t=0"
   color="#f7ff0b"
-  color="#ff330b"
-  date_heure_du_live="(27/02 21H)"
-  date_du_live_fr="27 Février 2022"
-  date_du_live_en="February 27, 2022"
-  date_du_dernier_live_fr="27 Février 2022"
-  twitter_live_url="https://twitter.com/radiojaune/status/1498025278810980354?ref_src=twsrc%5Etfw"
-  twitter_post_id="rV5AlPaVxV"
+  date_heure_du_live="20 Mars 2022"
+  date_du_live_en="March 20, 2022"
+  date_du_live_fr="20 Mars 2022"
+  numero_du_live="10"
+  twitch_live_url="https://twitter.com/radiojaune/status/1505635413980966915?ref_src=twsrc%5Etfw"
+  twitter_post_id="5c5zJeIYci"
  >}}
-
 
 
 <!--
