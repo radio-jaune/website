@@ -16,6 +16,119 @@
 
 
 
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- --  DEBUT FACEBOOK -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+
+      <!-- Tab 2 & Content TWITTER -->
+      <!--
+      <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
+
+      <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab line big online'>
+
+        <i class="fa fa-twitter fa-fw awesome flashy bouton"></i>
+
+      </label>
+      <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
+          <div class="conteneur jaune lives horizontal">
+
+      -->
+
+
+
+
+      <!-- Tab 1 & Content -->
+
+        <input type="radio" name="tab" id="tab1" role="tab" class='yellow tabbed livestreams'>
+        <label for="tab1" class='yellow tabbed livestreams tab line big online'>
+
+          <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+
+        </label>
+        <section class='yellow tabbed livestreams'>
+            <div class="conteneur jaune lives horizontal">
+                  <!-- GO TO FACEBOOK LIVE BUTTON -->
+                  <!--
+                  <li class="list-inline-item radio jaune livestream button">
+                    <a href="{{ .Get "facebook_live_url" }}"  style="--clr:#0033ff; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+                      <span class="network-name">
+                        <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+                        Facebook Live
+                      </span>
+                    </a>
+                  </li>
+                  -->
+                  <!-- Talk live BUTTON -->
+                  <!--
+                  -->
+                  <li class="list-inline-item radio jaune livestream button">
+                    <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                      <span class="network-name">
+                        <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                        {{ .Get "join_live_text" }}
+                      </span>
+                    </a>
+                  </li>
+            </div>
+            <div class="row conteneur jaune lives vertical">
+              <div class="col-12 haut">
+                  <!-- GO TO FACEBOOK LIVE BUTTON -->
+                  <!--
+                  <li class="list-inline-item radio jaune livestream button">
+                    <a href="{{ .Get "facebook_live_url" }}"  style="--clr:#0033ff; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                      <span class="network-name">
+                        <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
+                        Facebook Live
+                      </span>
+                    </a>
+                  </li>
+                 -->
+              </div>
+              <div class="col-12 bas">
+                  <!-- Talk live BUTTON -->
+                  <!--
+                  -->
+                  <li class="list-inline-item radio jaune livestream button">
+                    <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                      <span class="network-name">
+                        <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                        {{ .Get "join_live_text" }}
+                      </span>
+                    </a>
+                  </li>
+              </div>
+            </div>
+
+            <hr/>
+          <!-- FACEBOOK LIVE PLAYER -->
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <!-- <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F100076758847296%2Fvideos%2F338554104906076%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe> -->
+            <iframe src="{{ .Get "facebook_live_url" }}" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+          </div>
+
+        </section>
+
+
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- --  FIN FACEBOOK -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+
+
+
   <!-- ------------------------------------------------ -->
   <!-- ------------------------------------------------ -->
   <!-- ------------------------------------------------ -->
@@ -30,15 +143,15 @@
 
 
 
-        <!-- Tab 5 & Content TWITTER -->
-        <input type="radio" name="tab" id="tab5" role="tab" class='yellow tabbed livestreams'>
+        <!-- Tab 2 & Content TWITTER -->
+        <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
 
-        <label for="tab5" id="tab5-label" class='yellow tabbed livestreams tab line big online'>
+        <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab line big online'>
 
           <i class="fa fa-twitter fa-fw awesome flashy bouton"></i>
 
         </label>
-        <section aria-labelledby="tab5-label" class='yellow tabbed livestreams'>
+        <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
             <div class="conteneur jaune lives horizontal">
                   <!-- GO TO Twitter live BUTTON -->
                   <!--
@@ -53,6 +166,8 @@
                   -->
 
                   <!-- Talk live BUTTON -->
+                  <!--
+                  -->
                   <li class="list-inline-item radio jaune livestream button">
                     <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
                       <span class="network-name">
@@ -96,11 +211,18 @@
             <div class="player twitter jaune embed-responsive embed-responsive-16by9">
 
 
+              <!--
+              <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} ({{ .Get "date_heure_du_live" }} En direct dès 21h) <a href="https://t.co/{{ .Get "twitter_post_id" }}">https://t.co/{{ .Get "twitter_post_id" }}</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}"> {{ .Get "date_du_live_en" }} </a></blockquote>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              -->
+              <!--
+              -->
 
-              <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} {{ .Get "date_heure_du_live" }} <a href="https://t.co/{{ .Get "twitter_post_id" }}">https://t.co/{{ .Get "twitter_post_id" }}</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}"> {{ .Get "date_du_live_en" }} </a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #10 (20/03/2022 En direct dès 21h) <a href="https://t.co/5c5zJeIYci">https://t.co/5c5zJeIYci</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1505635413980966915?ref_src=twsrc%5Etfw">March 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+              <!-- <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} ({{ .Get "date_heure_du_live" }} En direct dès 21h) <a href="https://t.co/{{ .Get "twitter_post_id" }}">https://t.co/{{ .Get "twitter_post_id" }}</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}">March 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
               <!-- <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #3 <a href="https://t.co/VYrLZ5txB1">https://t.co/VYrLZ5txB1</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1487878499893334018?ref_src=twsrc%5Etfw">January 30, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  -->
-
             </div>
 
         </section>
@@ -116,6 +238,15 @@
     <!-- ------------------------------------------------ -->
 
 
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- --  DEBUT TWITCH -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
 
     <!-- Tab 3 & Content -->
     <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab3" role="tab" checked>
@@ -230,7 +361,15 @@
 
     </section>
 
-
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- --  FIN TWITCH -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
+    <!-- ------------------------------------------------ -->
 
 
 </div>
