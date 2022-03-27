@@ -129,6 +129,135 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+            <!-- --  DEBUT YOUTUBE -->
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+            <!-- ------------------------------------------------ -->
+
+
+
+      <!-- Tab 2 & YOUTUBE Content -->
+      <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
+      <label for="tab2" class='yellow tabbed livestreams tab line big online'>
+        <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
+      </label>
+      <section class='yellow tabbed livestreams'>
+        <div class="conteneur jaune lives horizontal">
+              <!-- YOUTUBE LIVE BTN -->
+              <!--
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "youtube_live_url" }}"  style="--clr:{{ .Get "color" }}; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
+                    YouTube Live
+                  </span>
+                </a>
+              </li>
+              -->
+              <!-- Talk live BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                    {{ .Get "join_live_text" }}
+                  </span>
+                </a>
+              </li>
+        </div>
+        <div class="row conteneur jaune lives vertical">
+          <div class="col-12 haut">
+              <!-- YOUTUBE LIVE BTN -->
+              <!--
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "youtube_live_url" }}"  style="--clr:{{ .Get "color" }}; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
+                    YouTube Live
+                  </span>
+                </a>
+              </li>
+              -->
+          </div>
+          <div class="col-12 bas">
+              <!-- Talk live BUTTON -->
+              <li class="list-inline-item radio jaune livestream button">
+                <a href="{{ .Get "join_live_url" }}"  style="--clr:#ffff00; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
+                  <span class="network-name">
+                    <i class="fas fa-stream fa-fw awesome flashy bouton"></i>
+                    {{ .Get "join_live_text" }}
+                  </span>
+                </a>
+              </li>
+          </div>
+        </div>
+        <hr/>
+        <!-- YOUTUBE PLAYER -->
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="https://www.youtube.com/embed/{{ .Get "channel_yt_live_id" }}?enablejsapi=1{{ with .Get "yellow_livestreams_color" }}{{ if eq . "white" }}&color=white{{ end }}{{ end }}{{ with .Get "yt_autoplay" }}{{ if eq . "true" }}&autoplay=1{{ end }}{{ end }}{{ if isset .Params "yt_start" }}&start={{ .Get "yt_start" }}{{ end }}{{ if isset .Params "yt_end" }}&end={{ .Get "yt_end" }}{{ end }}{{ with .Get "yt_modestbranding" }}{{ if eq . "true" }}&modestbranding=1{{ end }}{{ end }}"{{ if .Get "yellow_player_class" }} class="{{ .Get "yellow_player_class" }}"{{ end }} allowfullscreen></iframe>
+        </div>
+      </section>
+
+
+
+
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- --  FIN YOUTUBE -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+      <!-- ------------------------------------------------ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- ------------------------------------------------ -->
   <!-- ------------------------------------------------ -->
   <!-- ------------------------------------------------ -->
@@ -143,15 +272,15 @@
 
 
 
-        <!-- Tab 2 & Content TWITTER -->
-        <input type="radio" name="tab" id="tab2" role="tab" class='yellow tabbed livestreams'>
+        <!-- Tab 3 & TWITTER Content -->
+        <input type="radio" name="tab" id="tab3" role="tab" class='yellow tabbed livestreams'>
 
-        <label for="tab2" id="tab2-label" class='yellow tabbed livestreams tab line big online'>
+        <label for="tab3" id="tab3-label" class='yellow tabbed livestreams tab line big online'>
 
           <i class="fa fa-twitter fa-fw awesome flashy bouton"></i>
 
         </label>
-        <section aria-labelledby="tab2-label" class='yellow tabbed livestreams'>
+        <section aria-labelledby="tab3-label" class='yellow tabbed livestreams'>
             <div class="conteneur jaune lives horizontal">
                   <!-- GO TO Twitter live BUTTON -->
                   <!--
@@ -248,14 +377,14 @@
     <!-- ------------------------------------------------ -->
     <!-- ------------------------------------------------ -->
 
-    <!-- Tab 3 & Content -->
-    <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab3" role="tab" checked>
+    <!-- Tab 4 & TWITCH Content -->
+    <input class='yellow tabbed livestreams' type="radio" name="tab" id="tab4" role="tab" checked>
 
-    <label for="tab3" id="tab3-label" class='yellow tabbed livestreams tab line big online'>
+    <label for="tab4" id="tab4-label" class='yellow tabbed livestreams tab line big online'>
       <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
     </label>
 
-    <section aria-labelledby="tab3-label" class='yellow tabbed livestreams'>
+    <section aria-labelledby="tab4-label" class='yellow tabbed livestreams'>
       <div class="conteneur jaune lives horizontal">
 
             <!-- Talk live BUTTON -->
@@ -389,70 +518,3 @@
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-
-
-
-<!-- TWITCH LIVE -->
-<!--
-<li class="list-inline-item radio jaune livestream button">
-<a href="{{ .Get "twitch_live_url" }}"  style="--clr:#6441a5; --i:0;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-twitch fa-fw awesome flashy bouton"></i>
-  Twitch Live
-</span>
-</a>
-</li>
- -->
-
-<!-- STEAM LIVE -->
-<!--
-<li class="list-inline-item radio jaune livestream button">
-<a href="{{ .Get "steam_live_url" }}"  style="--clr:#ffff00; --i:2;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-steam fa-fw awesome flashy bouton"></i>
-  Steam Live
-</span>
-</a>
-</li>
--->
-<!-- VK.com -->
-<!--
-<li class="list-inline-item radio jaune livestream button">
-<a href="{{ .Get "vk_live_url" }}"  style="--clr:#00ff33; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-vk fa-fw awesome flashy bouton"></i>
-  VK.com Live
-</span>
-</a>
-</li>
--->
-
-<!-- YOUTUBE LIVE -->
-<!--
-<li class="list-inline-item radio jaune livestream button">
-<a href="{{ .Get "youtube_live_url" }}"  style="--clr:{{ .Get "color" }}; --i:1;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-youtube fa-fw awesome flashy bouton"></i>
-  YouTube Live
-</span>
-</a>
-</li>
--->
-
-<!-- FACEBOOK LIVE -->
-<!--
-<li class="list-inline-item radio jaune livestream button">
-<a href="{{ .Get "facebook_live_url" }}"  style="--clr:#0033ff; --i:3;" class="awesome flashy bouton btn btn-default btn-lg">
-
-<span class="network-name">
-  <i class="fa fa-facebook-square fa-fw awesome flashy bouton"></i>
-  Facebook Live
-</span>
-</a>
-</li>
--->
