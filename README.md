@@ -184,7 +184,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.77
+export RELEASE_VERSION=0.0.78
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -583,3 +583,6 @@ https://cran.r-project.org/
 * https://web.dev/authors/katiehempenius/
 * https://web.dev/lighthouse-ci/ : performance monitoring
 * https://cloudinary.com/documentation/node_integration#installation_and_setup
+* `ImageMagick` friends :
+  * http://www.graphicsmagick.org/
+  *

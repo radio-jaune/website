@@ -44,7 +44,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     thats_yellow = "#f7ff0b"
     # join_live_url = "https://studio.restream.io/guest/ejY4bEUwYoKilCmZfk-zt_8vXX3IrJs?event=&default-camera-mirror=false"
     # join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
-    join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
+    # join_live_url = "https://studio.restream.io/guest/blFvUjVHYUS9IuYa4EnfmlkPDrippz4?default-camera-mirror=false"
+    join_live_url = "https://studio.restream.io/guest/blFvUjVHYbqkEASUvU7Ckw_t7NMJ4mg?default-camera-mirror=false"
+
     twitch_channel_link = "https://www.twitch.tv/radiojaune"
     twitch_channel_name = "radiojaune"
     vk_channel_link = "https://vk.com/id698593797"

@@ -582,6 +582,8 @@ gulp.task('interpolate:html:dev', function (done) {
 /// --- ------ --- /// --- ------ --- /// --- ------ --- ///
 /// --- ------ --- /// --- ------ --- /// --- ------ --- ///
 
+///    http://www.fmwconcepts.com/imagemagick/index.php
+
 /**
  * The ImageMagick command-line tools exit with
  * a status of 0 if the command line arguments have
