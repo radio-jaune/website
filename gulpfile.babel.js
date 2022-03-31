@@ -194,26 +194,33 @@ import child_process from 'child_process';
 
 
 gulp.task("build:hugo:prod", (done) => {
- let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`])
-             .on("close", () => {
-                 done(); // let gulp know the task has completed
-             });
+
+ let hugo = child_process.spawn(`hugo`, [`-b`, `${hugoBaseURL}`]) // https://nodejs.org/api/child_process.html
+
  let hugoLogger = function (buffer) {
      buffer.toString()
      .split(/\n/)
      .forEach(function (message) {
          if (message) {
-
-
-             gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> testEnvDisplay() >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`);
-             gutil.log("GoHugo.io: " + message);
-             gutil.log("GoHugo.io: " + message);
+             gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> >> {hugoBaseURL|HUGO_BASE_URL}=[${hugoBaseURL}]`);
+             gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> ${message}`);
          }
      });
  };
 
  hugo.stdout.on("data", hugoLogger);
- hugo.stderr.on("data", hugoLogger)
+ hugo.stderr.on("data", hugoLogger);
+ hugo.on("close", (hugoExitCode) => { // exact same pattern as described at https://nodejs.org/api/child_process.html
+                 gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> Hugo process exited with exite code ${hugoExitCode}`);
+                 done(); // let gulp know the task has completed (before or after throwing an Error ?)
+                 if ( hugoExitCode != 0 ) { // If hugo build fails, throw an error with appropriate error message
+                   // https://github.com/gulpjs/gulp/discussions/2601#discussioncomment-2473502
+                   let errorMessage = `An error occured during the  hugo build !! Hugo process exited with exite code ${hugoExitCode}`;
+                   gutil.log("GoHugo.io: " + ` >>>>>>>>>>>> ${errorMessage}`);
+                   throw new Error(errorMessage)
+                 }
+             }
+        );
 });
 
 

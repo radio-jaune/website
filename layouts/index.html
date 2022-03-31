@@ -40,6 +40,14 @@
 
    <!-- <div class="ecran voile statut live off air"></div> -->
    <div class="row">
+
+
+
+        {{- if $elem.Params.joboffers }}
+           {{ partial "yellow-jobs-offers.html" }}
+        {{ end }}
+
+
         {{- if $elem.Params.discord }}
         <div class="col-lg-12 mx-auto discord chat">
           {{ else }}
@@ -62,10 +70,9 @@
                          <!-- <div class="glitch__img"></div>  -->
                          <!-- <div class="glitch__img"></div>  -->
                        <!-- </div>  -->
-
                        <!--  <h3 class="glitch"> -->
                          <!-- <span aria-hidden="true">RADIOJAUNE.COM<br />RADIOJAUNE.COM</span> -->
-                         <!--  {{ .Site.Title }} -->
+                         <!--  {{ .Params.Title }} -->
                          <!-- RADIOJAUNE.COM<br />RADIOJAUNE.COM -->
                          <!-- <span aria-hidden="true">RADIOJAUNE.COM<br />RADIOJAUNE.COM</span> -->
                        <!--  </h3> -->

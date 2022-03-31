@@ -347,11 +347,14 @@
               <!--
               -->
 
-              <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #10 (20/03/2022 En direct dès 21h) <a href="https://t.co/5c5zJeIYci">https://t.co/5c5zJeIYci</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1505635413980966915?ref_src=twsrc%5Etfw">March 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE # {{ .Get "numero_du_live" }} ( REDIFFUSION DU {{ .Get "date_du_live_fr" }}) <a href="https://t.co/{{ .Get "twitter_post_tinyurl_id" }}">https://t.co/{{ .Get "twitter_post_tinyurl_id" }}</a></p>&mdash; Radiojaune (@radiojaune) <a href="https://twitter.com/radiojaune/status/{{ .Get "twitter_post_id" }}?ref_src=twsrc%5Etfw">{{ .Get "date_du_live_fr" }}</a></blockquote>
+              <script async src="https://platform.twitter.com/widgets.js"  charset="utf-8"></script>
+
 
               <!-- <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #{{ .Get "numero_du_live" }} ({{ .Get "date_heure_du_live" }} En direct dès 21h) <a href="https://t.co/{{ .Get "twitter_post_id" }}">https://t.co/{{ .Get "twitter_post_id" }}</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="{{ .Get "twitter_live_url" }}">March 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
               <!-- <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RADIO LIBRE #3 <a href="https://t.co/VYrLZ5txB1">https://t.co/VYrLZ5txB1</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1487878499893334018?ref_src=twsrc%5Etfw">January 30, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  -->
+              <!-- <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #10 (20/03/2022 En direct dès 21h) <a href="https://t.co/5c5zJeIYci">https://t.co/5c5zJeIYci</a></p>&mdash; Radiojaune.com (@radiojaune) <a href="https://twitter.com/radiojaune/status/1505635413980966915?ref_src=twsrc%5Etfw">March 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
             </div>
 
         </section>
