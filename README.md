@@ -184,7 +184,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.79
+export RELEASE_VERSION=0.0.80
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -262,6 +262,7 @@ export HUGO_BASE_URL=http://127.0.0.1:5445
 export HUGO_BASE_URL=http://${HUGO_HOST}:${HUGO_PORT}
 gulp build:debug
 serve dist/ -l tcp://${HUGO_HOST}:${HUGO_PORT}
+
 ```
 
 #### How to deploy PR branches with surge
