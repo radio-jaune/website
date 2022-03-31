@@ -1,0 +1,629 @@
+/* Yellow team says many thanks to awesome work of https://codepen.io/mattjuggins/pen/MjeozP */
+/*
+share_show_on_twitter = ""
+share_show_on_twitch = ""
+share_show_on_facebook = ""
+share_show_on_vk = ""
+share_show_on_discord = ""
+share_show_on_telegram = ""
+*/
+/* Variables */
+/* Mixins */
+/* Typical elements */
+/*
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background: $background-grey;
+	border: 0;
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+}
+*/
+/* Classes by name A-Z */
+.branch.yellow.social.share {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: stretch;
+  -webkit-display: "-webkit-flex";
+  -webkit-flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -webkit-justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-align-content: stretch;
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(25% - 25px);
+  width: 50px;
+  height: 100px;
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  moz-transform-origin: center bottom;
+  -o-transform-origin: center bottom;
+  -ms-transform-origin: center bottom;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+  .branch.yellow.social.share .node.yellow.social.share {
+    -webkit-transition: height 0.5s, width 0.5s;
+    -moz-transition: height 0.5s, width 0.5s;
+    -ms-transition: height 0.5s, width 0.5s;
+    -o-transition: height 0.5s, width 0.5s;
+    transition: height 0.5s, width 0.5s;
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    -ms-transition-delay: 0.5s;
+    -o-transition-delay: 0.5s;
+    transition-delay: 0.5s; }
+  .branch.yellow.social.share .stem.yellow.social.share {
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    -o-transition: height 0.5s;
+    transition: height 0.5s;
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    -ms-transition-delay: 0.5s;
+    -o-transition-delay: 0.5s;
+    transition-delay: 0.5s; }
+  .branch.yellow.social.share.open.yellow.social.share {
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    -ms-transition-delay: 0.5s;
+    -o-transition-delay: 0.5s;
+    transition-delay: 0.5s; }
+    .branch.yellow.social.share.open.yellow.social.share:nth-child(1) {
+      -moz-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+    .branch.yellow.social.share.open.yellow.social.share:nth-child(2) {
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg); }
+    .branch.yellow.social.share.open.yellow.social.share:nth-child(3) {
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg); }
+    .branch.yellow.social.share.open.yellow.social.share:nth-child(4) {
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    .branch.yellow.social.share.open.yellow.social.share .stem.yellow.social.share {
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      height: 50px; }
+    .branch.yellow.social.share.open.yellow.social.share .node.yellow.social.share {
+      -webkit-transition-delay: 0s;
+      -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      transition-delay: 0s;
+      height: 50px;
+      width: 50px; }
+      .branch.yellow.social.share.open.yellow.social.share .node.yellow.social.share:hover {
+        border-width: 6px; }
+      .branch.yellow.social.share.open.yellow.social.share .node.yellow.social.share:active {
+        -moz-transform: scale(1.03);
+        -o-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        transform: scale(1.03); }
+  .branch.yellow.social.share.no-animation.yellow.social.share {
+    animation: none; }
+
+.yellow.social.sharecontainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: stretch;
+  -webkit-display: "-webkit-flex";
+  -webkit-flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -webkit-justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-align-content: stretch;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 210px;
+  height: 110px;
+  -moz-transform: translate3d(-50%, -100%, 0) rotate(0deg);
+  -o-transform: translate3d(-50%, -100%, 0) rotate(0deg);
+  -ms-transform: translate3d(-50%, -100%, 0) rotate(0deg);
+  -webkit-transform: translate3d(-50%, -100%, 0) rotate(0deg);
+  transform: translate3d(-50%, -100%, 0) rotate(0deg);
+  overflow: hidden; }
+  .yellow.social.sharecontainer.no-animation.yellow.social.share {
+    animation: none; }
+  .yellow.social.sharecontainer.open.yellow.social.share .segment.yellow.social.share {
+    cursor: pointer; }
+    .yellow.social.sharecontainer.open.yellow.social.share .segment.yellow.social.share:nth-child(1) {
+      -moz-transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
+      -o-transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
+      -ms-transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
+      -webkit-transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
+      transform: rotate(0deg) scale(1) translate3d(0, 0, 0); }
+    .yellow.social.sharecontainer.open.yellow.social.share .segment.yellow.social.share:nth-child(2) {
+      -moz-transform: rotate(45deg) scale(1) translate3d(0, 0, 0);
+      -o-transform: rotate(45deg) scale(1) translate3d(0, 0, 0);
+      -ms-transform: rotate(45deg) scale(1) translate3d(0, 0, 0);
+      -webkit-transform: rotate(45deg) scale(1) translate3d(0, 0, 0);
+      transform: rotate(45deg) scale(1) translate3d(0, 0, 0); }
+    .yellow.social.sharecontainer.open.yellow.social.share .segment.yellow.social.share:nth-child(3) {
+      -moz-transform: rotate(90deg) scale(1) translate3d(0, 0, 0);
+      -o-transform: rotate(90deg) scale(1) translate3d(0, 0, 0);
+      -ms-transform: rotate(90deg) scale(1) translate3d(0, 0, 0);
+      -webkit-transform: rotate(90deg) scale(1) translate3d(0, 0, 0);
+      transform: rotate(90deg) scale(1) translate3d(0, 0, 0); }
+    .yellow.social.sharecontainer.open.yellow.social.share .segment.yellow.social.share:nth-child(4) {
+      -moz-transform: rotate(135deg) scale(1) translate3d(0, 0, 0);
+      -o-transform: rotate(135deg) scale(1) translate3d(0, 0, 0);
+      -ms-transform: rotate(135deg) scale(1) translate3d(0, 0, 0);
+      -webkit-transform: rotate(135deg) scale(1) translate3d(0, 0, 0);
+      transform: rotate(135deg) scale(1) translate3d(0, 0, 0); }
+
+.fa.yellow.social.share {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  -o-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  -ms-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  transform: translate3d(-50%, -50%, 0) rotate(0deg); }
+  .fa.yellow.social.share.fa-facebook.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    transform: translate3d(-50%, -50%, 0) rotate(90deg); }
+  .fa.yellow.social.share.fa-google-plus.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+    transform: translate3d(-50%, -50%, 0) rotate(45deg); }
+  .fa.yellow.social.share.fa-pinterest.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    transform: translate3d(-50%, -50%, 0) rotate(-45deg); }
+  .fa.yellow.social.share.fa-linkedin.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    transform: translate3d(-50%, -50%, 0) rotate(-90deg); }
+  .fa.yellow.social.share.fa-vine.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+    transform: translate3d(-50%, -50%, 0) rotate(-45deg); }
+  .fa.yellow.social.share.fa-instagram.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+    transform: translate3d(-50%, -50%, 0) rotate(-90deg); }
+  .fa.yellow.social.share.fa-whatsapp.yellow.social.share {
+    -moz-transform: translate3d(-50%, -50%, 0) rotate(-135deg);
+    -o-transform: translate3d(-50%, -50%, 0) rotate(-135deg);
+    -ms-transform: translate3d(-50%, -50%, 0) rotate(-135deg);
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(-135deg);
+    transform: translate3d(-50%, -50%, 0) rotate(-135deg); }
+
+.float-circle.yellow.social.share {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 50px;
+  height: 50px;
+  -webkit-transition: transform 0.5s, background-color 0.5s, opacity 0.2s;
+  -moz-transition: transform 0.5s, background-color 0.5s, opacity 0.2s;
+  -ms-transition: transform 0.5s, background-color 0.5s, opacity 0.2s;
+  -o-transition: transform 0.5s, background-color 0.5s, opacity 0.2s;
+  transition: transform 0.5s, background-color 0.5s, opacity 0.2s;
+  background-color: #FFF;
+  border-radius: 50%; }
+  .float-circle.yellow.social.share.open.yellow.social.share {
+    cursor: pointer;
+    /*  -- ----------------- --  */
+    /*  --  DEBUT ajout custom --  */
+    /*  -- ----------------- --  */
+    /*
+		share_show_on_telegram = ""
+		share_show_on_twitter = ""
+		share_show_on_twitch = ""
+		share_show_on_facebook = ""
+		share_show_on_vk = ""
+		share_show_on_discord = ""
+		*/
+    /*  -- ----------------- --  */
+    /*  --  FIN ajout custom --  */
+    /*  -- ----------------- --  */
+    /*
+		&#flickr.yellow.social.share {
+			background-color: $flickr;
+			@include transform(translate3d(-175%, -150%, 0));
+		}
+		&#youtube.yellow.social.share {
+			background-color: $youtube;
+			@include transform(translate3d(-50%, -200%, 0));
+		}
+		&#dropbox.yellow.social.share {
+			background-color: $dropbox;
+			@include transform(translate3d(75%, -150%, 0));
+		}
+		*/ }
+    .float-circle.yellow.social.share.open.yellow.social.share#discord.yellow.social.share {
+      background-color: #5865f2;
+      -moz-transform: translate3d(175%, 150%, 0);
+      -o-transform: translate3d(175%, 150%, 0);
+      -ms-transform: translate3d(175%, 150%, 0);
+      -webkit-transform: translate3d(175%, 150%, 0);
+      transform: translate3d(175%, 150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#vkontakte.yellow.social.share {
+      background-color: #3b5998;
+      -moz-transform: translate3d(50%, 200%, 0);
+      -o-transform: translate3d(50%, 200%, 0);
+      -ms-transform: translate3d(50%, 200%, 0);
+      -webkit-transform: translate3d(50%, 200%, 0);
+      transform: translate3d(50%, 200%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#facebook.yellow.social.share {
+      background-color: #3b5998;
+      -moz-transform: translate3d(-75%, 150%, 0);
+      -o-transform: translate3d(-75%, 150%, 0);
+      -ms-transform: translate3d(-75%, 150%, 0);
+      -webkit-transform: translate3d(-75%, 150%, 0);
+      transform: translate3d(-75%, 150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#twitch.yellow.social.share {
+      background-color: #9147ff;
+      -moz-transform: translate3d(-175%, -150%, 0);
+      -o-transform: translate3d(-175%, -150%, 0);
+      -ms-transform: translate3d(-175%, -150%, 0);
+      -webkit-transform: translate3d(-175%, -150%, 0);
+      transform: translate3d(-175%, -150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#twitter.yellow.social.share {
+      background-color: #55acee;
+      -moz-transform: translate3d(-50%, -200%, 0);
+      -o-transform: translate3d(-50%, -200%, 0);
+      -ms-transform: translate3d(-50%, -200%, 0);
+      -webkit-transform: translate3d(-50%, -200%, 0);
+      transform: translate3d(-50%, -200%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share#telegram.yellow.social.share {
+      background-color: #0088cc;
+      -moz-transform: translate3d(75%, -150%, 0);
+      -o-transform: translate3d(75%, -150%, 0);
+      -ms-transform: translate3d(75%, -150%, 0);
+      -webkit-transform: translate3d(75%, -150%, 0);
+      transform: translate3d(75%, -150%, 0); }
+    .float-circle.yellow.social.share.open.yellow.social.share:hover {
+      opacity: 0.9;
+      filter: alpha(opacity=90); }
+    .float-circle.yellow.social.share.open.yellow.social.share:active {
+      opacity: 0.75;
+      filter: alpha(opacity=75); }
+  .float-circle.yellow.social.share.no-animation.yellow.social.share {
+    animation: none; }
+
+.main-button.yellow.social.share {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  width: 75px;
+  height: 75px;
+  background-color: #FFF;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+  overflow: hidden; }
+
+.node.yellow.social.share {
+  flex-basis: auto;
+  flex-grow: 0;
+  order: 0;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -webkit-flex-grow: 0;
+  -webkit-order: 0;
+  -webkit-align-self: auto;
+  width: 10px;
+  height: 10px;
+  background-color: #292929;
+  border-radius: 50%;
+  border: solid 5px;
+  /*  -- ----------------- --  */
+  /*  --  DEBUT ajout custom --  */
+  /*  -- ----------------- --  */
+  /*
+	share_show_on_telegram = ""
+	share_show_on_twitter = ""
+	share_show_on_twitch = ""
+	share_show_on_facebook = ""
+	share_show_on_vk = ""
+	share_show_on_discord = ""
+	*/
+  /*  -- ----------------- --  */
+  /*  --  FIN ajout custom --  */
+  /*  -- ----------------- --  */
+  /*
+	&#facebook.yellow.social.share {
+		border-color: $facebook;
+	}
+	&#google-plus.yellow.social.share{
+		border-color: $google-plus;
+	}
+	&#twitter.yellow.social.share{
+		border-color: $twitter;
+	}
+	&#pinterest.yellow.social.share {
+		border-color: $pinterest;
+	}
+	&#linkedin.yellow.social.share{
+		border-color: $linkedin;
+	}
+	*/ }
+  .node.yellow.social.share#discord.yellow.social.share {
+    background-color: #5865f2; }
+  .node.yellow.social.share#vkontakte.yellow.social.share {
+    background-color: #3b5998; }
+  .node.yellow.social.share#facebook.yellow.social.share {
+    background-color: #3b5998; }
+  .node.yellow.social.share#twitch.yellow.social.share {
+    background-color: #9147ff; }
+  .node.yellow.social.share#twitter.yellow.social.share {
+    background-color: #55acee; }
+  .node.yellow.social.share#telegram.yellow.social.share {
+    background-color: #0088cc; }
+
+.segment.yellow.social.share {
+  position: absolute;
+  top: calc(100% - 100px);
+  left: calc(50% - 100px);
+  -moz-transform: rotate(0deg) scale(0.1) translate3d(0, 0, 0);
+  -o-transform: rotate(0deg) scale(0.1) translate3d(0, 0, 0);
+  -ms-transform: rotate(0deg) scale(0.1) translate3d(0, 0, 0);
+  -webkit-transform: rotate(0deg) scale(0.1) translate3d(0, 0, 0);
+  transform: rotate(0deg) scale(0.1) translate3d(0, 0, 0);
+  moz-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition: transform 0.5s, color 0.2s;
+  -moz-transition: transform 0.5s, color 0.2s;
+  -ms-transition: transform 0.5s, color 0.2s;
+  -o-transition: transform 0.5s, color 0.2s;
+  transition: transform 0.5s, color 0.2s;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  width: 200px;
+  height: 100px;
+  border-radius: 100px 100px 0px 0px;
+  color: #000;
+  overflow: hidden; }
+  .segment.yellow.social.share:nth-child(1) {
+    background: #fffc00; }
+  .segment.yellow.social.share:nth-child(2) {
+    background: #00bf8f; }
+  .segment.yellow.social.share:nth-child(3) {
+    background: #e95950; }
+  .segment.yellow.social.share:nth-child(4) {
+    background: #4dc247; }
+  .segment.yellow.social.share:hover {
+    color: #333; }
+  .segment.yellow.social.share:active {
+    color: #666; }
+
+.share.yellow.social.share {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  -moz-transform: translate3d(-50%, -50%, 0);
+  -o-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0); }
+
+.share-icon.yellow.social.share {
+  color: #FFF;
+  font-size: 25px; }
+
+.share-alt.yellow.social.share {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translateX(-50%) translateY(-50%); }
+
+.share-alt-icon.yellow.social.share {
+  font-size: 25px;
+  color: #FFF; }
+
+.social.yellow.social.share {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+
+.social-icon.yellow.social.share {
+  margin: 23px 0 0 -65px;
+  font-size: 45px; }
+
+.stem.yellow.social.share {
+  flex-basis: auto;
+  flex-grow: 0;
+  order: 1;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -webkit-flex-grow: 0;
+  -webkit-order: 1;
+  -webkit-align-self: auto;
+  width: 4px;
+  height: 0px;
+  background-color: #FFF; }
+
+/* Yellow Custom Classes */
+/* --------------------- */
+/* --> sets where in the page, the share control is placed */
+/*
+.yellowcontainer.tabs.yellow.tabbed.livestreams.yellow.social.share {
+
+	right: 1vw!important;
+	position: absolute;
+	left: unset!important;
+	top: 28%!important;
+	opacity: 0.3;
+	z-index:1000
+}
+ */
+.yellowcontainer.tabs.yellow.tabbed.livestreams.yellow.social.share {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  /* right: 1vw !important; */
+  /* position: absolute; */
+  /* left: unset !important; */
+  top: 65vh !important;
+  opacity: 0.3;
+  z-index: 1000; }
+
+.main-button.share.yellow.social.share {
+  background-color: #42dca3; }
+
+/* -- FLASH EFFECT FOR SHARE BUTTON -- */
+.yellowflash {
+  -moz-animation: yellowflash 3s ease-out;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation: yellowflash 3s ease-out;
+  -webkit-animation-iteration-count: 1;
+  -ms-animation: yellowflash 3s ease-out;
+  -ms-animation-iteration-count: 1; }
+
+@keyframes yellowflash {
+  0% {
+    background-color: transparent;
+    opacity: 0.3; }
+  20% {
+    background-color: #42dca3;
+    opacity: 1; }
+  40% {
+    background-color: transparent;
+    opacity: 0.3; }
+  55% {
+    background-color: #42dca3;
+    opacity: 1; }
+  70% {
+    background-color: transparent;
+    opacity: 0.3; }
+  85% {
+    background-color: #42dca3;
+    opacity: 1; }
+  100% {
+    background-color: transparent;
+    opacity: 0.3; } }
+
+@-webkit-keyframes yellowflash {
+  0% {
+    background-color: transparent;
+    opacity: 0.3; }
+  20% {
+    background-color: #42dca3;
+    opacity: 1; }
+  40% {
+    background-color: transparent;
+    opacity: 0.3; }
+  55% {
+    background-color: #42dca3;
+    opacity: 1; }
+  70% {
+    background-color: transparent;
+    opacity: 0.3; }
+  85% {
+    background-color: #42dca3;
+    opacity: 1; }
+  100% {
+    background-color: transparent;
+    opacity: 0.3; } }
+
+@-moz-keyframes yellowflash {
+  0% {
+    background-color: transparent;
+    opacity: 0.3; }
+  20% {
+    background-color: #42dca3;
+    opacity: 1; }
+  40% {
+    background-color: transparent;
+    opacity: 0.3; }
+  55% {
+    background-color: #42dca3;
+    opacity: 1; }
+  70% {
+    background-color: transparent;
+    opacity: 0.3; }
+  85% {
+    background-color: #42dca3;
+    opacity: 1; }
+  100% {
+    background-color: transparent;
+    opacity: 0.3; } }
+
+@-ms-keyframes yellowflash {
+  0% {
+    background-color: transparent;
+    opacity: 0.3; }
+  20% {
+    background-color: #42dca3;
+    opacity: 1; }
+  40% {
+    background-color: transparent;
+    opacity: 0.3; }
+  55% {
+    background-color: #42dca3;
+    opacity: 1; }
+  70% {
+    background-color: transparent;
+    opacity: 0.3; }
+  85% {
+    background-color: #42dca3;
+    opacity: 1; }
+  100% {
+    background-color: transparent;
+    opacity: 0.3; } }
+
+/*# sourceMappingURL=yellow-share.min.pokus.css.map */
