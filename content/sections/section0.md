@@ -72,7 +72,7 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   join_live_url="https://studio.restream.io/guest/blFvUjVHYbqkEASUvU7Ckw_t7NMJ4mg?default-camera-mirror=false"
   twitch_live_url="https://www.twitch.tv/radiojaune"
   twitch_channel_name="radiojaune"
-  twitch_video_id="1439220815"
+  twitch_video_id="1445458851"
   twitch_channel_html_element_id="twitch-embed"
   twitch_video_html_element_id="twitch_embed_unique_video"
   telegram_live_url="#"
@@ -82,21 +82,23 @@ vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239026&hash=9b1685
   vk_live_oid="698593797"
   vk_live_id="456239055"
   vk_live_url="https://vk.com/video_ext.php?oid=698593797&id=456239055&hash=37717959e9dd829d&hd=2"
-  youtube_live_url="https://www.youtube.com/watch?v=ThREnAq01po"
-  channel_yt_live_id="ThREnAq01po"
-  facebook_live_url="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSlidoww%2Fvideos%2F292028513010112%2F&show_text=false&width=560&t=0"
+  youtube_live_url="https://www.youtube.com/watch?v=c_H-z4kpezo"
+  channel_yt_live_id="c_H-z4kpezo"
+  facebook_live_url="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSlidoww%2Fvideos%2F1304773256676830%2F&show_text=false&width=560&t=0"
   color="#f7ff0b"
-  date_heure_du_live="27 Mars 2022"
-  date_du_live_en="March 27, 2022"
-  date_du_live_fr="27 Mars 2022"
-  numero_du_live="11"
-  twitter_post_tinyurl_id="3n7gUQQHi7"
-  twitter_post_id="1508423837905727494"
+  date_heure_du_live="2 Avril 2022"
+  date_du_live_en="April 02, 2022"
+  date_du_live_fr="2 Avril 2022"
+  numero_du_live="12"
+  twitter_post_tinyurl_id="XGcEkHqdxH"
+  twitter_post_id="1510693662505660416"
 
  >}}
 
 
 <!--
+<blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #12 ( Le dimanche 21h en direct) <a href="https://t.co/XGcEkHqdxH">https://t.co/XGcEkHqdxH</a></p>&mdash; Radiojaune (@radiojaune) <a href="https://twitter.com/radiojaune/status/1510693662505660416?ref_src=twsrc%5Etfw">April 3, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 https://twitter.com/i/broadcasts/1lPKqmzYLvEKb?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1485538273040629766%7Ctwgr%5Ehb_0_8%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%3Fquery%3Dhttps3A2F2Ftwitter.com2Fradiojaune2Fstatus2F1485538273040629766widget%3DTweet
 -->
 
