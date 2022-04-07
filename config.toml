@@ -53,9 +53,10 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     vk_channel_link = "https://vk.com/id698593797"
     vk_live_url="https://vk.com/id698593797?z=video698593797_456239023%2F7e1e0fb2c79f35ddf4%2Fpl_wall_698593797"
 
-    twitter_live_url="https://twitter.com/i/broadcasts/1eaKbNLklmYKX"
-
-
+    # twitter_live_url="https://twitter.com/i/broadcasts/1BdxYwWXDNYGX"
+    twitter_live_url="https://t.co/XGcEkHqdxH"
+    # https://twitter.com/radiojaune/status/1510693662505660416?ref_src=twsrc%5Etfw
+    # <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">RADIO LIBRE #12 ( Le dimanche 21h en direct) <a href="https://t.co/XGcEkHqdxH">https://t.co/XGcEkHqdxH</a></p>&mdash; Radiojaune (@radiojaune) <a href="https://twitter.com/radiojaune/status/1510693662505660416?ref_src=twsrc%5Etfw">April 3, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
     rumble_channel_link = "https://rumble.com/radiojaune"
@@ -63,7 +64,7 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     # telegram_group_link = "https://t.me/+MryZE0pY8N01ZGRk"
     telegram_group_link = "https://t.me/radiojaune"
     youtube_channel_id = "UCIUGDzUjNIfQC9YjUIu84vQ"
-    youtube_live_url = "https://www.youtube.com/watch?v=uQ5DjNpbu3k"
+    youtube_live_url = "https://www.youtube.com/watch?v=c_H-z4kpezo"
     github_org = "https://github.com/radio-jaune"
     github_repo = "https://github.com/radio-jaune/website"
     github_pages = "https://github.com/radio-jaune/developers-portal"
