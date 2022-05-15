@@ -45,12 +45,12 @@
     "toml": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/register": "^7.17.0",
-    "browser-sync": "^2.27.7",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/register": "^7.17.7",
+    "browser-sync": "^2.27.9",
     "del": "^6.0.0",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-beautify": "^3.0.0",
@@ -79,7 +79,7 @@
     "imagemin-pngquant": "^9.0.2",
     "node-fetch": "^2.6.7",
     "node-sass": "^7.0.1",
-    "prettier": "^2.5.1",
+    "prettier": "^2.6.2",
     "readable-stream": "^3.6.0",
     "shelljs": "^0.8.5"
   }
