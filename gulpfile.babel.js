@@ -45,9 +45,9 @@
  *
  * Second design concept (will be implemented later) (beta) :
  * -> [Bower.io] was great to resolve dependencies. [Bower.io] does not exists anymore (is not supported anymore), and recommends using other package managers like parcel, webpack, etc....
- * -> I know that Parcel is really good at mlanaging dependencies
+ * -> I know that Parcel is really good at managing dependencies
  * -> I don't want Parcel to manage minification, sass compilation or any transformation tasks.
- * -> I don't want Parcel to manage tasks orchestration, like [gulp.series(..)] allows
+ * -> I don't want Parcel to manage tasks orchestration, like [gulp.series(..)] allows 5NB: orchestration meands Build Tree)
  * -> I want Parcel to have one clear, simple, important responsibility : to manage dependencies.
  * -> I already have npm to manage dependencies, actually npm packages depenjdencies.
  * -> But in a static website project, not all dependencies can be managed easily using npm only :
