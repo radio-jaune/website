@@ -73,6 +73,7 @@ a.awesome.flashy.bouton::before {
     transition: 1s;
     animation: animate 3s linear infinite;
     animation-delay: calc(0.33s * var(--i));
+    transform: translate3d(0px, 0px, 0px);
 }
 
 a.awesome.flashy.bouton:hover::before {
@@ -334,7 +335,7 @@ a.awesome.flashy.bouton:hover span i {
 /********************************************************
  *              Donc là il s'agit de faire le tampon
  *              "censurés" au dessus des boutons réseaux
- *              sociaux pour lesquels radio jaune est censurée 
+ *              sociaux pour lesquels radio jaune est censurée
  /*
 .jaune.social.bouton.list-inline.banner-social-buttons li a::after {
   content: "CENSURÉS"; // ::before and ::after both require content
