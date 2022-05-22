@@ -1,0 +1,90 @@
+/*
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: sans-serif;
+  text-align: center;
+}
+*/
+p.yellow.glitchie {
+  /* font-size: 10em; */
+  text-transform: uppercase;
+  font-weight: bolder;
+  /* position: absolute; */
+  /* left: 0; */
+  /* right: 0 */ }
+
+p.yellow.glitchie:nth-child(1) {
+  color: red;
+  animation: glitch 2s infinite forwards; }
+
+p.yellow.glitchie:nth-child(2) {
+  color: cyan;
+  animation: glitchTwo 1.5s infinite forwards; }
+
+p.yellow.glitchie:nth-child(3) {
+  color: white;
+  animation: glitchThree 1s infinite forwards; }
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0);
+    clip-path: polygon(19% 74%, 75% 84%, 75% 100%, 0% 100%); }
+  5% {
+    transform: translate(10px, 0);
+    clip-path: polygon(100% 0%, 100% 0%, 5% 50%, 0% 10%); }
+  10% {
+    transform: translate(0, 0);
+    clip-path: polygon(3% 100%, 100% 53%, 12% 12%, 0% 3%); }
+  15% {
+    transform: translate(10px, 10px);
+    clip-path: polygon(39% 43%, 50% 19%, 15% 22%, 20% 40%); }
+  20% {
+    transform: translate(-10px, -10px);
+    clip-path: polygon(100% 54%, 22% 25%, 33% 54%, 34% 97%); }
+  25% {
+    transform: translate(0, 0);
+    clip-path: polygon(19% 74%, 75% 84%, 75% 100%, 0% 100%); } }
+
+@keyframes glitchTwo {
+  0% {
+    transform: translate(20px, 0);
+    clip-path: polygon(22% 0%, 0% 84%, 0% 50%, 0% 0%); }
+  3% {
+    transform: translate(0, 10px);
+    clip-path: polygon(0% 10%, 50% 32%, 54% 2%, 10% 100%); }
+  8% {
+    transform: translate(0, 0);
+    clip-path: polygon(3% 0%, 54% 53%, 0% 12%, 0% 30%); }
+  12% {
+    transform: translate(-10px, 10px);
+    clip-path: polygon(0% 23%, 50% 0%, 15% 22%, 0% 40%); }
+  18% {
+    transform: translate(-10px, 10px);
+    clip-path: polygon(0% 0%, 19% 25%, 22% 54%, 0% 97%); }
+  30% {
+    transform: translate(0, 0);
+    clip-path: polygon(22% 0%, 0% 84%, 0% 50%, 0% 0%); } }
+
+@keyframes glitchThree {
+  0% {
+    transform: translate(20px, 0);
+    clip-path: polygon(11% 23%, 22% 50%, 10% 30%, 10% 3%); }
+  10% {
+    transform: translate(0, 0);
+    clip-path: polygon(0% 0%, 0% 10%, 25% 20%, 20% 22%); }
+  12% {
+    transform: translate(-20px, 0);
+    clip-path: polygon(3% 0%, 100% 23%, 32% 42%, 10% 32%); }
+  18% {
+    transform: translate(0, 0);
+    clip-path: polygon(29% 0%, 40% 0%, 15% 22%, 0% 100%); }
+  22% {
+    transform: translate(0, 10px);
+    clip-path: polygon(0% 14%, 22% 0%, 23% 10%, 80% 0%); }
+  28% {
+    transform: translate(0, 0);
+    clip-path: polygon(11% 23%, 22% 50%, 10% 30%, 10% 3%); } }
+
+/*# sourceMappingURL=yellow-glitch.autre.min.pokus.css.map */

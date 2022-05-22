@@ -1,0 +1,7 @@
+/* yellow-discord.css */
+
+div.discord.chat {
+ background: rgba(0, 0, 0, .5);
+ border-radius: 5px;
+ text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+}
