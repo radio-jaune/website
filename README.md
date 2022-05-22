@@ -184,7 +184,7 @@ git flow init --defaults
 
 npm run preps
 
-export RELEASE_VERSION=0.0.85
+export RELEASE_VERSION=0.0.86
 export DEPLOYMENT_DOMAIN=radiojaune.com
 export DEPLOYMENT_BASE_URL=https://${DEPLOYMENT_DOMAIN}
 
@@ -225,7 +225,7 @@ gulpBuild
 echo "${DEPLOYMENT_DOMAIN}" > CNAME
 echo "${DEPLOYMENT_DOMAIN}" > ./docs/CNAME
 
-git add -A && git commit -m "[${RELEASE_VERSION}] - release and deployment" && git push -u origin HEAD
+git add -A && git commit -m "release [${RELEASE_VERSION}] - release and deployment" && git push -u origin HEAD
 
 # git flow release finish ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
 git flow release finish -s ${RELEASE_VERSION} && git push -u origin --all  && git push -u origin --tags
