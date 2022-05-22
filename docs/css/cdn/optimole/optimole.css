@@ -1,9 +1,0 @@
-/***
- *
- * https://docs.optimole.com/article/1307-custom-integration
- *
- ***/
-html .my-background-loaded-img:not(.optml-bg-lazyloaded),
-html .my-background-loaded-img2:not(.optml-bg-lazyloaded) {
-  background-image: none !important;
-}
