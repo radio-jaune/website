@@ -1,15 +1,11 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Gulp Build Debug",
-            "program": " --inspect --inspect-brk /home/gitpod/.nvm/versions/node/v16.13.2/bin/gulp build:debug",
-            "openDebug": "openOnDebugBreak",
-            "internalConsoleOptions": "openOnSessionStart"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "./node_modules/.bin/astro dev",
+      "name": "Development server",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
 }
