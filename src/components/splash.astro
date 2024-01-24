@@ -51,10 +51,9 @@ const links: Array<FooterLink> = [
     >
     {
       links.map((link) => (
-      <a class="text-sm text-current" href={link.url}>
-                  
-                  <Icon class="size-full" name={link.icon} />
-                </a>
+          <a class="text-sm text-current" href={link.url}>
+            <Icon class="size-full" color={`white`} name={link.icon} />
+          </a>
       ))
     }
     </div>
