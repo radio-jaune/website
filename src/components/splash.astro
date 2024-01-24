@@ -39,19 +39,22 @@ const links: Array<FooterLink> = [
       <div
         class="gradient-text text-center font-extrabold tracking-tighter text-4xl sm:text-6xl lg:text-6xl"
       >
-        Radio Jaune
+        Radio Jaune.
         <br /> La Radio,
         <br />  Libre.
       </div>
     </h2>
   </div>
     <div
-      id="astronaut"
+      id="telegram"
       class="w-1/3 self-start sm:w-4/12 sm:self-auto"
     >
     {
       links.map((link) => (
-      <Icon class="size-full" name={link.icon} />
+      <a class="text-sm" href={link.url}>
+                  
+                  <Icon class="size-full" name={link.icon} />
+                </a>
       ))
     }
     </div>
