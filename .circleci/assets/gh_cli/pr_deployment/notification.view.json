@@ -1,0 +1,22 @@
+{
+  "project": "Justin Curieux!",
+  "author": "POKUS_CIRCLE_USERNAME_PLACEHOLDER",
+  "description": "Ceci est la première livraison, un premier prototype proposé",
+  "git_branch": "POKUS_GIT_BRANCH_PLACEHOLDER",
+  "git_repo": "POKUS_GIT_REPO_URL_PLACEHOLDER",
+  "commit_hash": "POKUS_COMMIT_HASH_PLACEHOLDER",
+  "deployments": [
+    {"provider": "vercel", "url": "POKUS_VERCEL_DEPLOYMENT_URL_PLACEHOLDER", "color": "cyan"},
+    {"provider": "surge", "url": "POKUS_SURGE_DEPLOYMENT_URL_PLACEHOLDER", "color": "D080F8"}
+  ],
+  "features": [
+    {"title": "An example feature 1", "description": true, "url": "#Red"},
+    {"title": "An example feature 2", "description": true, "url": "#Green"},
+    {"title": "An example feature 3", "description": true, "url": "#Blue"}
+  ],
+  "fixes": [
+    {"title": "An example Fix 1", "description": true, "url": "#Red"},
+    {"title": "An example Fix 2", "description": true, "url": "#Green"},
+    {"title": "An example Fix 3", "description": true, "url": "#Blue"}
+  ]
+}

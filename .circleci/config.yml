@@ -1,0 +1,884 @@
+
+version: "2.1"
+
+orbs:
+  discord: antonioned/discord@0.1.0
+
+parameters:
+  dockerize_me:
+    type: boolean
+    default: false
+  pokus_nodejs_version:
+    type: string
+    # default: "18.17.1"
+    # default: "lts-bullseye"
+    # default: "lts-bookworm"
+    default: "21.1.0-bookworm"
+  ci_workspace_root:
+    type: string
+    default: "/.ci.workspace"
+    # /.ci.workspace/workspace
+  # --- 
+  # npm_publish_auth_secret_* are credentials to 
+  # be able to publish to [https://npmjs.org] 
+  # 
+  npm_publish_auth_secret_user:
+    type: string
+    default: "pokus"
+  npm_publish_auth_secret_pwd:
+    type: string
+    default: "pokus"
+  dockerhub_auth_secret_user:
+    type: string
+    default: "pokus"
+  dockerhub_auth_secret_pwd:
+    type: string
+    default: "pokus"
+
+
+jobs:
+  pr_unit_tests:
+    # <<: *pokus-jobs-common
+    docker:
+      # ---
+      #  https://hub.docker.com/r/cimg/node/tags
+      # ---
+      # - image: cimg/go:<< pipeline.parameters.pokus_golang_version >>
+      # - image: cimg/node:<< pipeline.parameters.pokus_nodejs_version >>
+      - image: node:<< pipeline.parameters.pokus_nodejs_version >>
+      
+    # resource_class: pokusio/podman-small1
+    environment:
+      # BASH_ENV: /home/circleci/.profile
+      # BASH_ENV: ~/.profile
+      # BASH_ENV: ${HOME}/.profile
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
+      SHELL: /bin/bash
+    steps:
+      # <<: *pokus-common-steps
+      - run:
+          name: "Resolve System dependencies"
+          command: |
+              apt-get update -y && apt-get install -y  bash curl jq wget
+      - run:
+          name: "Env Setup"
+          command: |
+              # mkdir -p /home/circleci/
+              # mkdir -p ${HOME}
+              whoami
+              pwd
+              mkdir -p ${HOME}
+              touch $BASH_ENV
+              echo 'export SHELL=/bin/bash' >> "$BASH_ENV"
+              echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> "$BASH_ENV"
+              export ASTRO_BUILD_DIR="${CI_WORKSPACE_ROOT}/workspace/dist"
+              echo "export ASTRO_BUILD_DIR=${ASTRO_BUILD_DIR}" >> "$BASH_ENV"
+              echo ""
+              
+      - checkout
+      - run:
+          name: "Install CI Job dependencies"
+          command: |
+              source $BASH_ENV
+              apt-get update -y && apt-get install -y  bash curl jq wget
+              # install pnpm
+              echo "JBL POINT DEBUG 1"
+              # bash -c 'curl -fsSL https://get.pnpm.io/install.sh | sh -'
+              echo "JBL POINT DEBUG 2"
+              echo "PNPM_VERSION = [${PNPM_VERSION}]"
+              # PNPM_VERSION: 7.5.1
+              # bash -c "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION='${PNPM_VERSION}' sh -"
+              # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=${PNPM_VERSION} sh -
+              # curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION="${PNPM_VERSION}" sh -
+              # curl -fsSL https://get.pnpm.io/install.sh | export PNPM_VERSION="${PNPM_VERSION}" sh - # that's why they use "env", and not "export"
+              
+              # --- 
+              # see https://github.com/3forges/juste-un-curieux/issues/17#issuecomment-1694600783
+              # - 
+              # curl -fsSL https://get.pnpm.io/install.sh | tee ./pnpm.installation.script.sh
+              # chmod +x ./pnpm.installation.script.sh
+              # export PNPM_VERSION="${PNPM_VERSION}" && ./pnpm.installation.script.sh
+              chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+
+              echo "JBL POINT DEBUG 2 bis"
+              # PNPM_VERSION
+              # export PNPM_VERSION="7.5.1"
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
+              # 
+              
+              echo "JBL POINT DEBUG 3"
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
+              echo "JBL POINT DEBUG 4"
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
+              echo "JBL POINT DEBUG 5"
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
+              echo "JBL POINT DEBUG 6"
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
+              echo "JBL POINT DEBUG 7"
+              cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
+              echo "JBL POINT DEBUG 8"
+              # install surge
+              source $BASH_ENV
+              echo "JBL POINT DEBUG 9"
+              pnpm add -g surge
+              # bash -c 'pnpm add -g surge'
+              pnpm --version
+              # bash -c 'pnpm --version'
+              surge --version
+      - run:
+          name: "Resolve Astro Project Dependencies"
+          command: |
+              # Lockfile is up-to-date, resolution step is skipped
+              #  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up-to-date with package.json
+              # 
+              # Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+              # pnpm i
+              pnpm i --no-frozen-lockfile
+      - run:
+          name: "Run Unit Tests"
+          command: |
+              pwd
+              pnpm run tests || true
+  pr_astro_build:
+    # <<: *pokus-jobs-common
+    docker:
+      # ---
+      #  https://hub.docker.com/r/cimg/node/tags
+      # ---
+      # - image: cimg/go:<< pipeline.parameters.pokus_golang_version >>
+      # - image: cimg/node:<< pipeline.parameters.pokus_nodejs_version >>
+      - image: node:<< pipeline.parameters.pokus_nodejs_version >>
+    working_directory: /root/project
+    # resource_class: pokusio/podman-small1
+    environment:
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
+      # BASH_ENV: /home/circleci/.profile
+      # BASH_ENV: ~/.profile
+      # BASH_ENV: ${HOME}/.profile
+      SHELL: /bin/bash
+    steps:
+      # <<: *pokus-common-steps
+      - run:
+          name: "Resolve System dependencies"
+          command: |
+              apt-get update -y && apt-get install -y  bash curl jq wget
+      - run:
+          name: "Env Setup"
+          command: |
+              # mkdir -p /home/circleci/
+              # mkdir -p ${HOME}
+              whoami
+              pwd
+              mkdir -p ${HOME}
+              touch $BASH_ENV
+              echo 'export SHELL=/bin/bash' >> "$BASH_ENV"
+              echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> "$BASH_ENV"
+              export ASTRO_BUILD_DIR="${CI_WORKSPACE_ROOT}/workspace/dist"
+              echo "export ASTRO_BUILD_DIR=${ASTRO_BUILD_DIR}" >> "$BASH_ENV"
+              echo ""
+              
+      - checkout
+      - run:
+          name: "Install CI Job dependencies"
+          command: |
+              source $BASH_ENV
+              apt-get update -y && apt-get install -y  bash curl jq wget
+              # install pnpm
+              chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              # PNPM_VERSION
+              # export PNPM_VERSION="7.5.1"
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
+              cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
+              # install surge
+              source $BASH_ENV
+              pnpm add -g surge
+              # bash -c 'pnpm add -g surge'
+              pnpm --version
+              # bash -c 'pnpm --version'
+              surge --version
+              # ---
+              # 
+              npm install -g typescript
+              # ---
+              # Test that tsc is properly installed
+              tsc --version
+      - run:
+          name: "Resolve Astro Project Dependencies"
+          command: |
+              # Lockfile is up-to-date, resolution step is skipped
+              #  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up-to-date with package.json
+              # 
+              # Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+              # pnpm i
+              pnpm i --no-frozen-lockfile
+      - run:
+          name: "Run Astro Build"
+          command: |
+              pnpm add --save-dev sharp # this is dirty
+              pnpm run build
+      - run:
+          name: "pnpm root path"
+          command: |
+              pnpm root path
+              # mkdir -p /root/project/.ci.workspace
+              # touch /root/project/.ci.workspace/galileo.astro
+      - persist_to_workspace:
+          root: /root/project
+          # root: /root/project/.ci.workspace
+          paths:
+            - dist
+            - node_modules
+      - persist_to_workspace:
+          root: /root/.local/share
+          paths:
+            - pnpm
+          # # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # # taken to be the root directory of the workspace.
+          # root: workspace
+          # # Must be relative path from root
+          # paths:
+          #   - echo-output
+  pr_deployment:
+    # <<: *pokus-jobs-common
+    docker:
+      # ---
+      #  https://hub.docker.com/r/cimg/node/tags
+      # ---
+      # - image: cimg/go:<< pipeline.parameters.pokus_golang_version >>
+      # - image: cimg/node:<< pipeline.parameters.pokus_nodejs_version >>
+      - image: node:<< pipeline.parameters.pokus_nodejs_version >>
+      
+    # resource_class: pokusio/podman-small1
+    environment:
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
+      SHELL: /bin/bash
+      # BASH_ENV: /home/circleci/.profile
+      # PR_BRANCH_NAME: ${CIRCLE_BRANCH}
+      # CI_WORKSPACE_ROOT: << pipeline.parameters.ci_workspace_root >>
+      # CI_WORKSPACE_ROOT: /.ci.workspace
+      CI_WORKSPACE_ROOT: /root/project
+      # ASTRO_BUILD_DIR: /<< pipeline.parameters.ci_workspace_root >>/workspace/dist/
+      # SURGE_USER: $SURGE_USER
+      # SURGE_SECRET: $SURGE_SECRET
+      NETRC: /root/.netrc
+    steps:
+      # <<: *pokus-common-steps
+      - run:
+          name: "Resolve System dependencies"
+          command: |
+            apt-get update -y && apt-get install -y  bash curl jq wget
+      - run:
+          name: "Env Setup"
+          command: |
+            # mkdir -p /home/circleci/
+            # mkdir -p ${HOME}
+            whoami
+            pwd
+            mkdir -p ${HOME}
+            touch $BASH_ENV
+            echo 'export SHELL=/bin/bash' >> "$BASH_ENV"
+            echo "export PR_BRANCH_NAME=${CIRCLE_BRANCH}" >> "$BASH_ENV"
+            echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> "$BASH_ENV"
+            export ASTRO_BUILD_DIR="${CI_WORKSPACE_ROOT}/workspace/dist"
+            echo "export ASTRO_BUILD_DIR=${ASTRO_BUILD_DIR}" >> "$BASH_ENV"
+            echo ""
+      - checkout
+      - run:
+          name: "Install CI Job dependencies"
+          command: |
+            source $BASH_ENV
+            apt-get update -y && apt-get install -y  bash curl jq wget gh
+            # install pnpm
+            chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+            # PNPM_VERSION
+            # export PNPM_VERSION="7.5.1"
+            # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+            curl -fsSL https://get.pnpm.io/install.sh | sh -
+            cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
+            cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
+            cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
+            cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
+            cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
+            # install surge
+            source $BASH_ENV
+            pnpm add -g surge
+            pnpm add -g vercel
+            pnpm --version
+            surge --version
+            vercel --version
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          # at: /${CI_WORKSPACE_ROOT}/workspace/dist
+          # at: /.ci.workspace/workspace
+          at: /root/project/workspace
+      - run:
+          name: "Add surge CORS configuration (e.g. for twitch player)"
+          command: |
+            echo ' ------------------------------------------------------- '
+            echo "   "
+            # echo justincurieux_${PR_BRANCH_NAME}.surge.sh > CNAME
+            ls -alh ${ASTRO_BUILD_DIR} || true
+            # echo 'embed.twitch.tv' | tee -a ${ASTRO_BUILD_DIR}/CORS
+            # echo '*.twitch.tv' | tee -a ${ASTRO_BUILD_DIR}/CORS
+            echo '*' | tee -a ${ASTRO_BUILD_DIR}/CORS
+            echo "   "
+            echo ' ------------------------------------------------------- '
+            echo " Your deployment will allow CORS for : "
+            cat ${ASTRO_BUILD_DIR}/CORS
+            echo ' ------------------------------------------------------- '
+
+      - run:
+          name: "Display SURGE_USER"
+          command: |
+            echo $SURGE_USER
+            # echo $SURGE_USER | tee ./surge_user.user
+            # echo "SURGE_USER = [value next line]"
+            # cat ./surge_user.user
+      - run:
+          name: "Configure Auth for surge.sh"
+          command: |
+            # echo $SURGE_USER | tee ./surge_user.user
+            echo "SURGE_USER = [${SURGE_USER}]"
+            # cat ./surge_user.user
+            echo ' ------------------------------------------------------- '
+            echo " Content of the ASTRO_BUILD_DIR=[${ASTRO_BUILD_DIR}] : "
+            ls -alh ${ASTRO_BUILD_DIR}
+            echo ' ------------------------------------------------------- '
+            ls -alh ${ASTRO_BUILD_DIR}
+            rm ./.generated.netrc || true
+            cp ./.circleci/assets/surge/.template.netrc ./.generated.netrc
+            # export SURGE_USER='jean.baptiste.lasselle.pokus@gmail.com'
+            sed -i "s~SURGE_USER_PLACEHODER~${SURGE_USER}~g" ./.generated.netrc
+            sed -i "s~SURGE_SECRET_PLACEHODER~${SURGE_SECRET}~g" ./.generated.netrc
+            echo "DEBUG PIPELINE JBL"
+            mkdir -p ${HOME}
+            mkdir -p /home/$(whoami)
+            mkdir -p /root/
+            echo " whoami [$(whoami)]"
+            echo " HOME = [${HOME}]"
+            echo " NETRC = [${NETRC}]"
+            echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
+            echo " pwd = [$(pwd)]"
+            
+            
+            # cat ./.generated.netrc | tee -a ~/.netrc
+            # cat ./.generated.netrc | tee ${HOME}/.netrc
+            # cat ./.generated.netrc | tee ~/.netrc
+            rm /root/.netrc || true
+            cat ./.generated.netrc | tee /root/.netrc
+            ls -alh ~/.netrc || true
+            ls -alh /root/.netrc || true
+            # export NETRC=/root/.netrc
+            surge token --token $SURGE_SECRET
+            echo ' ------------------------------------------------------- '
+            echo "   "
+            echo "surge whoami --token $SURGE_SECRET"
+            echo "   "
+            echo ' ------------------------------------------------------- '
+            echo "   "
+            surge whoami --token $SURGE_SECRET
+            echo "   "
+            echo ' ------------------------------------------------------- '
+      - run:
+          name: "Deploy PR to surge.sh"
+          command: |
+            echo ' ------------------------------------------------------- '
+            echo "   "
+            # echo justincurieux_${PR_BRANCH_NAME}.surge.sh > CNAME
+            ls -alh ${ASTRO_BUILD_DIR} || true
+            echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
+            # export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g")
+            export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g" | sed "s#_#-#g")
+            echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
+            surge ${ASTRO_BUILD_DIR} --domain justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh --token $SURGE_SECRET
+            echo "   "
+            echo ' ------------------------------------------------------- '
+            echo " Your deployment is ready at https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh "
+            echo ' ------------------------------------------------------- '
+      - run:
+          name: "Deploy PR to Vercel"
+          command: |
+            echo ' ------------------------------------------------------- '
+            echo "   "
+            # echo justincurieux-${PR_BRANCH_NAME}-*.vercel.app > CNAME
+            ls -alh ${ASTRO_BUILD_DIR} || true
+            echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
+            export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g" | sed "s#_#-#g")
+            echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
+            export VERCEL_DEPLOYMENT_DIR=$(mktemp -d -t XXXXXXX_VERCEL_DEPLOYMENT_DIR)
+            mkdir -p ${VERCEL_DEPLOYMENT_DIR}/justincurieux-${PR_BRANCH_NAME_SANITIZED}
+            export VERCEL_DEPLOYMENT_DIR=${VERCEL_DEPLOYMENT_DIR}/justincurieux-${PR_BRANCH_NAME_SANITIZED}
+            echo " VERCEL_DEPLOYMENT_DIR = [${VERCEL_DEPLOYMENT_DIR}]"
+            cp -fr ${ASTRO_BUILD_DIR}/* ${VERCEL_DEPLOYMENT_DIR}
+            vercel deploy ${VERCEL_DEPLOYMENT_DIR} --token ${VERCEL_TOKEN} --yes > ./VERCEL_DEPLOYMENT.out
+            export VERCEL_DEPLOYMENT_URL=$(cat ./VERCEL_DEPLOYMENT.out | grep vercel | awk '{print $1}')
+            echo " VERCEL_DEPLOYMENT_URL=${VERCEL_DEPLOYMENT_URL}"
+            echo "   "
+            echo ' ------------------------------------------------------- '
+            echo " Your deployment is ready at https://justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh "
+            echo ' ------------------------------------------------------- '
+
+      - run:
+          name: "Send Discord notification"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   Send dicord notification"
+              echo ' ------------------------------------------------------- '
+      - run:
+          name: "Discord Notifications"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Discord Notifications"
+              echo "   https://discord.com/developers/docs/resources/webhook#execute-webhook-jsonform-params"
+              echo ' ------------------------------------------------------- '
+              echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
+              export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#_#g")
+              echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
+              echo ' ------------------------------------------------------- '
+              export VERCEL_DEPLOYMENT_URL=$(cat ./VERCEL_DEPLOYMENT.out | grep vercel | awk '{print $1}')
+              echo " VERCEL_DEPLOYMENT_URL=[${VERCEL_DEPLOYMENT_URL}]"
+              echo " CIRCLE_BUILD_URL=[${CIRCLE_BUILD_URL}]"
+              echo " CIRCLE_SHA1=[${CIRCLE_SHA1}]"
+              echo " CIRCLE_REPOSITORY_URL=[${CIRCLE_REPOSITORY_URL}]"
+              export SURGE_DEPLOYMENT_URL="https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
+              sed -i "s#VERCEL_DEPLOYMENT_URL_PLACEHOLDER#${VERCEL_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              sed -i "s#SURGE_DEPLOYMENT_URL_PLACEHOLDER#${SURGE_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              sed -i "s#PR_GIT_BRANCH_PLACEHOLDER#${PR_BRANCH_NAME}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              sed -i "s#CIRCLE_BUILD_URL_PLACEHOLDER#${CIRCLE_BUILD_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              sed -i "s#CIRCLE_SHA1_PLACEHOLDER#${CIRCLE_SHA1}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              sed -i "s#CIRCLE_REPOSITORY_URL_PLACEHOLDER#${CIRCLE_REPOSITORY_URL}#g" ./.circleci/assets/discord/notification.deployment.payload.json
+              echo ' ------------------------------------------------------- '
+              echo '   content of notification.payload.json after sed ------------------------------------------- '
+              echo ' ------------------------------------------------------- '
+              cat -n ./.circleci/assets/discord/notification.deployment.payload.json
+              echo ' ------------------------------------------------------- '
+              
+              # export RAW_DISCORD_WEBHOOK_URL=https://discordapp.com/api/webhooks/1143716758486786112/czV9yYYh7NoB9ZUm-Sr5kTyMMqyfmd1GtW0Qio5t3SCkMTFpcbNJNNp1ZjUGOFaVSfp_
+              echo "DISCORD_WEBHOOK_URL = [${DISCORD_WEBHOOK_URL}]"
+              # export DISCORD_WEBHOOK_URL=${RAW_DISCORD_WEBHOOK_URL}
+              # echo "DISCORD_WEBHOOK_URL = [${DISCORD_WEBHOOK_URL}]"
+              ls -alh ./.circleci/assets/discord/notification.payload.json
+              cat ./.circleci/assets/discord/notification.deployment.payload.json | jq .
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Sending Discord Notifications from JSON FIle Payload"
+              echo ' ------------------------------------------------------- '
+              curl -ivvv -X POST \
+                   -H "Content-Type: application/json" \
+                   -H "Accept: application/json" \
+                   -d @./.circleci/assets/discord/notification.deployment.payload.json \
+                   $DISCORD_WEBHOOK_URL
+      - run:
+          name: "Github Pull Request Notification"
+          command: |
+              export MOUSTACHE_TEMPLATE=./.circleci/assets/gh_cli/pr_deployment/notification.template.md
+              export MOUSTACHE_VIEW=./.circleci/assets/gh_cli/pr_deployment/notification.view.json
+              export MOUSTACHE_OUTPUT=./.circleci/assets/gh_cli/pr_deployment/notification.output.md
+
+              
+              
+              # --- 
+
+              export POKUS_CIRCLE_USERNAME=${CIRCLE_USERNAME}
+              export POKUS_GIT_BRANCH=${CIRCLE_BRANCH}
+              export POKUS_GIT_REPO_URL=${CIRCLE_REPOSITORY_URL}
+              export POKUS_COMMIT_HASH=${CIRCLE_SHA1}
+
+              export VERCEL_DEPLOYMENT_URL=$(cat ./VERCEL_DEPLOYMENT.out | grep vercel | awk '{print $1}')
+              export POKUS_VERCEL_DEPLOYMENT_URL=${VERCEL_DEPLOYMENT_URL}
+
+              
+              export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#-#g" | sed "s#_#-#g")
+              echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
+              
+              
+              export POKUS_SURGE_DEPLOYMENT_URL=justincurieux-${PR_BRANCH_NAME_SANITIZED}.surge.sh
+
+
+              sed -i "s#POKUS_CIRCLE_USERNAME_PLACEHOLDER#${POKUS_CIRCLE_USERNAME}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_GIT_BRANCH_PLACEHOLDER#${POKUS_GIT_BRANCH}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_GIT_REPO_URL_PLACEHOLDER#${POKUS_GIT_REPO_URL}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_COMMIT_HASH_PLACEHOLDER#${POKUS_COMMIT_HASH}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_VERCEL_DEPLOYMENT_URL_PLACEHOLDER#${POKUS_VERCEL_DEPLOYMENT_URL}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_SURGE_DEPLOYMENT_URL_PLACEHOLDER#${POKUS_SURGE_DEPLOYMENT_URL}#g" ${MOUSTACHE_VIEW}
+              
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Github Pull Request Notification"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              export PNPM_HOME="/root/.local/share/pnpm"
+              case ":$PATH:" in
+              *":$PNPM_HOME:"*) ;;
+              *) export PATH="$PNPM_HOME:$PATH" ;;
+              esac
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Render PR message with Mustache"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              # export MUSTACHE_VERSION=4.2.0
+              pnpm add --global mustache@$MUSTACHE_VERSION
+              # prepare PR message
+              
+              ls -alh  $MOUSTACHE_VIEW $MOUSTACHE_TEMPLATE
+              mustache $MOUSTACHE_VIEW $MOUSTACHE_TEMPLATE $MOUSTACHE_OUTPUT
+              ls -alh  $MOUSTACHE_OUTPUT
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Rendered PR message with Mustache is :"
+              echo "   "
+              ls -alh ${MOUSTACHE_OUTPUT}
+              cat ${MOUSTACHE_OUTPUT}
+              echo ' ------------------------------------------------------- '
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Github CLI LOGIN"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              export DONTSHOWME=$(echo ${GITHUB_CLI_PAT} > ./.bot.github.pat.token)
+              gh auth login --with-token < ./.bot.github.pat.token
+
+              # --- 
+              # Gihub Personal Access Token (P.A.T.)
+              # Token scopes: admin:repo_hook, project, read:gpg_key, read:org, read:public_key, read:ssh_signing_key, repo, user, workflow, write:discussion, write:packages
+              gh auth status
+              
+
+              # --- 
+              # https://cli.github.com/manual/gh_pr_comment
+              # gh pr comment [<number> | <url> | <branch>] [flags]
+              # export POKUS_PULL_REQUEST_NUMBER=7
+              # export POKUS_PULL_REQUEST_NUMBER=1
+              echo "   CIRCLE_PR_NUMBER=[${CIRCLE_PR_NUMBER}]"
+              export POKUS_PULL_REQUEST_NUMBER=$CIRCLE_PR_NUMBER
+              gh pr comment ${POKUS_PULL_REQUEST_NUMBER} -F ${MOUSTACHE_OUTPUT} || true
+
+  e2e_tests_radiojaune:
+    # <<: *pokus-jobs-common
+    docker:
+      # ---
+      #  https://hub.docker.com/r/cimg/node/tags
+      # ---
+      # - image: cimg/go:<< pipeline.parameters.pokus_golang_version >>
+      # - image: cimg/node:<< pipeline.parameters.pokus_nodejs_version >>
+      - image: node:<< pipeline.parameters.pokus_nodejs_version >>
+    # resource_class: pokusio/podman-small1
+    environment:
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
+      SHELL: /bin/bash
+      # BASH_ENV: /home/circleci/.profile
+      MUSTACHE_VERSION: 4.2.0
+      # DISCORD_WEBHOOK_URL: $DISCORD_WEBHOOK_URL
+      # GITHUB_CLI_PAT: $GITHUB_CLI_PAT
+    steps:
+      # <<: *pokus-common-steps
+      - run:
+          name: "Resolve System dependencies"
+          command: |
+              # ---
+              # gh debian package is the github cli
+              apt-get update -y && apt-get install -y  bash curl jq wget gh
+      - run:
+          name: "Env Setup"
+          command: |
+              # mkdir -p /home/circleci/
+              # mkdir -p ${HOME}
+              whoami
+              pwd
+              mkdir -p ${HOME}
+              touch $BASH_ENV
+              echo 'export SHELL=/bin/bash' >> "$BASH_ENV"
+              echo "export PR_BRANCH_NAME=${CIRCLE_BRANCH}" >> "$BASH_ENV"
+              echo 'export GIT_SHA1="$CIRCLE_SHA1"' >> "$BASH_ENV"
+              export ASTRO_BUILD_DIR="${CI_WORKSPACE_ROOT}/workspace/dist"
+              echo "export ASTRO_BUILD_DIR=${ASTRO_BUILD_DIR}" >> "$BASH_ENV"
+              echo ""
+              
+      - checkout
+      - run:
+          name: "Install CI Job dependencies"
+          command: |
+              source $BASH_ENV
+              apt-get update -y && apt-get install -y  bash curl jq wget
+              # install pnpm
+              chmod +x ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              # PNPM_VERSION
+              # export PNPM_VERSION="7.5.1"
+              # # ./.circleci/assets/pnpm/install.pnpm.less.than.7.5.2.sh
+              curl -fsSL https://get.pnpm.io/install.sh | sh -
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.bashrc
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.bashrc
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a /root/.profile
+              cat ./.circleci/assets/pnpm/.bashrc.addon | tee -a ~/.profile
+              cat ./.circleci/assets/pnpm/.bashrc.addon >> "$BASH_ENV"
+              # install surge
+              source $BASH_ENV
+              pnpm add -g surge
+              # bash -c 'pnpm add -g surge'
+              pnpm --version
+              # bash -c 'pnpm --version'
+              surge --version
+      - run:
+          name: "Install Tests Dependencies"
+          command: |
+              echo "npm init playwright@latest"
+              # Install Playwright browsers (can be done manually via 'npx playwright install')?
+              echo "pnpm dlx playwright install"
+      - run:
+          name: "Run e2e Playwright Tests"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Run e2e Playwright Tests"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   No e2e Tests executed yet."
+              echo "   We will run here https://playwright.dev tests"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              echo "pnpm dlx playwright test"
+              # npx playwright test
+      - run:
+          name: "Run e2e Cypress Tests"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Run e2e Cypress Tests"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+      - run:
+          name: "Run UI Components Tests : Storybook"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Run e2e Storybook Tests"
+              echo "   see https://storybook.js.org/blog/ui-testing-playbook/"
+              echo ' ------------------------------------------------------- '
+      - run:
+          name: "Deploy All Tests Reports as static website"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Deploy All Tests Reports as static website"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+      - run:
+          name: "Discord Notifications"
+          command: |
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Discord Notifications"
+              echo "   https://discord.com/developers/docs/resources/webhook#execute-webhook-jsonform-params"
+              echo ' ------------------------------------------------------- '
+              echo ' ------------------------------------------------------- '
+              echo " PR_BRANCH_NAME = [${PR_BRANCH_NAME}]"
+              export PR_BRANCH_NAME_SANITIZED=$(echo "${PR_BRANCH_NAME}" | sed "s#/#_#g")
+              echo " PR_BRANCH_NAME_SANITIZED = [${PR_BRANCH_NAME_SANITIZED}]"
+              echo ' ------------------------------------------------------- '
+              export SURGE_DEPLOYMENT_URL="https://justincurieux_${PR_BRANCH_NAME_SANITIZED}.surge.sh"
+              sed -i "s#SURGE_DEPLOYMENT_URL_PLACEHOLDER#${SURGE_DEPLOYMENT_URL}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
+              sed -i "s#PR_GIT_BRANCH_PLACEHOLDER#${PR_BRANCH_NAME_SANITIZED}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
+              sed -i "s#CIRCLE_USERNAME_PLACEHOLDER#${CIRCLE_USERNAME}#g" ./.circleci/assets/discord/notification.e2e.tests.payload.json
+              echo ' ------------------------------------------------------- '
+              echo '    content of notification.payload.json after sed ------------------------------------------- '
+              echo ' ------------------------------------------------------- '
+              cat -n ./.circleci/assets/discord/notification.e2e.tests.payload.json
+              echo ' ------------------------------------------------------- '
+              
+              # export RAW_DISCORD_WEBHOOK_URL=https://discordapp.com/api/webhooks/1143716758486786112/czV9yYYh7NoB9ZUm-Sr5kTyMMqyfmd1GtW0Qio5t3SCkMTFpcbNJNNp1ZjUGOFaVSfp_
+              echo "DISCORD_WEBHOOK_URL = [${DISCORD_WEBHOOK_URL}]"
+              # export DISCORD_WEBHOOK_URL=${RAW_DISCORD_WEBHOOK_URL}
+              # echo "DISCORD_WEBHOOK_URL = [${DISCORD_WEBHOOK_URL}]"
+              ls -alh ./.circleci/assets/discord/notification.e2e.tests.payload.json
+              cat ./.circleci/assets/discord/notification.e2e.tests.payload.json | jq .
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Sending Discord Notifications from JSON FIle Payload"
+              echo ' ------------------------------------------------------- '
+              curl -ivvv -X POST \
+                   -H "Content-Type: application/json" \
+                   -H "Accept: application/json" \
+                   -d @./.circleci/assets/discord/notification.e2e.tests.payload.json \
+                   $DISCORD_WEBHOOK_URL
+      - run:
+          name: "Github Pull Request Notification"
+          command: |
+              export MOUSTACHE_VIEW=./.circleci/assets/gh_cli/pr_e2e_tests_report/notification.view.json
+              export MOUSTACHE_TEMPLATE=./.circleci/assets/gh_cli/pr_e2e_tests_report/notification.template.md
+              export MOUSTACHE_OUTPUT=./.circleci/assets/gh_cli/pr_e2e_tests_report/notification.output.md
+              
+              # --- CIRCLE_USERNAME: the user who triggered the pipeline
+              export POKUS_CIRCLE_USERNAME="${CIRCLE_USERNAME}"  
+              export POKUS_COMMIT_HASH="${CIRCLE_SHA1}"              
+              export POKUS_GIT_BRANCH="${CIRCLE_BRANCH}"
+              export POKUS_GIT_REPO_URL="${CIRCLE_REPOSITORY_URL}"
+              export E2E_REPORT_DEPLOYMENT_URL="https://onverra.justin.dev"
+              export PLAYWRIGHT_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
+              export PLAYWRIGHT_E2E_TESTS_STATUS=" :heavy_check_mark: Success"
+              export CYPRESS_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
+              export CYPRESS_E2E_TESTS_STATUS=" :heavy_check_mark: Success"
+              export STORYBOOK_E2E_TESTS_STATUS=" :x: :bangbang: Failure"
+              export STORYBOOK_E2E_TESTS_STATUS=" :heavy_check_mark: Success"
+              
+              sed -i "s#POKUS_CIRCLE_USERNAME_PLACEHOLDER#${POKUS_CIRCLE_USERNAME}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_COMMIT_HASH_PLACEHOLDER#${POKUS_COMMIT_HASH}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_GIT_BRANCH_PLACEHOLDER#${POKUS_GIT_BRANCH}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#POKUS_GIT_REPO_URL_PLACEHOLDER#${POKUS_GIT_REPO_URL}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#E2E_REPORT_DEPLOYMENT_URL_PLACEHOLDER#${E2E_REPORT_DEPLOYMENT_URL}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#PLAYWRIGHT_E2E_TESTS_STATUS_PLACEHOLDER#${PLAYWRIGHT_E2E_TESTS_STATUS}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#CYPRESS_E2E_TESTS_STATUS_PLACEHOLDER#${CYPRESS_E2E_TESTS_STATUS}#g" ${MOUSTACHE_VIEW}
+              sed -i "s#STORYBOOK_E2E_TESTS_STATUS_PLACEHOLDER#${STORYBOOK_E2E_TESTS_STATUS}#g" ${MOUSTACHE_VIEW}
+              # ./.circleci/assets/gh_cli/pr_e2e_tests_report/notification.view.json
+              # ./.circleci/assets/gh_cli/pr_e2e_tests_report/notification.template.md
+              
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Github Pull Request Notification"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              export PNPM_HOME="/root/.local/share/pnpm"
+              case ":$PATH:" in
+              *":$PNPM_HOME:"*) ;;
+              *) export PATH="$PNPM_HOME:$PATH" ;;
+              esac
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Render PR message with Mustache"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              # export MUSTACHE_VERSION=4.2.0
+              pnpm add --global mustache@$MUSTACHE_VERSION
+              # prepare PR message
+              ls -alh  $MOUSTACHE_VIEW $MOUSTACHE_TEMPLATE
+              mustache $MOUSTACHE_VIEW $MOUSTACHE_TEMPLATE $MOUSTACHE_OUTPUT
+              ls -alh  $MOUSTACHE_OUTPUT
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Rendered PR message with Mustache is :"
+              echo "   "
+              ls -alh ${MOUSTACHE_OUTPUT}
+              cat ${MOUSTACHE_OUTPUT}
+              echo ' ------------------------------------------------------- '
+              echo ' ------------------------------------------------------- '
+              echo "   "
+              echo "   Github CLI LOGIN"
+              echo "   "
+              echo ' ------------------------------------------------------- '
+              export DONTSHOWME=$(echo ${GITHUB_CLI_PAT} > ./.bot.github.pat.token)
+              gh auth login --with-token < ./.bot.github.pat.token
+
+              # --- 
+              # Gihub Personal Access Token (P.A.T.)
+              # Token scopes: admin:repo_hook, project, read:gpg_key, read:org, read:public_key, read:ssh_signing_key, repo, user, workflow, write:discussion, write:packages
+              gh auth status
+              
+
+              # --- 
+              # https://cli.github.com/manual/gh_pr_comment
+              # gh pr comment [<number> | <url> | <branch>] [flags]
+              # export POKUS_PULL_REQUEST_NUMBER=7
+              # export POKUS_PULL_REQUEST_NUMBER=1
+              echo "   CIRCLE_PR_NUMBER=[${CIRCLE_PR_NUMBER}]"
+              export POKUS_PULL_REQUEST_NUMBER=$CIRCLE_PR_NUMBER
+              gh pr comment ${POKUS_PULL_REQUEST_NUMBER} -F ${MOUSTACHE_OUTPUT} || true
+
+  release_deployment:
+    # <<: *pokus-jobs-common
+    docker:
+      # ---
+      #  https://hub.docker.com/r/cimg/node/tags
+      # ---
+      # - image: cimg/go:<< pipeline.parameters.pokus_golang_version >>
+      # - image: cimg/node:<< pipeline.parameters.pokus_nodejs_version >>
+      - image: node:<< pipeline.parameters.pokus_nodejs_version >>
+      
+    # resource_class: pokusio/podman-small1
+    environment:
+      # PNPM_VERSION: 7.5.1
+      PNPM_VERSION: 8.14.1
+      SHELL: /bin/bash
+      BASH_ENV: /home/circleci/.profile
+      RELEASE_TAG: << pipeline.git.tag >>
+    steps:
+      # <<: *pokus-common-steps
+      - run:
+          name: "Run Release Preps"
+          command: |
+              whoami
+              pwd
+              mkdir -p ${HOME}
+              touch $BASH_ENV
+              echo "RELEASE_TAG = [${RELEASE_TAG}]"
+              echo "Run release preps: tools and system dependencies installation"
+              
+workflows:
+  version: 2.1
+  pull_requests:
+    # when: 
+    #   not: << pipeline.parameters.dockerize_me >> 
+    jobs:
+      - pr_unit_tests
+      - pr_astro_build:
+          context: radiojaune
+          requires:
+            - pr_unit_tests
+      - e2e_tests_radiojaune:
+          context: radiojaune
+          requires:
+            - pr_astro_build
+      - approve_deployment: # <<< A job that will require manual approval in the CircleCI web application.
+          type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
+          requires:
+            - e2e_tests_radiojaune
+      - pr_deployment:
+          context: radiojaune
+          requires:
+            - approve_deployment
+      # - pr_deployment:
+      #     context: radiojaune
+      #     filters:
+      #       branches:
+      #         only:
+      #           # - master
+      #           # - develop
+      #           # ---
+      #           - /^feature\/.*/
+      #           - /^support\/.*/
+      #           - /^bugfix\/.*/
+      #           - /^hotfix\/.*/
+      #           # - /^release\/.*/
+      #           # ---
+      #       tags:
+      #         # only: /^v.*/
+      #         only:
+      #           - /^[0-9]+.[0-9]+.[0-9]+/
+      #           - /^[0-9]+.[0-9]+.[0-9]+-alpha/
+      #           - /^[0-9]+.[0-9]+.[0-9]+-beta/
+      #     requires:
+      #       - approve_deployment
+
+
+
+
+# -------------------------------------
+#  Workspaces
+# https://circleci.com/docs/workspaces/
+# -------------------------------------
+# -------------------------------------
+# CI Container Images
+#  https://hub.docker.com/r/cimg/node/tags
+#  https://hub.docker.com/_/node/tags?page=1&name=book
+# -------------------------------------

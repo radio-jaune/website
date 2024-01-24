@@ -1,0 +1,8 @@
+{
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  "method": "POST",
+  "payload": { "content": " @jeanbaptiste#9951 :dash: A new {{project}} Deployment is ready ! :sparkles:" },
+  "muteHttpExceptions": true
+}

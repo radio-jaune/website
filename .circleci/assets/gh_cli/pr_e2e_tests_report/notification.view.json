@@ -1,0 +1,14 @@
+{
+  "project": "Justin Curieux!",
+  "author": "POKUS_CIRCLE_USERNAME_PLACEHOLDER",
+  "description": "Le rapport de tests \"e2e\" (End-to-end) pour le commit `POKUS_COMMIT_HASH_PLACEHOLDER` sur la branch `POKUS_GIT_BRANCH_PLACEHOLDER` du repo `POKUS_GIT_REPO_URL_PLACEHOLDER` ",
+  "deployments_url": "E2E_REPORT_DEPLOYMENT_URL_PLACEHOLDER",
+  "sumup": [
+    {"title": "Playwright", "description": true, "url": "#Red", "status": "PLAYWRIGHT_E2E_TESTS_STATUS_PLACEHOLDER", "color": "cyan"},
+    {"title": "Cypress", "description": true, "url": "#Green", "status": "CYPRESS_E2E_TESTS_STATUS_PLACEHOLDER", "color": "teal"},
+    {"title": "Storybook", "description": true, "url": "#Blue", "status": "STORYBOOK_E2E_TESTS_STATUS_PLACEHOLDER", "color": "f542e3"}
+  ],
+  "references": [
+    {"description": "The shield of badges", "url": "https://shields.io/"}
+  ]
+}

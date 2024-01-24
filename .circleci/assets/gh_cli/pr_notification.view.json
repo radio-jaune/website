@@ -1,0 +1,15 @@
+{
+  "project": "Justin Curieux!",
+  "description": "Ceci est la première livraison, un premier prototype proposé",
+  "deployment_url": "https://develop.surge.sh",
+  "features": [
+    {"title": "An example feature 1", "description": true, "url": "#Red"},
+    {"title": "An example feature 2", "description": true, "url": "#Green"},
+    {"title": "An example feature 3", "description": true, "url": "#Blue"}
+  ],
+  "fixes": [
+    {"title": "An example Fix 1", "description": true, "url": "#Red"},
+    {"title": "An example Fix 2", "description": true, "url": "#Green"},
+    {"title": "An example Fix 3", "description": true, "url": "#Blue"}
+  ]
+}
