@@ -10,9 +10,11 @@ import Splash from "../components/splash.astro";
 import "../styles/index.css";
 
 const { generator, site } = Astro;
-const image = new URL("social.jpg", site);
+// const image = new URL("socials.png", site);
+const image = new URL("socials.png", `https://labored-dock.surge.sh/`);
+
 const description =
-  "Radio Jaune. La radio, libre.";
+  `Radio Jaune. La radio, libre. \n\nÉcouter. Discuter.Tout Changer.  \n\n  https://radio-jaune.com`;
 ---
 
 <!doctype html>
