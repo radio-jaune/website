@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        'logogreen': '#16f79a',
       },
       textColor: {
         default: "var(--color-text)",
