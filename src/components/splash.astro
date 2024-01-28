@@ -57,9 +57,9 @@ const links: Array<FooterLink> = [
     >
     {
       links.map((link) => (
-          <a class="text-sm text-current" href={link.url}>
+          <a class="transition-all duration-500 text-sm text-current hover:text-fuchsia-500 hover:scale-125 hover:shadow-lg hover:shadow-fuchsia-500" href={link.url}>
             <span class="sr-only">Radio Jaune sur Telegram</span>
-            <Icon class="size-full" color={`white`} name={link.icon} />
+            <Icon class="transition-all duration-500 size-full hover:text-fuchsia-500 hover:scale-125 rounded-full hover:shadow-lg hover:shadow-fuchsia-500" color={`white`} name={link.icon} />
           </a>
       ))
     }
