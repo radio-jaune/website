@@ -5,6 +5,8 @@ import { Icon } from "astro-icon/components";
 // import HeroImage from "~/components/hero-image.astro";
 // import Starfield from "~/components/starfield.astro";
 // import GitHubCorner from "./github-corner.astro";
+// import TikTokCorner from "./TikTokCorner";
+import TikTokCorner from "./tiktok-corner.astro";
 import { YellowMatrix } from "./YellowMatrix";
 import type { FooterLink } from "../types";
 
@@ -12,8 +14,8 @@ import type { FooterLink } from "../types";
 // const sizes = "(min-width: 640px) 42vw, 67vw";
 const links: Array<FooterLink> = [
   {
-    url: "https://t.me/radiojaune",
-    description: "Radio Jaune sur Telegram",
+    url: "https://t.me/lechatjaune",
+    description: "Le Chat Jaune sur Telegram",
     icon: "fa-brands:telegram",
   }
 ];
@@ -25,7 +27,11 @@ const links: Array<FooterLink> = [
   }
   <YellowMatrix client:only="preact" client:visible />
   {// <GitHubCorner />
+   // <TikTokCorner client:only="preact" client:visible />
+  
   }
+
+  <TikTokCorner />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
     
   </div>
