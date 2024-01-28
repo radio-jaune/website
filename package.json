@@ -1,5 +1,5 @@
 {
-  "name": "ossified-orbit",
+  "name": "radio-jaune",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,7 @@
     "format": "prettier --write **/*.astro .",
     "clean": "rimraf dist .astro node_modules"
   },
+  "homepage": "https://radio-jaune.github.io/website/",
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/fa-brands": "^1.1.8",
