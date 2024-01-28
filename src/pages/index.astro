@@ -8,7 +8,7 @@ import Header from "../components/header.astro";
 // import Showcase from "../components/showcase.astro";
 import Splash from "../components/splash.astro";
 import "../styles/index.css";
-
+import {robotsConfig} from '../config';
 const { generator, site } = Astro;
 // const image = new URL("socials.png", site);
 const image = new URL("socials2.png", `https://radiojaune-seo-28670.surge.sh/`)//`https://labored-dock.surge.sh/`);
@@ -36,6 +36,8 @@ const description =
     <meta property="og:url" content={site} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- robots.txt -->
+    <meta name="robots" content={robotsConfig.disableIndexing ? 'noindex, nofollow' : 'index, follow'} />
     <!-- initialize theme -->
     <script is:inline>
       const themeSaved = localStorage.getItem("theme");
