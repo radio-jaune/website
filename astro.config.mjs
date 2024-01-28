@@ -15,7 +15,7 @@ console.log(` --->>> DEPLOYMENT_ASTRO_BASE_CONFIG = [${myDEPLOYMENT_ASTRO_BASE_C
 // https://astro.build/config
 export default defineConfig({
   // site: "https://astro-moon-landing.netlify.app/",
-  site: `${myDEPLOYMENT_ASTRO_SITE_CONFIG}`,
-  base: `${myDEPLOYMENT_ASTRO_BASE_CONFIG}`,
+  site: `${myDEPLOYMENT_ASTRO_SITE_CONFIG || ''}`,
+  base: `${myDEPLOYMENT_ASTRO_BASE_CONFIG || ''}`,
   integrations: [tailwind(), icon(), preact({ compat: true })]
 });

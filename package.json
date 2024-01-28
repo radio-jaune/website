@@ -23,7 +23,8 @@
     "prettier-plugin-astro": "^0.12.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "rimraf": "^5.0.5",
-    "tailwindcss-fluid-type": "^2.0.3"
+    "tailwindcss-fluid-type": "^2.0.3",
+    "wrangler": "^3.25.0"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
