@@ -25,6 +25,8 @@ git flow release start ${RELEASE_VERSION}
 export GH_PAGES_DEPLOYMENT_DIR='docs'
 export DEPLOYMENT_ASTRO_BASE_CONFIG="/website"
 export DEPLOYMENT_ASTRO_SITE_CONFIG="https://radio-jaune.github.io"
+export DEPLOYMENT_ASTRO_BASE_CONFIG=""
+export DEPLOYMENT_ASTRO_SITE_CONFIG="https://website-ar7.pages.dev"
 
 export NO_CNAME="true"
 # export NO_CNAME="false"

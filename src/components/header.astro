@@ -2,6 +2,11 @@
 import { Icon } from "astro-icon/components";
 import ThemeSwitcher from "../components/theme-switcher.astro";
 import type { NavItem } from "../types";
+import UpSideDownShare from "./UpSideDownShare"
+
+const { generator, site } = Astro;
+const ASTRO_BASE_CONFIG_ARRAY = (process.env.DEPLOYMENT_ASTRO_BASE_CONFIG?process.env.DEPLOYMENT_ASTRO_BASE_CONFIG:'/').split(`/`);
+const myDEPLOYMENT_ASTRO_BASE_CONFIG = `${ASTRO_BASE_CONFIG_ARRAY[ASTRO_BASE_CONFIG_ARRAY.length - 1]}`;
 
 const navItems: Array<NavItem> = [
   { title: "Écouter.", url: "#" },
@@ -18,6 +23,7 @@ const navItems: Array<NavItem> = [
     <h1 class="sr-only">Astro</h1>
     <Icon name="microsvg_dom1" class="size-10" />
   </a>
+  <UpSideDownShare link_to_share={`${site || 'https://example.com' }${myDEPLOYMENT_ASTRO_BASE_CONFIG}`} title="Radio Jaune" client:only="preact" />
   <div>
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
